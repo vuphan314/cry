@@ -11,18 +11,26 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-Presentation, \cry!
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-\begin{codes}
-\alice \$ cry -scheme=rsa -private-key=625 -public-key=825 -plaintext=4692301804 encrypt
-=================================
-ciphertext is 6259428552
-=================================
-\end{codes}
+\begin{itemize}
+\item \alice
+  \begin{codes}
+  \$ cry -scheme=rsa -receiver-public-key=825 \\
+  -plaintext=4692301804 encrypt \\
+  > The ciphertext is 1234567890 (took 5 seconds).
+  \end{codes}
+\item \bob
+  \begin{codes}
+  \$ cry -scheme=rsa -receiver-private-key=637 \\
+  -ciphertext=1234567890 decrypt \\
+  > The plaintext is 4692301804 (took 10 seconds).
+  \end{codes}
+\item \eve
+  \begin{codes}
+  \$ cry -scheme=rsa -receiver-public-key=825 \\
+  -ciphertext=1234567890 eavesdrop \\
+  > The plaintext is 4692301804 (took 50 years).
+  \end{codes}
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
