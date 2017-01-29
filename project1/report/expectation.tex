@@ -3,19 +3,25 @@
 \begin{itemize}
 \item Usability:
   \begin{itemize}
-  \item \cry{} enables \eu s to establish
+  \item For \eu s: \cry{} enables \eu s to establish
     secure communication via simple \cl{} options.
-  \item Being a modular object-oriented framework,
-    \cry{} lets \cg s easily define and benchmark new \cs s.
-  \end{itemize}
-  new systems show analysis on their current security standing, letting the developer know if additional security is needed
-  
-  cryptosystems will be continually built in and checked with cry (similar to the RSA example) and can be used to verify the security of
-  a new user/developer's system
+  \item For \cg s:
+    \begin{itemize}
+    \item Being a modular object-oriented framework,
+      \cry{} lets \cg s easily define new \cs s.
+    \item \cry{} also reports the security measures
+      of these \cs s.
+    \end{itemize}
 \end{itemize}
-(new item) Related applications
-  Charm framework - used for testing cryptographic systems implemented in python 
-  
-  Has extended functionalities that we won't be able to provide due to time constraints
-  
-  Our application will have a similar base for sandboxing and prototyping possible systems
+\item Limitation of \cry{} compared to
+  the existing \charm{} \cf:
+  \begin{itemize}
+  \item \charm{} is used for anaylizing \cs s
+    implemented in Python.
+  \item \charm{} has advanced functionalities
+    that we will be unable to provide in \cry{}
+    due to time constraints.
+  \item \cry{} will have a similar base for sandboxing
+    and prototyping \cs s.
+  \end{itemize}
+\end{itemize}
