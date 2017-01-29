@@ -21,10 +21,29 @@
 
 \section{Motivation}
 
-The \cry{} \cf{} is useful because:
-\begin{enumerate}
-  \item
-\end{enumerate}
+\begin{itemize}
+\item For \eu s:
+  \begin{itemize}
+  \item Problem: An \eu{} wants to send and receive
+    secure messages with other \eu s.
+  \item Solution: \cry{} lets \eu s establish
+    secure communication via built-in \cs s.
+  \end{itemize}
+\item For \cg s:
+  \begin{itemize}
+  \item Problem: New \cs s need to be developed.
+    \begin{itemize}
+    \item Reason: Most existing \cs s are secure
+      only if their assumptions are true.
+    \item Example: The RSA \cs's security relies on
+      the assumption that integer factorization is hard.
+      It is currenly unknown whether
+      a polynomial-time factorizing algorithm exists.
+    \end{itemize}
+  \item Solution: \cry{} let \cg s easily prototype
+    and test their new \cs s.
+  \end{itemize}
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -90,7 +109,7 @@ In the previous example:
 
 In general, with \cry:
 \begin{itemize}
-\item an end-user can use an implemented \cs{}
+\item an \eu{} can use an implemented \cs{}
   to confidentially send and receive messages with others.
 \item a \cg{} can:
   \begin{itemize}
