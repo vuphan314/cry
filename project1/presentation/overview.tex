@@ -1,12 +1,62 @@
 \section{Overview}
 
+\frame{\sectionpage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Example Use Case}
+
 \begin{frame}
+\frametitle{Situation}
 \begin{itemize}
+\item
+  \alice{} (sender) wants to confidentially send a message
+  to \bob{} (receiver).
+\item
+  \eve{} (eavesdropper) wants to know that message.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Procedure}
+\begin{enumerate}
 \item
   \alice{} (sender) \encryptex
 \item
   \bob{} (receiver) \decryptex
 \item
   \eve{} (eavesdropper) \eavesdropex
+\end{enumerate}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Functionality}
+
+\begin{frame}
+\frametitle{In the previous example:}
+\begin{itemize}
+\item
+  \cry{} is the \cf.
+\item
+  RSA is a \cs{} implemented in \cry.
+\item
+  The key-generation, encryption, decryption,
+  and eavesdropping algorithms are specific to RSA.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{In general, with \cry:}
+\begin{itemize}
+\item an \eu{} can use an implemented \cs{}
+  to confidentially send and receive messages with others.
+\item a \cg{} can:
+  \begin{itemize}
+  \item prototype her own \cs s
+    where the \ca s are either newly defined
+    or reused from different existing \cs s.
+  \item test her \cs s for security and performance.
+  \end{itemize}
 \end{itemize}
 \end{frame}

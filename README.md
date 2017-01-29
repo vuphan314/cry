@@ -2,4 +2,4 @@
 cryptographic framework
 
 ## Style
-preferred line length: 60-character
+preferred max line length: 60-character
