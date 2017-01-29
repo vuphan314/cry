@@ -1,3 +1,8 @@
+% \eu shorthand for end-users
+% \cry shorthand for our system
+% \cs shorthand for cryptosystem
+% \cg shorthand for cryptographers
+
 \section{Motivation}
 
 \begin{itemize}
@@ -10,16 +15,31 @@
   \end{itemize}
 \item For \cg s:
   \begin{itemize}
-  \item Problem: New \cs s need to be developed.
+  \item Problem: As quantum computing becomes more prevalent,
+  new \cs s need to be developed that are traditionally secure,
+  as well as secure in the quantum world.
     \begin{itemize}
-    \item Reason: Most existing \cs s are secure
+    \item Reason: Existing \cs s are secure
       only if their assumptions are true.
     \item Example: The RSA \cs's security relies on
       the assumption that integer factorization is hard.
-      It is currenly unknown whether
-      a polynomial-time factorizing algorithm exists.
+      It is currenly unknown whether a polynomial-time
+      factorizing algorithm exists for traditional binary
+      computers. A polynomial-time factorizing algorithm
+      does, however, exist for quantum computers.
+    \item Example: The DES \cs's security relied on the assumption
+      that it was not practical to attack by brute force it's key space
+      (approximately 72 quadrillion keys). In 1998, the EFF (Electronic
+      Frontier Foundation) built Deep Crack at a cost of approximately
+      250,000 USD (a very affordable fee), which successfully brute
+      forced DES in 56 hours.
+    \item Example: The AES \cs's security also relies on the assumption
+      that it is not practical to attack by brute force it's key space.
+      This assumption should prove to be correct for the forseable future.
+      AES when implemented correctly is not susceptible to brute force attacks,
+      nor is it susceptible to any known cryptanalysis techniques.
     \end{itemize}
-  \item Solution: \cry{} let \cg s easily prototype
-    and test their new \cs s.
+  \item Solution: \cry{} let \cg s easily prototype, test,
+    and benchmark their new \cs s.
   \end{itemize}
 \end{itemize}
