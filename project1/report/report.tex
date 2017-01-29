@@ -1,7 +1,7 @@
 \documentclass[11pt]{extarticle}
 % 8pt, 9pt, 10pt, 11pt, 12pt, 14pt, 17pt, 20pt
 
-\usepackage{../cry}
+\usepackage{../../cry}
 
 \title{\deliv{\pp}{Report}}
 \author{\names}
@@ -19,120 +19,11 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Motivation}
+\input{motivation}
 
-\begin{itemize}
-\item For \eu s:
-  \begin{itemize}
-  \item Problem: An \eu{} wants to send and receive
-    secure messages with other \eu s.
-  \item Solution: \cry{} lets \eu s establish
-    secure communication via built-in \cs s.
-  \end{itemize}
-\item For \cg s:
-  \begin{itemize}
-  \item Problem: New \cs s need to be developed.
-    \begin{itemize}
-    \item Reason: Most existing \cs s are secure
-      only if their assumptions are true.
-    \item Example: The RSA \cs's security relies on
-      the assumption that integer factorization is hard.
-      It is currenly unknown whether
-      a polynomial-time factorizing algorithm exists.
-    \end{itemize}
-  \item Solution: \cry{} let \cg s easily prototype
-    and test their new \cs s.
-  \end{itemize}
-\end{itemize}
+\input{overview}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Overview}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Example Use Case}
-
-Situation:
-\begin{itemize}
-\item
-  \alice{} (sender) wants to confidentially send a message
-  to \bob{} (receiver).
-\item
-  \eve{} (eavesdropper) wants to know that message.
-\end{itemize}
-
-Procedure:
-\begin{enumerate}
-\item
-  Each person downloads the binary file \code{cry}
-  of the \cry{} \cf.
-\item
-  \bob{} publishes his choice of \cs:
-  RSA (Rivest, Shamir, Adleman).
-\item
-  \bob{} generates his keys: \getkeysex
-\item
-  \bob{} publishes his public key
-  (and hides his private key).
-\item
-  \alice{} obtains \bob's published public key.
-\item
-  \alice{} encrypts her message (say, her phone number):
-  \encryptex
-\item
-  \alice{} publishes the encrypted message.
-\item
-  \bob{} obtains \alice's published encrypted message.
-\item
-  \bob{} easily decrypts the message with his private key:
-  \decryptex
-\item
-  \eve{} struggles to eavesdrop the message
-  without \bob's private key: \eavesdropex
-\end{enumerate}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Functionality}
-
-In the previous example:
-\begin{itemize}
-\item
-  \cry{} is the \cf.
-\item
-  RSA is a \cs{} implemented in \cry.
-\item
-  The key-generation, encryption, decryption,
-  and eavesdropping algorithms are specific to RSA.
-\end{itemize}
-
-In general, with \cry:
-\begin{itemize}
-\item an \eu{} can use an implemented \cs{}
-  to confidentially send and receive messages with others.
-\item a \cg{} can:
-  \begin{itemize}
-  \item prototype her own \cs s
-    where the \ca s are either newly defined
-    or reused from different existing \cs s.
-  \item test her \cs s for security and performance.
-  \end{itemize}
-\end{itemize}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Expectation}
-
-\begin{itemize}
-\item Usability:
-  \begin{itemize}
-  \item \cry{} enables \eu s to establish
-    secure communication via simple \cl{} options.
-  \item Being a modular object-oriented framework,
-    \cry{} lets \cg s easily define and benchmark new \cs s.
-  \end{itemize}
-\end{itemize}
+\input{expectation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
