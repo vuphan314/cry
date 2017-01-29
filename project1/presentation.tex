@@ -12,24 +12,12 @@
 
 \begin{frame}
 \begin{itemize}
-\item \alice{} (sender)
-  \begin{codes}
-  \$ cry -scheme=rsa -receiver-public-key=825 \textbackslash \\
-  > -plaintext=\plaintext{} encrypt \\
-  The ciphertext is \ciphertext{} (took 1 second).
-  \end{codes}
-\item \bob{} (receiver)
-  \begin{codes}
-  \$ cry -scheme=rsa -receiver-private-key=637 \textbackslash \\
-  > -ciphertext=\ciphertext{} decrypt \\
-  The plaintext is \plaintext{} (took 1 second).
-  \end{codes}
-\item \eve{} (eavesdropper)
-  \begin{codes}
-  \$ cry -scheme=rsa -receiver-public-key=825 \textbackslash \\
-  > -ciphertext=\ciphertext{} eavesdrop \\
-  The plaintext is \plaintext{} (took 1 year).
-  \end{codes}
+\item
+  \alice{} (sender) \encryptex
+\item
+  \bob{} (receiver) \decryptex
+\item
+  \eve{} (eavesdropper) \eavesdropex
 \end{itemize}
 \end{frame}
 

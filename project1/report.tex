@@ -7,29 +7,107 @@
 \author{\names}
 \date{2017-01-29}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \begin{document}
 
 \maketitle
 \tableofcontents
+\thispagestyle{fancy}
+
+\begin{flushleft}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Motivation}
 
-hi
+The \cry{} \cf{} is useful because:
+\begin{enumerate}
+  \item
+\end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{System Overview}
-
-sup
+\section{Overview}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Expected Outcome}
+\subsection{Example Use Case}
+
+Situation:
+\begin{itemize}
+\item
+  \alice{} (sender) wants to confidentially send a message
+  to \bob{} (receiver).
+\item
+  \eve{} (eavesdropper) wants to know that message.
+\end{itemize}
+
+Procedure:
+\begin{enumerate}
+\item
+  Each person downloads the binary file \code{cry}
+  of the \cry{} \cf.
+\item
+  \bob{} publishes his choice of \cs:
+  RSA (Rivest, Shamir, Adleman).
+\item
+  \bob{} generates his keys: \getkeysex
+\item
+  \bob{} publishes his public key
+  (and hides his private key).
+\item
+  \alice{} obtains \bob's published public key.
+\item
+  \alice{} encrypts her message (say, her phone number):
+  \encryptex
+\item
+  \alice{} publishes the encrypted message.
+\item
+  \bob{} obtains \alice's published encrypted message.
+\item
+  \bob{} easily decrypts the message with his private key:
+  \decryptex
+\item
+  \eve{} struggles to eavesdrop the message
+  without \bob's private key: \eavesdropex
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Functionality}
+
+In the previous example:
+\begin{itemize}
+\item
+  \cry{} is the \cf.
+\item
+  RSA is a \cs{} implemented in \cry.
+\item
+  The key-generation, encryption, decryption,
+  and eavesdropping algorithms are specific to RSA.
+\end{itemize}
+
+In general, with \cry:
+\begin{itemize}
+\item an end-user can use an implemented \cs{}
+  to confidentially send and receive messages with others.
+\item a \cg{} can:
+  \begin{itemize}
+  \item prototype her own \cs s
+    where the \ca s are either newly defined
+    or reused from different existing \cs s.
+  \item test her \cs s for security and performance.
+  \end{itemize}
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Expectation}
 
 hey
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\end{flushleft}
 \end{document}
