@@ -18,8 +18,7 @@ cd cry/
 git branch -a
 git checkout <your_branch>
 ```
-- make change
-- commit
+- make change, commit, push
 - create a pull request on GitHub
   from `<your_branch>` to `master`
 
