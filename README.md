@@ -1,8 +1,26 @@
 # Cry
 cryptographic framework
 
+## links
+- projects
+  - 1 (project plan)
+    - [presentation][presentation1]
+    - [report][report1]
+- [releases][releases]
+
 ## convention
 preferred max line length: 60-character
+
+## contribution
+```
+git checkout https://github.com/vuphan314/cry
+cd cry/
+git branch -a
+git checkout <your_branch>
+```
+- make change
+- commit
+- make a pull request on GitHub from `<your_branch>` to `master`
 
 ## TeX
 
@@ -24,5 +42,10 @@ preferred max line length: 60-character
     cd project1/presentation/
 
     latexmk -pdf -synctex=1 presentation.tex
-
     ```
+<!-- --------------------------------------------------- -->
+
+[presentation1]:https://github.com/vuphan314/cry/blob/master/project1/presentation/presentation.pdf
+[report1]:https://github.com/vuphan314/cry/blob/master/project1/report/report.pdf
+
+[releases]:https://github.com/vuphan314/cry/releases
