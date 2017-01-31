@@ -20,7 +20,8 @@ git checkout <your_branch>
 ```
 - make change
 - commit
-- make a pull request on GitHub from `<your_branch>` to `master`
+- create a pull request on GitHub
+  from `<your_branch>` to `master`
 
 ## TeX
 
