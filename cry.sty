@@ -28,8 +28,10 @@
 
 \newcommand{\deliv}[2]{\cry{} -- #1: #2}
 \newcommand{\pp}{Project 1 (Project Plan)}
+\newcommand{\srs}{Project 2 \\ (Software Requirements Specification)}
 
 \newcommand{\datepp}{2017-01-30}
+\newcommand{\datesrs}{2017-02-13}
 
 \newcommand{\name}[2]{#1 #2}
 \newcommand{\dd}{\name{Daniel}{Dunning}}
@@ -90,8 +92,18 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% surrounders
+\theoremstyle{definition} % non-italic
+\newtheorem{question}{Question}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
 
+
+% surrounders
 \newcommand{\parentheses}[1]{\left( #1 \right)}
 \newcommand{\braces}[1]{\left\{ #1 \right\}}
 \newcommand{\brackets}[1]{\left[ #1 \right]}

@@ -24,6 +24,9 @@ git checkout <your_branch>
 
 ## TeX
 
+### macros
+see `newcommand` lines in file `cry.sty`
+
 ### online
 - https://www.overleaf.com/
 - multiple `tex` files to one `pdf` file
