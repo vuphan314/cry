@@ -42,9 +42,9 @@ see `newcommand` lines in file `cry.sty`
   - `Atom`: https://atom.io/packages/latex
   - `Terminal`
     ```
-    cd project1/presentation/
+    cd project2/interview/
 
-    latexmk -pdf -synctex=1 presentation.tex
+    latexmk -pdf -synctex=1 interview.tex
     ```
 <!-- --------------------------------------------------- -->
 
