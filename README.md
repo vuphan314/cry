@@ -13,7 +13,7 @@ preferred max line length: 60-character
 
 ## contribution
 ```
-git checkout https://github.com/vuphan314/cry
+git clone https://github.com/vuphan314/cry
 cd cry/
 git branch -a
 git checkout <your_branch>
