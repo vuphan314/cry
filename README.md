@@ -13,7 +13,7 @@ preferred max line length: 60-character
 
 ## contribution
 ```
-git checkout https://github.com/vuphan314/cry
+git clone https://github.com/vuphan314/cry
 cd cry/
 git branch -a
 git checkout <your_branch>
@@ -42,9 +42,9 @@ see `newcommand` lines in file `cry.sty`
   - `Atom`: https://atom.io/packages/latex
   - `Terminal`
     ```
-    cd project1/presentation/
+    cd project2/interview/
 
-    latexmk -pdf -synctex=1 presentation.tex
+    latexmk -pdf -synctex=1 interview.tex
     ```
 <!-- --------------------------------------------------- -->
 
