@@ -4,11 +4,12 @@
 cryptographic framework
 
 ## links
+- [find `pdf`][find]
+- [releases][releases]
 - projects
   - 1 (project plan)
     - [presentation][presentation1]
     - [report][report1]
-- [releases][releases]
 
 ## convention
 preferred max line length: 60-character
@@ -48,9 +49,10 @@ see `newcommand` lines in file `cry.sty`
 
     latexmk -pdf -synctex=1 interview.tex
     ```
-<!-- --------------------------------------------------- -->
+<!--------------------------------------------------------->
+
+[find]:https://github.com/vuphan314/cry/find/master
+[releases]:https://github.com/vuphan314/cry/releases
 
 [presentation1]:https://github.com/vuphan314/cry/blob/master/project1/presentation/presentation.pdf
 [report1]:https://github.com/vuphan314/cry/blob/master/project1/report/report.pdf
-
-[releases]:https://github.com/vuphan314/cry/releases
