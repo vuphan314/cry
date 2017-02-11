@@ -1,10 +1,11 @@
+using namespace std;
+
 #include <iostream>
+#include <utility>
 
 #include <gmp.h>
 
 #include "Cryptoframework.cpp"
-
-using namespace std;
 
 ////////////////////////////////////////////////////////////
 
