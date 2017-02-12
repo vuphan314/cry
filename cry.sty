@@ -41,22 +41,17 @@
 \newcommand{\vp}{\name{Vu}{Phan}}
 \newcommand{\names}{\dd, \md, \vp}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \author{\names}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newenvironment{codes}
-  {\begin{mdframed}} % \ttfamily
-  {\end{mdframed}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\cl}{command-line}
 
-\newcommand{\textdef}[1]{\textbf{#1}}
 \newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\codes}[1]{\begin{mdframed} #1 \end{mdframed}}
+\newcommand{\codestt}[1]{\codes{\ttfamily{#1}}}
+
+\newcommand{\textdef}[1]{\textbf{#1}}
 \newcommand{\builtin}[1]{\textit{#1}}
 \newcommand{\party}[1]{\textit{#1}}
 
@@ -76,7 +71,7 @@
 \newcommand{\crypto}{crypto}
 \newcommand{\cryptos}{cryptographic}
 
-\newcommand{\cf}{\cryptos{} framework}
+\newcommand{\cf}{\crypto framework}
 \newcommand{\cs}{\crypto system}
 \newcommand{\ca}{\cryptos{} algorithm}
 \newcommand{\cg}{\crypto grapher}
@@ -136,27 +131,19 @@
 \newcommand{\publickeyex}{825}
 \newcommand{\privatekeyex}{637}
 
-\newcommand{\getkeysex}
-  {\begin{codes}
-  \$ cry getkeys --cryptosystem=rsa \\
+\newcommand{\getkeysex}{\codestt
+  {\$ cry getkeys --cryptosystem=rsa \\
   The public \& private keys are
-  \publickeyex{} \& \privatekeyex{} (took 1 second).
-  \end{codes}}
-\newcommand{\encryptex}
-  {\begin{codes}
-  \$ cry encrypt --cryptosystem=rsa \textbackslash \\
+  \publickeyex{} \& \privatekeyex{} (took 1 second).}}
+\newcommand{\encryptex}{\codestt
+  {\$ cry encrypt --cryptosystem=rsa \textbackslash \\
   > --public-key=\publickeyex{} --plaintext=\plaintextex \\
-  The ciphertext is \ciphertextex{} (took 1 second).
-  \end{codes}}
-\newcommand{\decryptex}
-  {\begin{codes}
-  \$ cry decrypt --cryptosystem=rsa \textbackslash \\
+  The ciphertext is \ciphertextex{} (took 1 second).}}
+\newcommand{\decryptex}{\codestt
+  {\$ cry decrypt --cryptosystem=rsa \textbackslash \\
   > --private-key=\privatekeyex{} --ciphertext=\ciphertextex \\
-  The plaintext is \plaintextex{} (took 1 second).
-  \end{codes}}
-\newcommand{\eavesdropex}
-  {\begin{codes}
-  \$ cry eavesdrop --cryptosystem=rsa \textbackslash \\
+  The plaintext is \plaintextex{} (took 1 second).}}
+\newcommand{\eavesdropex}{\codestt
+  {\$ cry eavesdrop --cryptosystem=rsa \textbackslash \\
   > --public-key=\publickeyex{} --ciphertext=\ciphertextex \\
-  The plaintext is \plaintextex{} (took 1 century).
-  \end{codes}}
+  The plaintext is \plaintextex{} (took 1 century).}}
