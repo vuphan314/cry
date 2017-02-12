@@ -152,14 +152,30 @@
 
 \newcommand{\generatekeystime}{\cla{key-generation time}}
 \newcommand{\encrypttime}{\cla{encryption time}}
+\newcommand{\decrypttime}{\cla{decryption time}}
+\newcommand{\cryptanalyzetime}{\cla{cryptanalysis time}}
 
 \newcommand{\generatekeysin}{\codestt
   {\$ cry generatekeys --\cs=\csarg}}
 \newcommand{\generatekeysout}{\codestt
   {The public \& private keys are
-  \publickeyarg{} \& \privatekeyarg{} (took \generatekeystime).}}
+  \publickeyarg{} \& \privatekeyarg{} \\
+  (took \generatekeystime).}}
 
 \newcommand{\encryptin}{\codestt
-  {\$ cry encrypt --\cs=\csarg --plaintext=\plaintextarg --publickey=\publickeyarg}}
+  {\$ cry encrypt --\cs=\csarg{} \textbackslash \\
+  > --publickey=\publickeyarg{} --plaintext=\plaintextarg}}
 \newcommand{\encryptout}{\codestt
-  {The ciphertext is \ciphertextarg (took \encrypttime).}}
+  {The ciphertext is \ciphertextarg{} (took \encrypttime).}}
+
+\newcommand{\decryptin}{\codestt
+  {\$ cry decrypt --\cs=\csarg{} \textbackslash \\
+  > --privatekey=\privatekeyarg{} --ciphertext=\ciphertextarg}}
+\newcommand{\decryptout}{\codestt
+  {The plaintext is \plaintextarg{} (took \decrypttime).}}
+
+\newcommand{\cryptanalyzein}{\codestt
+  {\$ cry cryptanalyze --\cs=\csarg{} \textbackslash \\
+  > --publickey=\publickeyarg{} --ciphertext=\ciphertextarg}}
+\newcommand{\cryptanalyzeout}{\codestt
+  {The plaintext is \plaintextarg{} (took \cryptanalyzetime).}}
