@@ -66,6 +66,7 @@
 \newcommand{\rsa}{\builtin{RSA}}
 \renewcommand{\dh}{\builtin{Diffie--Helman}}
 \newcommand{\eg}{\builtin{ElGamal}}
+\newcommand{\aes}{\builtin{AES}}
 
 \newcommand{\tex}{\TeX}
 
@@ -78,10 +79,6 @@
 \newcommand{\cg}{\crypto grapher}
 
 \newcommand{\eu}{end-user}
-
-\newcommand{\alice}{\party{Alice}}
-\newcommand{\bob}{\party{Bob}}
-\newcommand{\eve}{\party{Eve}}
 
 \newcommand{\set}[1]{\braces{#1}}
 \newcommand{\sete}{\varnothing}
@@ -125,10 +122,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % example
+
+\newcommand{\alice}{\party{Alice}}
+\newcommand{\bob}{\party{Bob}}
+\newcommand{\eve}{\party{Eve}}
+
 \newcommand{\plaintextex}{4692301804}
 \newcommand{\ciphertextex}{1110003333}
+
 \newcommand{\publickeyex}{825}
 \newcommand{\privatekeyex}{637}
+
 \newcommand{\getkeysex}
   {\begin{codes}
   \$ cry getkeys --cryptosystem=rsa \\
