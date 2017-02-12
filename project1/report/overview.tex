@@ -22,7 +22,7 @@ Procedure:
   \bob{} publishes his choice of \cs:
   RSA (Rivest, Shamir, Adleman).
 \item
-  \bob{} generates his keys: \getkeysex
+  \bob{} generates his keys: \generatekeysex
 \item
   \bob{} publishes his public key
   (and hides his private key).
@@ -39,8 +39,8 @@ Procedure:
   \bob{} easily decrypts the message with his private key:
   \decryptex
 \item
-  \eve{} struggles to eavesdrop the message
-  without \bob's private key: \eavesdropex
+  \eve{} struggles to cryptanalyze the message
+  without \bob's private key: \cryptanalyzeex
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

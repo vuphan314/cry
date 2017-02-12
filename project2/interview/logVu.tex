@@ -5,6 +5,13 @@
 \begin{answer}{1}
 Yes.
 You may personally identify me.
+\begin{tabular}{l|l}
+name & Chris Monico, PhD \\
+job & math professor, \ttu \\
+IT experience & \code{C} expert \\
+age range & 40--60 \\
+gender & male
+\end{tabular}
 \end{answer}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -18,33 +25,40 @@ Yes.
 \begin{answer}{3}
 Yes:
 \begin{itemize}
-\item probability of sucessful cryptanalysis
-\item RAM usage
-\item number and utilization of CPUs
+\item for probabilistic algorithms:
+  probability of sucessful cryptanalysis within time limit
+\item usage of RAM and CPUs
 \end{itemize}
 \end{answer}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{answer}{4}
+Include:
 \begin{itemize}
-\item symmetric \aes
-\item hash function and digital signature
+\item a symmetric \ca{} such as \aes
+\item \ca s for hashing and digital signature
 \end{itemize}
 \end{answer}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{answer}{5}
-random number generator with good seed and entropy
+Add a random number generator
+with a good source of entropy for seeds
+(system time is not good enough).
 \end{answer}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{answer}{6}
+Use these libraries:
 \begin{itemize}
-\item use GMP (GNU Multiple Precision Arithmetic Library)
-\item start coding\ldots
+\item for big integers:
+  \code{GMP} (GNU Multiple Precision Arithmetic Library)
+\item for integer factorization:
+  \code{msieve}, a mostly embarrassingly parallel
+  implementation of \code{GNFS} (General Number Field Sieve)
 \end{itemize}
 \end{answer}
 

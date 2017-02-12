@@ -1,3 +1,5 @@
+\usepackage{listings}
+
 \setlength{\parindent}{0pt}
 
 \usepackage{epigraph}
@@ -39,26 +41,23 @@
 \newcommand{\vp}{\name{Vu}{Phan}}
 \newcommand{\names}{\dd, \md, \vp}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \author{\names}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newenvironment{codes}
-  {\begin{mdframed} \ttfamily}
-  {\end{mdframed}}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 \newcommand{\cl}{command-line}
+\newcommand{\cla}[1]{\code{\angles{#1}}}
+
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\codes}[1]{\begin{mdframed} #1 \end{mdframed}}
+\newcommand{\codestt}[1]{\codes{\ttfamily{#1}}}
 
 \newcommand{\textdef}[1]{\textbf{#1}}
-\newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\builtin}[1]{\textit{#1}}
 \newcommand{\party}[1]{\textit{#1}}
 
 \newcommand{\tc}{\code{Team Crybabies}}
+\newcommand{\ttu}{Texas Tech University}
 
 \newcommand{\cry}{\code{Cry}}
 \newcommand{\charm}{\code{Charm}}
@@ -73,7 +72,7 @@
 \newcommand{\crypto}{crypto}
 \newcommand{\cryptos}{cryptographic}
 
-\newcommand{\cf}{\cryptos{} framework}
+\newcommand{\cf}{\crypto framework}
 \newcommand{\cs}{\crypto system}
 \newcommand{\ca}{\cryptos{} algorithm}
 \newcommand{\cg}{\crypto grapher}
@@ -103,14 +102,6 @@
 \newtheorem{question}{Question}
 \newenvironment{answer}[1]{\textbf{Answer #1.}}{\medskip}
 
-% \newtheorem{theorem}{Theorem}[subsection]
-% \newtheorem{proposition}[theorem]{Proposition}
-% \newtheorem{corollary}[theorem]{Corollary}
-% \newtheorem{lemma}[theorem]{Lemma}
-% \newtheorem{remark}[theorem]{Remark}
-% \newtheorem{definition}[theorem]{Definition}
-% \newtheorem{example}[theorem]{Example}
-
 % surrounders
 \newcommand{\parentheses}[1]{\left( #1 \right)}
 \newcommand{\braces}[1]{\left\{ #1 \right\}}
@@ -118,9 +109,9 @@
 \newcommand{\pipes}[1]{\left| #1 \right|}
 \newcommand{\floors}[1]{\lfloor #1 \rfloor}
 \newcommand{\ceils}[1]{\lceil #1 \rceil}
+\newcommand{\angles}[1]{<#1>}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % example
 
 \newcommand{\alice}{\party{Alice}}
@@ -133,27 +124,58 @@
 \newcommand{\publickeyex}{825}
 \newcommand{\privatekeyex}{637}
 
-\newcommand{\getkeysex}
-  {\begin{codes}
-  \$ cry getkeys --cryptosystem=rsa \\
+\newcommand{\generatekeysex}{\codestt
+  {\$ cry generatekeys --\cs=rsa \\
   The public \& private keys are
-  \publickeyex{} \& \privatekeyex{} (took 1 second).
-  \end{codes}}
-\newcommand{\encryptex}
-  {\begin{codes}
-  \$ cry encrypt --cryptosystem=rsa \textbackslash \\
+  \publickeyex{} \& \privatekeyex{} (took 1 second).}}
+\newcommand{\encryptex}{\codestt
+  {\$ cry encrypt --\cs=rsa \textbackslash \\
   > --public-key=\publickeyex{} --plaintext=\plaintextex \\
-  The ciphertext is \ciphertextex{} (took 1 second).
-  \end{codes}}
-\newcommand{\decryptex}
-  {\begin{codes}
-  \$ cry decrypt --cryptosystem=rsa \textbackslash \\
+  The ciphertext is \ciphertextex{} (took 1 second).}}
+\newcommand{\decryptex}{\codestt
+  {\$ cry decrypt --\cs=rsa \textbackslash \\
   > --private-key=\privatekeyex{} --ciphertext=\ciphertextex \\
-  The plaintext is \plaintextex{} (took 1 second).
-  \end{codes}}
-\newcommand{\eavesdropex}
-  {\begin{codes}
-  \$ cry eavesdrop --cryptosystem=rsa \textbackslash \\
+  The plaintext is \plaintextex{} (took 1 second).}}
+\newcommand{\cryptanalyzeex}{\codestt
+  {\$ cry cryptanalyze --\cs=rsa \textbackslash \\
   > --public-key=\publickeyex{} --ciphertext=\ciphertextex \\
-  The plaintext is \plaintextex{} (took 1 century).
-  \end{codes}}
+  The plaintext is \plaintextex{} (took 1 century).}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% cry command syntax
+
+\newcommand{\csarg}{\cla{\cs}}
+\newcommand{\publickeyarg}{\cla{public key}}
+\newcommand{\privatekeyarg}{\cla{private key}}
+\newcommand{\plaintextarg}{\cla{plaintext}}
+\newcommand{\ciphertextarg}{\cla{ciphertext}}
+
+\newcommand{\generatekeystime}{\cla{key-generation time}}
+\newcommand{\encrypttime}{\cla{encryption time}}
+\newcommand{\decrypttime}{\cla{decryption time}}
+\newcommand{\cryptanalyzetime}{\cla{cryptanalysis time}}
+
+\newcommand{\generatekeysin}{\codestt
+  {\$ cry generatekeys --\cs=\csarg}}
+\newcommand{\generatekeysout}{\codestt
+  {The public \& private keys are
+  \publickeyarg{} \& \privatekeyarg{} \\
+  (took \generatekeystime).}}
+
+\newcommand{\encryptin}{\codestt
+  {\$ cry encrypt --\cs=\csarg{} \textbackslash \\
+  > --publickey=\publickeyarg{} --plaintext=\plaintextarg}}
+\newcommand{\encryptout}{\codestt
+  {The ciphertext is \ciphertextarg{} (took \encrypttime).}}
+
+\newcommand{\decryptin}{\codestt
+  {\$ cry decrypt --\cs=\csarg{} \textbackslash \\
+  > --privatekey=\privatekeyarg{} --ciphertext=\ciphertextarg}}
+\newcommand{\decryptout}{\codestt
+  {The plaintext is \plaintextarg{} (took \decrypttime).}}
+
+\newcommand{\cryptanalyzein}{\codestt
+  {\$ cry cryptanalyze --\cs=\csarg{} \textbackslash \\
+  > --publickey=\publickeyarg{} --ciphertext=\ciphertextarg}}
+\newcommand{\cryptanalyzeout}{\codestt
+  {The plaintext is \plaintextarg{} (took \cryptanalyzetime).}}
