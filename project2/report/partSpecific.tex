@@ -5,25 +5,56 @@
 
 \subsection{External interface requirements}
 
-\generatekeysin
-\generatekeysout
+\subsubsection{Prerequisites}
+\begin{itemize}
+\item The \eu s are \alice, \bob, and \eve.
+\item \alice{} wants to send a confidential message to \bob.
+\item \eve{} wants to eavesdrop that message.
+\item These \eu s invoke their downloaded \cry{} binaries
+  using \cl{} shells.
+\item Note: the \cl{} arguments below will be explained later.
+\end{itemize}
 
-\encryptin
-\encryptout
+\subsubsection{Key Generation}
+(by \bob, the receiver) \\ \medskip
+Input: \generatekeysin
+Output: \generatekeysout
 
-\decryptin
-\decryptout
+\subsubsection{Encryption}
+(by \alice, the sender)  \\ \medskip
+Input: \encryptin
+Output: \encryptout
 
-\cryptanalyzein
-\cryptanalyzeout
+\subsubsection{Decryption}
+(by \bob, the receiver) \\ \medskip
+Input: \decryptin
+Output: \decryptout
 
-\subsubsection{User interfaces}
+\subsubsection{Cryptanalysis}
+(by \eve, the eavesdropper) \\ \medskip
+Input: \cryptanalyzein
+Output: \cryptanalyzeout
 
-\subsubsection{Hardware interfaces}
+% \subsubsection{User interfaces}
+% \subsubsection{Hardware interfaces}
+% \subsubsection{Software interfaces}
+% \subsubsection{Communications interfaces}
 
-\subsubsection{Software interfaces}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Communications interfaces}
+\subsection{Performance requirements}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Design constraints}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Software system attributes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Other requirements}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -56,17 +87,3 @@
 \codes{\lstinputlisting{../../src/cryptoframework.h}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Performance requirements}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Design constraints}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Software system attributes}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Other requirements}

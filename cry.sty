@@ -112,7 +112,7 @@
 \newcommand{\angles}[1]{<#1>}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% example
+% cry commands: example
 
 \newcommand{\alice}{\party{Alice}}
 \newcommand{\bob}{\party{Bob}}
@@ -125,24 +125,24 @@
 \newcommand{\privatekeyex}{637}
 
 \newcommand{\generatekeysex}{\codestt
-  {\$ cry generatekeys --\cs=rsa \\
+  {\$ cry generatekeys -\cs=rsa \\
   The public \& private keys are
   \publickeyex{} \& \privatekeyex{} (took 1 second).}}
 \newcommand{\encryptex}{\codestt
-  {\$ cry encrypt --\cs=rsa \textbackslash \\
-  > --public-key=\publickeyex{} --plaintext=\plaintextex \\
+  {\$ cry encrypt -\cs=rsa \textbackslash \\
+  > -publickey=\publickeyex{} -plaintext=\plaintextex \\
   The ciphertext is \ciphertextex{} (took 1 second).}}
 \newcommand{\decryptex}{\codestt
-  {\$ cry decrypt --\cs=rsa \textbackslash \\
-  > --private-key=\privatekeyex{} --ciphertext=\ciphertextex \\
+  {\$ cry decrypt -\cs=rsa \textbackslash \\
+  > -privatekey=\privatekeyex{} -ciphertext=\ciphertextex \\
   The plaintext is \plaintextex{} (took 1 second).}}
 \newcommand{\cryptanalyzeex}{\codestt
-  {\$ cry cryptanalyze --\cs=rsa \textbackslash \\
-  > --public-key=\publickeyex{} --ciphertext=\ciphertextex \\
+  {\$ cry cryptanalyze -\cs=rsa \textbackslash \\
+  > -publickey=\publickeyex{} -ciphertext=\ciphertextex \\
   The plaintext is \plaintextex{} (took 1 century).}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% cry command syntax
+% cry commands: syntax
 
 \newcommand{\csarg}{\cla{\cs}}
 \newcommand{\publickeyarg}{\cla{public key}}
@@ -156,26 +156,26 @@
 \newcommand{\cryptanalyzetime}{\cla{cryptanalysis time}}
 
 \newcommand{\generatekeysin}{\codestt
-  {\$ cry generatekeys --\cs=\csarg}}
+  {\$ cry generatekeys -\cs=\csarg}}
 \newcommand{\generatekeysout}{\codestt
   {The public \& private keys are
   \publickeyarg{} \& \privatekeyarg{} \\
   (took \generatekeystime).}}
 
 \newcommand{\encryptin}{\codestt
-  {\$ cry encrypt --\cs=\csarg{} \textbackslash \\
-  > --publickey=\publickeyarg{} --plaintext=\plaintextarg}}
+  {\$ cry encrypt -\cs=\csarg{} \textbackslash \\
+  > -publickey=\publickeyarg{} -plaintext=\plaintextarg}}
 \newcommand{\encryptout}{\codestt
   {The ciphertext is \ciphertextarg{} (took \encrypttime).}}
 
 \newcommand{\decryptin}{\codestt
-  {\$ cry decrypt --\cs=\csarg{} \textbackslash \\
-  > --privatekey=\privatekeyarg{} --ciphertext=\ciphertextarg}}
+  {\$ cry decrypt -\cs=\csarg{} \textbackslash \\
+  > -privatekey=\privatekeyarg{} -ciphertext=\ciphertextarg}}
 \newcommand{\decryptout}{\codestt
   {The plaintext is \plaintextarg{} (took \decrypttime).}}
 
 \newcommand{\cryptanalyzein}{\codestt
-  {\$ cry cryptanalyze --\cs=\csarg{} \textbackslash \\
-  > --publickey=\publickeyarg{} --ciphertext=\ciphertextarg}}
+  {\$ cry cryptanalyze -\cs=\csarg{} \textbackslash \\
+  > -publickey=\publickeyarg{} -ciphertext=\ciphertextarg}}
 \newcommand{\cryptanalyzeout}{\codestt
   {The plaintext is \plaintextarg{} (took \cryptanalyzetime).}}
