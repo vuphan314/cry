@@ -18,16 +18,16 @@ public:
   Cryptoframework(EnumeratedCryptosystem enumeratedCryptosystem);
 
   void testKeyGeneration();
-    // {receiver.setKeys()}
+    // {receiver.generateKeys()}
 
   void testEncryption();
-    // {sender.setCiphertext(receiver.publicKey)}
+    // {sender.encrypt(receiver.publicKey)}
 
   void testDecryption();
-  // {receiver.setPlaintext(sender.ciphertext)}
+  // {receiver.decrypt(sender.ciphertext)}
 
   void testCryptanalysis();
-    // {eavesdropper.setPlaintext(sender.ciphertext, receiver.publicKey)}
+    // {eavesdropper.cryptanalyze(sender.ciphertext, receiver.publicKey)}
 };
 
 ////////////////////////////////////////////////////////////

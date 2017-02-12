@@ -11,7 +11,7 @@ class Eavesdropper : public Party {
 private:
   Text plaintext;
 
-  void setPlaintext(const Text ciphertext, const Key publicKey);
+  void cryptanalyze(const Text ciphertext, const Key publicKey);
     // {cryptosystem.cryptanalyze(plaintext, ciphertext, publicKey)}
 };
 

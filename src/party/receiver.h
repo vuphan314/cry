@@ -15,10 +15,10 @@ private:
   Key privateKey;
   Text plaintext;
 
-  void setKeys();
+  void generateKeys();
     // {cryptosystem.generateKeys(publicKey, privateKey)}
 
-  void setPlaintext(const Text ciphertext);
+  void decrypt(const Text ciphertext);
     // {cryptosystem.decrypt(plaintext, ciphertext, privateKey)}
 };
 
