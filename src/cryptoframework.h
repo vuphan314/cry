@@ -24,7 +24,7 @@ public:
     // {sender.encrypt(receiver.publicKey)}
 
   void testDecryption();
-  // {receiver.decrypt(sender.ciphertext)}
+    // {receiver.decrypt(sender.ciphertext)}
 
   void testCryptanalysis();
     // {eavesdropper.cryptanalyze(sender.ciphertext, receiver.publicKey)}
