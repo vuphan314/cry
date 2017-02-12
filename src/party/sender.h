@@ -1,0 +1,23 @@
+#ifndef PARTY_SENDER
+#define PARTY_SENDER
+
+////////////////////////////////////////////////////////////
+
+#include "party.h"
+
+////////////////////////////////////////////////////////////
+
+class Sender : public Party {
+public:
+  Text ciphertext;
+
+private:
+  Text plaintext;
+
+  void setCiphertext(const Key publicKey);
+    // {cryptosystem.encrypt(plaintext, publicKey)}
+}
+
+////////////////////////////////////////////////////////////
+
+#endif // PARTY_SENDER

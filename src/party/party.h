@@ -1,21 +1,17 @@
-#ifndef CRYPTOFRAMEWORK_H_
-#define CRYPTOFRAMEWORK_H_
+#ifndef PARTY_PARTY_H_
+#define PARTY_PARTY_H_
 
 ////////////////////////////////////////////////////////////
 
-#include "cryptosystem/cryptosystem.h"
-#include "party/party.h"
+#include "../cryptosystem/cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
 
-class Cryptoframework {
+class Party {
 public:
-  enum name;
-
-private:
   Cryptosystem cryptosystem;
 };
 
 ////////////////////////////////////////////////////////////
 
-#endif // CRYPTOFRAMEWORK_H_
+#endif // PARTY_PARTY_H_
