@@ -131,19 +131,19 @@
 \newcommand{\publickeyex}{825}
 \newcommand{\privatekeyex}{637}
 
-\newcommand{\getkeysex}{\codestt
-  {\$ cry getkeys --cryptosystem=rsa \\
+\newcommand{\generatekeysex}{\codestt
+  {\$ cry generatekeys --\cs=rsa \\
   The public \& private keys are
   \publickeyex{} \& \privatekeyex{} (took 1 second).}}
 \newcommand{\encryptex}{\codestt
-  {\$ cry encrypt --cryptosystem=rsa \textbackslash \\
+  {\$ cry encrypt --\cs=rsa \textbackslash \\
   > --public-key=\publickeyex{} --plaintext=\plaintextex \\
   The ciphertext is \ciphertextex{} (took 1 second).}}
 \newcommand{\decryptex}{\codestt
-  {\$ cry decrypt --cryptosystem=rsa \textbackslash \\
+  {\$ cry decrypt --\cs=rsa \textbackslash \\
   > --private-key=\privatekeyex{} --ciphertext=\ciphertextex \\
   The plaintext is \plaintextex{} (took 1 second).}}
-\newcommand{\eavesdropex}{\codestt
-  {\$ cry eavesdrop --cryptosystem=rsa \textbackslash \\
+\newcommand{\cryptanalyzeex}{\codestt
+  {\$ cry cryptanalyze --\cs=rsa \textbackslash \\
   > --public-key=\publickeyex{} --ciphertext=\ciphertextex \\
   The plaintext is \plaintextex{} (took 1 century).}}
