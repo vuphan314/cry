@@ -46,6 +46,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\cl}{command-line}
+\newcommand{\cla}[1]{\code{\angles{#1}}}
 
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\codes}[1]{\begin{mdframed} #1 \end{mdframed}}
@@ -101,14 +102,6 @@
 \newtheorem{question}{Question}
 \newenvironment{answer}[1]{\textbf{Answer #1.}}{\medskip}
 
-% \newtheorem{theorem}{Theorem}[subsection]
-% \newtheorem{proposition}[theorem]{Proposition}
-% \newtheorem{corollary}[theorem]{Corollary}
-% \newtheorem{lemma}[theorem]{Lemma}
-% \newtheorem{remark}[theorem]{Remark}
-% \newtheorem{definition}[theorem]{Definition}
-% \newtheorem{example}[theorem]{Example}
-
 % surrounders
 \newcommand{\parentheses}[1]{\left( #1 \right)}
 \newcommand{\braces}[1]{\left\{ #1 \right\}}
@@ -116,9 +109,9 @@
 \newcommand{\pipes}[1]{\left| #1 \right|}
 \newcommand{\floors}[1]{\lfloor #1 \rfloor}
 \newcommand{\ceils}[1]{\lceil #1 \rceil}
+\newcommand{\angles}[1]{<#1>}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % example
 
 \newcommand{\alice}{\party{Alice}}
@@ -147,3 +140,26 @@
   {\$ cry cryptanalyze --\cs=rsa \textbackslash \\
   > --public-key=\publickeyex{} --ciphertext=\ciphertextex \\
   The plaintext is \plaintextex{} (took 1 century).}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% cry command syntax
+
+\newcommand{\csarg}{\cla{\cs}}
+\newcommand{\publickeyarg}{\cla{public key}}
+\newcommand{\privatekeyarg}{\cla{private key}}
+\newcommand{\plaintextarg}{\cla{plaintext}}
+\newcommand{\cipthertextarg}{\cla{ciphertext}}
+
+\newcommand{\generatekeystime}{\cla{key-generation time}}
+\newcommand{\encrypttime}{\cla{encryption time}}
+
+\newcommand{\generatekeysin}{\codestt
+  {\$ cry generatekeys --\cs=\csarg}}
+\newcommand{\generatekeysout}{\codestt
+  {The public \& private keys are
+  \publickeyarg{} \& \privatekeyarg{} (took \generatekeystime).}}
+
+\newcommand{\encryptin}{\codestt
+  {\$ cry encrypt --\cs=\csarg --plaintext=\plaintextarg --publickey=\publickeyarg}}
+\newcommand{\encryptout}{\codestt
+  {The ciphertext is \ciphertextarg (took \enccrypttime).}}
