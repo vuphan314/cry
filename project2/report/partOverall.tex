@@ -5,30 +5,60 @@
 
 \subsection{Product perspective}
 
-Please write here.
+\cry{} will be implemented as a stand-alone framework, with built in libraries updated as needed. No other frameworks
+or applications are needed to run cry: it is a standalone application. It will be used as a tool for cryptographers and
+developers alike, and all systems will be self-contained in the framework.
+  \subsection{User Interface}
+  
+  \cry{} will be used as a command line application, being accessed with the command 'cry'.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Product functions}
 
-Please write here.
+The essential functions of \cry{} can be broken into two separate parts: testing and reporting.
+  \subsection{Testing}
+  \begin{itemize}
+    \item Users will be able to develope new cryptosystems
+    \item Users will be able to develope new eavesdropping methods.
+    \item Users will be able to develope new methods for breaking a cryptosystem.
+    \item Using a combination of cryptosystems, eavesdropping, and breaking, users will have the ability
+    to test systems' security.
+  \end{itemize}
+  \subsection{Reporting}
+  \begin{itemize}
+    \item Upon performing a test, users will receive feedback on their methods.
+    \item Reports will be shown to suggest the security of the cryptosystem and to give helpful feedback
+    in the area of weaknesses in the cryptosystem.
+  \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{User characteristics}
 
-Please write here.
+User of \cry{} will most likely have a medium to high level of experience with cryptosystems. This is not a requirement,
+it is an open application. However, \cry{} aims to aid the developing cryptosystems, and this is implies a high level of experience.
+If more complicated libraries are implemented, users will need a high level of experience to uderstand these methods and therefore apply
+them.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Constraints}
 
-Please write here.
+\cry{} will need certain base requirements
+\begin{itemize}
+  \item Basic memory and CPU availability
+  \item Command line permissions
+\end{itemize}
+
+In addition to baseline requirements, parallel operation and interfacing with other applications may become necessary if
+future library additions dictate such.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Assumptions and dependencies}
 
-Please write here.
+Few assumptions are needed as \cry{} will run on all operating systems and is a standalone framework. The single assumption to be
+made, as mentioned in constraints, is that certain permissions may be needed from the command line. These are assumed to be available for all users.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
