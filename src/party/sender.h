@@ -15,8 +15,8 @@ private:
   Text plaintext;
 
   void setCiphertext(const Key publicKey);
-    // {cryptosystem.encrypt(plaintext, publicKey)}
-}
+    // {cryptosystem.encrypt(ciphertext, plaintext, publicKey)}
+};
 
 ////////////////////////////////////////////////////////////
 

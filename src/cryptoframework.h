@@ -3,17 +3,31 @@
 
 ////////////////////////////////////////////////////////////
 
-#include "cryptosystem/cryptosystem.h"
-#include "party/party.h"
+#include "party/sender.h"
+#include "party/receiver.h"
+#include "party/eavesdropper.h"
 
 ////////////////////////////////////////////////////////////
 
 class Cryptoframework {
 public:
-  enum name;
+  Sender sender;
+  Receiver receiver;
+  Eavesdropper eavesdropper;
 
-private:
-  Cryptosystem cryptosystem;
+  Cryptoframework(EnumeratedCryptosystem enumeratedCryptosystem);
+
+  void testKeyGeneration();
+    // {receiver.setKeys()}
+
+  void testEncryption();
+    // {sender.setCiphertext(receiver.publicKey)}
+
+  void testDecryption();
+  // {receiver.setPlaintext(sender.ciphertext)}
+
+  void testCryptanalysis();
+    // {eavesdropper.setPlaintext(sender.ciphertext, receiver.publicKey)}
 };
 
 ////////////////////////////////////////////////////////////

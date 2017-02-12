@@ -10,6 +10,8 @@
 class Party {
 public:
   Cryptosystem cryptosystem;
+
+  Party(EnumeratedCryptosystem enumeratedCryptosystem);
 };
 
 ////////////////////////////////////////////////////////////

@@ -20,7 +20,7 @@ private:
 
   void setPlaintext(const Text ciphertext);
     // {cryptosystem.decrypt(plaintext, ciphertext, privateKey)}
-}
+};
 
 ////////////////////////////////////////////////////////////
 
