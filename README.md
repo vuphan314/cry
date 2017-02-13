@@ -14,7 +14,7 @@ cryptographic framework
     - [presentation][presentation2]
     - [report][report2]
     - [interview][interview2]
-- [`C++ source`][src]
+- [`C++` source][src]
 
 ## convention
 preferred max line length: 60-character
