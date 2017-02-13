@@ -1,9 +1,9 @@
-\section{Specific requirements}
+\section{Specific Requirements}
 \vp
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{External interface requirements}
+\subsection{Interface}
 
 \begin{itemize}
 \item The \eu s are \alice, \bob, and \eve.
@@ -11,49 +11,61 @@
 \item \eve{} wants to eavesdrop that message.
 \item These \eu s invoke their downloaded \cry{} binaries
   using \cl{} shells.
-\item Note: the \cl{} arguments below will be explained later.
 \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Performance}
+
+Minimum hardware: \\ \medskip
+\begin{tabular}{l|l}
+RAM & 4 GB \\
+CPU & 1.5 GHz
+\end{tabular}
 
 \subsubsection{Key Generation}
 (by \bob, the receiver) \\ \medskip
 Input: \generatekeysin
 Output: \generatekeysout
+Requirements:
+\begin{itemize}
+\item \csarg{} is the name of an available \cs, such as \code{rsa}
+\item \publickeyarg{} and \privatekeyarg{} are integers
+\item \generatekeystime{} (how long the command takes)
+  shall be less than 1 minute
+  (with the aforementioned minimum hardware)
+\end{itemize}
 
 \subsubsection{Encryption}
 (by \alice, the sender)  \\ \medskip
 Input: \encryptin
 Output: \encryptout
+Requirements:
+\begin{itemize}
+\item \plaintextarg{} is an obviously meaningful string,
+  such as \plaintextex
+\item \ciphertextarg{} is an apparently meaningless string,
+  such as \ciphertextex
+\item \encrypttime{} shall be less than 1 minute
+\end{itemize}
 
 \subsubsection{Decryption}
 (by \bob, the receiver) \\ \medskip
 Input: \decryptin
 Output: \decryptout
+Requirements:
+\begin{itemize}
+\item \decrypttime{} shall be less than 1 minute
+\end{itemize}
 
 \subsubsection{Cryptanalysis}
 (by \eve, the eavesdropper) \\ \medskip
 Input: \cryptanalyzein
 Output: \cryptanalyzeout
-
-% \subsubsection{User interfaces}
-% \subsubsection{Hardware interfaces}
-% \subsubsection{Software interfaces}
-% \subsubsection{Communications interfaces}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Performance requirements}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Design constraints}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Software system attributes}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsection{Other requirements}
+Requirements:
+\begin{itemize}
+\item \cryptanalyzetime{} shall be more than 1 day
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
