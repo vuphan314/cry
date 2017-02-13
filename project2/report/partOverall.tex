@@ -5,39 +5,44 @@
 
 \subsection{Product perspective}
 
-\cry{} will be implemented as a stand-alone framework, with built in libraries updated as needed. No other frameworks
-or applications are needed to run cry: it is a standalone application. It will be used as a tool for cryptographers and
-developers alike, and all systems will be self-contained in the framework.
-  \subsubsection{User Interface}
+\cry{} will be implemented as a \cf{} with built-in \cs s
+updated as needed. No other frameworks are needed to run
+\cry; it is standalone. It will be used as a
+tool for cryptographers and developers alike, and all \cs s
+will be self-contained in \cry.
 
-  \cry{} will be used as a command line application, being accessed with the command 'cry'.
+\subsubsection{User Interface}
+\cry{} will be used as a command line application, being
+accessed with the command \code{cry}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Product functions}
 
-The essential functions of \cry{} can be broken into two separate parts: testing and reporting.
-  \subsubsection{Testing}
-  \begin{itemize}
-    \item Users will be able to develop new cryptosystems
-    \item Users will be able to develop new eavesdropping methods.
-    \item Users will be able to develop new methods for breaking a cryptosystem.
-    \item Using a combination of cryptosystems, eavesdropping, and breaking, users will have the ability
-    to test systems' security.
-  \end{itemize}
-  \subsubsection{Reporting}
-  \begin{itemize}
-    \item Upon performing a test, users will receive feedback on their methods.
-    \item Reports will be shown to suggest the security of the cryptosystem and to give helpful feedback
-    in the area of weaknesses in the cryptosystem.
-  \end{itemize}
+The essential functions of \cry{} can be broken into two
+separate parts: testing and reporting.
+
+\subsubsection{Testing}
+\begin{itemize}
+\item Users shall be able to develop new \cs s{}
+  by defining key-generation, encryption, decryption,
+  and cryptanalysis algorithms.
+\item Users shall be able to test their \cs s' security.
+\end{itemize}
+
+\subsubsection{Reporting}
+\begin{itemize}
+  \item Upon performing a test, users will receive feedback on their methods.
+  \item Reports will be shown to suggest the security of the \cs and to give helpful feedback
+  in the area of weaknesses in the \cs.
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{User characteristics}
 
-User of \cry{} will most likely have a medium to high level of experience with cryptosystems. This is not a requirement,
-it is an open application. However, \cry{} aims to aid the developing cryptosystems, and this is implies a high level of experience.
+User of \cry{} will most likely have a medium to high level of experience with \cs s. This is not a requirement,
+it is an open application. However, \cry{} aims to aid the developing \cs s, and this is implies a high level of experience.
 If more complicated libraries are implemented, users will need a high level of experience to uderstand these methods and therefore apply
 them.
 
