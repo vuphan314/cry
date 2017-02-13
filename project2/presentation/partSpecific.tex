@@ -1,3 +1,78 @@
-\section{Specific requirements}
+\section{Specific Requirements}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Interface}
+
+\begin{frame}
+\begin{itemize}
+\item \alice{} wants to send a confidential message to \bob.
+\item \eve{} wants to eavesdrop that message.
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Performance}
+
+\begin{frame}
+\frametitle{Minimum hardware}
+\begin{tabular}{l|l}
+RAM & 4 GB \\ \hline
+CPU & 1.5 GHz
+\end{tabular}
+\end{frame}
+
+\subsubsection{Key Generation}
+
+\begin{frame}
+\frametitle{\bob}
+Input: \generatekeysin \medskip
+Output: \generatekeysout
+\end{frame}
+
+\subsubsection{Encryption}
+
+\begin{frame}
+\frametitle{\alice}
+Input: \encryptin \medskip
+Output: \encryptout \medskip
+Requirements:
+\begin{itemize}
+\item \plaintextarg{} is an obviously meaningful string,
+  such as \plaintextex
+\item \ciphertextarg{} is an apparently meaningless string,
+  such as \ciphertextex
+\end{itemize}
+\end{frame}
+
+\subsubsection{Decryption}
+\begin{frame}
+\frametitle{\bob}
+Input: \decryptin \medskip
+Output: \decryptout
+\end{frame}
+
+\subsubsection{Cryptanalysis}
+\begin{frame}
+\frametitle{\eve}
+Input: \cryptanalyzein \medskip
+Output: \cryptanalyzeout
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Classes}
+\lstset{language=C++} % basicstyle=\ttfamily
+\newcommand{\csh}{../../src/\cs/\cs.h}
+
+\begin{frame}
+\frametitle{\code{\cs.h}}
+\codes{\lstinputlisting[firstline=10, lastline=12]{\csh}}
+\end{frame}
+
+\begin{frame}
+\codes{\lstinputlisting[firstline=16, lastline=29]{\csh}}
+\end{frame}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

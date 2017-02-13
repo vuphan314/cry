@@ -15,7 +15,8 @@ using Text = IntPtr;
 
 class Cryptosystem {
 public:
-  virtual void generateKeys(Key publicKey, Key privateKey); // set these
+  virtual void generateKeys(Key publicKey, Key privateKey);
+    // set these
 
   virtual void encrypt(Text ciphertext, // set this
     const Text plaintext, const Key publicKey);

@@ -54,7 +54,7 @@
 
 \newcommand{\textdef}[1]{\textbf{#1}}
 \newcommand{\builtin}[1]{\textit{#1}}
-\newcommand{\party}[1]{\textit{#1}}
+\newcommand{\party}[1]{\code{#1}}
 
 \newcommand{\tc}{\code{Team Crybabies}}
 \newcommand{\ttu}{Texas Tech University}
@@ -119,11 +119,11 @@
 \newcommand{\bob}{\party{Bob}}
 \newcommand{\eve}{\party{Eve}}
 
-\newcommand{\plaintextex}{\quotes{I hate \eve.}}
-\newcommand{\ciphertextex}{\quotes{sdofAOVI29347}}
+\newcommand{\plaintextex}{\code{\quotes{\eve{} is just a crybaby.}}}
+\newcommand{\ciphertextex}{\code{\quotes{sdofAOVI29347asdjkADB234}}}
 
-\newcommand{\publickeyex}{825}
-\newcommand{\privatekeyex}{637}
+\newcommand{\publickeyex}{\code{825}}
+\newcommand{\privatekeyex}{\code{637}}
 
 \newcommand{\generatekeysex}{\codestt
   {\$ cry generatekeys -\cs=rsa \\
