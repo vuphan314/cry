@@ -30,7 +30,12 @@ CPU & 1.5 GHz
 \begin{frame}
 \frametitle{\bob}
 Input: \generatekeysin \medskip
-Output: \generatekeysout
+Output: \generatekeysout \medskip
+Requirements:
+\begin{itemize}
+\item \generatekeystime{}
+  shall be less than 1 minute
+\end{itemize}
 \end{frame}
 
 \subsubsection{Encryption}
@@ -45,6 +50,7 @@ Requirements:
   such as \plaintextex
 \item \ciphertextarg{} is an apparently meaningless string,
   such as \ciphertextex
+\item \encrypttime{} shall be less than 1 minute
 \end{itemize}
 \end{frame}
 
@@ -52,14 +58,22 @@ Requirements:
 \begin{frame}
 \frametitle{\bob}
 Input: \decryptin \medskip
-Output: \decryptout
+Output: \decryptout \medskip
+Requirements:
+\begin{itemize}
+\item \decrypttime{} shall be less than 1 minute
+\end{itemize}
 \end{frame}
 
 \subsubsection{Cryptanalysis}
 \begin{frame}
 \frametitle{\eve}
 Input: \cryptanalyzein \medskip
-Output: \cryptanalyzeout
+Output: \cryptanalyzeout \medskip
+Requirements:
+\begin{itemize}
+\item \cryptanalyzetime{} shall be more than 1 day
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
