@@ -4,7 +4,7 @@
 cryptographic framework
 
 ## links
-- [find `pdf`][find]
+- [find pdf][find]
 - [releases][releases]
 - projects
   - 1 (project plan)
@@ -14,7 +14,7 @@ cryptographic framework
     - [presentation][presentation2]
     - [report][report2]
     - [interview][interview2]
-- [`C++` source][src]
+- [C++ source][src]
 
 ## convention
 preferred max line length: 60-character
@@ -30,30 +30,17 @@ git checkout <your_branch>
 - create a pull request on GitHub
   from `<your_branch>` to `master`
 
-## TeX
-
-### macros
-see `newcommand` lines in file `cry.sty`
-
-### online
-- https://www.overleaf.com/
-- multiple `tex` files to one `pdf` file
-- no account needed
-
-### offline
-- installation
+## TeX compilation
+- with Atom: https://atom.io/packages/latex
+- with a terminal:
   ```
-  sudo apt install texlive-full
-
+  cd project3/report/
+  latexmk -pdf -synctex=1 interview.tex
   ```
-- compilation
-  - `Atom`: https://atom.io/packages/latex
-  - `Terminal`
-    ```
-    cd project2/interview/
 
-    latexmk -pdf -synctex=1 interview.tex
-    ```
+## Acknowledgement
+[TikZ-UML][tikzuml]: TeX package for UML diagrams
+
 <!--------------------------------------------------------->
 
 [find]:https://github.com/vuphan314/cry/find/master
@@ -67,3 +54,5 @@ see `newcommand` lines in file `cry.sty`
 [interview2]:https://github.com/vuphan314/cry/blob/master/project2/interview/interview.pdf
 
 [src]:https://github.com/vuphan314/cry/tree/master/src
+
+[tikzuml]:http://perso.ensta-paristech.fr/~kielbasi/tikzuml/
