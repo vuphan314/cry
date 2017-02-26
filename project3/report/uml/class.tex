@@ -1,3 +1,17 @@
 \subsection{Class Diagrams}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{tikzpicture}
+\umlclass{Cryptosystem}{}
+  {\umlvirt{+ generateKeys(publicKey: Key, privateKey: Key):
+    void} \\
+  \umlvirt{+ encrypt(ciphertext: Text,
+    plaintext: Text, publicKey: Key): void} \\
+  \umlvirt{+ decrypt(plaintext: Text,
+    ciphertext: Text, privateKey: Key): void} \\
+  \umlvirt{+ cryptanalyze(plaintext: Text,
+    ciphertext: Text, publicKey: Key): void}}
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
