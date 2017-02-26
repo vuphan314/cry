@@ -9,7 +9,7 @@ enum EnumeratedCryptosystem {rsa}; // more to come
 
 using Int = mpz_t; // GNU Multiple Precision Integer Type
 using Key = Int;
-using Text = Int;
+using Text = string;
 
 ////////////////////////////////////////////////////////////
 

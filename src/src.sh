@@ -1,6 +1,6 @@
-cpp_file=src.cpp
-out_file=/tmp/cpp.out
+cc_file=src.cc
+out_file=/tmp/cry.out
 
 # clear
-g++ $cpp_file -o $out_file -lgmpxx -lgmp
+g++ -o $out_file -lgmpxx -lgmp $cc_file
 $out_file
