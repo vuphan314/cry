@@ -3,7 +3,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{tikzpicture}
-\umlclass{Cryptosystem}{}
+\umlenum{EnumeratedCryptosystem}{rsa}{}
+\umlabstract[below=1in of EnumeratedCryptosystem]{Cryptosystem}{}
   {\umlvirt{+ generateKeys(publicKey: Key, privateKey: Key):
     void} \\
   \umlvirt{+ encrypt(ciphertext: Text,
