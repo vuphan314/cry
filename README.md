@@ -35,6 +35,7 @@ git checkout <your_branch>
 - with a terminal:
   ```
   cd project3/report/
+
   latexmk -pdf -synctex=1 interview.tex
   ```
 
