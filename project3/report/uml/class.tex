@@ -4,7 +4,9 @@
 
 \begin{tikzpicture}
 \umlenum{EnumeratedCryptosystem}{rsa}{}
-\umlabstract[below=1in of EnumeratedCryptosystem]{Cryptosystem}{}
+\umltypedef[right=1in of EnumeratedCryptosystem]{Key}{mpz\_t}{}
+\umltypedef[right=1in of Key]{Text}{string}{}
+\umlabstract[below=1in of Text]{Cryptosystem}{}
   {\umlvirt{+ generateKeys(publicKey: Key, privateKey: Key):
     void} \\
   \umlvirt{+ encrypt(ciphertext: Text,
