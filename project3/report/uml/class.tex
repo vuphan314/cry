@@ -15,6 +15,15 @@
     ciphertext: Text, privateKey: Key): void} \\
   \umlvirt{+ cryptanalyze(plaintext: Text,
     ciphertext: Text, publicKey: Key): void}}
+\umlclass[below=1in of Cryptosystem]{Rsa}{}
+  {+ generateKeys(publicKey: Key, privateKey: Key): void \\
+  + encrypt(ciphertext: Text,
+    plaintext: Text, publicKey: Key): void \\
+  + decrypt(plaintext: Text,
+    ciphertext: Text, privateKey: Key): void \\
+  + cryptanalyze(plaintext: Text,
+    ciphertext: Text, publicKey: Key): void}
+\umlinherit{Rsa}{Cryptosystem}
 \end{tikzpicture}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
