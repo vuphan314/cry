@@ -1,5 +1,5 @@
-#ifndef CRYPTOSYSTEM_RSA_H_
-#define CRYPTOSYSTEM_RSA_H_
+#ifndef CRYPTOSYSTEM_RSA_H
+#define CRYPTOSYSTEM_RSA_H
 
 ////////////////////////////////////////////////////////////
 
@@ -23,4 +23,4 @@ public:
 
 ////////////////////////////////////////////////////////////
 
-#endif // CRYPTOSYSTEM_RSA_H_
+#endif // CRYPTOSYSTEM_RSA_H

@@ -1,5 +1,5 @@
-#ifndef CRYPTOSYSTEM_CRYPTOSYSTEM_H_
-#define CRYPTOSYSTEM_CRYPTOSYSTEM_H_
+#ifndef CRYPTOSYSTEM_CRYPTOSYSTEM_H
+#define CRYPTOSYSTEM_CRYPTOSYSTEM_H
 
 ////////////////////////////////////////////////////////////
 
@@ -30,4 +30,4 @@ public:
 
 ////////////////////////////////////////////////////////////
 
-#endif // CRYPTOSYSTEM_CRYPTOSYSTEM_H_
+#endif // CRYPTOSYSTEM_CRYPTOSYSTEM_H

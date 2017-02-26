@@ -1,5 +1,5 @@
-#ifndef PARTY_PARTY_H_
-#define PARTY_PARTY_H_
+#ifndef PARTY_PARTY_H
+#define PARTY_PARTY_H
 
 ////////////////////////////////////////////////////////////
 
@@ -16,4 +16,4 @@ public:
 
 ////////////////////////////////////////////////////////////
 
-#endif // PARTY_PARTY_H_
+#endif // PARTY_PARTY_H

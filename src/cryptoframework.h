@@ -1,5 +1,5 @@
-#ifndef CRYPTOFRAMEWORK_H_
-#define CRYPTOFRAMEWORK_H_
+#ifndef CRYPTOFRAMEWORK_H
+#define CRYPTOFRAMEWORK_H
 
 ////////////////////////////////////////////////////////////
 
@@ -32,4 +32,4 @@ public:
 
 ////////////////////////////////////////////////////////////
 
-#endif // CRYPTOFRAMEWORK_H_
+#endif // CRYPTOFRAMEWORK_H
