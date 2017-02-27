@@ -27,7 +27,8 @@
 \umlclass[below=3.5in of CryptosystemName]{Party}
   {+ cryptosystem: Cryptosystem}
   {+ Party(cryptosystemName: CryptosystemName)}
-\umlclass[right=0.5in of Party]{Receiver}
+\umlaggreg[anchors=90 and 180]{Party}{Cryptosystem}
+\umlclass[right=1.6in of Party]{Receiver}
   {+ publicKey: Key \\
   -- privateKey: Key \\
   -- plaintext: Text}
@@ -40,6 +41,9 @@
 \umlclass[below=0.3in of Sender]{Eavesdropper}
   {-- plaintext: Text}
   {-- cryptanalyze(ciphertext: Text, publicKey: Key): void}
+\umlinherit[anchors=180 and 10]{Receiver}{Party}
+\umlinherit[anchors=180 and 0]{Sender}{Party}
+\umlinherit[anchors=180 and -10]{Eavesdropper}{Party}
 \end{tikzpicture}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
