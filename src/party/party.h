@@ -3,14 +3,19 @@
 
 ////////////////////////////////////////////////////////////
 
-#include "../cryptosystem/cryptosystem.h"
+#include "../cryptosystem/rsa.h"
+
+////////////////////////////////////////////////////////////
+
+enum CryptosystemName {rsaName}; // more to come
 
 ////////////////////////////////////////////////////////////
 
 class Party {
-public:
+protected:
   Cryptosystem cryptosystem;
 
+public:
   Party(CryptosystemName cryptosystemName);
 };
 

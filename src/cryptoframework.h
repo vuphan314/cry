@@ -3,16 +3,16 @@
 
 ////////////////////////////////////////////////////////////
 
-#include "party/sender.h"
-#include "party/receiver.h"
 #include "party/eavesdropper.h"
+#include "party/receiver.h"
+#include "party/sender.h"
 
 ////////////////////////////////////////////////////////////
 
 class Cryptoframework {
 public:
-  Sender sender;
   Receiver receiver;
+  Sender sender;
   Eavesdropper eavesdropper;
 
   Cryptoframework(CryptosystemName cryptosystemName);
