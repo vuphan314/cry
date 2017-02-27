@@ -16,7 +16,7 @@
     ciphertext: Text, publicKey: Key): void}}
   \umldep[anchors=90 and -90]{Cryptosystem}{Key}
   \umldep[anchors=90 and -90]{Cryptosystem}{Text}
-\umlclass[below=0.5in of Cryptosystem]{Rsa}{}
+\umlclass[below=0.5in of Cryptosystem]{RsaCryptosystem}{}
   {+ generateKeys(publicKey: Key, privateKey: Key): void \\
   + encrypt(ciphertext: Text,
     plaintext: Text, publicKey: Key): void \\
@@ -24,14 +24,14 @@
     ciphertext: Text, privateKey: Key): void \\
   + cryptanalyze(plaintext: Text,
     ciphertext: Text, publicKey: Key): void}
-  \umlinherit[anchors=90 and -90]{Rsa}{Cryptosystem}
-\umlenum[right=2.3in of Text]{CryptosystemName}{rsaName}{}
+  \umlinherit[anchors=90 and -90]{RsaCryptosystem}{Cryptosystem}
+\umlenum[right=2.3in of Text]{CryptosystemName}{RSA}{}
 \umlclass[below =3.7in of CryptosystemName]{Party}
   {\# cryptosystem: Cryptosystem}
   {+ Party(cryptosystemName: CryptosystemName)}
   \umldep[anchors=80 and -90]{Party}{CryptosystemName}
   \umlaggreg[anchors=100 and 0]{Party}{Cryptosystem}
-\umlclass[below=0.5in of Rsa]{Receiver}
+\umlclass[below=0.5in of RsaCryptosystem]{Receiver}
   {+ publicKey: Key \\
   -- privateKey: Key \\
   -- plaintext: Text}

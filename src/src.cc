@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////
 
 int main() {
-  CryptosystemName cryptosystemName = rsaName;
+  CryptosystemName cryptosystemName = RSA;
   Party party(cryptosystemName);
   cout << cryptosystemName << "\n";
 }
