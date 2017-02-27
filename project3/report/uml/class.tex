@@ -5,7 +5,7 @@
 \begin{tikzpicture}
 \umlenum{CryptosystemName}{rsa}{}
 \umltypedef[right=1in of CryptosystemName]{Key}{mpz\_t}{}
-\umltypedef[right=1in of Key]{Text}{string}{}
+\umltypedef[right=0.5in of Key]{Text}{string}{}
 \umlclass[below=1in of Text]{Cryptosystem}{}
   {\umlvirt{+ generateKeys(publicKey: Key, privateKey: Key):
     void} \\
