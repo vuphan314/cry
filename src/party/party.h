@@ -11,7 +11,7 @@ class Party {
 public:
   Cryptosystem cryptosystem;
 
-  Party(EnumeratedCryptosystem enumeratedCryptosystem);
+  Party(CryptosystemName enumeratedCryptosystem);
 };
 
 ////////////////////////////////////////////////////////////
