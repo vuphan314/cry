@@ -15,7 +15,7 @@ public:
   Receiver receiver;
   Eavesdropper eavesdropper;
 
-  Cryptoframework(CryptosystemName enumeratedCryptosystem);
+  Cryptoframework(CryptosystemName cryptosystemName);
 
   void testKeyGeneration();
     // {receiver.generateKeys()}
