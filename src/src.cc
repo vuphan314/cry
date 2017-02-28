@@ -1,16 +1,9 @@
-using namespace std;
-
-////////////////////////////////////////////////////////////
-
-#include <iostream>
-#include <utility>
-
-#include <gmp.h>
-
-#include "cryptoframework.h"
+#include "party/party.h"
 
 ////////////////////////////////////////////////////////////
 
 int main() {
-  cout << "cry" << "\n";
+  CryptosystemName cryptosystemName = RSA;
+  Party party(cryptosystemName);
+  cout << cryptosystemName << "\n";
 }

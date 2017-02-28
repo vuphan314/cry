@@ -3,19 +3,19 @@
 
 ////////////////////////////////////////////////////////////
 
-#include "party/sender.h"
-#include "party/receiver.h"
 #include "party/eavesdropper.h"
+#include "party/receiver.h"
+#include "party/sender.h"
 
 ////////////////////////////////////////////////////////////
 
 class Cryptoframework {
 public:
-  Sender sender;
   Receiver receiver;
+  Sender sender;
   Eavesdropper eavesdropper;
 
-  Cryptoframework(EnumeratedCryptosystem enumeratedCryptosystem);
+  Cryptoframework(CryptosystemName cryptosystemName);
 
   void testKeyGeneration();
     // {receiver.generateKeys()}

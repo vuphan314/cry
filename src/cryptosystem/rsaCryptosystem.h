@@ -1,5 +1,5 @@
-#ifndef CRYPTOSYSTEM_RSA_H
-#define CRYPTOSYSTEM_RSA_H
+#ifndef CRYPTOSYSTEM_RSACRYPTOSYSTEM_H
+#define CRYPTOSYSTEM_RSACRYPTOSYSTEM_H
 
 ////////////////////////////////////////////////////////////
 
@@ -7,7 +7,7 @@
 
 ////////////////////////////////////////////////////////////
 
-class Rsa : public Cryptosystem {
+class RsaCryptosystem : public Cryptosystem {
 public:
   void generateKeys(Key publicKey, Key privateKey); // set these
 
@@ -23,4 +23,4 @@ public:
 
 ////////////////////////////////////////////////////////////
 
-#endif // CRYPTOSYSTEM_RSA_H
+#endif // CRYPTOSYSTEM_RSACRYPTOSYSTEM_H
