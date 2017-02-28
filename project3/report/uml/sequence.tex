@@ -1,8 +1,8 @@
 \subsection{Sequence Diagrams}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% generateKeys
 \begin{tikzpicture}
-  % generateKeys
   \begin{umlseqdiag}
     \umlactor{User}
     \umlobject{Cry}
@@ -12,7 +12,9 @@
     \begin{umlcall}[op={push}]{Cry}{Github}
     \end{umlcall}
   \end{umlseqdiag}
-  % encrypt
+\end{tikzpicture}
+% encrypt
+\begin{tikzpicture}
   \begin{umlseqdiag}
     \umlactor{User}
     \umlobject{Cry}
@@ -28,7 +30,9 @@
     \begin{umlcall}[op={create cipher-text}]{Cry}{User}
     \end{umlcall}
   \end{umlseqdiag}
-  % decrypt
+\end{tikzpicture}
+% decrypt
+\begin{tikzpicture}
   \begin{umlseqdiag}
     \umlactor{User}
     \umlobject{Cry}
@@ -44,7 +48,9 @@
     \begin{umlcall}[op={create plain-text}]{Cry}{User}
     \end{umlcall}
   \end{umlseqdiag}
-  % cryptanalyze
+\end{tikzpicture}
+% cryptanalyze
+\begin{tikzpicture}
   \begin{umlseqdiag}
     \umlactor{User}
     \umlobject{Cry}
