@@ -1,16 +1,29 @@
 \section{Prototype}
 
+\begin{itemize}
+\item \bob{} (receiver)
+  creates a public \github{} repository and
+  adds \alice{} (sender) \& \eve{} (eavesdropper)
+  as collaborators
+\item \bob{} adds the binary file \cryout{}
+  to the repository
+\item \bob{} inserts the line \code{*.private}
+  into the file \code{.gitignore}
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Key Generation}
+by \bob \bigskip
 
-\bob
-\generatekeysindemo
-\generatekeysoutdemo
+Shell input: \generatekeysindemo
+Shell output: \generatekeysoutdemo
 
-\begin{itemize}
-\item
-\end{itemize}
+File \private{\bobdemo}:
+\codestt{\lstinputlisting{../../src/demo/receiver.private}}
+
+File \public{\bobdemo}:
+\codestt{\lstinputlisting{../../src/demo/receiver.public}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

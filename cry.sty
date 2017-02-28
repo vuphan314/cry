@@ -31,7 +31,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\github}{\url{https://github.com/vuphan314/cry}}
+\newcommand{\crygithub}{\url{https://github.com/vuphan314/cry}}
 
 \newcommand{\deliv}[2]{\cry{} -- #1: #2}
 \newcommand{\pp}{Project 1 (Project Plan)}
@@ -56,7 +56,8 @@
 \newcommand{\cla}[1]{\code{\angles{#1}}}
 
 \newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\codes}[1]{\begin{mdframed} #1 \end{mdframed}}
+\newcommand{\codes}[1]{\begin{mdframed} #1 \end{mdframed}
+  \bigskip}
 \newcommand{\codestt}[1]{\codes{\ttfamily{#1}}}
 
 \newcommand{\textdef}[1]{\textbf{#1}}
@@ -69,6 +70,7 @@
 \newcommand{\cryout}{\code{cry.out}}
 \newcommand{\cry}{\code{Cry}}
 \newcommand{\charm}{\code{Charm}}
+\newcommand{\github}{\code{GitHub}}
 
 \newcommand{\rsa}{\builtin{RSA}}
 \renewcommand{\dh}{\builtin{Diffie--Helman}}
@@ -199,8 +201,8 @@
 \newcommand{\alicedemo}{alice}
 \newcommand{\evedemo}{eve}
 
-\newcommand{\private}[1]{#1.private}
-\newcommand{\public}[1]{#1.public}
+\newcommand{\private}[1]{\code{#1.private}}
+\newcommand{\public}[1]{\code{#1.public}}
 
 \newcommand{\generatekeysindemo}{\codestt
   {\$ cry generatekeys -\cs=\csdemo{} -name=\bobdemo}}
