@@ -1,3 +1,69 @@
 \subsection{Sequence Diagrams}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% generateKeys
+\begin{tikzpicture}
+  \begin{umlseqdiag}
+    \umlactor{User}
+    \umlobject{Cry}
+    \umlobject{Github}
+    \begin{umlcall}[op={generateKeys}]{User}{Cry}
+    \end{umlcall}
+    \begin{umlcall}[op={push}]{Cry}{Github}
+    \end{umlcall}
+  \end{umlseqdiag}
+\end{tikzpicture}
+% encrypt
+\begin{tikzpicture}
+  \begin{umlseqdiag}
+    \umlactor{User}
+    \umlobject{Cry}
+    \umlobject{Github}
+    \begin{umlcall}[op={encrypt}]{User}{Cry}
+    \end{umlcall}
+    \begin{umlcall}[op={request data}]{Cry}{Github}
+    \end{umlcall}
+    \begin{umlcall}[op={send data}]{Github}{Cry}
+    \end{umlcall}
+    \begin{umlcall}[op={encrypt text}]{Cry}{Cry}
+    \end{umlcall}
+    \begin{umlcall}[op={create cipher-text}]{Cry}{User}
+    \end{umlcall}
+  \end{umlseqdiag}
+\end{tikzpicture}
+% decrypt
+\begin{tikzpicture}
+  \begin{umlseqdiag}
+    \umlactor{User}
+    \umlobject{Cry}
+    \umlobject{Github}
+    \begin{umlcall}[op={decrypt}]{User}{Cry}
+    \end{umlcall}
+    \begin{umlcall}[op={request data}]{Cry}{Github}
+    \end{umlcall}
+    \begin{umlcall}[op={send data}]{Github}{Cry}
+    \end{umlcall}
+    \begin{umlcall}[op={decrypt text}]{Cry}{Cry}
+    \end{umlcall}
+    \begin{umlcall}[op={create plain-text}]{Cry}{User}
+    \end{umlcall}
+  \end{umlseqdiag}
+\end{tikzpicture}
+% cryptanalyze
+\begin{tikzpicture}
+  \begin{umlseqdiag}
+    \umlactor{User}
+    \umlobject{Cry}
+    \umlobject{Github}
+    \begin{umlcall}[op={cryptanalyze}]{User}{Cry}
+    \end{umlcall}
+    \begin{umlcall}[op={request data}]{Cry}{Github}
+    \end{umlcall}
+    \begin{umlcall}[op={send data}]{Github}{Cry}
+    \end{umlcall}
+    \begin{umlcall}[op={run cryptanalysis}]{Cry}{Cry}
+    \end{umlcall}
+    \begin{umlcall}[op={display results}]{Cry}{User}
+    \end{umlcall}
+  \end{umlseqdiag}
+\end{tikzpicture}
