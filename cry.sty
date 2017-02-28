@@ -66,6 +66,7 @@
 \newcommand{\tc}{\code{Team Crybabies}}
 \newcommand{\ttu}{Texas Tech University}
 
+\newcommand{\cryout}{\code{cry.out}}
 \newcommand{\cry}{\code{Cry}}
 \newcommand{\charm}{\code{Charm}}
 
@@ -126,8 +127,9 @@
 \newcommand{\bob}{\party{Bob}}
 \newcommand{\eve}{\party{Eve}}
 
-\newcommand{\plaintextex}{\code{\quotes{\eve{} is just a crybaby.}}}
-\newcommand{\ciphertextex}{\code{\quotes{sdofAOVI29347asdjkADB234}}}
+\newcommand{\plaintextex}{\quotes{Eve is politically incorrect.}}
+\newcommand{\ciphertextex}{\quotes
+  {sdofAOVI29347asdjkADB234askdjnABGK239487239847}}
 
 \newcommand{\publickeyex}{\code{17}}
 \newcommand{\privatekeyex}{\code{413}}
@@ -187,3 +189,41 @@
   > -publickey=\publickeyarg{} -ciphertext=\ciphertextarg}}
 \newcommand{\cryptanalyzeout}{\codestt
   {The plaintext is \plaintextarg{} (took \cryptanalyzetime).}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% cry commands: demo
+
+\newcommand{\csdemo}{rsa}
+
+\newcommand{\bobdemo}{bob}
+\newcommand{\alicedemo}{alice}
+\newcommand{\evedemo}{eve}
+
+\newcommand{\private}[1]{#1.private}
+\newcommand{\public}[1]{#1.public}
+
+\newcommand{\generatekeysindemo}{\codestt
+  {\$ cry generatekeys -\cs=\csdemo{} -name=\bobdemo}}
+\newcommand{\generatekeysoutdemo}{\codestt
+  {files \private{\bobdemo} and \public{\bobdemo} were created}}
+
+\newcommand{\encryptindemo}{\codestt
+  {\$ cry encrypt
+  -sendersprivatefile=\private{\alicedemo} \textbackslash \\
+  > -receiverspublicfile=\public{\bobdemo}}}
+\newcommand{\encryptoutdemo}{\codestt
+  {file \public{\alicedemo} was created}}
+
+\newcommand{\decryptindemo}{\codestt
+  {\$ cry decrypt
+  -senderspublicfile=\public{\alicedemo} \textbackslash \\
+  > -receiversprivatefile=\private{\bobdemo}}}
+\newcommand{\decryptoutdemo}{\codestt
+  {plaintext is \plaintextex}}
+
+\newcommand{\cryptanalyzeindemo}{\codestt
+  {\$ cry cryptanalyze
+  -senderspublicfile=\public{\alicedemo} \textbackslash \\
+  > -receiverspublicfile=\public{\bobdemo}}}
+\newcommand{\cryptanalyzeoutdemo}{\codestt
+  {plaintext is \plaintextex}}
