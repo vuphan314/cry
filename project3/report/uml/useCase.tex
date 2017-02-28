@@ -1,3 +1,21 @@
 \subsection{Use Case Diagrams}
 
+\begin{umlsystem} [ x=6 , f i l l =re d ! 1 0 ] {Cry }
+\umlusecase{ use case 1}
+\umlusecase [ y=−2] { use case 2}
+\umlusecase [ y=−4] { use case 3}
+\end{umlsystem}
+
+\umlactor[ y=-2]{ Party }
+\umlactor [ x=4, y=−1] { User1 }
+\umlactor [ x=4, y=−2] { User2 }
+\umlactor [ x=4, y=−3] { User3 }
+
+\umlinherit{ User1 }{ Party }
+\umlinherit{ User2 }{ Party }
+\umlinherit{ User3 }{ Party }
+
+\umlassoc{ User1 }{use case 1}
+\umlassoc{ User2 }{use case 2}
+\umlassoc{ User3 }{use case 3}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
