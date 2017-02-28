@@ -1,3 +1,14 @@
 \subsection{Use Case Diagrams}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{tikzpicture}
+  \begin{umlseqdiag}
+    \umlactor{User}
+    \umlobject{Cry}
+    \umlobject{Github}
+    \begin{umlcall}{User}{Cry}
+    \end{umlcall}
+    \begin{umlcall}{Cry}{Github}
+    \end{umlcall}
+  \end{umlseqdiag}
+\end{tikzpicture}
