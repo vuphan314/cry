@@ -1,69 +1,73 @@
 \subsection{Sequence Diagrams}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % generateKeys
-\begin{tikzpicture}
+\codes{\begin{tikzpicture}
   \begin{umlseqdiag}
     \umlactor{User}
     \umlobject{Cry}
-    \umlobject{Github}
+    \umlobject{GitHub}
     \begin{umlcall}[op={generateKeys}]{User}{Cry}
     \end{umlcall}
-    \begin{umlcall}[op={push}]{Cry}{Github}
+    \begin{umlcall}[op={push}]{Cry}{GitHub}
     \end{umlcall}
   \end{umlseqdiag}
-\end{tikzpicture}
+\end{tikzpicture}}
+
 % encrypt
-\begin{tikzpicture}
+\codes{\begin{tikzpicture}
   \begin{umlseqdiag}
     \umlactor{User}
     \umlobject{Cry}
-    \umlobject{Github}
+    \umlobject{GitHub}
     \begin{umlcall}[op={encrypt}]{User}{Cry}
     \end{umlcall}
-    \begin{umlcall}[op={request data}]{Cry}{Github}
+    \begin{umlcall}[op={request data}]{Cry}{GitHub}
     \end{umlcall}
-    \begin{umlcall}[op={send data}]{Github}{Cry}
+    \begin{umlcall}[op={send data}]{GitHub}{Cry}
     \end{umlcall}
     \begin{umlcall}[op={encrypt text}]{Cry}{Cry}
     \end{umlcall}
     \begin{umlcall}[op={create cipher-text}]{Cry}{User}
     \end{umlcall}
   \end{umlseqdiag}
-\end{tikzpicture}
+\end{tikzpicture}}
+
 % decrypt
-\begin{tikzpicture}
+\codes{\begin{tikzpicture}
   \begin{umlseqdiag}
     \umlactor{User}
     \umlobject{Cry}
-    \umlobject{Github}
+    \umlobject{GitHub}
     \begin{umlcall}[op={decrypt}]{User}{Cry}
     \end{umlcall}
-    \begin{umlcall}[op={request data}]{Cry}{Github}
+    \begin{umlcall}[op={request data}]{Cry}{GitHub}
     \end{umlcall}
-    \begin{umlcall}[op={send data}]{Github}{Cry}
+    \begin{umlcall}[op={send data}]{GitHub}{Cry}
     \end{umlcall}
     \begin{umlcall}[op={decrypt text}]{Cry}{Cry}
     \end{umlcall}
     \begin{umlcall}[op={create plain-text}]{Cry}{User}
     \end{umlcall}
   \end{umlseqdiag}
-\end{tikzpicture}
+\end{tikzpicture}}
+
 % cryptanalyze
-\begin{tikzpicture}
+\codes{\begin{tikzpicture}
   \begin{umlseqdiag}
     \umlactor{User}
     \umlobject{Cry}
-    \umlobject{Github}
+    \umlobject{GitHub}
     \begin{umlcall}[op={cryptanalyze}]{User}{Cry}
     \end{umlcall}
-    \begin{umlcall}[op={request data}]{Cry}{Github}
+    \begin{umlcall}[op={request data}]{Cry}{GitHub}
     \end{umlcall}
-    \begin{umlcall}[op={send data}]{Github}{Cry}
+    \begin{umlcall}[op={send data}]{GitHub}{Cry}
     \end{umlcall}
     \begin{umlcall}[op={run cryptanalysis}]{Cry}{Cry}
     \end{umlcall}
     \begin{umlcall}[op={display results}]{Cry}{User}
     \end{umlcall}
   \end{umlseqdiag}
-\end{tikzpicture}
+\end{tikzpicture}}
