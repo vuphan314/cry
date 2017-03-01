@@ -6,8 +6,7 @@ Cry will consist of two main objects: Cryptosystem and
 Party. Party will interact with Cryptosystem to generate
 keys, encrypt plaintext, decrypt ciphertext, and run
 cryptanalysis on ciphertext.
-
-
+\smallskip
 Party will consist of three subclasses: Receiver, Sender,
 and Eavesdropper. Receiver will generate keys and decrypt
 messages sent by Sender. Receiver's data members will be:
@@ -18,26 +17,21 @@ ciphertext, and a private plaintext. Eavesdropper will
 attempt to derive the key from Receiver's publicKey and
 Sender's ciphertext, while also having access to the name
 of the cryptosystem being used by all parties.
-
-
+\smallskip
 Cryptosystem will be an abstract class that we use as the
 template for all cryptosystems.
-
-
+\smallskip
 We will implement a concrete class of Cryptosystem called
 RsaCryptosystem. RsaCryptosystem will be an implementation
 of the familiar RSA encryption scheme. It's cryptanalyze
 function will make use of General Number Field Sieve's to
 make cracking more efficient than mere brute force.
-
-
+\smallskip
 Cryptosystem will be an enemurated type used by Party to
 identify the cryptosystem.
-
-
+\smallskip
 Text will be a user-defined type that is simply a string.
-
-
+\smallskip
 Key will be a user-defined type that will contain an
 mpz\_t type. mpz\_t is defined in the GNU Multiple Precision
 Arithmetic Library. mpz\_t allows integers of unrestricted
