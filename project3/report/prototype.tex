@@ -1,3 +1,55 @@
 \section{Prototype}
 
+\begin{itemize}
+\item \bob{} (receiver)
+  creates a public \github{} repository and
+  adds \alice{} (sender) \& \eve{} (eavesdropper)
+  as collaborators
+\item \bob{} adds the binary file \cryout{}
+  to the repository
+\item \bob{} inserts the line \code{*.private}
+  into the file \code{.gitignore}
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Key Generation}
+by \bob \bigskip
+
+Shell input: \generatekeysindemo
+Shell output: \generatekeysoutdemo
+
+File \private{\bobdemo}:
+\codestt{\lstinputlisting{../../src/demo/receiver.private}}
+
+File \public{\bobdemo}:
+\codestt{\lstinputlisting{../../src/demo/receiver.public}}
+
+\bob{} adds, commits, and pushes
+the file \public{\bobdemo} to \github.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Encryption}
+by \alice \bigskip
+
+TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
+\encryptindemo
+\encryptoutdemo
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Decryption}
+
+\bob
+\decryptindemo
+\decryptoutdemo
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Cryptanalysis}
+
+\eve
+\cryptanalyzeindemo
+\cryptanalyzeoutdemo
