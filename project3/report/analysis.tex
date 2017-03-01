@@ -15,7 +15,7 @@ a public publicKey, a private privateKey, and a private
 plaintext. Sender will encrypt messages to be sent to
 Receiver. Sender's data members will be: a public
 ciphertext, and a private plaintext. Eavesdropper will
-attempt to derive the key from Receiver's publicKey and
+attempt to derive the plaintext from Receiver's publicKey and
 Sender's ciphertext, while also having access to the name
 of the cryptosystem being used by all parties.
 \medskip
@@ -26,12 +26,12 @@ template for all cryptosystems.
 
 We will implement a concrete class of Cryptosystem called
 RsaCryptosystem. RsaCryptosystem will be an implementation
-of the familiar RSA encryption scheme. It's cryptanalyze
-function will make use of General Number Field Sieve's to
+of the familiar RSA encryption scheme. Its cryptanalysis
+function will make use of the General Number Field Sieve to
 make cracking more efficient than mere brute force.
 \medskip
 
-Cryptosystem will be an enemurated type used by Party to
+Cryptosystem will be an enumerated type used by Party to
 identify the cryptosystem.
 \medskip
 
