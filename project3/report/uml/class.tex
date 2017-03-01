@@ -5,7 +5,7 @@
 \begin{tikzpicture}
 \umltypedef{Key}{mpz\_t}{}
 \umltypedef[right=0.7in of Key]{Text}{string}{}
-\umlclass[below=0.35in of Text]{Cryptosystem}{}
+\umlabstract[below=0.35in of Text]{Cryptosystem}{}
   {\umlvirt{+ generateKeys(publicKey: Key, privateKey: Key):
     void} \\
   \umlvirt{+ encrypt(ciphertext: Text,
@@ -27,7 +27,7 @@
 \umlinherit[anchors=90 and -90]{RsaCryptosystem}{Cryptosystem}
 \umlenum[right=1.9in of Text]{CryptosystemName}{RSA}{}
 \umlclass[below =3.7in of CryptosystemName]{Party}
-  {\# cryptosystem: Cryptosystem}
+  {\# cryptosystem: Cryptosystem*}
   {+ Party(cryptosystemName: CryptosystemName)}
 \umldep[anchors=80 and -90]{Party}{CryptosystemName}
 \umlaggreg[anchors=100 and 0]{Party}{Cryptosystem}

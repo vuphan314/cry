@@ -12,7 +12,7 @@ private:
   Text plaintext;
 
   void cryptanalyze(const Text ciphertext, const Key publicKey);
-    // {cryptosystem.cryptanalyze(plaintext, ciphertext, publicKey)}
+    // {cryptosystem->cryptanalyze(plaintext, ciphertext, publicKey)}
 };
 
 ////////////////////////////////////////////////////////////

@@ -13,7 +13,7 @@ enum CryptosystemName {RSA}; // more to come
 
 class Party {
 protected:
-  Cryptosystem cryptosystem;
+  Cryptosystem *cryptosystem;
 
 public:
   Party(CryptosystemName cryptosystemName);
