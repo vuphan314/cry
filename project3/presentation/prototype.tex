@@ -3,8 +3,80 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{title}
-body
+\begin{itemize}
+\item \bob{} (receiver)
+  creates a public \github{} repository and
+  adds \alice{} (sender) \& \eve{} (eavesdropper)
+  as collaborators
+\item \bob{} adds the binary file \cryout{}
+  to the repository
+\item \bob{} inserts the line \code{*.private}
+  into the file \code{.gitignore}
+\item \bob{} commits and pushes the changes
+\item everyone pulls from \github{}
+  before doing the following actions
+  and adds/commits/pushes afterward
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Key Generation}
+
+\begin{frame}
+\frametitle{Key Generation}
+
+Shell input: \generatekeysindemo
+Shell output: \generatekeysoutdemo
+
+File \private{\bobdemo}:
+\codestt{\lstinputlisting{../../src/demo/receiver.private}}
+
+File \public{\bobdemo}:
+\codestt{\lstinputlisting{../../src/demo/receiver.public}}
+
+% \bob{} adds, commits, and pushes
+% the file \public{\bobdemo} to \github.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Encryption}
+
+\begin{frame}
+\frametitle{Encryption}
+
+\alice{} creates the file \private{\alicedemo}:
+\codestt{\lstinputlisting{../../src/demo/sender.private}}
+
+Shell input: \encryptindemo
+Shell output: \encryptoutdemo
+
+File \public{\alicedemo}:
+\codestt{\lstinputlisting{../../src/demo/sender.public}}
+
+% \alice{} adds, commits, and pushes
+% the file \public{\alicedemo} to \github.
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Decryption}
+
+\begin{frame}
+\frametitle{Decryption}
+Shell input: \decryptindemo
+Shell output: \decryptoutdemo
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Cryptanalysis}
+
+\begin{frame}
+\frametitle{Cryptanalysis}
+Shell input: \cryptanalyzeindemo
+Shell output: \cryptanalyzeoutdemo
+\end{frame}
