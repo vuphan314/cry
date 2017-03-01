@@ -31,7 +31,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\github}{\url{https://github.com/vuphan314/cry}}
+\newcommand{\crygithub}{\url{https://github.com/vuphan314/cry}}
 
 \newcommand{\deliv}[2]{\cry{} -- #1: #2}
 \newcommand{\pp}{Project 1 (Project Plan)}
@@ -56,7 +56,8 @@
 \newcommand{\cla}[1]{\code{\angles{#1}}}
 
 \newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\codes}[1]{\begin{mdframed} #1 \end{mdframed}}
+\newcommand{\codes}[1]{\begin{mdframed} #1 \end{mdframed}
+  \bigskip}
 \newcommand{\codestt}[1]{\codes{\ttfamily{#1}}}
 
 \newcommand{\textdef}[1]{\textbf{#1}}
@@ -66,8 +67,10 @@
 \newcommand{\tc}{\code{Team Crybabies}}
 \newcommand{\ttu}{Texas Tech University}
 
+\newcommand{\cryout}{\code{cry.out}}
 \newcommand{\cry}{\code{Cry}}
 \newcommand{\charm}{\code{Charm}}
+\newcommand{\github}{\code{GitHub}}
 
 \newcommand{\rsa}{\builtin{RSA}}
 \renewcommand{\dh}{\builtin{Diffie--Helman}}
@@ -126,11 +129,12 @@
 \newcommand{\bob}{\party{Bob}}
 \newcommand{\eve}{\party{Eve}}
 
-\newcommand{\plaintextex}{\code{\quotes{\eve{} is just a crybaby.}}}
-\newcommand{\ciphertextex}{\code{\quotes{sdofAOVI29347asdjkADB234}}}
+\newcommand{\plaintextex}{\quotes{Eve is politically incorrect.}}
+\newcommand{\ciphertextex}{\quotes
+  {sdofAOVI29347asdjkADB234askdjnABGK239487239847}}
 
-\newcommand{\publickeyex}{\code{825}}
-\newcommand{\privatekeyex}{\code{637}}
+\newcommand{\publickeyex}{\code{17}}
+\newcommand{\privatekeyex}{\code{413}}
 
 \newcommand{\generatekeysex}{\codestt
   {\$ cry generatekeys -\cs=rsa \\
@@ -187,3 +191,41 @@
   > -publickey=\publickeyarg{} -ciphertext=\ciphertextarg}}
 \newcommand{\cryptanalyzeout}{\codestt
   {The plaintext is \plaintextarg{} (took \cryptanalyzetime).}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% cry commands: demo
+
+\newcommand{\csdemo}{rsa}
+
+\newcommand{\bobdemo}{bob}
+\newcommand{\alicedemo}{alice}
+\newcommand{\evedemo}{eve}
+
+\newcommand{\private}[1]{\code{#1.private}}
+\newcommand{\public}[1]{\code{#1.public}}
+
+\newcommand{\generatekeysindemo}{\codestt
+  {\$ cry generatekeys -\cs=\csdemo{} -name=\bobdemo}}
+\newcommand{\generatekeysoutdemo}{\codestt
+  {files \private{\bobdemo} and \public{\bobdemo} were created}}
+
+\newcommand{\encryptindemo}{\codestt
+  {\$ cry encrypt
+  -sendersprivatefile=\private{\alicedemo} \textbackslash \\
+  > -receiverspublicfile=\public{\bobdemo}}}
+\newcommand{\encryptoutdemo}{\codestt
+  {file \public{\alicedemo} was created}}
+
+\newcommand{\decryptindemo}{\codestt
+  {\$ cry decrypt
+  -senderspublicfile=\public{\alicedemo} \textbackslash \\
+  > -receiversprivatefile=\private{\bobdemo}}}
+\newcommand{\decryptoutdemo}{\codestt
+  {plaintext is \plaintextex}}
+
+\newcommand{\cryptanalyzeindemo}{\codestt
+  {\$ cry cryptanalyze
+  -senderspublicfile=\public{\alicedemo} \textbackslash \\
+  > -receiverspublicfile=\public{\bobdemo}}}
+\newcommand{\cryptanalyzeoutdemo}{\codestt
+  {plaintext is \plaintextex}}
