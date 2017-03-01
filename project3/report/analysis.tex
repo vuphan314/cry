@@ -1,3 +1,38 @@
 \section{System Analysis and Decomposition}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Cry will consist of two main objects: Cryptosystem and
+Party. Party will interact with Cryptosystem to generate
+keys, encrypt plaintext, decrypt ciphertext, and run
+cryptanalysis on ciphertext.
+
+Party will consist of three subclasses: Receiver, Sender,
+and Eavesdropper. Receiver will generate keys and decrypt
+messages sent by Sender. Receiver's data members will be:
+a public publicKey, a private privateKey, and a private
+plaintext. Sender will encrypt messages to be sent to
+Receiver. Sender's data members will be: a public
+ciphertext, and a private plaintext. Eavesdropper will
+attempt to derive the key from Receiver's publicKey and
+Sender's ciphertext, while also having access to the name
+of the cryptosystem being used by all parties.
+
+Cryptosystem will be an abstract class that we use as the
+template for all cryptosystems.
+
+We will implement a concrete class of Cryptosystem called
+RsaCryptosystem. RsaCryptosystem will be an implementation
+of the familiar RSA encryption scheme. It's cryptanalyze
+function will make use of General Number Field Sieve's to
+make cracking more efficient than mere brute force.
+
+Cryptosystem will be an enemurated type used by Party to
+identify the cryptosystem.
+
+Text will be a user-defined type that is simply a string.
+
+Key will be a user-defined type that will contain an
+mpz_t type. mpz_t is defined in the GNU Multiple Precision
+Arithmetic Library. mpz_t allows integers of unrestricted
+size, up to the size of addressable memory.
