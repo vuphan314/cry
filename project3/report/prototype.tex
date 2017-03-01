@@ -9,6 +9,9 @@
   to the repository
 \item \bob{} inserts the line \code{*.private}
   into the file \code{.gitignore}
+\item \bob{} commits and pushes the changes
+\item everyone pulls from \github{}
+  before doing the following actions
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,23 +36,30 @@ the file \public{\bobdemo} to \github.
 \subsection{Encryption}
 by \alice \bigskip
 
-TODOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+\alice{} creates the file \private{\alicedemo}:
+\codestt{\lstinputlisting{../../src/demo/sender.private}}
 
-\encryptindemo
-\encryptoutdemo
+Shell input: \encryptindemo
+Shell output: \encryptoutdemo
+
+File \public{\alicedemo}:
+\codestt{\lstinputlisting{../../src/demo/sender.public}}
+
+\alice{} adds, commits, and pushes
+the file \public{\alicedemo} to \github.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Decryption}
+by \bob \bigskip
 
-\bob
-\decryptindemo
-\decryptoutdemo
+Shell input: \decryptindemo
+Shell output: \decryptoutdemo
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Cryptanalysis}
+by \eve \bigskip
 
-\eve
-\cryptanalyzeindemo
-\cryptanalyzeoutdemo
+Shell input: \cryptanalyzeindemo
+Shell output: \cryptanalyzeoutdemo
