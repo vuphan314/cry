@@ -3,11 +3,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{title}
-\begin{tikzpicture}[scale=0.2]
+\frametitle{Class Diagram}
+\begin{tikzpicture}
 \umltypedef{Key}{mpz\_t}{}
 \umltypedef[right=0.7in of Key]{Text}{string}{}
-\umlabstract[below=0.35in of Text]{Cryptosystem}{}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+\frametitle{Class Diagram}
+\begin{tikzpicture}
+\umlabstract{Cryptosystem}{}
   {\umlvirt{+ generateKeys(publicKey: Key, privateKey: Key):
     void} \\
   \umlvirt{+ encrypt(ciphertext: Text,
@@ -16,8 +22,6 @@
     ciphertext: Text, privateKey: Key): void} \\
   \umlvirt{+ cryptanalyze(plaintext: Text,
     ciphertext: Text, publicKey: Key): void}}
-\umldep[anchors=90 and -90]{Cryptosystem}{Key}
-\umldep[anchors=90 and -90]{Cryptosystem}{Text}
 \umlclass[below=0.35in of Cryptosystem]{RsaCryptosystem}{}
   {+ generateKeys(publicKey: Key, privateKey: Key): void \\
   + encrypt(ciphertext: Text,
@@ -27,29 +31,35 @@
   + cryptanalyze(plaintext: Text,
     ciphertext: Text, publicKey: Key): void}
 \umlinherit[anchors=90 and -90]{RsaCryptosystem}{Cryptosystem}
-\umlenum[right=1.9in of Text]{CryptosystemName}{RSA}{}
-\umlclass[below =3.7in of CryptosystemName]{Party}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+\frametitle{Class Diagram}
+\begin{tikzpicture}
+\umlenum{CryptosystemName}{RSA}{}
+\umlclass[below =0.7in of CryptosystemName]{Party}
   {\# cryptosystem: Cryptosystem*}
   {+ Party(cryptosystemName: CryptosystemName)}
 \umldep[anchors=80 and -90]{Party}{CryptosystemName}
-\umlaggreg[anchors=100 and 0]{Party}{Cryptosystem}
-\umlclass[below=0.35in of RsaCryptosystem]{Receiver}
+\end{tikzpicture}
+\end{frame}
+
+\begin{frame}
+\frametitle{Class Diagram}
+\begin{tikzpicture}
+\umlclass{Receiver}
   {+ publicKey: Key \\
   -- privateKey: Key \\
   -- plaintext: Text}
   {-- generateKeys(): void \\
   -- decrypt(ciphertext: Text): void}
-\umlinherit[anchors=0 and 180]{Receiver}{Party}
-\umlclass[below=0.35in of Receiver]{Sender}
+\umlclass[right=0.35in of Receiver]{Sender}
   {+ ciphertext: Text \\
   -- plaintext: Text}
   {-- encrypt(publicKey: Key): void}
-\umlinherit[anchors=0 and -160]{Sender}{Party}
 \umlclass[below=0.35in of Sender]{Eavesdropper}
   {-- plaintext: Text}
   {-- cryptanalyze(ciphertext: Text, publicKey: Key): void}
-\umlinherit[anchors=0 and -90]{Eavesdropper}{Party}
 \end{tikzpicture}
 \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
