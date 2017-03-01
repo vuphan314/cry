@@ -29,7 +29,7 @@ preferred max line length: 60-character
   latexmk -pdf -synctex=1 report.tex
   ```
 
-## Acknowledgement
+## acknowledgement
 [TikZ-UML][tikzuml]: TeX package for UML diagrams
 
 <!--------------------------------------------------------->
