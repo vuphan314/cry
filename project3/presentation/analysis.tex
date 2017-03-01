@@ -3,8 +3,84 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{title}
-body
+\frametitle{\cry{}}
+\begin{itemize}
+  \item Cryptosystem
+  \item Party
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Party}
+\begin{itemize}
+  \item Parent class
+  \item Receiver
+  \item Sender
+  \item Eavesdropper
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Receiver}
+\begin{itemize}
+  \item Generates keys and receives messages
+  \item public publicKey
+  \item private privateKey
+  \item private plaintext
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Sender}
+\begin{itemize}
+  \item Obtains public key, sends messages
+  \item public ciphertext
+  \item private plaintext
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Eavesdropper}
+\begin{itemize}
+  \item Derive key from ciphertext, public key, and name of cryptosystem
+  \item private plaintext
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Cryptosystem}
+\begin{itemize}
+  \item Template all cryptosystems must inherit from
+  \item Abstract
+  \item public generateKeys
+  \item public encrypt
+  \item public decrypt
+  \item public cryptanalyze
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Enumerated and User-Defined Types}
+\begin{itemize}
+  \item enum Cryptosystem
+  \item typedef Text
+  \item typedef Key
+  \begin{itemize}
+    \item Consists of mpz\_t type from GMP
+  \end{itemize}
+\end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
