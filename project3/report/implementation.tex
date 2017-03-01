@@ -1,3 +1,29 @@
 \section{Implementation Plan}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+\item object-oriented programming language: \code{C++} 2014
+  \begin{itemize}
+  \item Google style:
+    \url{https://google.github.io/styleguide/cppguide.html}
+  \item compiler: \code{g++} (GNU Compiler Collection)
+  \end{itemize}
+\item libraries:
+  \begin{itemize}
+  \item for big integers: \code{GMP}
+    (GNU Multiple Precision Arithmetic Library)
+  \item for integer factorization: \code{msieve},
+    a mostly embarrassingly parallel
+    implementation of \code{GNFS}
+    (General Number Field Sieve)
+  \end{itemize}
+\item tools:
+  \begin{itemize}
+  \item build automation: \code{Make}
+  \item version control: \code{Git}
+  \item Internet hosting: \crygithub
+  \end{itemize}
+\item \code{Unix}-based operating systems:
+  \code{macOS}, \code{Ubuntu}
+\end{itemize}
