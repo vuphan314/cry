@@ -7,6 +7,7 @@ Party. Party will interact with Cryptosystem to generate
 keys, encrypt plaintext, decrypt ciphertext, and run
 cryptanalysis on ciphertext.
 
+
 Party will consist of three subclasses: Receiver, Sender,
 and Eavesdropper. Receiver will generate keys and decrypt
 messages sent by Sender. Receiver's data members will be:
@@ -18,8 +19,10 @@ attempt to derive the key from Receiver's publicKey and
 Sender's ciphertext, while also having access to the name
 of the cryptosystem being used by all parties.
 
+
 Cryptosystem will be an abstract class that we use as the
 template for all cryptosystems.
+
 
 We will implement a concrete class of Cryptosystem called
 RsaCryptosystem. RsaCryptosystem will be an implementation
@@ -27,10 +30,13 @@ of the familiar RSA encryption scheme. It's cryptanalyze
 function will make use of General Number Field Sieve's to
 make cracking more efficient than mere brute force.
 
+
 Cryptosystem will be an enemurated type used by Party to
 identify the cryptosystem.
 
+
 Text will be a user-defined type that is simply a string.
+
 
 Key will be a user-defined type that will contain an
 mpz\_t type. mpz\_t is defined in the GNU Multiple Precision
