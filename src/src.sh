@@ -1,4 +1,4 @@
-cc_files=" cryptosystem/rsaCryptosystem.cc party/party.cc src.cc"
+cc_files=" cryptosystem/rsa_cryptosystem.cc party/party.cc src.cc"
 out_file=/tmp/cry.out
 
 # clear
