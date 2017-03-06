@@ -1,5 +1,5 @@
-#ifndef CRYPTOFRAMEWORK_H
-#define CRYPTOFRAMEWORK_H
+#ifndef TESTBED_H
+#define TESTBED_H
 
 ////////////////////////////////////////////////////////////
 
@@ -9,13 +9,13 @@
 
 ////////////////////////////////////////////////////////////
 
-class Cryptoframework {
+class Testbed {
 public:
   Receiver receiver;
   Sender sender;
   Eavesdropper eavesdropper;
 
-  Cryptoframework(CryptosystemName cryptosystemName);
+  Testbed(CryptosystemName cryptosystemName);
 
   void testKeyGeneration();
     // {receiver.generateKeys()}
@@ -32,4 +32,4 @@ public:
 
 ////////////////////////////////////////////////////////////
 
-#endif // CRYPTOFRAMEWORK_H
+#endif // TESTBED_H
