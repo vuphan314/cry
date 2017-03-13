@@ -3,9 +3,9 @@
 
 ////////////////////////////////////////////////////////////
 
-#include "party/eavesdropper.h"
-#include "party/receiver.h"
-#include "party/sender.h"
+#include "../party/eavesdropper.h"
+#include "../party/receiver.h"
+#include "../party/sender.h"
 
 ////////////////////////////////////////////////////////////
 
