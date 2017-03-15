@@ -7,6 +7,7 @@ using namespace std;
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include <gmp.h>
 #include <gmpxx.h>
@@ -14,10 +15,12 @@ using namespace std;
 ////////////////////////////////////////////////////////////
 
 using BigInt = mpz_class; // multiple-precision integer
-using Key = BigInt;
-using Text = BigInt; // padded
 
-using UnpaddedText = string;
+using KeyComponent = BigInt;
+using Key = vector<KeyComponent>;
+
+using Text = string; // unpadded
+using PaddedText = BigInt;
 
 ////////////////////////////////////////////////////////////
 
@@ -25,7 +28,7 @@ class Cryptosystem {
 // private:
 //   Key publicKey, privateKey;
 //   Text plainText, cipherText;
-//   UnpaddedText unpaddedPlainText, unpaddedCipherText;
+//   PaddedText paddedPlainText, paddedCipherText;
 
 public:
   virtual void generateKeys(Key &publicKey, Key &privateKey) = 0;
@@ -40,7 +43,9 @@ public:
   virtual void cryptanalyze(Text &plainText, // set this
     const Text &cipherText, const Key &publicKey) = 0;
 
-  void padText(Text &text, const UnpaddedText &UnpaddedText);
+  void padText(PaddedText &paddedText, const Text &text);
+
+  void unpadText(Text &text, const PaddedText &paddedText);
 };
 
 ////////////////////////////////////////////////////////////
