@@ -1,7 +1,7 @@
 COMPILER = g++
 EXECUTABLE = cry.out
 FLAGS = -c -lgmpxx -lgmp -Ofast
-OBJECTS = main.o party.o rsa_cryptosystem.o
+OBJECTS = main.o party.o rsa_cryptosystem.o cryptosystem.o
 
 ############################################################
 
@@ -18,6 +18,10 @@ cryptosystem/rsa_cryptosystem.h
 rsa_cryptosystem.o: cryptosystem/rsa_cryptosystem.h \
 cryptosystem/rsa_cryptosystem.cc cryptosystem/cryptosystem.h
 	$(COMPILER) $(FLAGS) cryptosystem/rsa_cryptosystem.cc
+
+cryptosystem.o: cryptosystem/cryptosystem.h \
+cryptosystem/cryptosystem.cc
+	$(COMPILER) $(FLAGS) cryptosystem/cryptosystem.cc
 
 ############################################################
 

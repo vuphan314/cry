@@ -2,14 +2,14 @@
 
 ////////////////////////////////////////////////////////////
 
-void RsaCryptosystem::generateKeys(Key publicKey,
-  Key privateKey) {};
+void RsaCryptosystem::generateKeys(Key &publicKey,
+  Key &privateKey) {};
 
-void RsaCryptosystem::encrypt(Text cipherText,
-  const Text plainText, const Key publicKey) {};
+void RsaCryptosystem::encrypt(Text &cipherText,
+  const Text &plainText, const Key &publicKey) {};
 
-void RsaCryptosystem::decrypt(Text plainText,
-  const Text cipherText, const Key privateKey) {};
+void RsaCryptosystem::decrypt(Text &plainText,
+  const Text &cipherText, const Key &privateKey) {};
 
-void RsaCryptosystem::cryptanalyze(Text plainText,
-  const Text cipherText, const Key publicKey) {};
+void RsaCryptosystem::cryptanalyze(Text &plainText,
+  const Text &cipherText, const Key &publicKey) {};
