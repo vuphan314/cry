@@ -7,18 +7,23 @@ using namespace std;
 
 ////////////////////////////////////////////////////////////
 
+#include <iostream>
 #include <string>
 
 #include <gmp.h>
+#include <gmpxx.h>
 
 ////////////////////////////////////////////////////////////
 
-using Key = mpz_t; // GNU Multiple Precision Integer Type
+using Key = mpz_class; // GNU Multiple Precision Integer
 using Text = string;
 
 ////////////////////////////////////////////////////////////
 
 class Cryptosystem {
+// private:
+//   Key plainNum = 0;
+
 public:
   virtual void generateKeys(Key publicKey, Key privateKey) = 0;
     // set these

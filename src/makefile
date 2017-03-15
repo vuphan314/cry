@@ -1,6 +1,6 @@
 COMPILER = g++
 EXECUTABLE = cry.out
-FLAGS = -c -lgmp -lgmpxx -Ofast
+FLAGS = -c -lgmpxx -lgmp -Ofast
 OBJECTS = main.o party.o rsa_cryptosystem.o
 
 ############################################################
