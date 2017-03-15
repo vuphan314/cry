@@ -5,8 +5,6 @@
 
 using namespace std;
 
-////////////////////////////////////////////////////////////
-
 #include <iostream>
 #include <string>
 
@@ -15,27 +13,32 @@ using namespace std;
 
 ////////////////////////////////////////////////////////////
 
-using Key = mpz_class; // GNU Multiple Precision Integer
-using Text = string;
+using BigInt = mpz_class; // multiple-precision integer
+using Key = BigInt;
+using Text = BigInt; // padded
+
+using UnpaddedText = string;
 
 ////////////////////////////////////////////////////////////
 
 class Cryptosystem {
-// private:
-//   Key plainNum = 0;
+private:
+  Key publicKey, privateKey;
+  Text plainText, cipherText;
+  UnpaddedText unpaddedPlainText, unpaddedCipherText;
 
 public:
-  virtual void generateKeys(Key publicKey, Key privateKey) = 0;
+  virtual void generateKeys(Key &publicKey, Key &privateKey) = 0;
     // set these
 
-  virtual void encrypt(Text ciphertext, // set this
-    const Text plaintext, const Key publicKey) = 0;
+  virtual void encrypt(Text cipherText, // set this
+    const Text plainText, const Key publicKey) = 0;
 
-  virtual void decrypt(Text plaintext, // set this
-    const Text ciphertext, const Key privateKey) = 0;
+  virtual void decrypt(Text plainText, // set this
+    const Text cipherText, const Key privateKey) = 0;
 
-  virtual void cryptanalyze(Text plaintext, // set this
-    const Text ciphertext, const Key publicKey) = 0;
+  virtual void cryptanalyze(Text plainText, // set this
+    const Text cipherText, const Key publicKey) = 0;
 };
 
 ////////////////////////////////////////////////////////////

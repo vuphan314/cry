@@ -13,13 +13,13 @@ public:
 
 private:
   Key privateKey;
-  Text plaintext;
+  Text plainText;
 
   void generateKeys();
     // {cryptosystem->generateKeys(publicKey, privateKey)}
 
-  void decrypt(const Text ciphertext);
-    // {cryptosystem->decrypt(plaintext, ciphertext, privateKey)}
+  void decrypt(const Text cipherText);
+    // {cryptosystem->decrypt(plainText, cipherText, privateKey)}
 };
 
 ////////////////////////////////////////////////////////////
