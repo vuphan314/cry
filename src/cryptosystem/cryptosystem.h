@@ -7,9 +7,7 @@ using namespace std;
 
 ////////////////////////////////////////////////////////////
 
-#include <iostream>
 #include <string>
-#include <utility>
 
 #include <gmp.h>
 
