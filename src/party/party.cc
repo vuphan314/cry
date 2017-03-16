@@ -7,3 +7,8 @@ Party::Party(CryptosystemName cryptosystemName) {
     case RSA: cryptosystem = new RsaCryptosystem;
   }
 }
+
+void Party::testParty() {
+  cout << "Testing party.\n";
+  cryptosystem->testCryptosystem();
+}

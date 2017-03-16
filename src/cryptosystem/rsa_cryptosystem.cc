@@ -13,3 +13,10 @@ void RsaCryptosystem::decrypt(Text &plainText,
 
 void RsaCryptosystem::cryptanalyze(Text &plainText,
   const Text &cipherText, const Key &publicKey) {};
+
+////////////////////////////////////////////////////////////
+// testing
+
+void RsaCryptosystem::testCryptosystem() {
+  cout << "Testing RSA cryptosystem.\n";
+}

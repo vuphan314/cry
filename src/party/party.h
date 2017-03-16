@@ -17,6 +17,8 @@ protected:
 
 public:
   Party(CryptosystemName cryptosystemName);
+
+  void testParty();
 };
 
 ////////////////////////////////////////////////////////////

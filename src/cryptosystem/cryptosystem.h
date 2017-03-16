@@ -31,6 +31,7 @@ class Cryptosystem {
 //   PaddedText paddedPlainText, paddedCipherText;
 
 public:
+// purely virtual:
   virtual void generateKeys(Key &publicKey, Key &privateKey) = 0;
     // set these
 
@@ -43,6 +44,10 @@ public:
   virtual void cryptanalyze(Text &plainText, // set this
     const Text &cipherText, const Key &publicKey) = 0;
 
+// impurely virtual:
+  virtual void testCryptosystem();
+
+// non-virtual:
   void padText(PaddedText &paddedText, const Text &text);
 
   void unpadText(Text &text, const PaddedText &paddedText);

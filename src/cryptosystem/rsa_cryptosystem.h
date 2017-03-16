@@ -20,6 +20,9 @@ public:
 
   void cryptanalyze(Text &plainText, // set this
     const Text &cipherText, const Key &publicKey);
+
+// testing:
+  void testCryptosystem();
 };
 
 ////////////////////////////////////////////////////////////

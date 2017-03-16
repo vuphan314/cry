@@ -1,6 +1,14 @@
 #include "cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
+// impurely virtual
+
+void Cryptosystem::testCryptosystem() {
+  cout << "Testing cryptosystem.\n";
+}
+
+////////////////////////////////////////////////////////////
+// non-virtual
 
 void Cryptosystem::padText(PaddedText &paddedText,
     const Text &text) {
