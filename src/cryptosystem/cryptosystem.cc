@@ -47,6 +47,10 @@ void Cryptosystem::unpadText(Text &text,
 
 ////////////////////////////////////////////////////////////
 
+void testCharSign() {
+  cout << "Testing char sign.\n";
+}
+
 UnsignedChar getUnsignedChar(const Char ch) {
   if (ch < 0) {
     return ch + TOTAL_CHAR_COUNT;

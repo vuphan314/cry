@@ -63,6 +63,8 @@ public:
 
 ////////////////////////////////////////////////////////////
 
+void testCharSign();
+
 UnsignedChar getUnsignedChar(const Char ch);
 
 Char getChar(const UnsignedChar uCh);

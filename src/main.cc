@@ -5,5 +5,6 @@
 int main() {
   CryptosystemName cryptosystemName = RSA;
   Party party(cryptosystemName);
-  party.testParty();
+  // party.testParty();
+  testCharSign();
 }
