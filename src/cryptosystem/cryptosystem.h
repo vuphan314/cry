@@ -47,7 +47,7 @@ public:
 // impurely virtual:
   virtual void testCryptosystem();
 
-// non-virtual:
+// nonvirtual:
   void padText(PaddedText &paddedText, const Text &text);
 
   void unpadText(Text &text, const PaddedText &paddedText);

@@ -17,6 +17,6 @@ void RsaCryptosystem::cryptanalyze(Text &plainText,
 ////////////////////////////////////////////////////////////
 // testing
 
-void RsaCryptosystem::testCryptosystem() {
-  cout << "Testing RSA cryptosystem.\n";
-}
+// void RsaCryptosystem::testCryptosystem() {
+//   cout << "Testing RSA cryptosystem.\n";
+// }
