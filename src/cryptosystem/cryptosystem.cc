@@ -9,7 +9,7 @@ void Cryptosystem::testCryptosystem() {
 
   mpz_t x;
   mpz_init(x);
-  mpz_clear(x);
+  // mpz_clear(x);
 
   // mpz_class s = mpz_class("31");
 
