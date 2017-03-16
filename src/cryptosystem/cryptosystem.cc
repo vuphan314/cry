@@ -6,7 +6,7 @@
 void Cryptosystem::testCryptosystem() {
   cout << "Testing cryptosystem.\n";
 
-  Text text("\n\n\tHey Lex :)\n\n\tIt's Vi ;)\n\n");
+  Text text("\n\n\n\tHey Lex :)\n\n\tIt's Vi ;)\n\n\n");
 
   PaddedText paddedText;
   padText(paddedText, text);
