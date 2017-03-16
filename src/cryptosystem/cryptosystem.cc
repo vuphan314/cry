@@ -5,15 +5,12 @@
 
 void Cryptosystem::testCryptosystem() {
   cout << "Testing cryptosystem.\n";
-  Text text = "unpadded";
 
-  mpz_t x;
-  mpz_init(x);
-  // mpz_clear(x);
+  Text text = "nicole";
+  cout << "text: " << text << "\n";
 
-  // mpz_class s = mpz_class("31");
-
-  cout << text << "\n";
+  PaddedText paddedText("1000000000000000000000000000000000");
+  cout << "padded text: " << paddedText << "\n";
 }
 
 ////////////////////////////////////////////////////////////
