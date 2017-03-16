@@ -9,16 +9,20 @@
 
 class RsaCryptosystem : public Cryptosystem {
 public:
-  void generateKeys(Key publicKey, Key privateKey); // set these
+  void generateKeys(Key &publicKey, Key &privateKey);
+    // set these
 
-  void encrypt(Text ciphertext, // set this
-    const Text plaintext, const Key publicKey);
+  void encrypt(Text &cipherText, // set this
+    const Text &plainText, const Key &publicKey);
 
-  void decrypt(Text plaintext, // set this
-    const Text ciphertext, const Key privateKey);
+  void decrypt(Text &plainText, // set this
+    const Text &cipherText, const Key &privateKey);
 
-  void cryptanalyze(Text plaintext, // set this
-    const Text ciphertext, const Key publicKey);
+  void cryptanalyze(Text &plainText, // set this
+    const Text &cipherText, const Key &publicKey);
+
+// testing:
+  // void testCryptosystem();
 };
 
 ////////////////////////////////////////////////////////////

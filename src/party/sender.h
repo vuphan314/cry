@@ -9,13 +9,13 @@
 
 class Sender : public Party {
 public:
-  Text ciphertext;
+  Text cipherText;
 
 private:
-  Text plaintext;
+  Text plainText;
 
   void encrypt(const Key publicKey);
-    // {cryptosystem->encrypt(ciphertext, plaintext, publicKey)}
+    // {cryptosystem->encrypt(cipherText, plainText, publicKey)}
 };
 
 ////////////////////////////////////////////////////////////

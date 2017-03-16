@@ -24,10 +24,10 @@ public:
     // {sender.encrypt(receiver.publicKey)}
 
   void testDecryption();
-    // {receiver.decrypt(sender.ciphertext)}
+    // {receiver.decrypt(sender.cipherText)}
 
   void testCryptanalysis();
-    // {eavesdropper.cryptanalyze(sender.ciphertext, receiver.publicKey)}
+    // {eavesdropper.cryptanalyze(sender.cipherText, receiver.publicKey)}
 };
 
 ////////////////////////////////////////////////////////////

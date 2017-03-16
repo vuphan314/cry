@@ -9,10 +9,10 @@
 
 class Eavesdropper : public Party {
 private:
-  Text plaintext;
+  Text plainText;
 
-  void cryptanalyze(const Text ciphertext, const Key publicKey);
-    // {cryptosystem->cryptanalyze(plaintext, ciphertext, publicKey)}
+  void cryptanalyze(const Text cipherText, const Key publicKey);
+    // {cryptosystem->cryptanalyze(plainText, cipherText, publicKey)}
 };
 
 ////////////////////////////////////////////////////////////

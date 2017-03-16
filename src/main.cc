@@ -5,5 +5,5 @@
 int main() {
   CryptosystemName cryptosystemName = RSA;
   Party party(cryptosystemName);
-  cout << cryptosystemName << "\n";
+  party.testParty();
 }
