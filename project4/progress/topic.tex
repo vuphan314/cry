@@ -2,11 +2,19 @@
 
 2. What is the topic for your technical presentation? Explain briefly.
 
+The GMP library contains several topics useful for the situations and calculations we will need in our project.
+
 \begin{itemize}
 
-  \item Integer Functions:
-  \item Rational Number Functions:
-  \item Floating-point Functions:
+  \item Integer Functions: many basic functions for integer arithmetic such as division, exponentiation, roots, as well as other
+  miscellaneous functions. Note, all integers are stored as type mpz_t.
+  
+  \item Rational Number Functions: an important function of rational numbers is canonicalizing them, which is to remove any common 
+  factors in the numerator and denominator, i.e. reduce them. Note, rational numbers are stored as type mpq_t. 
+  
+  \item Floating-point Functions: floating points arithmetic in GMP is a main feature of the library. Mantissas of each number 
+  has user-selected precision, and so is limited only by computer memory. Similar to regular IEEE double, the mantissa is stored in binary   which makes decimal fractions, such as 0.1, difficult. The exponent precision is fixed, and is normally the size of a word in standard     machines. As such, values of computations may differ on some machines if the size of that machine's word is different. In addition,       there are not special notations to indicate infinity or other 'non-numbers'. Note, floating point numbers are stored as type mpf_t.
+  
   \item Low-level Functions:
   \item Random Number Functions:
   \item Formatted Output:
