@@ -14,22 +14,30 @@ using namespace std;
 
 ////////////////////////////////////////////////////////////
 
+using Int = unsigned long long; // small
+
 using BigInt = mpz_class; // multiple-precision integer
 
-using KeyComponent = BigInt;
-using Key = vector<KeyComponent>;
-
-using Text = string; // unpadded
 using PaddedText = BigInt;
+
+using KeyElement = BigInt;
+using Key = vector<KeyElement>;
+
+using UnsignedChar = unsigned char;
+
+using Char = char; // signed
+using String = basic_string<Char>;
+using Text = String; // unpadded
+
+////////////////////////////////////////////////////////////
+
+const unsigned int TOTAL_CHAR_COUNT = 256;
+
+const BigInt ALPHABET_SIZE(TOTAL_CHAR_COUNT);
 
 ////////////////////////////////////////////////////////////
 
 class Cryptosystem {
-// private:
-//   Key publicKey, privateKey;
-//   Text plainText, cipherText;
-//   PaddedText paddedPlainText, paddedCipherText;
-
 public:
 // purely virtual:
   virtual void generateKeys(Key &publicKey, Key &privateKey) = 0;
@@ -50,8 +58,14 @@ public:
 // non-virtual:
   void padText(PaddedText &paddedText, const Text &text);
 
-  void unpadText(Text &text, const PaddedText &paddedText);
+  void unpadText(Text &text, PaddedText &paddedText);
 };
+
+////////////////////////////////////////////////////////////
+
+UnsignedChar getUnsignedChar(const Char ch);
+
+Char getChar(const UnsignedChar uCh);
 
 ////////////////////////////////////////////////////////////
 
