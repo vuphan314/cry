@@ -3,3 +3,31 @@
 1. Short project description -- remind me.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Overview}
+\cry{} is a framework who's aim is to provide developers of
+new cryptosystems a convenient way to benchmark the
+aproximate effectiveness of their cryptosystem in
+development.
+
+\subsection{External Systems}
+\cry{} will make use of the GitHub version control system
+as the means of message transportation. Also, GitHub will
+provide inherent tamper protection, as any changes made
+to the repository will be evident. Implied is that each
+actor (sender, receiver, and eavesdropper) will have access
+to this said repository.
+
+\subsection{Use}
+The developers will be required to modify \cry{} s source
+code in several ways. For one, they will need to implement
+their cryptosystem as a subclass of our "Cryptosystem"
+class. As part of this process, they must override the
+"Cryptosystem" class' functions generateKeys, encrypt,
+decrypt, and cryptanalyze.
+
+\subsection{Other uses}
+\cry{} will allow users to send, receive, and perform
+cryptanalysis on the messages in an effort to view the
+plaintext without having access to the private key of
+the receiver.
