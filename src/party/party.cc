@@ -8,7 +8,10 @@ Party::Party(CryptosystemName cryptosystemName) {
   }
 }
 
+////////////////////////////////////////////////////////////
+// testing
+
 void Party::testParty() {
-  cout << "Testing party.\n";
+  cout << "Testing class Party.\n";
   cryptosystem->testCryptosystem();
 }

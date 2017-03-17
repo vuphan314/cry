@@ -1,5 +1,5 @@
 \section{Functionalities}
-(\vp)
+(\vp) \bigskip
 
 % 3. What functionalities are you implementing in the project?
 
@@ -10,8 +10,70 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Types:
+\begin{itemize}
+\item (unpadded) \code{Text}: a string of characters
+\item \code{PaddedText}: a big integer (GNU multiple-precision)
+\item \code{Key}: a tuple of big integers
+\end{itemize}
+
 \subsection{Implemented Functionalities}
+Base class \code{Cryptosystem}:
+\begin{enumerate}
+\item method \code{padText}:
+  \begin{itemize}
+  \item input: a \code{Text}
+  \item output: a \code{PaddedText}
+  \end{itemize}
+\item method \code{unpadText}:
+  \begin{itemize}
+  \item input: a \code{PaddedText}
+  \item output: a \code{Text}
+  \end{itemize}
+\end{enumerate}
+
+
+Testing:
+\begin{lstlisting}
+g++ -c cryptosystem/rsa_cryptosystem.cc -Ofast -lgmpxx -lgmp
+g++ -c cryptosystem/cryptosystem.cc -Ofast -lgmpxx -lgmp
+g++ -o cry.out main.o party.o rsa_cryptosystem.o cryptosystem.o -Ofast -lgmpxx -lgmp
+Testing class Party.
+Testing class RsaCryptosystem.
+Testing class Cryptosystem.
+Text: "my (unpaded) text".
+Padding.
+Padded text: 39632788699613389164935967891531403131245.
+Unpadding.
+Text: "my (unpaded) text".
+\end{lstlisting}
 
 \subsection{In-progress Functionalities}
+Derived class \code{RsaCryptosystem}:
+\begin{enumerate}
+\item method \code{generateKeys}:
+  \begin{itemize}
+  \item input: none
+  \item output: a public \code{Key}, a private \code{Key}
+  \end{itemize}
+\item method \code{encrypt}:
+  \begin{itemize}
+  \item input: a plain \code{Text}, a public \code{Key}
+  \item output: a cipher \code{Text}
+  \end{itemize}
+\item method \code{decrypt}:
+  \begin{itemize}
+  \item input: a cipher \code{Text}, a private \code{Key}
+  \item output: a plain \code{Text}
+  \end{itemize}
+\end{enumerate}
 
 \subsection{Future Functionalities}
+Derived class \code{RsaCryptosystem}:
+\begin{enumerate}
+\item method \code{cryptanalyze}:
+  \begin{itemize}
+  \item input: a cipher \code{Text}, a public \code{Key}
+  \item output: a plain \code{Text}
+  \end{itemize}
+\end{enumerate}

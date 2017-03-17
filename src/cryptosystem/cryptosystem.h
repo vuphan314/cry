@@ -46,14 +46,15 @@ public:
   virtual void cryptanalyze(Text &plainText, // set this
     const Text &cipherText, const Key &publicKey) = 0;
 
-// impurely virtual:
-  virtual void testCryptosystem();
-
 // non-virtual:
   void padText(PaddedText &paddedText, const Text &text);
 
   void unpadText(Text &text,
     PaddedText paddedText); // pass by value
+
+// impurely virtual:
+// testing:
+  virtual void testCryptosystem();
 };
 
 ////////////////////////////////////////////////////////////

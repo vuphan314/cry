@@ -22,7 +22,7 @@ public:
     const Text &cipherText, const Key &publicKey);
 
 // testing:
-  // void testCryptosystem();
+  void testCryptosystem();
 };
 
 ////////////////////////////////////////////////////////////

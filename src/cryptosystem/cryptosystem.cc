@@ -1,28 +1,6 @@
 #include "cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
-// impurely virtual
-
-void Cryptosystem::testCryptosystem() {
-  cout << "Testing cryptosystem.\n";
-
-  Text text("\n\n\n\tHey Lex :)\n\n\tIt's Vi ;)\n\n\n");
-  cout << "Text: ";
-  printText(text);
-  cout << ".\n";
-
-  PaddedText paddedText;
-  padText(paddedText, text);
-  cout << "Padded text: " << paddedText << ".\n";
-
-  unpadText(text, paddedText);
-  cout << "Text: ";
-  printText(text);
-  cout << ".\n";
-}
-
-////////////////////////////////////////////////////////////
-// non-virtual
 
 void Cryptosystem::padText(PaddedText &paddedText,
     const Text &text) {
@@ -48,6 +26,27 @@ void Cryptosystem::unpadText(Text &text,
     text.push_back(getChar(paddedChar.get_ui()));
     paddedText /= ALPHABET_SIZE;
   }
+}
+
+////////////////////////////////////////////////////////////
+// testing
+
+void Cryptosystem::testCryptosystem() {
+  cout << "Testing class Cryptosystem.\n";
+
+  Text text("my (unpaded) text");
+  cout << "Text: ";
+  printText(text);
+  cout << ".\n";
+
+  PaddedText paddedText;
+  padText(paddedText, text);
+  cout << "Padded text: " << paddedText << ".\n";
+
+  unpadText(text, paddedText);
+  cout << "Text: ";
+  printText(text);
+  cout << ".\n";
 }
 
 ////////////////////////////////////////////////////////////
