@@ -18,22 +18,16 @@ using Int = unsigned long long; // small
 
 using BigInt = mpz_class; // multiple-precision integer
 
-using PaddedText = BigInt;
-
 using KeyElement = BigInt;
 using Key = vector<KeyElement>;
 
-using UnsignedChar = unsigned char;
+using PaddedText = BigInt;
 
-using Char = char; // signed
-using String = basic_string<Char>;
-using Text = String; // unpadded
+using Text = string; // unpadded
 
 ////////////////////////////////////////////////////////////
 
-const unsigned int TOTAL_CHAR_COUNT = 256;
-
-const BigInt ALPHABET_SIZE(TOTAL_CHAR_COUNT);
+const BigInt ALPHABET_SIZE(256);
 
 ////////////////////////////////////////////////////////////
 
@@ -58,16 +52,16 @@ public:
 // non-virtual:
   void padText(PaddedText &paddedText, const Text &text);
 
-  void unpadText(Text &text, PaddedText &paddedText);
+  void unpadText(Text &text, PaddedText &paddedText); // todo const
 };
 
 ////////////////////////////////////////////////////////////
 
-void testCharSign();
+void testCharConversion();
 
-UnsignedChar getUnsignedChar(const Char ch);
+unsigned char getUnsignedChar(char ch);
 
-Char getChar(const UnsignedChar uCh);
+char getChar(unsigned char uCh);
 
 ////////////////////////////////////////////////////////////
 

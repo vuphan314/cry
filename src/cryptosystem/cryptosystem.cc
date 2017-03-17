@@ -47,21 +47,34 @@ void Cryptosystem::unpadText(Text &text,
 
 ////////////////////////////////////////////////////////////
 
-void testCharSign() {
-  cout << "Testing char sign.\n";
+void testCharConversion() {
+  cout << "Testing char conversion.\n";
+  for (int ch = -128; ch < 128; ch++) { // `char ch` would wrap, looping forever
+    if (getChar(getUnsignedChar(ch)) != ch) {
+      cout << "Incorrect.\n";
+      return;
+    }
+  }
+  for (unsigned int uCh = 0; uCh < 256; uCh++) {
+    if (getUnsignedChar(getChar(uCh)) != uCh) {
+      cout << "Incorrect.\n";
+      return;
+    }
+  }
+  cout << "Correct.\n";
 }
 
-UnsignedChar getUnsignedChar(const Char ch) {
+unsigned char getUnsignedChar(char ch) {
   if (ch < 0) {
-    return ch + TOTAL_CHAR_COUNT;
+    return ch + 256;
   } else {
     return ch;
   }
 }
 
-Char getChar(const UnsignedChar uCh) {
+char getChar(unsigned char uCh) {
   if (uCh >= 128) {
-    return uCh - TOTAL_CHAR_COUNT;
+    return uCh - 256;
   } else {
     return uCh;
   }
