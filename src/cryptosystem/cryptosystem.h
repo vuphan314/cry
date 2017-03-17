@@ -52,8 +52,13 @@ public:
 // non-virtual:
   void padText(PaddedText &paddedText, const Text &text);
 
-  void unpadText(Text &text, PaddedText &paddedText); // todo const
+  void unpadText(Text &text,
+    PaddedText paddedText); // pass by value
 };
+
+////////////////////////////////////////////////////////////
+
+void printText(const Text &text);
 
 ////////////////////////////////////////////////////////////
 

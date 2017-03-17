@@ -7,13 +7,18 @@ void Cryptosystem::testCryptosystem() {
   cout << "Testing cryptosystem.\n";
 
   Text text("\n\n\n\tHey Lex :)\n\n\tIt's Vi ;)\n\n\n");
+  cout << "Text: ";
+  printText(text);
+  cout << ".\n";
 
   PaddedText paddedText;
   padText(paddedText, text);
   cout << "Padded text: " << paddedText << ".\n";
 
   unpadText(text, paddedText);
-  cout << "Text: \"" << text << "\".\n";
+  cout << "Text: ";
+  printText(text);
+  cout << ".\n";
 }
 
 ////////////////////////////////////////////////////////////
@@ -34,7 +39,7 @@ void Cryptosystem::padText(PaddedText &paddedText,
 }
 
 void Cryptosystem::unpadText(Text &text,
-    PaddedText &paddedText) {
+    PaddedText paddedText) {
   cout << "Unpadding.\n";
   text.clear();
   BigInt paddedChar;
@@ -47,9 +52,16 @@ void Cryptosystem::unpadText(Text &text,
 
 ////////////////////////////////////////////////////////////
 
+void printText(const Text &text) {
+  cout << "\"" << text << "\"";
+}
+
+////////////////////////////////////////////////////////////
+
 void testCharConversion() {
   cout << "Testing char conversion.\n";
-  for (int ch = -128; ch < 128; ch++) { // `char ch` would wrap, looping forever
+  for (int ch = -128; ch < 128; ch++) {
+      // `char ch` would do 127++ == -128, looping forever
     if (getChar(getUnsignedChar(ch)) != ch) {
       cout << "Incorrect.\n";
       return;
