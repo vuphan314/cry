@@ -17,7 +17,10 @@ Types:
 \item \code{Key}: a tuple of big integers
 \end{itemize}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Implemented Functionalities}
+
 Base class \code{Cryptosystem}:
 \begin{enumerate}
 \item method \code{padText}:
@@ -32,9 +35,13 @@ Base class \code{Cryptosystem}:
   \end{itemize}
 \end{enumerate}
 
-
 Testing:
+\begin{verbatim}
+vu@Vu-PC:~/repos/cry/src$ ./main.sh
+\end{verbatim}
 \begin{lstlisting}
+g++ -c main.cc -Ofast -lgmpxx -lgmp
+g++ -c party/party.cc -Ofast -lgmpxx -lgmp
 g++ -c cryptosystem/rsa_cryptosystem.cc -Ofast -lgmpxx -lgmp
 g++ -c cryptosystem/cryptosystem.cc -Ofast -lgmpxx -lgmp
 g++ -o cry.out main.o party.o rsa_cryptosystem.o cryptosystem.o -Ofast -lgmpxx -lgmp
@@ -48,7 +55,10 @@ Unpadding.
 Text: "my (unpaded) text".
 \end{lstlisting}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{In-progress Functionalities}
+
 Derived class \code{RsaCryptosystem}:
 \begin{enumerate}
 \item method \code{generateKeys}:
@@ -68,7 +78,10 @@ Derived class \code{RsaCryptosystem}:
   \end{itemize}
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \subsection{Future Functionalities}
+
 Derived class \code{RsaCryptosystem}:
 \begin{enumerate}
 \item method \code{cryptanalyze}:
