@@ -8,6 +8,20 @@
 ////////////////////////////////////////////////////////////
 
 class RsaCryptosystem : public Cryptosystem {
+private:
+  KeyElement modulus, // n, public
+    publicExponent, // e, public
+    privateExponent; // d, private
+  Text plainText, cipherText;
+  PaddedText paddedPlainText, paddedCipherText; // temporary
+
+  void setKeyElements();
+    // set: modulus, publicExponent, privateExponent
+
+  void setCipherText();
+    // get: modulus, publicExponent, plainText
+    // set: cipherText
+
 public:
   void generateKeys(Key &publicKey, Key &privateKey);
     // set these
