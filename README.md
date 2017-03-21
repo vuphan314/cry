@@ -3,19 +3,18 @@
 # Cry
 cryptographic framework
 
+## contributors
+- [Daniel Dunning][dd]
+- [Michael DeGraw][md]
+- [Vu Phan][vp]
+
+## status
+under development
+
 ## links
 - [find files][find]
 - [releases/deliverables][releases]
 - [C++ source][src]
-
-<!-- - projects
-  - 1 (project plan)
-    - [presentation][presentation1]
-    - [report][report1]
-  - 2 (software requirements specification)
-    - [presentation][presentation2]
-    - [report][report2]
-    - [interview][interview2] -->
 
 ## convention
 preferred max line length: 60-character
@@ -34,15 +33,12 @@ preferred max line length: 60-character
 
 <!--------------------------------------------------------->
 
+[dd]:https://github.com/dannydthesloth
+[md]:https://github.com/electr0sheep
+[vp]:https://github.com/vuphan314
+
 [find]:https://github.com/vuphan314/cry/find/master
 [releases]:https://github.com/vuphan314/cry/releases
 [src]:https://github.com/vuphan314/cry/tree/master/src
-
-<!-- [presentation1]:https://github.com/vuphan314/cry/blob/master/project1/presentation/presentation.pdf
-[report1]:https://github.com/vuphan314/cry/blob/master/project1/report/report.pdf
-
-[presentation2]:https://github.com/vuphan314/cry/blob/master/project2/presentation/presentation.pdf
-[report2]:https://github.com/vuphan314/cry/blob/master/project2/report/report.pdf
-[interview2]:https://github.com/vuphan314/cry/blob/master/project2/interview/interview.pdf -->
 
 [tikzuml]:http://perso.ensta-paristech.fr/~kielbasi/tikzuml/
