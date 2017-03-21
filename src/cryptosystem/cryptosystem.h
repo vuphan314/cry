@@ -34,8 +34,9 @@ const BigInt ALPHABET_SIZE(256);
 class Cryptosystem {
 public:
 // purely virtual:
-  virtual void generateKeys(Key &publicKey, Key &privateKey) = 0;
-    // set these
+  virtual void generateKeys
+    (Key &publicKey, Key &privateKey) // set these
+    = 0;
 
   virtual void encrypt(Text &cipherText, // set this
     const Text &plainText, const Key &publicKey) = 0;
