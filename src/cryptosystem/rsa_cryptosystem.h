@@ -15,12 +15,21 @@ private:
   Text plainText, cipherText;
   PaddedText paddedPlainText, paddedCipherText; // temporary
 
-  void setKeyElements();
+// overloaded:
+  void generateKeys();
     // set: modulus, publicExponent, privateExponent
 
-  void setCipherText();
-    // get: modulus, publicExponent, plainText
+  void encrypt();
     // set: cipherText
+    // get: plainText, modulus, publicExponent
+
+  void decrypt();
+    // set: plainText
+    // get: cipherText, modulus, privateKey
+
+  void cryptanalyze();
+    // set: plainText
+    // get: cipherText, modulus, publicKey
 
 public:
   void generateKeys(Key &publicKey, Key &privateKey);
@@ -36,7 +45,7 @@ public:
     const Text &cipherText, const Key &publicKey);
 
 // testing:
-  void testCryptosystem();
+  Bool testCryptosystem();
 };
 
 ////////////////////////////////////////////////////////////

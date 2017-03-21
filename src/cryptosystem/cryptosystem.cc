@@ -5,6 +5,7 @@
 void Cryptosystem::padText(PaddedText &paddedText,
     const Text &text) {
   cout << "Padding.\n";
+  paddedText = 0;
   BigInt multiplier(1);
   Int i = 0, n = text.size();
   if (n) {
@@ -31,10 +32,10 @@ void Cryptosystem::unpadText(Text &text,
 ////////////////////////////////////////////////////////////
 // testing
 
-void Cryptosystem::testCryptosystem() {
+Bool Cryptosystem::testCryptosystem() {
   cout << "Testing class Cryptosystem.\n";
 
-  Text text("my (unpaded) text");
+  Text text("this string is my original text");
   cout << "Text: ";
   printText(text);
   cout << ".\n";
@@ -43,10 +44,17 @@ void Cryptosystem::testCryptosystem() {
   padText(paddedText, text);
   cout << "Padded text: " << paddedText << ".\n";
 
-  unpadText(text, paddedText);
-  cout << "Text: ";
-  printText(text);
+  Text unpaddedText;
+  unpadText(unpaddedText, paddedText);
+  cout << "Unpadded text: ";
+  printText(unpaddedText);
   cout << ".\n";
+
+  if (unpaddedText == text) {
+    return TRUE;
+  } else {
+    return FALSE;
+  }
 }
 
 ////////////////////////////////////////////////////////////
@@ -56,24 +64,6 @@ void printText(const Text &text) {
 }
 
 ////////////////////////////////////////////////////////////
-
-void testCharConversion() {
-  cout << "Testing char conversion.\n";
-  for (int ch = -128; ch < 128; ch++) {
-      // `char ch` would do 127++ == -128, looping forever
-    if (getChar(getUnsignedChar(ch)) != ch) {
-      cout << "Incorrect.\n";
-      return;
-    }
-  }
-  for (unsigned int uCh = 0; uCh < 256; uCh++) {
-    if (getUnsignedChar(getChar(uCh)) != uCh) {
-      cout << "Incorrect.\n";
-      return;
-    }
-  }
-  cout << "Correct.\n";
-}
 
 unsigned char getUnsignedChar(char ch) {
   if (ch < 0) {
@@ -89,4 +79,23 @@ char getChar(unsigned char uCh) {
   } else {
     return uCh;
   }
+}
+
+Bool testCharConversion() {
+  cout << "Testing char conversion.\n";
+  for (int ch = -128; ch < 128; ch++) {
+      // `char ch` would do 127++ == -128, looping forever
+    if (getChar(getUnsignedChar(ch)) != ch) {
+      cout << "Incorrect.\n";
+      return FALSE;
+    }
+  }
+  for (unsigned int uCh = 0; uCh < 256; uCh++) {
+    if (getUnsignedChar(getChar(uCh)) != uCh) {
+      cout << "Incorrect.\n";
+      return FALSE;
+    }
+  }
+  cout << "Correct.\n";
+  return TRUE;
 }
