@@ -5,5 +5,9 @@
 int main() {
   CryptosystemName cryptosystemName = RSA;
   Party party(cryptosystemName);
-  party.testParty();
+  if (party.testParty()) {
+    cout << "Test passed.\n";
+  } else {
+    cout << "Test failed.\n";
+  }
 }

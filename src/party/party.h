@@ -19,7 +19,7 @@ public:
   Party(CryptosystemName cryptosystemName);
 
 // testing:
-  void testParty();
+  Bool testParty();
 };
 
 ////////////////////////////////////////////////////////////
