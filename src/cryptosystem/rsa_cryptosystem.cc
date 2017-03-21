@@ -18,6 +18,6 @@ void RsaCryptosystem::cryptanalyze(Text &plainText,
 // testing
 
 Bool RsaCryptosystem::testCryptosystem() {
-  cout << "Testing class RsaCryptosystem.\n";
+  std::cout << "Testing class RsaCryptosystem.\n";
   return Cryptosystem::testCryptosystem();
 }

@@ -3,8 +3,6 @@
 
 ////////////////////////////////////////////////////////////
 
-using namespace std;
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -19,11 +17,11 @@ using Int = unsigned long long; // small
 using BigInt = mpz_class; // multiple-precision integer
 
 using KeyElement = BigInt;
-using Key = vector<KeyElement>;
+using Key = std::vector<KeyElement>;
 
 using PaddedText = BigInt;
 
-using Text = string; // unpadded
+using Text = std::string; // unpadded
 
 using Bool = char;
   // 1-byte char is more efficient than 2-byte bool

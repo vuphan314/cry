@@ -12,6 +12,6 @@ Party::Party(CryptosystemName cryptosystemName) {
 // testing
 
 Bool Party::testParty() {
-  cout << "Testing class Party.\n";
+  std::cout << "Testing class Party.\n";
   return cryptosystem->testCryptosystem();
 }
