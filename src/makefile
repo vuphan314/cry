@@ -29,4 +29,4 @@ cryptosystem/cryptosystem.cc
 ############################################################
 
 clean:
-	rm *.o $(EXECUTABLE)
+	rm -f *.o $(EXECUTABLE)
