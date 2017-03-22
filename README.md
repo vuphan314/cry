@@ -41,7 +41,7 @@ preferred max line length: 60-character
 - with a terminal:
   ```
   cd src/
-  make
+  ./main.sh
   ```
 
 ## acknowledgement
