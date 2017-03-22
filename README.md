@@ -3,6 +3,15 @@
 # Cry
 cryptographic framework
 
+# Dependencies
+[GMP][gmp]
+
+### GMP on Mac OS
+- with a terminal using [Homebrew][homebrew]:
+  ```
+  brew install gmp
+  ```
+
 ## contributors
 - [Daniel Dunning][dd]
 - [Michael DeGraw][md]
@@ -28,6 +37,13 @@ preferred max line length: 60-character
   latexmk -pdf -synctex=1 report.tex
   ```
 
+## C source compilation
+- with a terminal:
+  ```
+  cd src/
+  make
+  ```
+
 ## acknowledgement
 [TikZ-UML][tikzuml]: TeX package for UML diagrams
 
@@ -42,3 +58,5 @@ preferred max line length: 60-character
 [src]:https://github.com/vuphan314/cry/tree/master/src
 
 [tikzuml]:http://perso.ensta-paristech.fr/~kielbasi/tikzuml/
+[gmp]:https://gmplib.org/
+[homebrew]:https://brew.sh/
