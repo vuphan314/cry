@@ -2,4 +2,4 @@
 # reset
 make
 ./cry.out
-make clean
+# make clean
