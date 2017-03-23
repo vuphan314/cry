@@ -31,7 +31,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\crygithub}{\url{https://github.com/vuphan314/cry}}
+\newcommand{\crygithub}{
+  \url{https://github.com/vuphan314/cry}}
 
 \newcommand{\deliv}[2]{\cry{} -- #1 \\ #2}
 \newcommand{\pp}{Project 1 (Project Plan)}
@@ -134,7 +135,8 @@
 \newcommand{\bob}{\party{Bob}}
 \newcommand{\eve}{\party{Eve}}
 
-\newcommand{\plaintextex}{\quotes{Eve is politically incorrect.}}
+\newcommand{\plaintextex}{
+  \quotes{Eve is politically incorrect.}}
 \newcommand{\ciphertextex}{\quotes
   {sdofAOVI29347asdjkADB234askdjnABGK239487239847}}
 
@@ -195,7 +197,8 @@
   {\$ cry cryptanalyze -\cs=\csarg{} \textbackslash \\
   > -publickey=\publickeyarg{} -ciphertext=\ciphertextarg}}
 \newcommand{\cryptanalyzeout}{\codestt
-  {The plaintext is \plaintextarg{} (took \cryptanalyzetime).}}
+  {The plaintext is \plaintextarg{}
+  (took \cryptanalyzetime).}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % cry commands: demo
@@ -212,7 +215,8 @@
 \newcommand{\generatekeysindemo}{\codestt
   {\$ cry generatekeys -\cs=\csdemo{} -name=\bobdemo}}
 \newcommand{\generatekeysoutdemo}{\codestt
-  {files \private{\bobdemo} and \public{\bobdemo} were created}}
+  {files \private{\bobdemo} and \public{\bobdemo}
+  were created}}
 
 \newcommand{\encryptindemo}{\codestt
   {\$ cry encrypt
