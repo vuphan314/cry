@@ -1,0 +1,7 @@
+#include "tutorial.h"
+
+////////////////////////////////////////////////////////////
+
+void testTypes() {
+  cout << "Testing types.\n";
+}
