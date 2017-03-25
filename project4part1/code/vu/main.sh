@@ -1,5 +1,5 @@
 # clear
 # reset
 make
-./cry.out
+./vu.out
 # make clean
