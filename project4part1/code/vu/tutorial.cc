@@ -2,6 +2,6 @@
 
 ////////////////////////////////////////////////////////////
 
-void testTypes() {
-  cout << "Testing types.\n";
+void testTutorial() {
+  cout << "Testing tutorial.\n";
 }
