@@ -18,6 +18,8 @@ void testTutorial();
 
 void testTypes();
 
+void testOperators();
+
 ////////////////////////////////////////////////////////////
 
 #endif
