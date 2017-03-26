@@ -8,21 +8,21 @@ DummyTester::DummyTester() {
 }
 
 Bool DummyTester::testKeyGeneration() {
-  std::cout << "Testing dummy key-generation: passed.\n";
+  std::cout << "method DummyTester::testKeyGeneration\n";
   return TRUE;
 }
 
 Bool DummyTester::testEncryption() {
-  std::cout << "Testing dummy encryption: passed.\n";
+  std::cout << "method DummyTester::testEncryption\n";
   return TRUE;
 }
 
 Bool DummyTester::testDecryption() {
-  std::cout << "Testing dummy decryption: passed.\n";
+  std::cout << "method DummyTester::testDecryption\n";
   return TRUE;
 }
 
 Bool DummyTester::testCryptanalysis() {
-  std::cout << "Testing dummy cryptanalysis: passed.\n";
+  std::cout << "method DummyTester::testCryptanalysis\n";
   return TRUE;
 }

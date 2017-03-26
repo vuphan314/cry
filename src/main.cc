@@ -3,13 +3,16 @@
 ////////////////////////////////////////////////////////////
 
 int main() {
-  CryptosystemName cryptosystemName = RSA;
-  Tester *Tester =
-    getTester(cryptosystemName);
-  Bool success = Tester->testAll();
-  if (success) {
-    std::cout << "All tests passed.\n";
-  } else {
-    std::cout << "Some test failed.\n";
+  std::vector<CryptosystemName>
+    cryptosystemNames{RSA, DUMMY};
+  for (CryptosystemName cryptosystemName :
+      cryptosystemNames) {
+    std::cout << "\n";
+    Party party(cryptosystemName);
+    if (party.testParty()) {
+      std::cout << "All tests passed.\n";
+    } else {
+      std::cout << "Some test failed.\n";
+    }
   }
 }

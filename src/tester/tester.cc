@@ -4,7 +4,7 @@
 // class Tester:
 
 Bool Tester::testAll() {
-  std::cout << "Testing cryptosystem.\n";
+  std::cout << "method Tester::testAll\n";
   return testKeyGeneration() && testEncryption() &&
     testDecryption() && testCryptanalysis();
 }
