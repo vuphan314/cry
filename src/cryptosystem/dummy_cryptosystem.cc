@@ -16,9 +16,9 @@ void DummyCryptosystem::cryptanalyze(Text &plainText,
 
 ////////////////////////////////////////////////////////////
 
-// DummyCryptosystemTester::DummyCryptosystemTester() {
-//   CryptosystemTester::CryptosystemTester(DUMMY);
-// }
+DummyCryptosystemTester::DummyCryptosystemTester() {
+  cryptosystem = new DummyCryptosystem;
+}
 
 Bool DummyCryptosystemTester::testKeyGeneration() {
   std::cout << "Testing dummy key generation: passed.\n";

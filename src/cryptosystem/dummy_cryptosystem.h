@@ -9,9 +9,8 @@
 
 class DummyCryptosystem : public Cryptosystem {
 public:
-  void generateKeys(
-    Key &publicKey, Key &privateKey // set these
-    );
+  void generateKeys(Key &publicKey, Key &privateKey);
+    // set these
 
   void encrypt(Text &cipherText, // set this
     const Text &plainText, const Key &publicKey);
@@ -27,7 +26,7 @@ public:
 
 class DummyCryptosystemTester : public CryptosystemTester {
 public:
-  // DummyCryptosystemTester();
+  DummyCryptosystemTester();
 
   Bool testKeyGeneration();
 

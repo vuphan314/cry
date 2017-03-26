@@ -35,8 +35,10 @@ const Bool FALSE = false;
 
 ////////////////////////////////////////////////////////////
 
-class Cryptosystem {
+class Cryptosystem { // abstract
 public:
+// purely virtual methods,
+// must be defined by non-abstract derived class:
   virtual void generateKeys(
     Key &publicKey, Key &privateKey // set these
     ) = 0;
@@ -69,13 +71,16 @@ void printText(const Text &text);
 
 ////////////////////////////////////////////////////////////
 
-class CryptosystemTester {
+class CryptosystemTester { // abstract
 protected:
   Cryptosystem *cryptosystem;
+    // set by constructor of non-abstract derived class
 
 public:
   Bool testAll();
 
+// purely virtual methods,
+// must be defined by non-abstract derived class:
   virtual Bool testKeyGeneration() = 0;
 
   virtual Bool testEncryption() = 0;

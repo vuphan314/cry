@@ -2,27 +2,26 @@
 
 ////////////////////////////////////////////////////////////
 
-void padText(PaddedText &paddedText,
-    const Text &text) {
+void padText(PaddedText &paddedText, const Text &text) {
   std::cout << "Padding.\n";
   paddedText = 0;
   BigInt multiplier(1);
   SizeT i = 0, n = text.size();
-  if (n) {
+  if (n > 0) {
     do {
-      paddedText += getUnsignedChar(text.at(i)) * multiplier;
+      paddedText += getUnsignedChar(text.at(i)) *
+        multiplier;
       multiplier *= ALPHABET_SIZE;
       i++;
     } while (i < n);
   }
 }
 
-void unpadText(Text &text,
-    PaddedText paddedText) {
+void unpadText(Text &text, PaddedText paddedText) {
   std::cout << "Unpadding.\n";
   text.clear();
   BigInt paddedChar;
-  while (paddedText>0) {
+  while (paddedText > 0) {
     paddedChar = paddedText % ALPHABET_SIZE;
     text.push_back(getChar(paddedChar.get_ui()));
     paddedText /= ALPHABET_SIZE;
@@ -71,17 +70,17 @@ Bool testCharConversion() {
   for (int ch = -128; ch < 128; ch++) {
       // `char ch` would do 127++ == -128, looping forever
     if (getChar(getUnsignedChar(ch)) != ch) {
-      std::cout << "Incorrect.\n";
+      std::cout << "Test failed.\n";
       return FALSE;
     }
   }
   for (unsigned int uCh = 0; uCh < 256; uCh++) {
     if (getUnsignedChar(getChar(uCh)) != uCh) {
-      std::cout << "Incorrect.\n";
+      std::cout << "Test failed.\n";
       return FALSE;
     }
   }
-  std::cout << "Correct.\n";
+  std::cout << "Test passed.\n";
   return TRUE;
 }
 
@@ -92,7 +91,7 @@ void printText(const Text &text) {
 ////////////////////////////////////////////////////////////
 
 Bool CryptosystemTester::testAll() {
-  std::cout << "Testing all.\n";
+  std::cout << "Testing all of cryptosystem.\n";
   return testKeyGeneration() && testEncryption() &&
     testDecryption() && testCryptanalysis();
 }

@@ -5,8 +5,8 @@
 Cryptosystem *getCryptosystem(
     CryptosystemName cryptosystemName) {
   switch (cryptosystemName) {
-    // case RSA:
-    //   return new RsaCryptosystem;
+    case RSA:
+      return new RsaCryptosystem;
     case DUMMY:
       return new DummyCryptosystem;
     default:
@@ -18,8 +18,8 @@ Cryptosystem *getCryptosystem(
 CryptosystemTester *getCryptosystemTester(
     CryptosystemName cryptosystemName) {
   switch (cryptosystemName) {
-    // case RSA:
-    //   return new RsaCryptosystemTester;
+    case RSA:
+      return new RsaCryptosystemTester;
     case DUMMY:
       return new DummyCryptosystemTester;
     default:
@@ -32,7 +32,8 @@ CryptosystemTester *getCryptosystemTester(
 
 Party::Party(CryptosystemName cryptosystemName) {
   cryptosystem = getCryptosystem(cryptosystemName);
-  cryptosystemTester = getCryptosystemTester(cryptosystemName);
+  cryptosystemTester = getCryptosystemTester(
+    cryptosystemName);
 }
 
 ////////////////////////////////////////////////////////////

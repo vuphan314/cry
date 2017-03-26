@@ -47,4 +47,19 @@ public:
 
 ////////////////////////////////////////////////////////////
 
+class RsaCryptosystemTester : public CryptosystemTester {
+public:
+  RsaCryptosystemTester();
+
+  Bool testKeyGeneration();
+
+  Bool testEncryption();
+
+  Bool testDecryption();
+
+  Bool testCryptanalysis();
+};
+
+////////////////////////////////////////////////////////////
+
 #endif // CRYPTOSYSTEM_RSACRYPTOSYSTEM_H

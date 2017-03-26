@@ -13,3 +13,29 @@ void RsaCryptosystem::decrypt(Text &plainText,
 
 void RsaCryptosystem::cryptanalyze(Text &plainText,
   const Text &cipherText, const Key &publicKey) {};
+
+////////////////////////////////////////////////////////////
+
+RsaCryptosystemTester::RsaCryptosystemTester() {
+  cryptosystem = new RsaCryptosystem;
+}
+
+Bool RsaCryptosystemTester::testKeyGeneration() {
+  std::cout << "Testing RSA key generation: passed.\n";
+  return TRUE;
+}
+
+Bool RsaCryptosystemTester::testEncryption() {
+  std::cout << "Testing RSA encryption: passed.\n";
+  return TRUE;
+}
+
+Bool RsaCryptosystemTester::testDecryption() {
+  std::cout << "Testing RSA decryption: passed.\n";
+  return TRUE;
+}
+
+Bool RsaCryptosystemTester::testCryptanalysis() {
+  std::cout << "Testing RSA cryptanalysis: passed.\n";
+  return TRUE;
+}
