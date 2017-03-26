@@ -4,9 +4,9 @@
 
 int main() {
   CryptosystemName cryptosystemName = RSA;
-  CryptosystemTester *cryptosystemTester =
-    getCryptosystemTester(cryptosystemName);
-  Bool success = cryptosystemTester->testAll();
+  Tester *Tester =
+    getTester(cryptosystemName);
+  Bool success = Tester->testAll();
   if (success) {
     std::cout << "All tests passed.\n";
   } else {

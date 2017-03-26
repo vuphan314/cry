@@ -3,30 +3,25 @@
 
 ////////////////////////////////////////////////////////////
 
-#include "../cryptosystem/rsa_cryptosystem.h"
-#include "../cryptosystem/dummy_cryptosystem.h"
+#include "../tester/dummy_tester.h"
+#include "../tester/rsa_tester.h"
 
 ////////////////////////////////////////////////////////////
 
 enum CryptosystemName {DUMMY, RSA};
 
-Cryptosystem *getCryptosystem(
-  CryptosystemName cryptosystemName);
-
-CryptosystemTester *getCryptosystemTester(
+Tester *getTester(
   CryptosystemName cryptosystemName);
 
 ////////////////////////////////////////////////////////////
 
 class Party {
 protected:
-  Cryptosystem *cryptosystem;
-  CryptosystemTester *cryptosystemTester;
+  Tester *tester;
 
 public:
   Party(CryptosystemName cryptosystemName);
 
-// testing:
   Bool testParty();
 };
 

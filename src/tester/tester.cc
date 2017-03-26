@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////
 // class Tester:
 
-Bool CryptosystemTester::testAll() {
+Bool Tester::testAll() {
   std::cout << "Testing cryptosystem.\n";
   return testKeyGeneration() && testEncryption() &&
     testDecryption() && testCryptanalysis();

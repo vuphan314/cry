@@ -8,7 +8,7 @@ DummyTester::DummyTester() {
 }
 
 Bool DummyTester::testKeyGeneration() {
-  std::cout << "Testing dummy key generation: passed.\n";
+  std::cout << "Testing dummy key-generation: passed.\n";
   return TRUE;
 }
 
@@ -22,7 +22,7 @@ Bool DummyTester::testDecryption() {
   return TRUE;
 }
 
-Bool DummyCryptosystemTester::testCryptanalysis() {
+Bool DummyTester::testCryptanalysis() {
   std::cout << "Testing dummy cryptanalysis: passed.\n";
   return TRUE;
 }

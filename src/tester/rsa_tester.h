@@ -1,16 +1,16 @@
-#ifndef TESTER_DUMMYTESTER_H
-#define TESTER_DUMMYTESTER_H
+#ifndef TESTER_RSATESTER_H
+#define TESTER_RSATESTER_H
 
 ////////////////////////////////////////////////////////////
 
-#include "../cryptosystem/dummy_cryptosystem.h"
+#include "../cryptosystem/rsa_cryptosystem.h"
 #include "tester.h"
 
 ////////////////////////////////////////////////////////////
 
-class DummyTester : public Tester {
+class RsaTester : public Tester {
 public:
-  DummyTester();
+  RsaTester();
 
   Bool testKeyGeneration();
 

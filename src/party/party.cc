@@ -1,27 +1,15 @@
 #include "party.h"
 
 ////////////////////////////////////////////////////////////
+// enum CryptosystemName:
 
-Cryptosystem *getCryptosystem(
+Tester *getTester(
     CryptosystemName cryptosystemName) {
   switch (cryptosystemName) {
     case RSA:
-      return new RsaCryptosystem;
+      return new RsaTester;
     case DUMMY:
-      return new DummyCryptosystem;
-    default:
-      std::cout << "Wrong cryptosystem name.\n";
-      throw std::exception();
-  }
-}
-
-CryptosystemTester *getCryptosystemTester(
-    CryptosystemName cryptosystemName) {
-  switch (cryptosystemName) {
-    case RSA:
-      return new RsaCryptosystemTester;
-    case DUMMY:
-      return new DummyCryptosystemTester;
+      return new DummyTester;
     default:
       std::cout << "Wrong cryptosystem name.\n";
       throw std::exception();
@@ -29,17 +17,13 @@ CryptosystemTester *getCryptosystemTester(
 }
 
 ////////////////////////////////////////////////////////////
+// class Party:
 
 Party::Party(CryptosystemName cryptosystemName) {
-  cryptosystem = getCryptosystem(cryptosystemName);
-  cryptosystemTester = getCryptosystemTester(
-    cryptosystemName);
+  tester = getTester(cryptosystemName);
 }
-
-////////////////////////////////////////////////////////////
-// testing
 
 Bool Party::testParty() {
   std::cout << "Testing class Party.\n";
-  return cryptosystemTester->testAll();
+  return tester->testAll();
 }

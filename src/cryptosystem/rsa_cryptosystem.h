@@ -52,9 +52,9 @@ public:
 
 ////////////////////////////////////////////////////////////
 
-class RsaCryptosystemTester : public CryptosystemTester {
+class RsaTester : public Tester {
 public:
-  RsaCryptosystemTester();
+  RsaTester();
 
   Bool testKeyGeneration();
 

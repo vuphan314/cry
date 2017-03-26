@@ -1,6 +1,7 @@
 #include "rsa_cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
+// class RsaCryptosystem:
 
 void RsaCryptosystem::setPublicKeyElements(
     const Key &publicKey) {
@@ -14,11 +15,10 @@ void RsaCryptosystem::setPrivateKeyElements(
   privateExponent = privateKey.at(1);
 }
 
-////////////////////////////////////////////////////////////
-// private overloaded methods
+// private overloaded methods:
 
 void RsaCryptosystem::generateKeys() {
-// add actual key generation:
+// add actual key-generation:
   modulus = 3233;
   publicExponent = 17;
   privateExponent = 413;
@@ -45,8 +45,7 @@ void RsaCryptosystem::cryptanalyze() {
   unpadText(plainText, paddedPlainText);
 }
 
-////////////////////////////////////////////////////////////
-// public overloaded methods
+// public overloaded methods:
 
 void RsaCryptosystem::generateKeys(Key &publicKey,
     Key &privateKey) {
@@ -77,30 +76,4 @@ void RsaCryptosystem::cryptanalyze(Text &plainText,
   setPublicKeyElements(publicKey);
   cryptanalyze();
   plainText = this->plainText;
-}
-
-////////////////////////////////////////////////////////////
-
-RsaCryptosystemTester::RsaCryptosystemTester() {
-  cryptosystem = new RsaCryptosystem;
-}
-
-Bool RsaCryptosystemTester::testKeyGeneration() {
-  std::cout << "Testing RSA key generation: passed.\n";
-  return TRUE; // add actual test
-}
-
-Bool RsaCryptosystemTester::testEncryption() {
-  std::cout << "Testing RSA encryption: passed.\n";
-  return TRUE; // add actual test
-}
-
-Bool RsaCryptosystemTester::testDecryption() {
-  std::cout << "Testing RSA decryption: passed.\n";
-  return TRUE; // add actual test
-}
-
-Bool RsaCryptosystemTester::testCryptanalysis() {
-  std::cout << "Testing RSA cryptanalysis: passed.\n";
-  return TRUE; // add actual test
 }
