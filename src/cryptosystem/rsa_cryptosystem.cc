@@ -13,11 +13,3 @@ void RsaCryptosystem::decrypt(Text &plainText,
 
 void RsaCryptosystem::cryptanalyze(Text &plainText,
   const Text &cipherText, const Key &publicKey) {};
-
-////////////////////////////////////////////////////////////
-// testing
-
-Bool RsaCryptosystem::testCryptosystem() {
-  std::cout << "Testing class RsaCryptosystem.\n";
-  return Cryptosystem::testCryptosystem();
-}

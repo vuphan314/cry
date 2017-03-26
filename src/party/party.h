@@ -4,16 +4,24 @@
 ////////////////////////////////////////////////////////////
 
 #include "../cryptosystem/rsa_cryptosystem.h"
+#include "../cryptosystem/dummy_cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
 
-enum CryptosystemName {RSA}; // more to come
+enum CryptosystemName {DUMMY, RSA};
+
+Cryptosystem *getCryptosystem(
+  CryptosystemName cryptosystemName);
+
+CryptosystemTester *getCryptosystemTester(
+  CryptosystemName cryptosystemName);
 
 ////////////////////////////////////////////////////////////
 
 class Party {
 protected:
   Cryptosystem *cryptosystem;
+  CryptosystemTester *cryptosystemTester;
 
 public:
   Party(CryptosystemName cryptosystemName);

@@ -3,11 +3,11 @@
 ////////////////////////////////////////////////////////////
 
 int main() {
-  CryptosystemName cryptosystemName = RSA;
+  CryptosystemName cryptosystemName = DUMMY;
   Party party(cryptosystemName);
   if (party.testParty()) {
-    std::cout << "Test passed.\n";
+    std::cout << "All tests passed.\n";
   } else {
-    std::cout << "Test failed.\n";
+    std::cout << "Some test failed.\n";
   }
 }

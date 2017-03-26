@@ -2,10 +2,37 @@
 
 ////////////////////////////////////////////////////////////
 
-Party::Party(CryptosystemName cryptosystemName) {
+Cryptosystem *getCryptosystem(
+    CryptosystemName cryptosystemName) {
   switch (cryptosystemName) {
-    case RSA: cryptosystem = new RsaCryptosystem;
+    // case RSA:
+    //   return new RsaCryptosystem;
+    case DUMMY:
+      return new DummyCryptosystem;
+    default:
+      std::cout << "Wrong cryptosystem name.\n";
+      throw std::exception();
   }
+}
+
+CryptosystemTester *getCryptosystemTester(
+    CryptosystemName cryptosystemName) {
+  switch (cryptosystemName) {
+    // case RSA:
+    //   return new RsaCryptosystemTester;
+    case DUMMY:
+      return new DummyCryptosystemTester;
+    default:
+      std::cout << "Wrong cryptosystem name.\n";
+      throw std::exception();
+  }
+}
+
+////////////////////////////////////////////////////////////
+
+Party::Party(CryptosystemName cryptosystemName) {
+  cryptosystem = getCryptosystem(cryptosystemName);
+  cryptosystemTester = getCryptosystemTester(cryptosystemName);
 }
 
 ////////////////////////////////////////////////////////////
@@ -13,5 +40,5 @@ Party::Party(CryptosystemName cryptosystemName) {
 
 Bool Party::testParty() {
   std::cout << "Testing class Party.\n";
-  return cryptosystem->testCryptosystem();
+  return cryptosystemTester->testAll();
 }

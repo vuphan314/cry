@@ -2,12 +2,12 @@
 
 ////////////////////////////////////////////////////////////
 
-void Cryptosystem::padText(PaddedText &paddedText,
+void padText(PaddedText &paddedText,
     const Text &text) {
   std::cout << "Padding.\n";
   paddedText = 0;
   BigInt multiplier(1);
-  Int i = 0, n = text.size();
+  SizeT i = 0, n = text.size();
   if (n) {
     do {
       paddedText += getUnsignedChar(text.at(i)) * multiplier;
@@ -17,7 +17,7 @@ void Cryptosystem::padText(PaddedText &paddedText,
   }
 }
 
-void Cryptosystem::unpadText(Text &text,
+void unpadText(Text &text,
     PaddedText paddedText) {
   std::cout << "Unpadding.\n";
   text.clear();
@@ -29,11 +29,24 @@ void Cryptosystem::unpadText(Text &text,
   }
 }
 
-////////////////////////////////////////////////////////////
-// testing
+unsigned char getUnsignedChar(char ch) {
+  if (ch < 0) {
+    return ch + 256;
+  } else {
+    return ch;
+  }
+}
 
-Bool Cryptosystem::testCryptosystem() {
-  std::cout << "Testing class Cryptosystem.\n";
+char getChar(unsigned char uCh) {
+  if (uCh >= 128) {
+    return uCh - 256;
+  } else {
+    return uCh;
+  }
+}
+
+Bool testPaddingUnpadding() {
+  std::cout << "Testing padding/unpadding.\n";
 
   Text text("this string is my original text");
   std::cout << "Text: ";
@@ -50,35 +63,7 @@ Bool Cryptosystem::testCryptosystem() {
   printText(unpaddedText);
   std::cout << ".\n";
 
-  if (unpaddedText == text) {
-    return TRUE;
-  } else {
-    return FALSE;
-  }
-}
-
-////////////////////////////////////////////////////////////
-
-void printText(const Text &text) {
-  std::cout << "\"" << text << "\"";
-}
-
-////////////////////////////////////////////////////////////
-
-unsigned char getUnsignedChar(char ch) {
-  if (ch < 0) {
-    return ch + 256;
-  } else {
-    return ch;
-  }
-}
-
-char getChar(unsigned char uCh) {
-  if (uCh >= 128) {
-    return uCh - 256;
-  } else {
-    return uCh;
-  }
+  return unpaddedText == text;
 }
 
 Bool testCharConversion() {
@@ -98,4 +83,16 @@ Bool testCharConversion() {
   }
   std::cout << "Correct.\n";
   return TRUE;
+}
+
+void printText(const Text &text) {
+  std::cout << "\"" << text << "\"";
+}
+
+////////////////////////////////////////////////////////////
+
+Bool CryptosystemTester::testAll() {
+  std::cout << "Testing all.\n";
+  return testKeyGeneration() && testEncryption() &&
+    testDecryption() && testCryptanalysis();
 }
