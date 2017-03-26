@@ -10,7 +10,7 @@ Bool Tester::testAll() {
 }
 
 ////////////////////////////////////////////////////////////
-// helpers:
+// global functions:
 
 Bool testPaddingUnpadding() {
   std::cout << "Testing padding/unpadding.\n";

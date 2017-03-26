@@ -54,7 +54,7 @@ public:
 };
 
 ////////////////////////////////////////////////////////////
-// helpers:
+// global functions:
 
 void padText(PaddedText &paddedText, // set this
   const Text &text);

@@ -1,7 +1,7 @@
 #include "cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
-// helpers:
+// global functions:
 
 void padText(PaddedText &paddedText, const Text &text) {
   std::cout << "Padding.\n";

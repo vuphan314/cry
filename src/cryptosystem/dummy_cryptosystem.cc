@@ -1,6 +1,7 @@
 #include "dummy_cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
+// class DummyCryptosystem:
 
 void DummyCryptosystem::generateKeys(Key &publicKey,
   Key &privateKey) {};

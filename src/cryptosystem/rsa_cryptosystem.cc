@@ -3,6 +3,8 @@
 ////////////////////////////////////////////////////////////
 // class RsaCryptosystem:
 
+// private helper methods:
+
 void RsaCryptosystem::setPublicKeyElements(
     const Key &publicKey) {
   modulus = publicKey.at(0);
@@ -18,30 +20,30 @@ void RsaCryptosystem::setPrivateKeyElements(
 // private overloaded methods:
 
 void RsaCryptosystem::generateKeys() {
-// add actual key-generation:
   modulus = 3233;
   publicExponent = 17;
   privateExponent = 413;
+// replace the lines above by RSA key-generation
 }
 
 void RsaCryptosystem::encrypt() {
   padText(paddedPlainText, plainText);
   paddedCipherText = paddedPlainText;
-    // replace the line above by actual encyption
+    // replace the line above by RSA encyption
   unpadText(cipherText, paddedCipherText);
 }
 
 void RsaCryptosystem::decrypt() {
   padText(paddedCipherText, cipherText);
   paddedPlainText = paddedCipherText;
-    // replace the line above by actual decryption
+    // replace the line above by RSA decryption
   unpadText(plainText, paddedPlainText);
 }
 
 void RsaCryptosystem::cryptanalyze() {
   padText(paddedCipherText, cipherText);
   paddedPlainText = paddedCipherText;
-    // replace the line above by actual cryptanalysis
+    // replace the line above by RSA cryptanalysis
   unpadText(plainText, paddedPlainText);
 }
 

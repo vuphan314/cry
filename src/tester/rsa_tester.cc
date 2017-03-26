@@ -8,20 +8,20 @@ RsaTester::RsaTester() {
 
 Bool RsaTester::testKeyGeneration() {
   std::cout << "Testing RSA key-generation: passed.\n";
-  return TRUE; // add actual test
+  return TRUE; // replace by RSA test
 }
 
 Bool RsaTester::testEncryption() {
   std::cout << "Testing RSA encryption: passed.\n";
-  return TRUE; // add actual test
+  return TRUE; // replace by RSA test
 }
 
 Bool RsaTester::testDecryption() {
   std::cout << "Testing RSA decryption: passed.\n";
-  return TRUE; // add actual test
+  return TRUE; // replace by RSA test
 }
 
 Bool RsaTester::testCryptanalysis() {
   std::cout << "Testing RSA cryptanalysis: passed.\n";
-  return TRUE; // add actual test
+  return TRUE; // replace by RSA test
 }

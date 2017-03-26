@@ -15,6 +15,7 @@ private:
   Text plainText, cipherText;
   PaddedText paddedPlainText, paddedCipherText;
 
+// private helper methods:
   void setPublicKeyElements(const Key &publicKey);
 
   void setPrivateKeyElements(const Key &privateKey);
@@ -25,15 +26,15 @@ private:
 
   void encrypt();
     // set: cipherText
-    // given: plainText, modulus, publicExponent
+    // read: plainText, modulus, publicExponent
 
   void decrypt();
     // set: plainText
-    // given: cipherText, modulus, privateExponent
+    // read: cipherText, modulus, privateExponent
 
   void cryptanalyze();
     // set: plainText
-    // given: cipherText, modulus, publicExponent
+    // read: cipherText, modulus, publicExponent
 
 public:
 // public overloaded methods:
@@ -48,21 +49,6 @@ public:
 
   void cryptanalyze(Text &plainText, // set this
     const Text &cipherText, const Key &publicKey);
-};
-
-////////////////////////////////////////////////////////////
-
-class RsaTester : public Tester {
-public:
-  RsaTester();
-
-  Bool testKeyGeneration();
-
-  Bool testEncryption();
-
-  Bool testDecryption();
-
-  Bool testCryptanalysis();
 };
 
 ////////////////////////////////////////////////////////////

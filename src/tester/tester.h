@@ -27,7 +27,7 @@ public:
 };
 
 ////////////////////////////////////////////////////////////
-// helpers:
+// global functions:
 
 Bool testPaddingUnpadding();
 

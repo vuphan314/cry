@@ -10,9 +10,6 @@
 
 enum CryptosystemName {DUMMY, RSA};
 
-Tester *getTester(
-  CryptosystemName cryptosystemName);
-
 ////////////////////////////////////////////////////////////
 
 class Party {
@@ -24,6 +21,11 @@ public:
 
   Bool testParty();
 };
+
+////////////////////////////////////////////////////////////
+// global function:
+
+Tester *getTester(CryptosystemName cryptosystemName);
 
 ////////////////////////////////////////////////////////////
 
