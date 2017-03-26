@@ -1,7 +1,7 @@
 #include "tester.h"
 
 ////////////////////////////////////////////////////////////
-// class Testbed:
+// class Tester:
 
 Bool CryptosystemTester::testAll() {
   std::cout << "Testing cryptosystem.\n";

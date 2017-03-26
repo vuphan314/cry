@@ -7,7 +7,7 @@
 
 ////////////////////////////////////////////////////////////
 
-class Testbed { // abstract
+class Tester { // abstract
 protected:
   Cryptosystem *cryptosystem;
     // set by constructor of non-abstract derived class
