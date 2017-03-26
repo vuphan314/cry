@@ -24,19 +24,4 @@ public:
 
 ////////////////////////////////////////////////////////////
 
-class DummyCryptosystemTester : public CryptosystemTester {
-public:
-  DummyCryptosystemTester();
-
-  Bool testKeyGeneration();
-
-  Bool testEncryption();
-
-  Bool testDecryption();
-
-  Bool testCryptanalysis();
-};
-
-////////////////////////////////////////////////////////////
-
 #endif // CRYPTOSYSTEM_DUMMYCRYPTOSYSTEM_H
