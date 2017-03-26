@@ -53,6 +53,9 @@ public:
     const Text &cipherText, const Key &publicKey) = 0;
 };
 
+////////////////////////////////////////////////////////////
+// helpers:
+
 void padText(PaddedText &paddedText, // set this
   const Text &text);
 
@@ -62,33 +65,6 @@ void unpadText(Text &text, // set this
 unsigned char getUnsignedChar(char ch);
 
 char getChar(unsigned char uCh);
-
-Bool testPaddingUnpadding();
-
-Bool testCharConversion();
-
-void printText(const Text &text);
-
-////////////////////////////////////////////////////////////
-
-class CryptosystemTester { // abstract
-protected:
-  Cryptosystem *cryptosystem;
-    // set by constructor of non-abstract derived class
-
-public:
-  Bool testAll();
-
-// purely virtual methods,
-// must be defined by non-abstract derived class:
-  virtual Bool testKeyGeneration() = 0;
-
-  virtual Bool testEncryption() = 0;
-
-  virtual Bool testDecryption() = 0;
-
-  virtual Bool testCryptanalysis() = 0;
-};
 
 ////////////////////////////////////////////////////////////
 
