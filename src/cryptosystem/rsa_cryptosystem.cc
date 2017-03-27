@@ -28,6 +28,7 @@ void RsaCryptosystem::generateKeys() {
 
 void RsaCryptosystem::encrypt() {
   padText(paddedPlainText, plainText);
+  std::cout << "Daniel got this!\n";
   paddedCipherText = paddedPlainText;
     // replace the line above by RSA encyption
   unpadText(cipherText, paddedCipherText);
