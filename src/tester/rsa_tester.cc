@@ -1,6 +1,7 @@
 #include "rsa_tester.h"
 
 ////////////////////////////////////////////////////////////
+// class RsaTester:
 
 RsaTester::RsaTester() {
   cryptosystem = new RsaCryptosystem;
