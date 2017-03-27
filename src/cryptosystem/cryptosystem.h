@@ -12,7 +12,7 @@
 
 ////////////////////////////////////////////////////////////
 
-using Int = unsigned long long; // small
+using SizeT = unsigned long long;
 
 using BigInt = mpz_class; // multiple-precision integer
 
@@ -35,9 +35,10 @@ const Bool FALSE = false;
 
 ////////////////////////////////////////////////////////////
 
-class Cryptosystem {
+class Cryptosystem { // abstract
 public:
-// purely virtual:
+// purely virtual methods,
+// must be defined by non-abstract derived class:
   virtual void generateKeys(
     Key &publicKey, Key &privateKey // set these
     ) = 0;
@@ -50,30 +51,20 @@ public:
 
   virtual void cryptanalyze(Text &plainText, // set this
     const Text &cipherText, const Key &publicKey) = 0;
-
-// non-virtual:
-  void padText(PaddedText &paddedText, // set this
-    const Text &text);
-
-  void unpadText(Text &text, // set this
-    PaddedText paddedText); // pass this by value
-
-// impurely virtual:
-// testing:
-  virtual Bool testCryptosystem();
 };
 
 ////////////////////////////////////////////////////////////
+// global functions:
 
-void printText(const Text &text);
+void padText(PaddedText &paddedText, // set this
+  const Text &text);
 
-////////////////////////////////////////////////////////////
+void unpadText(Text &text, // set this
+  PaddedText paddedText); // pass this by value
 
 unsigned char getUnsignedChar(char ch);
 
 char getChar(unsigned char uCh);
-
-Bool testCharConversion();
 
 ////////////////////////////////////////////////////////////
 

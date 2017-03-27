@@ -1,17 +1,28 @@
 #include "party.h"
 
 ////////////////////////////////////////////////////////////
+// class Party:
 
 Party::Party(CryptosystemName cryptosystemName) {
-  switch (cryptosystemName) {
-    case RSA: cryptosystem = new RsaCryptosystem;
-  }
+  tester = getTester(cryptosystemName);
+}
+
+Bool Party::testParty() {
+  std::cout << "method Party::testParty\n";
+  return tester->testAll();
 }
 
 ////////////////////////////////////////////////////////////
-// testing
+// global function:
 
-Bool Party::testParty() {
-  std::cout << "Testing class Party.\n";
-  return cryptosystem->testCryptosystem();
+Tester *getTester(CryptosystemName cryptosystemName) {
+  switch (cryptosystemName) {
+    case RSA:
+      return new RsaTester;
+    case DUMMY:
+      return new DummyTester;
+    default:
+      std::cout << "Wrong cryptosystem name.\n";
+      throw std::exception();
+  }
 }

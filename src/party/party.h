@@ -3,24 +3,29 @@
 
 ////////////////////////////////////////////////////////////
 
-#include "../cryptosystem/rsa_cryptosystem.h"
+#include "../tester/dummy_tester.h"
+#include "../tester/rsa_tester.h"
 
 ////////////////////////////////////////////////////////////
 
-enum CryptosystemName {RSA}; // more to come
+enum CryptosystemName {DUMMY, RSA};
 
 ////////////////////////////////////////////////////////////
 
 class Party {
 protected:
-  Cryptosystem *cryptosystem;
+  Tester *tester;
 
 public:
   Party(CryptosystemName cryptosystemName);
 
-// testing:
   Bool testParty();
 };
+
+////////////////////////////////////////////////////////////
+// global function:
+
+Tester *getTester(CryptosystemName cryptosystemName);
 
 ////////////////////////////////////////////////////////////
 

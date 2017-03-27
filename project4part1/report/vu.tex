@@ -1,9 +1,6 @@
-\section{GMP \& \cpp}
+\section{GMP with \cpp}
 
-\code{tutorial.h}
-\codes{\lstinputlisting[language=c++]{../code/vu/tutorial.h}}
-
-\url{https://gmplib.org/manual/C_002b_002b-Class-Interface.html#C_002b_002b-Class-Interface}
+\subsection{Overview}
 
 \begin{itemize}
 \item GMP is natively written in \c
@@ -16,12 +13,35 @@
   \end{itemize}
 \end{itemize}
 
-\item \cite{gmp}
+\subsection{Example}
+
+File: \code{tutorial.h}
+\codes{\lstinputlisting[language=c++]{../code/vu/tutorial.h}}
+
+File: \code{tutorial.cc}
+\codes{\lstinputlisting[language=c++]{../code/vu/tutorial.cc}}
+
+File: \code{main.cc}
+\codes{\lstinputlisting[language=c++]{../code/vu/main.cc}}
+
+Reference: \cite{gmp}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{GMP \& \make}
+\section{GMP with \make}
 
-\url{https://www.gnu.org/software/make/manual/make.html}
+\subsection{Overview}
 
-\item \cite{make}
+\begin{itemize}
+\item GNU \make{} is a tool that determines
+  which parts of a large project need to be recompiled
+\item user writes a \code{makefile} to specify
+  the dependencies among source files
+\end{itemize}
+
+\subsection{Example}
+
+File: \code{makefile}
+\codes{\lstinputlisting[language=make]{../code/vu/makefile}}
+
+Reference: \cite{make}

@@ -9,29 +9,35 @@
 
 class RsaCryptosystem : public Cryptosystem {
 private:
-  KeyElement modulus, // n, public
-    publicExponent, // e, public
-    privateExponent; // d, private
+  KeyElement modulus, // n, cryptographically public
+    publicExponent, // e, cryptographically public
+    privateExponent; // d, cryptographically private
   Text plainText, cipherText;
-  PaddedText paddedPlainText, paddedCipherText; // temporary
+  PaddedText paddedPlainText, paddedCipherText;
 
-// overloaded:
+// private helper methods:
+  void setPublicKeyElements(const Key &publicKey);
+
+  void setPrivateKeyElements(const Key &privateKey);
+
+// private overloaded methods:
   void generateKeys();
     // set: modulus, publicExponent, privateExponent
 
   void encrypt();
     // set: cipherText
-    // get: plainText, modulus, publicExponent
+    // read: plainText, modulus, publicExponent
 
   void decrypt();
     // set: plainText
-    // get: cipherText, modulus, privateKey
+    // read: cipherText, modulus, privateExponent
 
   void cryptanalyze();
     // set: plainText
-    // get: cipherText, modulus, publicKey
+    // read: cipherText, modulus, publicExponent
 
 public:
+// public overloaded methods:
   void generateKeys(Key &publicKey, Key &privateKey);
     // set these
 
@@ -43,9 +49,6 @@ public:
 
   void cryptanalyze(Text &plainText, // set this
     const Text &cipherText, const Key &publicKey);
-
-// testing:
-  Bool testCryptosystem();
 };
 
 ////////////////////////////////////////////////////////////
