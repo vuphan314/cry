@@ -4,7 +4,7 @@
 // global functions:
 
 void padText(PaddedText &paddedText, const Text &text) {
-  std::cout << "Padding.\n";
+  // std::cout << "Padding.\n";
   paddedText = 0;
   BigInt multiplier(1);
   SizeT i = 0, n = text.size();
@@ -19,7 +19,7 @@ void padText(PaddedText &paddedText, const Text &text) {
 }
 
 void unpadText(Text &text, PaddedText paddedText) {
-  std::cout << "Unpadding.\n";
+  // std::cout << "Unpadding.\n";
   text.clear();
   BigInt paddedChar;
   while (paddedText > 0) {
