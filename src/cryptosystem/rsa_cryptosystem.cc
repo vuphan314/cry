@@ -1,5 +1,8 @@
 #include "rsa_cryptosystem.h"
 
+// http://stackoverflow.com/questions/9791761/using-gmp-for
+//  -cryptography-how-to-get-random-numbers
+
 ////////////////////////////////////////////////////////////
 // class RsaCryptosystem:
 
@@ -20,9 +23,26 @@ void RsaCryptosystem::setPrivateKeyElements(
 // private overloaded methods:
 
 void RsaCryptosystem::generateKeys() {
-  modulus = 3233;
-  publicExponent = 17;
-  privateExponent = 413;
+  mpz_t rand_num;
+  gmp_randstate_t r_state;
+  mpz_init2(rand_num, 512);
+  gmp_randinit_default(r_state);
+
+  mpz_t r_min;
+  mpz_init_set_ui(r_min, 256);
+
+  mpz_t r_max;
+  mpz_init_set_ui(r_max, 512);
+
+  do{
+    mpz_urandomm(rand_num, r_state, r_max);
+  } while(mpz_cmp(rand_num, r_min) < 0);
+
+  std::cout << rand_num << std::endl;
+
+  // modulus = 3233;
+  // publicExponent = 17;
+  // privateExponent = 413;
 // replace the lines above by RSA key-generation
 }
 
