@@ -11,6 +11,7 @@
 class RsaTester : public Tester {
 public:
   RsaTester();
+    // constructor to set data member cryptosystem
 
   Bool testKeyGeneration();
 
