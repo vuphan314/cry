@@ -3,68 +3,86 @@
 # Cry
 cryptographic framework
 
-## `git`
+------------------------------------------------------------
+
+## instructions
+
+### git
+- first time:
+  ```
+  git clone https://github.com/vuphan314/cry
+  cd cry/
+  git branch -a
+  git checkout mybranch
+  ```
+- each subsequent time:
+  - get their changes:
+    ```
+    cd cry/
+    git pull
+    git merge origin/master
+    ```
+  - make my changes
+  - post my changes:
+    ```
+    git add -A
+    git commit -a -m "my commit message"
+    git push
+    ```
+  - create GitHub pull request from `mybranch` into `master`
+
+### C++
 ```
-git clone https://github.com/vuphan314/cry
-cd cry
-git branch -a
+cd cry/src/
+./main.sh
 ```
 
-## dependencies
-[GMP][gmp]
+### TeX
+- Atom: https://atom.io/packages/latex
+- shell:
+  ```
+  cd cry/project3/report/
+  latexmk -pdf -synctex=1 report.tex
+  ```
 
-### GMP on Mac OS
-with a terminal using [Homebrew][homebrew]:
+### [GMP][gmp] on Mac OS
+[Homebrew][homebrew]:
 ```
 brew install gmp
 ```
+
+### coding style
+preferred max line length: 60-character
+
+------------------------------------------------------------
+
+## status
+under development
+
+### links
+- [find files][find]
+- [releases/deliverables][releases]
+
+------------------------------------------------------------
 
 ## contributors
 - [Daniel Dunning][dd]
 - [Michael DeGraw][md]
 - [Vu Phan][vp]
 
-## status
-under development
-
-## links
-- [find files][find]
-- [releases/deliverables][releases]
-- [C++ source][src]
-
-## convention
-preferred max line length: 60-character
-
-## TeX compilation
-- with Atom: https://atom.io/packages/latex
-- with a terminal:
-  ```
-  cd project3/report/
-
-  latexmk -pdf -synctex=1 report.tex
-  ```
-
-## C++ compilation
-with a terminal:
-```
-cd src/
-./main.sh
-```
-
-## acknowledgement
+### acknowledgement
 [TikZ-UML][tikzuml]: TeX package for UML diagrams
 
 <!--------------------------------------------------------->
 
-[dd]:https://github.com/dannydthesloth
-[md]:https://github.com/electr0sheep
-[vp]:https://github.com/vuphan314
+[gmp]:https://gmplib.org/
+[homebrew]:https://brew.sh/
 
 [find]:https://github.com/vuphan314/cry/find/master
 [releases]:https://github.com/vuphan314/cry/releases
 [src]:https://github.com/vuphan314/cry/tree/master/src
 
+[dd]:https://github.com/dannydthesloth
+[md]:https://github.com/electr0sheep
+[vp]:https://github.com/vuphan314
 [tikzuml]:http://perso.ensta-paristech.fr/~kielbasi/tikzuml/
-
-[gmp]:https://gmplib.org/
-[homebrew]:https://brew.sh/
