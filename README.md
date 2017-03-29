@@ -3,6 +3,13 @@
 # Cry
 cryptographic framework
 
+## `git`
+```
+git clone https://github.com/vuphan314/cry
+cd cry
+git branch -a
+```
+
 ## dependencies
 [GMP][gmp]
 
