@@ -1,0 +1,47 @@
+\section{GMP with \cpp}
+
+\subsection{Overview}
+
+\begin{itemize}
+\item GMP is natively written in \c
+\item most \c{} constructs can be used in \cpp
+\item GMP \cpp{} interface is convenient:
+  \begin{itemize}
+  \item templates
+  \item classes
+  \item overloaded functions/operators
+  \end{itemize}
+\end{itemize}
+
+\subsection{Example}
+
+File: \code{tutorial.h}
+\codes{\lstinputlisting[language=c++]{../code/vu/tutorial.h}}
+
+File: \code{tutorial.cc}
+\codes{\lstinputlisting[language=c++]{../code/vu/tutorial.cc}}
+
+File: \code{main.cc}
+\codes{\lstinputlisting[language=c++]{../code/vu/main.cc}}
+
+Reference: \cite{gmp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{GMP with \make}
+
+\subsection{Overview}
+
+\begin{itemize}
+\item GNU \make{} is a tool that determines
+  which parts of a large project need to be recompiled
+\item user writes a \code{makefile} to specify
+  the dependencies among source files
+\end{itemize}
+
+\subsection{Example}
+
+File: \code{makefile}
+\codes{\lstinputlisting[language=make]{../code/vu/makefile}}
+
+Reference: \cite{make}
