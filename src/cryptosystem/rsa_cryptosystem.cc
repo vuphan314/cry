@@ -88,18 +88,18 @@ void RsaCryptosystem::generateKeys() {
 
   mpz_invert(d, e, L);
 
-  std::cout << "p: " << prime1 << std::endl;
-  std::cout << "Number is this big: " << mpz_sizeinbase(prime1, 2) << std::endl;
+  std::cout << "p: " << std::hex << prime1 << std::endl;
+  std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(prime1, 2) << std::endl;
 
-  std::cout << "q: " << prime2 << std::endl;
-  std::cout << "Number is this big: " << mpz_sizeinbase(prime2, 2) << std::endl;
+  std::cout << "q: " << std::hex << prime2 << std::endl;
+  std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(prime2, 2) << std::endl;
 
-  std::cout << "N: " << N << std::endl;
-  std::cout << "Number is this big: " << mpz_sizeinbase(N, 2) << std::endl;
+  std::cout << "N: " << std::hex << N << std::endl;
+  std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(N, 2) << std::endl;
 
-  std::cout << "e: " << e << std::endl;
+  std::cout << "e: " << std::hex << e << std::endl;
 
-  std::cout << "d: " << d << std::endl;
+  std::cout << "d: " << std::hex << d << std::endl;
 
   // pseudocode
   // generate two random 512 bit numbers (as in, the number
