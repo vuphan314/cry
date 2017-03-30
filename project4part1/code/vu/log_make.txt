@@ -1,0 +1,4 @@
+vu@Vu-PC:~/repos/cry/project4part1/code/vu$ make
+g++ main.cc -c -std=c++11 -Ofast
+g++ tutorial.cc -c -std=c++11 -Ofast
+g++ main.o tutorial.o -o tutorial.out -lgmpxx -lgmp
