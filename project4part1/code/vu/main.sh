@@ -1,5 +1,5 @@
 # clear
 # reset
 make
-./vu.out
+./tutorial.out
 # make clean
