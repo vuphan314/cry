@@ -82,12 +82,16 @@ void RsaCryptosystem::generateKeys() {
 
   //******************************************************//
   //                  !!!!!WARNING!!!!!                   //
-  // NOT SURE IF THIS IS LEGAL BUT IT DOESN't COMPLAIN!!  //
+  // NOT SURE IF THIS IS LEGAL BUT IT DOESN'T COMPLAIN!!  //
   //******************************************************//
   mpz_mul(L, prime1-1, prime2-1);
 
   mpz_invert(d, e, L);
 
+
+  //******************************************************//
+  //   The remaining code is just for testing purposes    //
+  //******************************************************//
   std::cout << "p: " << std::hex << prime1 << std::endl;
   std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(prime1, 2) << std::endl;
 
@@ -100,27 +104,6 @@ void RsaCryptosystem::generateKeys() {
   std::cout << "e: " << std::hex << e << std::endl;
 
   std::cout << "d: " << std::hex << d << std::endl;
-
-  // pseudocode
-  // generate two random 512 bit numbers (as in, the number
-  // requires at least 512 bits to store
-  // The most significant bit is not random, so I add that
-  // manually
-  // NOTE: 512 = MINIMUM_MODULUS_LENGTH/2)
-  // use mpz_urandomb for this
-  // get the next prime number using mpz_nextprime
-  // keep generating until (number%e) != 1
-  // once primes p and q have been generated,
-  // N = pq
-  // L=(p-1)(q-1)
-  // d = inverse modulus of (e, L)
-  // de = 1 (mod (p-1) (q-1))
-  // In other words, d=(1/e)%((p-1)(q-1))
-
-  // modulus = 3233;
-  // publicExponent = 17;
-  // privateExponent = 413;
-// replace the lines above by RSA key-generation
 }
 
 void RsaCryptosystem::encrypt() {
