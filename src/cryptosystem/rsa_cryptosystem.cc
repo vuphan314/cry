@@ -27,8 +27,8 @@ void RsaCryptosystem::generateKeys() {
   unsigned int PRIME_LENGTH = (MINIMUM_MODULUS_LENGTH/2)-1;
   unsigned int seed = 672087;
 
-  mpz_t prime1;
-  mpz_t prime2;
+  mpz_t p;
+  mpz_t q;
   mpz_t N;
   mpz_t L;
   mpz_t d;
@@ -37,19 +37,15 @@ void RsaCryptosystem::generateKeys() {
   mpz_t mod;
   mpz_t testValue;
 
-  mpz_init(prime1);
-  mpz_init(prime2);
+  mpz_init(p);
+  mpz_init(q);
   mpz_init(N);
   mpz_init(L);
   mpz_init(d);
-  mpz_init(e);
+  mpz_init_set_ui(e, 65537);
   mpz_init(mod);
-  mpz_init(twoToThePowerOf512);
-  mpz_init(testValue);
+  mpz_init_set_ui(twoToThePowerOf512, 1);
 
-  mpz_add_ui(e, e, 65537);
-
-  mpz_add_ui(twoToThePowerOf512, twoToThePowerOf512, 1);
   mpz_mul_2exp(twoToThePowerOf512, twoToThePowerOf512, PRIME_LENGTH);
 
   //******************************************************//
@@ -60,23 +56,23 @@ void RsaCryptosystem::generateKeys() {
   //******************************************************//
 
   do{
-    mpz_urandomb(prime1, state, PRIME_LENGTH);
-    mpz_add(prime1, prime1, twoToThePowerOf512);
+    mpz_urandomb(p, state, PRIME_LENGTH);
+    mpz_add(p, p, twoToThePowerOf512);
 
-    mpz_urandomb(prime2, state, PRIME_LENGTH);
-    mpz_add(prime2, prime2, twoToThePowerOf512);
+    mpz_urandomb(q, state, PRIME_LENGTH);
+    mpz_add(q, q, twoToThePowerOf512);
 
     do{
-      mpz_nextprime(prime1, prime1);
-      mpz_mod(mod, prime1, e);
+      mpz_nextprime(p, p);
+      mpz_mod(mod, p, e);
     } while (mpz_cmp_ui(mod, 1) == 0);
 
     do{
-      mpz_nextprime(prime2, prime2);
-      mpz_mod(mod, prime2, e);
+      mpz_nextprime(q, q);
+      mpz_mod(mod, q, e);
     } while (mpz_cmp_ui(mod, 1) == 0);
 
-    mpz_mul(N, prime1, prime2);
+    mpz_mul(N, p, q);
   } while (mpz_sizeinbase(N, 2) < MINIMUM_MODULUS_LENGTH);
 
 
@@ -84,7 +80,7 @@ void RsaCryptosystem::generateKeys() {
   //                  !!!!!WARNING!!!!!                   //
   // NOT SURE IF THIS IS LEGAL BUT IT DOESN'T COMPLAIN!!  //
   //******************************************************//
-  mpz_mul(L, prime1-1, prime2-1);
+  mpz_mul(L, p-1, q-1);
 
   mpz_invert(d, e, L);
 
@@ -92,11 +88,11 @@ void RsaCryptosystem::generateKeys() {
   //******************************************************//
   //   The remaining code is just for testing purposes    //
   //******************************************************//
-  std::cout << "p: " << std::hex << prime1 << std::endl;
-  std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(prime1, 2) << std::endl;
+  std::cout << "p: " << std::hex << p << std::endl;
+  std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(p, 2) << std::endl;
 
-  std::cout << "q: " << std::hex << prime2 << std::endl;
-  std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(prime2, 2) << std::endl;
+  std::cout << "q: " << std::hex << q << std::endl;
+  std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(q, 2) << std::endl;
 
   std::cout << "N: " << std::hex << N << std::endl;
   std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(N, 2) << std::endl;
