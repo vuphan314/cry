@@ -23,22 +23,77 @@ void RsaCryptosystem::setPrivateKeyElements(
 // private overloaded methods:
 
 void RsaCryptosystem::generateKeys() {
-  mpz_t rand_num;
-  gmp_randstate_t r_state;
-  mpz_init2(rand_num, 512);
-  gmp_randinit_default(r_state);
+  unsigned int MINIMUM_MODULUS_LENGTH = 1024;
+  unsigned int PRIME_LENGTH = (MINIMUM_MODULUS_LENGTH/2)-1;
+  unsigned int e = 65537;
+  unsigned int seed = 672087;
 
-  mpz_t r_min;
-  mpz_init_set_ui(r_min, 256);
+  mpz_t prime1;
+  mpz_t prime2;
+  mpz_t N;
+  mpz_t twoToThePowerOf512;
+  mpz_t mod;
 
-  mpz_t r_max;
-  mpz_init_set_ui(r_max, 512);
+  mpz_init(prime1);
+  mpz_init(prime2);
+  mpz_init(N);
+  mpz_init(mod);
+  mpz_init(twoToThePowerOf512);
+
+  mpz_add_ui(twoToThePowerOf512, twoToThePowerOf512, 1);
+  mpz_mul_2exp(twoToThePowerOf512, twoToThePowerOf512, PRIME_LENGTH);
+
+  //******************************************************//
+  //  THIS MAKES THE ALGORITHM CRYPTOGRAHICALLY INSECURE  //
+  /**/           gmp_randstate_t state;                   //
+  /**/           gmp_randinit_default(state);             //
+  /**/           gmp_randseed_ui(state, seed);            //
+  //******************************************************//
 
   do{
-    mpz_urandomm(rand_num, r_state, r_max);
-  } while(mpz_cmp(rand_num, r_min) < 0);
+    mpz_urandomb(prime1, state, PRIME_LENGTH);
+    mpz_add(prime1, prime1, twoToThePowerOf512);
 
-  std::cout << rand_num << std::endl;
+    mpz_urandomb(prime2, state, PRIME_LENGTH);
+    mpz_add(prime2, prime2, twoToThePowerOf512);
+
+    do{
+      mpz_nextprime(prime1, prime1);
+      mpz_mod_ui(mod, prime1, e);
+    } while (mpz_cmp_ui(mod, 1) == 0);
+
+    do{
+      mpz_nextprime(prime2, prime2);
+      mpz_mod_ui(mod, prime2, e);
+    } while (mpz_cmp_ui(mod, 1) == 0);
+
+    mpz_mul(N, prime1, prime2);
+  } while (mpz_sizeinbase(N, 2) != MINIMUM_MODULUS_LENGTH);
+
+  std::cout << prime1 << std::endl;
+  std::cout << "Number is this big: " << mpz_sizeinbase(prime1, 2) << std::endl;
+
+  std::cout << prime2 << std::endl;
+  std::cout << "Number is this big: " << mpz_sizeinbase(prime2, 2) << std::endl;
+
+  std::cout << N << std::endl;
+  std::cout << "Number is this big: " << mpz_sizeinbase(N, 2) << std::endl;
+
+  // pseudocode
+  // generate two random 512 bit numbers (as in, the number
+  // requires at least 512 bits to store
+  // NOTE: 512 = MINIMUM_MODULUS_LENGTH/2)
+  // use mpz_urandomb for this
+  // get the next prime number using mpz_nextprime
+  // make sure the new number is exactly
+  // MINIMUM_MODULUS_LENGTH/2 bits in length
+  // mpz_sizeinbase(number, 2)
+  // for each number, keep generating until (number%e) != 1
+  // once primes p and q have been generated,
+  // N = pq
+  // L=(p-1)(q-1)
+  // d = inverse modulus of (e, L)
+  // de = 1 (mod (p-1) (q-1))
 
   // modulus = 3233;
   // publicExponent = 17;
