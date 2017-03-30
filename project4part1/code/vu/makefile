@@ -1,9 +1,9 @@
+EXECUTABLE = tutorial.out
+OBJECTS = main.o tutorial.o
+
 COMPILER = g++
 ASSEMBLING_OPTIONS = -c -std=c++11 -Ofast
 LINKING_OPTIONS = -o $(EXECUTABLE) -lgmpxx -lgmp
-
-OBJECTS = main.o tutorial.o
-EXECUTABLE = vu.out
 
 ############################################################
 

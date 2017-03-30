@@ -1,0 +1,12 @@
+vu@Vu-PC:~/repos/cry/project4part1/code/vu$ ./tutorial.out
+
+testing tutorial
+
+testing types
+big int: 1000000000000000000000000000000000000000000
+
+testing operators
+dividend: 2748932749872983478927398478923784723988
+divisor: 7831672283
+quotient: 351002014708916986858475584520
+remainder: 6276864828
