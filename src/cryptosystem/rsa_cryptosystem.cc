@@ -1,7 +1,10 @@
-#include "rsa_cryptosystem.h"
+/*
+http://stackoverflow.com/questions/9791761/using-gmp-for-cryptography-how-to-get-random-numbers
+*/
 
-// http://stackoverflow.com/questions/9791761/using-gmp-for
-//  -cryptography-how-to-get-random-numbers
+////////////////////////////////////////////////////////////
+
+#include "rsa_cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
 // class RsaCryptosystem:
@@ -23,9 +26,6 @@ void RsaCryptosystem::setPrivateKeyElements(
 // private overloaded methods:
 
 void RsaCryptosystem::generateKeys() {
-  // std::cout << "will fix method RsaCryptosystem::generateKeys; returning\n";
-  // return;
-
   unsigned int MINIMUM_MODULUS_LENGTH = 1024;
   unsigned int PRIME_LENGTH = (MINIMUM_MODULUS_LENGTH/2)-1;
   unsigned int seed = 672087;
@@ -83,12 +83,16 @@ void RsaCryptosystem::generateKeys() {
   //                  !!!!!WARNING!!!!!                   //
   // NOT SURE IF THIS IS LEGAL BUT IT DOESN'T COMPLAIN!!  //
   //******************************************************//
-  std::cout << "HEYYYYYYYYYYYYYYYYYYYY\n";
-  mpz_mul(L, p-1, q-1);
-  std::cout << "HEYYYYYYYYYYYYYYYYYYYY\n";
+  mpz_t p1, q1;
+  mpz_init_set(p1, p);
+  mpz_init_set(q1, q);
+  mpz_sub_ui(p1, p1, 1);
+  mpz_sub_ui(q1, q1, 1);
+  mpz_mul(L, p1, q1);
+  mpz_clear(p1);
+  mpz_clear(q1);
 
   mpz_invert(d, e, L);
-
 
   //******************************************************//
   //   The remaining code is just for testing purposes    //
