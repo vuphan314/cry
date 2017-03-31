@@ -24,8 +24,8 @@ void RsaCryptosystem::setPrivateKeyElements(
 
 void RsaCryptosystem::generateKeys() {
 
-  std::cout << "will fix method RsaCryptosystem::generateKeys; returning\n";
-  return;
+  // std::cout << "will fix method RsaCryptosystem::generateKeys; returning\n";
+  // return;
 
   unsigned int MINIMUM_MODULUS_LENGTH = 1024;
   unsigned int PRIME_LENGTH = (MINIMUM_MODULUS_LENGTH/2)-1;
@@ -108,6 +108,10 @@ void RsaCryptosystem::generateKeys() {
   std::cout << "e: " << std::hex << e << std::endl;
 
   std::cout << "d: " << std::hex << d << std::endl;
+
+  modulus = KeyElement(N);
+  publicExponent = KeyElement(e);
+  privateExponent = KeyElement(d);
 }
 
 void RsaCryptosystem::encrypt() {
