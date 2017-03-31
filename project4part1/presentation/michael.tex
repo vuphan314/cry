@@ -7,9 +7,9 @@
 \begin{frame}
 \frametitle{Two basic initialization techniques}
   \begin{itemize}
-    \item Initialize Only
+    \item Initialize Only\break
     mpz\_init(mpz\_t);
-    \item Initialize and Assign
+    \item Initialize and Assign\break
     mpz\_init\_set\_ui(mpz\_t, unsigned long int);
   \end{itemize}
 \end{frame}
@@ -21,17 +21,17 @@
 \begin{frame}
 \frametitle{Integer Addition/Subtraction}
   \begin{itemize}
-    \item Add two GMP integers
+    \item Add two GMP integers\break
     mpz\_add(mpz\_t, const mpz\_t, const mpz\_t);
-    \item Add a GMP integer and a literal
+    \item Add a GMP integer and a literal\break
     mpz\_add\_ui(mpz\_t, const mpz\_t, unsigned long int);
-    \item Multiply a number by power of 2
+    \item Multiply a number by power of 2\break
     mpz\_mul\_2exp(mpz\_t, const mpz\_t, mp\_bitcnt\_t);
-    \item Take the modulo of two GMP integers
+    \item Take the modulo of two GMP integers\break
     mpz\_mod(mpz\_t, const mpz\_t, const mpz\_t);
-    \item Compare a GMP integer and a literal
+    \item Compare a GMP integer and a literal\break
     mpz\_cmp\_ui(const mpz\_t, unsigned long int);
-    \item Get the length of a GMP number in a cerain base
+    \item Get the length of a GMP number in a cerain base\break
     size\_t mpz\_sizeinbase(const mpz\_t, int);
   \end{itemize}
 \end{frame}
@@ -43,11 +43,11 @@
 \begin{frame}
 \frametitle{Random Numbers}
   \begin{itemize}
-    \item Set the random number algorithm to be used
+    \item Set the random number algorithm to be used\break
     gmp\_randinit\_default(gmp\_randstate\_t);
-    \item Set the random number seed to a literal
+    \item Set the random number seed to a literal\break
     gmp\_randseed\_ui(gmp\_randstate\_t, unsigned long int);
-    \item Get a random integer up to a certain bit-length
+    \item Get a random integer up to a certain bit-length\break
     mpz\_urandomb(mpz\_t, gmp\_randstate, mp\_bitcnt\_t);
   \end{itemize}
 \end{frame}
@@ -55,9 +55,9 @@
 \begin{frame}
 \frametitle{Prime Numbers/Other}
   \begin{itemize}
-    \item Get the next prime number larger than a GMP integer
+    \item Get the next prime number larger than a GMP integer\break
     mpz\_nextprime(mpz\_t, const mpz\_t);
-    \item Take the inverse modulo of two GMP integers
+    \item Take the inverse modulo of two GMP integers\break
     int mpz\_invert(mpz\_t, const mpz\_t, const mpz\_t);
   \end{itemize}
 \end{frame}
@@ -65,13 +65,15 @@
 \begin{frame}
 \frametitle{What do you mean "inverse modulo"?}
   \begin{itemize}
-    \item 0+5=5 5+(-5)=0
+    \item 0+5=5\break
+    5+(-5)=0\break
     0 is the additive identity and -5 is the additive inverse of 5
-    \item 1*5=5 5*(1/5)=1
+    \item 1*5=5\break
+    5*(1/5)=1\break
     1 is the multiplicative identity and (1/5) is the multiplicative inverse of 5
-    \item 3*3 \equiv 1 (mod 4)
-    3 is a modular inverse of 3 taken in the context of (mod 4)
-    So is 21
+    \item 3*3 $\equiv$ 1 (mod 4)\break
+    3 is a modular inverse of 3 taken in the context of (mod 4)\break
+    So is 21\break
     In fact, the formula to calculate a modular inverse of 3 taken
     in the context of (mod 4) is X=(9+12n) where n is an integer
   \end{itemize}
