@@ -1,17 +1,103 @@
-\section{GMP Integer Functions}
+\section{GMP Functions}
 
-If you want to show code from another file:
-\codes{\lstinputlisting[language=c++]{../code/michael/michael.cc}}
+% If you want to show code from another file:
+% \codes{\lstinputlisting[language=c++]{../code/michael/michael.cc}}
 % path relative to `project4part1/report/`
 
 \url{https://gmplib.org/manual/Integer-Functions.html#Integer-Functions}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Initialization}
+\subsection{Integer Initialization}
 
 \url{https://gmplib.org/manual/Initializing-Integers.html#Initializing-Integers}
+\url{https://gmplib.org/manual/Simultaneous-Integer-Init-_0026-Assign.html#Simultaneous-Integer-Init-_0026-Assign}
+
+mpz\_init(mpz\_t);\break
+This function will simply initialize an mpz\_t variable.
+mpz\_t variables cannot be used if they are not initialized
+first.
+\medskip
+mpz\_init\_set\_ui(mpz\_t, unsigned long int);\break
+This function simultaneously initializes an mpz\_t variable
+and assigns it the value of a regular unsigned long integer.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Some Other Subsections}
+\subsection{Integer Arithmetic}
+
+mpz\_add(mpz\_t, const mpz\_t, const mpz\_t);\break
+The second and third arguments are summed and stored in the
+first argument.
+\medskip
+mpz\_add\_ui(mpz\_t, const mpz\_t, unsigned long int);\break
+This is the same as the above function, except the third
+argument is a regular unsigned long integer.
+\medskip
+mpz\_mul(mpz\_t, const mpz\_t, const mpz\_t);\break
+The second and third arguments are multiplied together and
+stored in the first argument.
+\medskip
+mpz\_mul\_2exp(mpz\_t, const mpz\_t, mp\_bitcnt\_t);\break
+The second argument is multiplied by two to the power of
+the third argument and stored in the first argument.
+\medskip
+mpz\_mod(mpz\_t, const mpz\_t, const mpz\_t);
+The value of the second argument modulo the third argument
+is stored in the first argument.
+
+\subsection{Integer Comparisons}
+
+\url{https://gmplib.org/manual/Integer-Comparisons.html#Integer-Comparisons}
+
+int mpz\_cmp\_ui(const mpz\_t, unsigned long int);\break
+If the first argument is greater than the second, returns
+a positive value. If the first argument is less than the
+second, returns a negative value. If the first argument is
+equal to the second, returns 0.
+
+\subsection{Random Numbers}
+
+\url{https://gmplib.org/manual/Random-State-Initialization.html#Random-State-Initialization}
+\url{https://gmplib.org/manual/Integer-Random-Numbers.html#Integer-Random-Numbers}
+
+gmp\_randinit\_default(gmp\_randstate\_t);\break
+Initializes a gmp\_randstate\_t variable to the default
+random number generator provided by GMP (compromise between
+speed and randomness).
+\medskip
+gmp\_randseed\_ui(gmp\_randstate\_t, unsigned long int);\break
+Sets the seed of the gmp\_randstate\_t variable to a regular
+unsigned long integer.
+\medskip
+mpz\_urandomb(mpz\_t, gmp\_randstate, mp\_bitcnt\_t);\break
+Generates a random number using the algorithm denoted by the
+second argument, where the third argument specifies the
+maximum number of bits the number should contain and stores
+it in the first argument.
+
+\subsection{Prime Numbers}
+
+\url{https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions}
+
+mpz\_nextprime(mpz\_t, const mpz\_t);\break
+This function will find the first prime number greater than
+the second argument and store the value in the first
+argument.
+
+\subsection{Special Functions}
+
+\url{https://gmplib.org/manual/Integer-Special-Functions.html#Integer-Special-Functions}
+
+size\_t mpz\_sizeinbase(const mpz\_t, int);\break
+This function returns the number of characters needed to
+represent the first argument, given the base of the second
+argument.
+
+\subsection{Theoretic Functions}
+
+\url{https://gmplib.org/manual/Number-Theoretic-Functions.html#Number-Theoretic-Functions}
+
+int mpz\_invert(mpz\_t, const mpz\_t, const mpz\_t);\break
+The value of the second argument inverse modulo the third
+argument is stored in the first argument.
