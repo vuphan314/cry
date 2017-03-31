@@ -50,7 +50,8 @@ void RsaCryptosystem::generateKeys() {
   mpz_init(mod);
   mpz_init_set_ui(twoToThePowerOf512, 1);
 
-  mpz_mul_2exp(twoToThePowerOf512, twoToThePowerOf512, PRIME_LENGTH);
+  mpz_mul_2exp(twoToThePowerOf512, twoToThePowerOf512,
+    PRIME_LENGTH);
 
   //******************************************************//
   //  THIS MAKES THE ALGORITHM CRYPTOGRAHICALLY INSECURE  //
@@ -93,13 +94,16 @@ void RsaCryptosystem::generateKeys() {
   //   The remaining code is just for testing purposes    //
   //******************************************************//
   std::cout << "p: " << std::hex << p << std::endl;
-  std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(p, 2) << std::endl;
+  std::cout << std::dec << "Number is this big: "
+    << mpz_sizeinbase(p, 2) << std::endl;
 
   std::cout << "q: " << std::hex << q << std::endl;
-  std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(q, 2) << std::endl;
+  std::cout << std::dec << "Number is this big: "
+    << mpz_sizeinbase(q, 2) << std::endl;
 
   std::cout << "N: " << std::hex << N << std::endl;
-  std::cout << std::dec << "Number is this big: " << mpz_sizeinbase(N, 2) << std::endl;
+  std::cout << std::dec << "Number is this big: "
+    << mpz_sizeinbase(N, 2) << std::endl;
 
   std::cout << "e: " << std::hex << e << std::endl;
 
