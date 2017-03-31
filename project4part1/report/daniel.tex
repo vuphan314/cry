@@ -4,7 +4,6 @@
 %\codes{\lstinputlisting[language=c++]{../code/daniel/daniel.cc}}
 % path relative to `project4part1/report/`
 
-
 The goal of our project is to develop a framework for
 cryptographers to easily test their \cs s in a
 secure environment. Users will be able to implement their
@@ -27,33 +26,60 @@ iterations.
 
 \section{GMP Installation}
 
-\url{https://gmplib.org/manual/Installing-GMP.html#Installing-GMP}
+\url{https://gmplib.org/#DOWNLOAD}
 
-Initially, a download is obviously needed. For Linux systems, one can simply go to the url
-given above, and download the .tar file. This does not work for Mac. Instead, following the
-instructions we have posted on our Github, GMP installation can be done using the \code{brew install gmp}
+\medskip
+
+Initially, a download is obviously needed. For Linux
+systems, one can simply go to the URL given above, and
+download the .tar file. This does not work for Mac. Instead,
+following the instructions we have posted on our Github, GMP
+installation can be done using the \code{brew install gmp}
 command.
 
-On Linux systems, after downloading the file, a simple \code{./configure} and then \code{make install}
-will install GMP.
+\medskip
 
-Some things to keep in mind when builing. One can build to a separate directory that they want to use or
-are already currently using for their project. In addition, one option that is sometimes needed is to either
-disable shared or disable static. Sharing libraries can sometimes help with the performance if the CPU is
-capable, but it can slow down if it is not capable. It is suggested to configure GMP for the specific CPU that
-you are running on your machine, as this will give the best performance. The trade off is that it will have worse performance
-if it is migrated to another machine, even using a newer CPU.
+On Linux systems, after downloading the file, a simple
+\code{./configure} and then \code{make install} will install
+GMP.
 
-Other customizations for GMP can be used by building for different packages, instead of the original package, depending on your needs.
-Another call to performance is to build the included file call \code{tune} as a preliminary step if the intended program is demanding extremely large numbers or plans to run for long periods of time.
+\medskip
+
+Some things to keep in mind when building. One can build to
+a separate directory that they want to use or are already
+currently using for their project. In addition, one option
+that is sometimes needed is to either disable shared or
+disable static. Sharing libraries can sometimes help with
+the performance if the CPU is capable, but it can slow down
+if it is not capable. It is suggested to configure GMP for
+the specific CPU that you are running on your machine, as
+this will give the best performance. The trade off is that
+it will have worse performance if it is migrated to another
+machine, even using a newer CPU.
+
+\medskip
+
+Other customizations for GMP can be used by building for
+different packages, instead of the original package,
+depending on your needs. Another call to performance is to
+build the included file call \code{tune} as a preliminary
+step if the intended program is demanding extremely large
+numbers or plans to run for long periods of time.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{GMP Basics}
 
-In general, it is important to use only speciic macros and data types that are documented by GMP. This is important for
-compatability with other versions of the library. The url listed gives some insight into helpful guidelines to follow
-for aspects of a project that uses GMP such as headers, libraries, parameter conventions, debugging, useful macros, as well as others.
-If there is any confusing regarding these topics it is best to refer to the GMP basics section in the manual.
-
 \url{https://gmplib.org/manual/GMP-Basics.html#GMP-Basics}
+
+\medskip
+
+In general, it is important to use only specific macros and
+data types that are documented by GMP. This is important for
+compatibility with other versions of the library. The URL
+listed gives some insight into helpful guidelines to follow
+for aspects of a project that uses GMP such as headers,
+libraries, parameter conventions, debugging, useful macros,
+as well as others. If there is any confusing regarding these
+topics it is best to refer to the GMP basics section in the
+manual.
