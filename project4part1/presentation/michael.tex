@@ -6,12 +6,12 @@
 
 \begin{frame}
 \frametitle{Two basic initialization techniques}
-\begin{itemize}
-  \item Initialize Only
-  mpz{\_}init(mpz{\_}t);
-  \item Initialize and Assign
-  mpz{\_}init{\_}set{\_}ui(mpz{\_}t, unsigned long int);
-\end{itemize}
+  \begin{itemize}
+    \item Initialize Only
+    mpz\_init(mpz\_t);
+    \item Initialize and Assign
+    mpz\_init\_set\_ui(mpz\_t, unsigned long int);
+  \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,20 +20,20 @@
 
 \begin{frame}
 \frametitle{Integer Addition/Subtraction}
-\begin{itemize}
-  \item Add two GMP integers
-  mpz{\_}add(mpz{\_}t, const mpz{\_}t, const mpz{\_}t);
-  \item Add a GMP integer and a literal
-  mpz{\_}add{\_}ui(mpz{\_}t, const mpz{\_}t, unsigned long int);
-  \item Multiply a number by power of 2
-  mpz{\_}mul{\_}2exp(mpz{\_}t, const mpz{\_}t, mp{\_}bitcnt{\_}t);
-  \item Take the modulo of two GMP integers
-  mpz{\_}mod(mpz{\_}t, const mpz{\_}t, const mpz{\_}t);
-  \item Compare a GMP integer and a literal
-  mpz{\_}cmp{\_}ui(const mpz{\_}t, unsigned long int);
-  \item Get the length of a GMP number in a cerain base
-  size{\_}t mpz{\_}sizeinbase(const mpz{\_}t, int);
-\end{itemize}
+  \begin{itemize}
+    \item Add two GMP integers
+    mpz\_add(mpz\_t, const mpz\_t, const mpz\_t);
+    \item Add a GMP integer and a literal
+    mpz\_add\_ui(mpz\_t, const mpz\_t, unsigned long int);
+    \item Multiply a number by power of 2
+    mpz\_mul\_2exp(mpz\_t, const mpz\_t, mp\_bitcnt\_t);
+    \item Take the modulo of two GMP integers
+    mpz\_mod(mpz\_t, const mpz\_t, const mpz\_t);
+    \item Compare a GMP integer and a literal
+    mpz\_cmp\_ui(const mpz\_t, unsigned long int);
+    \item Get the length of a GMP number in a cerain base
+    size\_t mpz\_sizeinbase(const mpz\_t, int);
+  \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -42,37 +42,37 @@
 
 \begin{frame}
 \frametitle{Random Numbers}
-\begin{itemize}
-  \item Set the random number algorithm to be used
-  gmp{\_}randinit{\_}default(gmp{\_}randstate{\_}t);
-  \item Set the random number seed to a literal
-  gmp{\_}randseed{\_}ui(gmp{\_}randstate{\_}t, unsigned long int);
-  \item Get a random integer up to a certain bit-length
-  mpz{\_}urandomb(mpz{\_}t, gmp{\_}randstate, mp{\_}bitcnt{\_}t);
-\end{itemize}
+  \begin{itemize}
+    \item Set the random number algorithm to be used
+    gmp\_randinit\_default(gmp\_randstate\_t);
+    \item Set the random number seed to a literal
+    gmp\_randseed\_ui(gmp\_randstate\_t, unsigned long int);
+    \item Get a random integer up to a certain bit-length
+    mpz\_urandomb(mpz\_t, gmp\_randstate, mp\_bitcnt\_t);
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Prime Numbers/Other}
-\begin{itemize}
-  \item Get the next prime number larger than a GMP integer
-  mpz{\_}nextprime(mpz{\_}t, const mpz{\_}t);
-  \item Take the inverse modulo of two GMP integers
-  int mpz{\_}invert(mpz{\_}t, const mpz{\_}t, const mpz{\_}t);
-\end{itemize}
+  \begin{itemize}
+    \item Get the next prime number larger than a GMP integer
+    mpz\_nextprime(mpz\_t, const mpz\_t);
+    \item Take the inverse modulo of two GMP integers
+    int mpz\_invert(mpz\_t, const mpz\_t, const mpz\_t);
+  \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{What do you mean "inverse modulo"?}
-\begin{itemize}
-  \item 0+5=5 5+(-5)=0
-  0 is the additive identity and -5 is the additive inverse of 5
-  \item 1*5=5 5*(1/5)=1
-  1 is the multiplicative identity and (1/5) is the multiplicative inverse of 5
-  \item 3*3 \equiv 1 (mod 4)
-  3 is a modular inverse of 3 taken in the context of (mod 4)
-  So is 21
-  In fact, the formula to calculate a modular inverse of 3 taken
-  in the context of (mod 4) is X=(9+12n) where n is an integer
-\end{itemize}
+  \begin{itemize}
+    \item 0+5=5 5+(-5)=0
+    0 is the additive identity and -5 is the additive inverse of 5
+    \item 1*5=5 5*(1/5)=1
+    1 is the multiplicative identity and (1/5) is the multiplicative inverse of 5
+    \item 3*3 \equiv 1 (mod 4)
+    3 is a modular inverse of 3 taken in the context of (mod 4)
+    So is 21
+    In fact, the formula to calculate a modular inverse of 3 taken
+    in the context of (mod 4) is X=(9+12n) where n is an integer
+  \end{itemize}
 \end{frame}
