@@ -23,7 +23,6 @@ void RsaCryptosystem::setPrivateKeyElements(
 // private overloaded methods:
 
 void RsaCryptosystem::generateKeys() {
-
   // std::cout << "will fix method RsaCryptosystem::generateKeys; returning\n";
   // return;
 
@@ -80,12 +79,13 @@ void RsaCryptosystem::generateKeys() {
     mpz_mul(N, p, q);
   } while (mpz_sizeinbase(N, 2) < MINIMUM_MODULUS_LENGTH);
 
-
   //******************************************************//
   //                  !!!!!WARNING!!!!!                   //
   // NOT SURE IF THIS IS LEGAL BUT IT DOESN'T COMPLAIN!!  //
   //******************************************************//
+  std::cout << "HEYYYYYYYYYYYYYYYYYYYY\n";
   mpz_mul(L, p-1, q-1);
+  std::cout << "HEYYYYYYYYYYYYYYYYYYYY\n";
 
   mpz_invert(d, e, L);
 
