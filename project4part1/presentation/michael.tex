@@ -8,9 +8,9 @@
 \frametitle{Two basic initialization techniques}
 \begin{itemize}
   \item Initialize Only
-  mpz\\_init(mpz\\_t);
+  mpz\\_ init(mpz\\_ t);
   \item Initialize and Assign
-  mpz\\_init\\_set\\_ui(mpz\\_t, unsigned long int);
+  mpz\\_ init\\_ set\\_ ui(mpz\\_ t, unsigned long int);
 \end{itemize}
 \end{frame}
 
@@ -22,17 +22,17 @@
 \frametitle{Integer Addition/Subtraction}
 \begin{itemize}
   \item Add two GMP integers
-  mpz\_add(mpz\_t, const mpz\_t, const mpz\_t);
+  mpz\_ add(mpz\_ t, const mpz\_ t, const mpz\_ t);
   \item Add a GMP integer and a literal
-  mpz\_add\_ui(mpz\_t, const mpz\_t, unsigned long int);
+  mpz\_ add\_ ui(mpz\_ t, const mpz\_ t, unsigned long int);
   \item Multiply a number by power of 2
-  mpz\_mul\_2exp(mpz\_t, const mpz\_t, mp\_bitcnt\_t);
+  mpz\_ mul\_ 2exp(mpz\_ t, const mpz\_ t, mp\_ bitcnt\_ t);
   \item Take the modulo of two GMP integers
-  mpz\_mod(mpz\_t, const mpz\_t, const mpz\_t);
+  mpz\_ mod(mpz\_ t, const mpz\_ t, const mpz\_ t);
   \item Compare a GMP integer and a literal
-  mpz\_cmp\_ui(const mpz\_t, unsigned long int);
+  mpz\_ cmp\_ ui(const mpz\_ t, unsigned long int);
   \item Get the length of a GMP number in a cerain base
-  size\_t mpz\_sizeinbase(const mpz\_t, int);
+  size\_ t mpz\_ sizeinbase(const mpz\_ t, int);
 \end{itemize}
 \end{frame}
 
@@ -44,20 +44,20 @@
 \frametitle{Random Numbers}
 \begin{itemize}
   \item Set the random number algorithm to be used
-  gmp\_randinit\_default(gmp\_randstate\_t);
+  gmp\_ randinit\_ default(gmp\_ randstate\_ t);
   \item Set the random number seed to a literal
-  gmp\_randseed\_ui(gmp\_randstate\_t, unsigned long int);
+  gmp\_ randseed\_ ui(gmp\_ randstate\_ t, unsigned long int);
   \item Get a random integer up to a certain bit-length
-  mpz\_urandomb(mpz\_t, gmp\_randstate, mp\_bitcnt\_t);
+  mpz\_ urandomb(mpz\_ t, gmp\_ randstate, mp\_ bitcnt\_ t);
 \end{frame}
 
 \begin{frame}
 \frametitle{Prime Numbers/Other}
 \begin{itemize}
   \item Get the next prime number larger than a GMP integer
-  mpz\_nextprime(mpz\_t, const mpz\_t);
+  mpz\_ nextprime(mpz\_ t, const mpz\_ t);
   \item Take the inverse modulo of two GMP integers
-  int mpz\_invert(mpz\_t, const mpz\_t, const mpz\_t);
+  int mpz\_ invert(mpz\_ t, const mpz\_ t, const mpz\_ t);
 \end{itemize}
 \end{frame}
 
