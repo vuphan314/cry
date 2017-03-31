@@ -1,20 +1,52 @@
 \section{\cry{} Description}
 
 \begin{frame}
-\frametitle{my frame title}
-If you want to show code from another file:
-\codes{\lstinputlisting[language=c++]
-  {../code/daniel/daniel.cc}}
-  % path relative to `project4part1/presentation/`
+\frametitle{Project Description}
+  \begin{itemize}
+  \item The goal of our project is to develop a framework for
+    cryptographers to easily test their \cs s in a
+    secure environment.
+  \item Users will be able to implement their
+    \cs{} securely in Cry, and upon testing it, they will
+    receive a report that will explain results of a particular
+    test as well as ways to improve the system.
+  \end{itemize}
 \end{frame}
+
+\begin{frame}
+\frametitle{Description cont.}
+  \begin{itemize}
+  \item The will give details on various aspects of the tested system.
+    These details will include time (or estimated time) required
+    to encrypt, decrypt, and cryptanalyze.
+  \item When analyzing a
+    cryptanalysis method, Cry will hope to give some useful
+    suggestions as to why the system was broken in the given
+    time, and what could be used to improve it in further
+    iterations.
+  \end{itemize}
+\end{frame}
+%\begin{frame}
+%\frametitle{my frame title}
+%If you want to show code from another file:
+%\codes{\lstinputlisting[language=c++]
+  %{../code/daniel/daniel.cc}}
+  % path relative to `project4part1/presentation/`
+%\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{GMP Installation}
 
 \begin{frame}
-\frametitle{copy from report}
-my frame body
+\frametitle{Installation}
+Initially, a download is obviously needed. For Linux systems, one can simply go to the url
+given above, and download the .tar file. This does not work for Mac. Instead, following the
+instructions we have posted on our Github, GMP installation can be done using the \mathit{brew install gmp}
+command.
+
+On Linux systems, after downloading the file, a simple \mathit{./configure} and then \mathit{make install}
+will install GMP.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -22,7 +54,9 @@ my frame body
 \section{GMP Basics}
 
 \begin{frame}
-\frametitle{copy from report}
-If the 2 sections above are too short,
-then you may want to add this section.
+\frametitle{GMP Basics}
+In general, it is important to use only speciic macros and data types that are documented by GMP. This is important for
+compatability with other versions of the library. The url listed gives some insight into helpful guidelines to follow
+for aspects of a project that uses GMP such as headers, libraries, parameter conventions, debugging, useful macros, as well as others.
+If there is any confusing regarding these topics it is best to refer to the GMP basics section in the manual.
 \end{frame}

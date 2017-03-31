@@ -1,10 +1,27 @@
 \section{\cry{} Description}
 
-If you want to show code from another file:
-\codes{\lstinputlisting[language=c++]{../code/daniel/daniel.cc}}
+%If you want to show code from another file:
+%\codes{\lstinputlisting[language=c++]{../code/daniel/daniel.cc}}
 % path relative to `project4part1/report/`
 
-Feel free to copy/paste from a previous report.
+
+The goal of our project is to develop a framework for
+cryptographers to easily test their \cs s in a
+secure environment. Users will be able to implement their
+\cs{} securely in Cry, and upon testing it, they will
+receive a report that will explain results of a particular
+test as well as ways to improve the system.
+
+\medskip
+
+This report will be a useful tool for cryptographers. It
+will give details on various aspects of the tested system.
+These details will include time (or estimated time) required
+to encrypt, decrypt, and cryptanalyze. When analyzing a
+cryptanalysis method, Cry will hope to give some useful
+suggestions as to why the system was broken in the given
+time, and what could be used to improve it in further
+iterations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -12,11 +29,31 @@ Feel free to copy/paste from a previous report.
 
 \url{https://gmplib.org/manual/Installing-GMP.html#Installing-GMP}
 
+Initially, a download is obviously needed. For Linux systems, one can simply go to the url
+given above, and download the .tar file. This does not work for Mac. Instead, following the
+instructions we have posted on our Github, GMP installation can be done using the \mathit{brew install gmp}
+command.
+
+On Linux systems, after downloading the file, a simple \mathit{./configure} and then \mathit{make install}
+will install GMP.
+
+Some things to keep in mind when builing. One can build to a separate directory that they want to use or
+are already currently using for their project. In addition, one option that is sometimes needed is to either
+disable shared or disable static. Sharing libraries can sometimes help with the performance if the CPU is
+capable, but it can slow down if it is not capable. It is suggested to configure GMP for the specific CPU that
+you are running on your machine, as this will give the best performance. The trade off is that it will have worse performance
+if it is migrated to another machine, even using a newer CPU.
+
+Other customizations for GMP can be used by building for different packages, instead of the original package, depending on your needs.
+Another call to performance is to build the included file call \mathit{tune} as a preliminary step if the intended program is demanding extremely large numbers or plans to run for long periods of time.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{GMP Basics}
 
-If the 2 sections above are too short,
-then you may want to add this section.
+In general, it is important to use only speciic macros and data types that are documented by GMP. This is important for
+compatability with other versions of the library. The url listed gives some insight into helpful guidelines to follow
+for aspects of a project that uses GMP such as headers, libraries, parameter conventions, debugging, useful macros, as well as others.
+If there is any confusing regarding these topics it is best to refer to the GMP basics section in the manual.
 
 \url{https://gmplib.org/manual/GMP-Basics.html#GMP-Basics}
