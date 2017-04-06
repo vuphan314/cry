@@ -73,7 +73,7 @@ void RsaCryptosystem::generateKeys(
       mpz_mod(mod, p, e);
     } while (mpz_cmp_ui(mod, 1) == 0);
 
-    do{
+    do {
       mpz_nextprime(q, q);
       mpz_mod(mod, q, e);
     } while (mpz_cmp_ui(mod, 1) == 0);
