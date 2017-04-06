@@ -61,14 +61,14 @@ void RsaCryptosystem::generateKeys() {
   /**/           gmp_randseed_ui(state, seed);            //
   //******************************************************//
 
-  do{
+  do {
     mpz_urandomb(p, state, PRIME_LENGTH);
     mpz_add(p, p, twoToThePowerOf512);
 
     mpz_urandomb(q, state, PRIME_LENGTH);
     mpz_add(q, q, twoToThePowerOf512);
 
-    do{
+    do {
       mpz_nextprime(p, p);
       mpz_mod(mod, p, e);
     } while (mpz_cmp_ui(mod, 1) == 0);
@@ -81,20 +81,17 @@ void RsaCryptosystem::generateKeys() {
     mpz_mul(N, p, q);
   } while (mpz_sizeinbase(N, 2) < MINIMUM_MODULUS_LENGTH);
 
-  //******************************************************//
-  //                  !!!!!WARNING!!!!!                   //
-  // NOT SURE IF THIS IS LEGAL BUT IT DOESN'T COMPLAIN!!  //
-  //******************************************************//
   mpz_t p1, q1;
   mpz_init_set(p1, p);
   mpz_init_set(q1, q);
   mpz_sub_ui(p1, p1, 1);
   mpz_sub_ui(q1, q1, 1);
+
   mpz_mul(L, p1, q1);
+  mpz_invert(d, e, L);
+
   mpz_clear(p1);
   mpz_clear(q1);
-
-  mpz_invert(d, e, L);
 
   //******************************************************//
   //   The remaining code is just for testing purposes    //
