@@ -27,8 +27,9 @@ void RsaCryptosystem::setPrivateKeyElements(
 
 // private overloaded methods:
 
-void RsaCryptosystem::generateKeys(unsigned int bitLength) {
-  unsigned int PRIME_LENGTH = (bitLength/2)-1;
+void RsaCryptosystem::generateKeys(
+    unsigned int modulusLength) {
+  unsigned int PRIME_LENGTH = (modulusLength/2)-1;
   unsigned int seed = 672087;
 
   mpz_t p;
@@ -78,7 +79,7 @@ void RsaCryptosystem::generateKeys(unsigned int bitLength) {
     } while (mpz_cmp_ui(mod, 1) == 0);
 
     mpz_mul(N, p, q);
-  } while (mpz_sizeinbase(N, 2) < bitLength);
+  } while (mpz_sizeinbase(N, 2) < modulusLength);
 
   //******************************************************//
   //                  !!!!!WARNING!!!!!                   //
