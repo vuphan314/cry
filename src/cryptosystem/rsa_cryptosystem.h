@@ -21,7 +21,7 @@ private:
   void setPrivateKeyElements(const Key &privateKey);
 
 // private overloaded methods:
-  void generateKeys();
+  void generateKeys(unsigned int);
     // set: modulus, publicExponent, privateExponent
 
   void encrypt();
