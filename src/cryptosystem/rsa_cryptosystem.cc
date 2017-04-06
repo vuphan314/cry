@@ -9,6 +9,8 @@ http://stackoverflow.com/questions/9791761/using-gmp-for-cryptography-how-to-get
 ////////////////////////////////////////////////////////////
 // class RsaCryptosystem:
 
+// private:
+
 // private helper methods:
 
 void RsaCryptosystem::setPublicKeyElements(
@@ -97,21 +99,23 @@ void RsaCryptosystem::generateKeys() {
   //******************************************************//
   //   The remaining code is just for testing purposes    //
   //******************************************************//
-  std::cout << "p: " << std::hex << p << std::endl;
-  std::cout << std::dec << "Number is this big: "
-    << mpz_sizeinbase(p, 2) << std::endl;
+  if (verbosity) {
+    std::cout << "p: " << std::hex << p << std::endl;
+    std::cout << std::dec << "Number is this big: "
+      << mpz_sizeinbase(p, 2) << std::endl;
 
-  std::cout << "q: " << std::hex << q << std::endl;
-  std::cout << std::dec << "Number is this big: "
-    << mpz_sizeinbase(q, 2) << std::endl;
+    std::cout << "q: " << std::hex << q << std::endl;
+    std::cout << std::dec << "Number is this big: "
+      << mpz_sizeinbase(q, 2) << std::endl;
 
-  std::cout << "N: " << std::hex << N << std::endl;
-  std::cout << std::dec << "Number is this big: "
-    << mpz_sizeinbase(N, 2) << std::endl;
+    std::cout << "N: " << std::hex << N << std::endl;
+    std::cout << std::dec << "Number is this big: "
+      << mpz_sizeinbase(N, 2) << std::endl;
 
-  std::cout << "e: " << std::hex << e << std::endl;
+    std::cout << "e: " << std::hex << e << std::endl;
 
-  std::cout << "d: " << std::hex << d << std::endl;
+    std::cout << "d: " << std::hex << d << std::endl;
+  }
 
   modulus = KeyElement(N);
   publicExponent = KeyElement(e);
@@ -120,7 +124,6 @@ void RsaCryptosystem::generateKeys() {
 
 void RsaCryptosystem::encrypt() {
   padText(paddedPlainText, plainText);
-  std::cout << "Daniel got this!\n";
   paddedCipherText = paddedPlainText;
     // replace the line above by RSA encyption
   unpadText(cipherText, paddedCipherText);
@@ -139,6 +142,8 @@ void RsaCryptosystem::cryptanalyze() {
     // replace the line above by RSA cryptanalysis
   unpadText(plainText, paddedPlainText);
 }
+
+// public:
 
 // public overloaded methods:
 

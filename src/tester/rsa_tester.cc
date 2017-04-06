@@ -10,7 +10,9 @@ RsaTester::RsaTester() {
 Bool RsaTester::testKeyGeneration() {
   std::cout << "method RsaTester::testKeyGeneration\n";
   Key publicKey, privateKey;
+  cryptosystem->verbosity = TRUE;
   cryptosystem->generateKeys(publicKey, privateKey);
+  cryptosystem->verbosity = FALSE;
   return TRUE; // are publicKey/privateKey set as expected?
 }
 
