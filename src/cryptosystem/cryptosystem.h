@@ -37,6 +37,8 @@ const Bool FALSE = false;
 
 class Cryptosystem { // abstract
 public:
+  Bool verbosity = FALSE;
+
 // purely virtual methods,
 // must be defined by non-abstract derived class:
   virtual void generateKeys(
