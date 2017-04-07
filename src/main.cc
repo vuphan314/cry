@@ -26,10 +26,10 @@ void demoRsa() {
 
   Key publicKey, privateKey;
   rsaCryptosystem.generateKeys(publicKey, privateKey);
-  std::cout << "key-generation:\n\tpublickey:\n\t\t" <<
-    publicKey[0] << "\n\t\t" << publicKey[1] <<
-    "\n\tprivate key:\n\t\t" << privateKey[0] << "\n\t\t" <<
-    privateKey[1] << "\n";
+  std::cout << "key-generation:\n\tmodulus: " <<
+    publicKey.at(0) << "\n\tpublic exponent: " <<
+    publicKey.at(1) << "\n\tprivate exponent: " <<
+    privateKey.at(1) << "\n";
 
   Text plainText = "my string", cipherText;
   std::cout << "plaintext: " << plainText << "\n";

@@ -27,8 +27,9 @@ void RsaCryptosystem::setPrivateKeyElements(
 
 // private overloaded methods:
 
-void RsaCryptosystem::generateKeys(unsigned int bitLength) {
-  unsigned int PRIME_LENGTH = (bitLength/2)-1;
+void RsaCryptosystem::generateKeys(
+    unsigned int modulusLength) {
+  unsigned int PRIME_LENGTH = (modulusLength/2)-1;
   unsigned int seed = 672087;
 
   mpz_t p;
@@ -60,40 +61,37 @@ void RsaCryptosystem::generateKeys(unsigned int bitLength) {
   /**/           gmp_randseed_ui(state, seed);            //
   //******************************************************//
 
-  do{
+  do {
     mpz_urandomb(p, state, PRIME_LENGTH);
     mpz_add(p, p, twoToThePowerOf512);
 
     mpz_urandomb(q, state, PRIME_LENGTH);
     mpz_add(q, q, twoToThePowerOf512);
 
-    do{
+    do {
       mpz_nextprime(p, p);
       mpz_mod(mod, p, e);
     } while (mpz_cmp_ui(mod, 1) == 0);
 
-    do{
+    do {
       mpz_nextprime(q, q);
       mpz_mod(mod, q, e);
     } while (mpz_cmp_ui(mod, 1) == 0);
 
     mpz_mul(N, p, q);
-  } while (mpz_sizeinbase(N, 2) < bitLength);
+  } while (mpz_sizeinbase(N, 2) < modulusLength);
 
-  //******************************************************//
-  //                  !!!!!WARNING!!!!!                   //
-  // NOT SURE IF THIS IS LEGAL BUT IT DOESN'T COMPLAIN!!  //
-  //******************************************************//
   mpz_t p1, q1;
   mpz_init_set(p1, p);
   mpz_init_set(q1, q);
   mpz_sub_ui(p1, p1, 1);
   mpz_sub_ui(q1, q1, 1);
+
   mpz_mul(L, p1, q1);
+  mpz_invert(d, e, L);
+
   mpz_clear(p1);
   mpz_clear(q1);
-
-  mpz_invert(d, e, L);
 
   //******************************************************//
   //   The remaining code is just for testing purposes    //
