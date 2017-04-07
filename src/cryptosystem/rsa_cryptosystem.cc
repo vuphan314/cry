@@ -121,22 +121,29 @@ void RsaCryptosystem::generateKeys(
 
 void RsaCryptosystem::encrypt() {
   padText(paddedPlainText, plainText);
-  paddedCipherText = paddedPlainText;
-    // replace the line above by RSA encyption
+  mpz_powm(paddedCipherText.get_mpz_t(),
+    paddedPlainText.get_mpz_t(),
+    publicExponent.get_mpz_t(),
+    modulus.get_mpz_t());
   unpadText(cipherText, paddedCipherText);
 }
 
 void RsaCryptosystem::decrypt() {
   padText(paddedCipherText, cipherText);
-  paddedPlainText = paddedCipherText;
-    // replace the line above by RSA decryption
+  mpz_powm(paddedPlainText.get_mpz_t(),
+    paddedCipherText.get_mpz_t(),
+    privateExponent.get_mpz_t(),
+    modulus.get_mpz_t());
   unpadText(plainText, paddedPlainText);
 }
 
 void RsaCryptosystem::cryptanalyze() {
   padText(paddedCipherText, cipherText);
+
   paddedPlainText = paddedCipherText;
     // replace the line above by RSA cryptanalysis
+  std::cout << "Vu will fix this.\n";
+
   unpadText(plainText, paddedPlainText);
 }
 

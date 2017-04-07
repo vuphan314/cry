@@ -31,22 +31,22 @@ void demoRsa() {
     publicKey.at(1) << "\n\tprivate exponent: " <<
     privateKey.at(1) << "\n";
 
-  Text plainText = "my string", cipherText;
-  std::cout << "plaintext: " << plainText << "\n";
+  Text plainText = "great job, team ;)", cipherText;
+  std::cout << "plaintext: \"" << plainText << "\"\n";
 
   rsaCryptosystem.encrypt(cipherText, plainText, publicKey);
-  std::cout << "encryption:\n\tciphertext: " <<
-    cipherText << "\n";
+  std::cout << "encryption:\n\tciphertext: \"" <<
+    cipherText << "\"\n";
 
   rsaCryptosystem.decrypt(plainText, cipherText,
     privateKey);
-  std::cout << "decryption:\n\tplaintext: " << plainText <<
-    "\n";
+  std::cout << "decryption:\n\tplaintext: \"" <<
+    plainText << "\"\n";
 
-  rsaCryptosystem.cryptanalyze(plainText, cipherText,
-    publicKey);
-  std::cout << "cryptanalysis:\n\tplaintext: " <<
-    plainText << "\n";
+  // rsaCryptosystem.cryptanalyze(plainText, cipherText,
+  //   publicKey);
+  // std::cout << "cryptanalysis:\n\tplaintext: \"" <<
+  //   plainText << "\"\n";
 }
 
 ////////////////////////////////////////////////////////////
