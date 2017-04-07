@@ -146,7 +146,7 @@ void RsaCryptosystem::cryptanalyze() {
 
 void RsaCryptosystem::generateKeys(Key &publicKey,
     Key &privateKey) {
-  generateKeys(1024);
+  generateKeys(256);
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
 }
