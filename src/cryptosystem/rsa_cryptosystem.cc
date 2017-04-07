@@ -121,15 +121,18 @@ void RsaCryptosystem::generateKeys(
 
 void RsaCryptosystem::encrypt() {
   padText(paddedPlainText, plainText);
-  paddedCipherText = paddedPlainText;
-    // replace the line above by RSA encyption
+  //paddedCipherText = paddedPlainText;
+    // replace the line above by RSA encyption    
+  mpz_powm(paddedCipherText, paddedPlainText, e, N);
   unpadText(cipherText, paddedCipherText);
 }
 
 void RsaCryptosystem::decrypt() {
   padText(paddedCipherText, cipherText);
-  paddedPlainText = paddedCipherText;
+  //paddedPlainText = paddedCipherText;
     // replace the line above by RSA decryption
+    
+  mpz_powm(paddedPlainText, paddedCipherText, d, N);
   unpadText(plainText, paddedPlainText);
 }
 
