@@ -9,6 +9,8 @@ http://stackoverflow.com/questions/9791761/using-gmp-for-cryptography-how-to-get
 ////////////////////////////////////////////////////////////
 // class RsaCryptosystem:
 
+// private:
+
 // private helper methods:
 
 void RsaCryptosystem::setPublicKeyElements(
@@ -25,9 +27,9 @@ void RsaCryptosystem::setPrivateKeyElements(
 
 // private overloaded methods:
 
-void RsaCryptosystem::generateKeys() {
-  unsigned int MINIMUM_MODULUS_LENGTH = 1024;
-  unsigned int PRIME_LENGTH = (MINIMUM_MODULUS_LENGTH/2)-1;
+void RsaCryptosystem::generateKeys(
+    unsigned int modulusLength) {
+  unsigned int PRIME_LENGTH = (modulusLength/2)-1;
   unsigned int seed = 672087;
 
   mpz_t p;
@@ -59,59 +61,58 @@ void RsaCryptosystem::generateKeys() {
   /**/           gmp_randseed_ui(state, seed);            //
   //******************************************************//
 
-  do{
+  do {
     mpz_urandomb(p, state, PRIME_LENGTH);
     mpz_add(p, p, twoToThePowerOf512);
 
     mpz_urandomb(q, state, PRIME_LENGTH);
     mpz_add(q, q, twoToThePowerOf512);
 
-    do{
+    do {
       mpz_nextprime(p, p);
       mpz_mod(mod, p, e);
     } while (mpz_cmp_ui(mod, 1) == 0);
 
-    do{
+    do {
       mpz_nextprime(q, q);
       mpz_mod(mod, q, e);
     } while (mpz_cmp_ui(mod, 1) == 0);
 
     mpz_mul(N, p, q);
-  } while (mpz_sizeinbase(N, 2) < MINIMUM_MODULUS_LENGTH);
+  } while (mpz_sizeinbase(N, 2) < modulusLength);
 
-  //******************************************************//
-  //                  !!!!!WARNING!!!!!                   //
-  // NOT SURE IF THIS IS LEGAL BUT IT DOESN'T COMPLAIN!!  //
-  //******************************************************//
   mpz_t p1, q1;
   mpz_init_set(p1, p);
   mpz_init_set(q1, q);
   mpz_sub_ui(p1, p1, 1);
   mpz_sub_ui(q1, q1, 1);
+
   mpz_mul(L, p1, q1);
+  mpz_invert(d, e, L);
+
   mpz_clear(p1);
   mpz_clear(q1);
-
-  mpz_invert(d, e, L);
 
   //******************************************************//
   //   The remaining code is just for testing purposes    //
   //******************************************************//
-  std::cout << "p: " << std::hex << p << std::endl;
-  std::cout << std::dec << "Number is this big: "
-    << mpz_sizeinbase(p, 2) << std::endl;
+  if (verbosity) {
+    std::cout << "p: " << std::hex << p << std::endl;
+    std::cout << std::dec << "Number is this big: "
+      << mpz_sizeinbase(p, 2) << std::endl;
 
-  std::cout << "q: " << std::hex << q << std::endl;
-  std::cout << std::dec << "Number is this big: "
-    << mpz_sizeinbase(q, 2) << std::endl;
+    std::cout << "q: " << std::hex << q << std::endl;
+    std::cout << std::dec << "Number is this big: "
+      << mpz_sizeinbase(q, 2) << std::endl;
 
-  std::cout << "N: " << std::hex << N << std::endl;
-  std::cout << std::dec << "Number is this big: "
-    << mpz_sizeinbase(N, 2) << std::endl;
+    std::cout << "N: " << std::hex << N << std::endl;
+    std::cout << std::dec << "Number is this big: "
+      << mpz_sizeinbase(N, 2) << std::endl;
 
-  std::cout << "e: " << std::hex << e << std::endl;
+    std::cout << "e: " << std::hex << e << std::endl;
 
-  std::cout << "d: " << std::hex << d << std::endl;
+    std::cout << "d: " << std::hex << d << std::endl;
+  }
 
   modulus = KeyElement(N);
   publicExponent = KeyElement(e);
@@ -120,10 +121,8 @@ void RsaCryptosystem::generateKeys() {
 
 void RsaCryptosystem::encrypt() {
   padText(paddedPlainText, plainText);
-  //std::cout << "Daniel got this!\n";
   //paddedCipherText = paddedPlainText;
-    // replace the line above by RSA encyption
-    
+    // replace the line above by RSA encyption    
   mpz_powm(paddedCipherText, paddedPlainText, e, N);
   unpadText(cipherText, paddedCipherText);
 }
@@ -144,11 +143,13 @@ void RsaCryptosystem::cryptanalyze() {
   unpadText(plainText, paddedPlainText);
 }
 
+// public:
+
 // public overloaded methods:
 
 void RsaCryptosystem::generateKeys(Key &publicKey,
     Key &privateKey) {
-  generateKeys();
+  generateKeys(256);
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
 }
