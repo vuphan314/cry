@@ -29,8 +29,8 @@ void RsaCryptosystem::setPrivateKeyElements(
 
 void RsaCryptosystem::generateKeys(
     SizeT modulusLength) {
-  SizeT PRIME_LENGTH = (modulusLength/2)-1;
-  SizeT seed = 672087;
+  SizeT PRIME_LENGTH = (modulusLength / 2) - 1;
+  SizeT SEED = 672087;
 
   mpz_t p;
   mpz_t q;
@@ -57,7 +57,7 @@ void RsaCryptosystem::generateKeys(
   // THIS MAKES THE ALGORITHM CRYPTOGRAPHICALLY INSECURE  //
   /**/           gmp_randstate_t state;                   //
   /**/           gmp_randinit_default(state);             //
-  /**/           gmp_randseed_ui(state, seed);            //
+  /**/           gmp_randseed_ui(state, SEED);            //
   //******************************************************//
 
   do {

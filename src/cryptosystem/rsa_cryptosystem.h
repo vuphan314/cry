@@ -10,6 +10,8 @@
 const SizeT DEFAULT_MODULUS_LENGTH = 256;
 const SizeT BREAKABLE_MODULUS_LENGTH = 32;
 
+const SizeT SEED = 672087;
+
 ////////////////////////////////////////////////////////////
 
 class RsaCryptosystem : public Cryptosystem {

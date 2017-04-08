@@ -25,7 +25,8 @@ void demoRsa() {
   RsaCryptosystem rsaCryptosystem;
 
   Key publicKey, privateKey;
-  rsaCryptosystem.generateKeys(publicKey, privateKey);
+  rsaCryptosystem.generateKeys(publicKey, privateKey,
+    BREAKABLE_MODULUS_LENGTH);
   std::cout << "key-generation:\n\tmodulus: " <<
     publicKey.at(0) << "\n\tpublic exponent: " <<
     publicKey.at(1) << "\n\tprivate exponent: " <<
@@ -55,5 +56,5 @@ int main() {
   // testPaddingUnpadding();
   // testCharConversion();
   // testCryptosystems();
-  // demoRsa();
+  demoRsa();
 }
