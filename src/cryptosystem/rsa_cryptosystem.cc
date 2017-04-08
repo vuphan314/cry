@@ -37,25 +37,24 @@ void RsaCryptosystem::generateKeys(
   mpz_t N;
   mpz_t L;
   mpz_t d;
+  mpz_t mod;
   mpz_t e;
   mpz_t twoToThePowerOf512;
-  mpz_t mod;
-  mpz_t testValue;
 
   mpz_init(p);
   mpz_init(q);
   mpz_init(N);
   mpz_init(L);
   mpz_init(d);
-  mpz_init_set_ui(e, 65537);
   mpz_init(mod);
+  mpz_init_set_ui(e, 65537);
   mpz_init_set_ui(twoToThePowerOf512, 1);
 
   mpz_mul_2exp(twoToThePowerOf512, twoToThePowerOf512,
     PRIME_LENGTH);
 
   //******************************************************//
-  //  THIS MAKES THE ALGORITHM CRYPTOGRAHICALLY INSECURE  //
+  // THIS MAKES THE ALGORITHM CRYPTOGRAPHICALLY INSECURE  //
   /**/           gmp_randstate_t state;                   //
   /**/           gmp_randinit_default(state);             //
   /**/           gmp_randseed_ui(state, seed);            //
