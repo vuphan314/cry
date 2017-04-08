@@ -34,7 +34,7 @@ void RsaCryptosystem::generateKeys(
 
   mpz_t p;
   mpz_t q;
-  mpz_t N;
+  mpz_t n;
   mpz_t L;
   mpz_t d;
   mpz_t mod;
@@ -43,7 +43,7 @@ void RsaCryptosystem::generateKeys(
 
   mpz_init(p);
   mpz_init(q);
-  mpz_init(N);
+  mpz_init(n);
   mpz_init(L);
   mpz_init(d);
   mpz_init(mod);
@@ -77,8 +77,8 @@ void RsaCryptosystem::generateKeys(
       mpz_mod(mod, q, e);
     } while (mpz_cmp_ui(mod, 1) == 0);
 
-    mpz_mul(N, p, q);
-  } while (mpz_sizeinbase(N, 2) < modulusLength);
+    mpz_mul(n, p, q);
+  } while (mpz_sizeinbase(n, 2) < modulusLength);
 
   mpz_t p1, q1;
   mpz_init_set(p1, p);
@@ -104,16 +104,16 @@ void RsaCryptosystem::generateKeys(
     std::cout << std::dec << "Number is this big: "
       << mpz_sizeinbase(q, 2) << std::endl;
 
-    std::cout << "N: " << std::hex << N << std::endl;
+    std::cout << "n: " << std::hex << n << std::endl;
     std::cout << std::dec << "Number is this big: "
-      << mpz_sizeinbase(N, 2) << std::endl;
+      << mpz_sizeinbase(n, 2) << std::endl;
 
     std::cout << "e: " << std::hex << e << std::endl;
 
     std::cout << "d: " << std::hex << d << std::endl;
   }
 
-  modulus = KeyElement(N);
+  modulus = KeyElement(n);
   publicExponent = KeyElement(e);
   privateExponent = KeyElement(d);
 }
@@ -139,16 +139,16 @@ void RsaCryptosystem::decrypt() {
 void RsaCryptosystem::cryptanalyze() {
   padText(paddedCipherText, cipherText);
 
-  mpz_t N, p;
-  mpz_init_set(N, modulus.get_mpz_t());
+  mpz_t n, p;
+  mpz_init_set(n, modulus.get_mpz_t());
   mpz_init_set_ui(p, 2);
   do {
     mpz_nextprime(p, p);
-  } while (!(mpz_divisible_p(N, p)));
+  } while (!(mpz_divisible_p(n, p)));
 
   mpz_t q;
   mpz_init(q);
-  mpz_fdiv_q(q, N, p);
+  mpz_fdiv_q(q, n, p);
 
   mpz_t p1, q1;
   mpz_init_set(p1, p);
@@ -168,7 +168,7 @@ void RsaCryptosystem::cryptanalyze() {
   mpz_powm(paddedPlainText.get_mpz_t(),
     paddedCipherText.get_mpz_t(),
     d,
-    N);
+    n);
 
   unpadText(plainText, paddedPlainText);
 }
