@@ -10,6 +10,8 @@
 #include <gmp.h>
 #include <gmpxx.h>
 
+#include "../../cplusplus/src/timing.h"
+
 ////////////////////////////////////////////////////////////
 
 using SizeT = unsigned long long;

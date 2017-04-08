@@ -114,6 +114,8 @@ void RsaCryptosystem::decrypt() {
 }
 
 void RsaCryptosystem::cryptanalyze() {
+  Time startTime = getTime();
+
   mpz_t n, e, d, p, q, l;
   mpz_inits(n, e, d, p, q, l, NULL);
 
