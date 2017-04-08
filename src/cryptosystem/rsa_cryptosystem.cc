@@ -31,26 +31,16 @@ void RsaCryptosystem::generateKeys(
     SizeT modulusLength) {
   const SizeT PRIME_LENGTH = (modulusLength / 2) - 1;
 
-  mpz_t p;
-  mpz_t q;
-  mpz_t n;
-  mpz_t l;
-  mpz_t d;
-  mpz_t e;
-  mpz_t mod;
-  mpz_t TWO_EXP_PRIME_LENGTH;
+  mpz_t n, e, d, p, q, l, mod, TWO_EXP_PRIME_LENGTH;
+  mpz_inits(n, e, d, p, q, l, mod, TWO_EXP_PRIME_LENGTH,
+    NULL);
 
-  mpz_init(p);
-  mpz_init(q);
-  mpz_init(n);
-  mpz_init(l);
-  mpz_init(d);
-  mpz_init_set_ui(e, DEFAULT_PUBLIC_EXPONENT);
-  mpz_init(mod);
-  mpz_init_set_ui(TWO_EXP_PRIME_LENGTH, 1);
+  mpz_set_ui(e, DEFAULT_PUBLIC_EXPONENT);
+
+  mpz_set_ui(TWO_EXP_PRIME_LENGTH, 1);
   mpz_mul_2exp(TWO_EXP_PRIME_LENGTH, TWO_EXP_PRIME_LENGTH,
     PRIME_LENGTH);
-    // TWO_EXP_PRIME_LENGTH is const afterward
+  // TWO_EXP_PRIME_LENGTH is const afterward
 
   //******************************************************//
   // THIS MAKES THE ALGORITHM CRYPTOGRAPHICALLY INSECURE  //
@@ -79,13 +69,8 @@ void RsaCryptosystem::generateKeys(
     mpz_mul(n, p, q);
   } while (mpz_sizeinbase(n, 2) < modulusLength);
 
-  mpz_t p1, q1;
-  mpz_init_set(p1, p);
-  mpz_init_set(q1, q);
-  mpz_sub_ui(p1, p1, 1);
-  mpz_sub_ui(q1, q1, 1);
+  setTotient(l, p, q);
 
-  mpz_mul(l, p1, q1);
   mpz_invert(d, e, l);
 
   //******************************************************//

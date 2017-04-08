@@ -32,7 +32,7 @@ void demoRsa() {
     publicKey.at(1) << "\n\tprivate exponent: " <<
     privateKey.at(1) << "\n";
 
-  Text plainText = "nice", cipherText;
+  Text plainText = BREAKABLE_PLAIN_TEXT, cipherText;
   std::cout << "plaintext: \"" << plainText << "\"\n";
 
   rsaCryptosystem.encrypt(cipherText, plainText, publicKey);
