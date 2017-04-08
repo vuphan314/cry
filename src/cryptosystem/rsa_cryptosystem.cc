@@ -177,12 +177,17 @@ void RsaCryptosystem::cryptanalyze() {
 
 // public overloaded methods:
 
-void RsaCryptosystem::generateKeys(Key &publicKey,
-    Key &privateKey) {
-  // generateKeys(256); // Michael's default
-  generateKeys(32); // Vu's demo
+void RsaCryptosystem::generateKeys(
+    Key &publicKey, Key &privateKey, SizeT modulusLength) {
+  generateKeys(modulusLength);
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
+}
+
+void RsaCryptosystem::generateKeys(
+    Key &publicKey, Key &privateKey) {
+  generateKeys(publicKey, privateKey,
+    DEFAULT_MODULUS_LENGTH);
 }
 
 void RsaCryptosystem::encrypt(Text &cipherText,

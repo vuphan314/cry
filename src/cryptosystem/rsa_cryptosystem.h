@@ -7,6 +7,11 @@
 
 ////////////////////////////////////////////////////////////
 
+const SizeT DEFAULT_MODULUS_LENGTH = 256;
+const SizeT BREAKABLE_MODULUS_LENGTH = 32;
+
+////////////////////////////////////////////////////////////
+
 class RsaCryptosystem : public Cryptosystem {
 private:
   KeyElement modulus, // n, cryptographically public
@@ -40,6 +45,10 @@ private:
 
 public:
 // public overloaded methods:
+  void generateKeys(
+    Key &publicKey, Key &privateKey, // set these
+    SizeT modulusLength);
+
   void generateKeys(
     Key &publicKey, Key &privateKey); // set these
 
