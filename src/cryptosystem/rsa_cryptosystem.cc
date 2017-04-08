@@ -209,5 +209,6 @@ void setTotient(mpz_t l, mpz_t p, mpz_t q) {
   mpz_init_set(q1, q);
   mpz_sub_ui(p1, p1, 1);
   mpz_sub_ui(q1, q1, 1);
-  mpz_mul(l, p1, q1);
+  mpz_lcm(l, p1, q1); // Carmichael totient
+  // mpz_mul(l, p1, q1); // Euler totient
 }
