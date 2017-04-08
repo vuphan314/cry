@@ -152,7 +152,8 @@ void RsaCryptosystem::cryptanalyze() {
 
 void RsaCryptosystem::generateKeys(Key &publicKey,
     Key &privateKey) {
-  generateKeys(256);
+  // generateKeys(256); // Michael's default
+  generateKeys(32); // Vu's demo
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
 }

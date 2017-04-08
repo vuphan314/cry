@@ -31,7 +31,7 @@ void demoRsa() {
     publicKey.at(1) << "\n\tprivate exponent: " <<
     privateKey.at(1) << "\n";
 
-  Text plainText = "great job, team ;)", cipherText;
+  Text plainText = "nice", cipherText;
   std::cout << "plaintext: \"" << plainText << "\"\n";
 
   rsaCryptosystem.encrypt(cipherText, plainText, publicKey);
