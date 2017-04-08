@@ -115,26 +115,20 @@ void RsaCryptosystem::generateKeys(
 }
 
 void RsaCryptosystem::encrypt() {
-  padText(paddedPlainText, plainText);
   mpz_powm(paddedCipherText.get_mpz_t(),
     paddedPlainText.get_mpz_t(),
     publicExponent.get_mpz_t(),
     modulus.get_mpz_t());
-  unpadText(cipherText, paddedCipherText);
 }
 
 void RsaCryptosystem::decrypt() {
-  padText(paddedCipherText, cipherText);
   mpz_powm(paddedPlainText.get_mpz_t(),
     paddedCipherText.get_mpz_t(),
     privateExponent.get_mpz_t(),
     modulus.get_mpz_t());
-  unpadText(plainText, paddedPlainText);
 }
 
 void RsaCryptosystem::cryptanalyze() {
-  padText(paddedCipherText, cipherText);
-
   mpz_t n, e, d, p, q, l;
   mpz_inits(n, e, d, p, q, l, NULL);
 
@@ -155,8 +149,6 @@ void RsaCryptosystem::cryptanalyze() {
 
   mpz_powm(paddedPlainText.get_mpz_t(),
     paddedCipherText.get_mpz_t(), d, n);
-
-  unpadText(plainText, paddedPlainText);
 }
 
 // public:
@@ -178,26 +170,26 @@ void RsaCryptosystem::generateKeys(
 
 void RsaCryptosystem::encrypt(Text &cipherText,
     const Text &plainText, const Key &publicKey) {
-  this->plainText = plainText;
+  padText(paddedPlainText, plainText);
   setPublicKeyElements(publicKey);
   encrypt();
-  cipherText = this->cipherText;
+  unpadText(cipherText, paddedCipherText);
 }
 
 void RsaCryptosystem::decrypt(Text &plainText,
     const Text &cipherText, const Key &privateKey) {
-  this->cipherText = cipherText;
+  padText(paddedCipherText, cipherText);
   setPrivateKeyElements(privateKey);
   decrypt();
-  plainText = this->plainText;
+  unpadText(plainText, paddedPlainText);
 }
 
 void RsaCryptosystem::cryptanalyze(Text &plainText,
     const Text &cipherText, const Key &publicKey) {
-  this->cipherText = cipherText;
+  padText(paddedCipherText, cipherText);
   setPublicKeyElements(publicKey);
   cryptanalyze();
-  plainText = this->plainText;
+  unpadText(plainText, paddedPlainText);
 }
 
 ////////////////////////////////////////////////////////////
@@ -209,6 +201,6 @@ void setTotient(mpz_t l, mpz_t p, mpz_t q) {
   mpz_init_set(q1, q);
   mpz_sub_ui(p1, p1, 1);
   mpz_sub_ui(q1, q1, 1);
-  mpz_lcm(l, p1, q1); // Carmichael totient
-  // mpz_mul(l, p1, q1); // Euler totient
+  mpz_lcm(l, p1, q1); // yes: Carmichael totient
+  // mpz_mul(l, p1, q1); // no: Euler totient
 }

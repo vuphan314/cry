@@ -21,7 +21,6 @@ private:
   KeyElement modulus, // n, cryptographically public
     publicExponent, // e, cryptographically public
     privateExponent; // d, cryptographically private
-  Text plainText, cipherText;
   PaddedText paddedPlainText, paddedCipherText;
 
 // private helper methods:
@@ -36,16 +35,16 @@ private:
     // set: modulus, publicExponent, privateExponent
 
   void encrypt();
-    // set: cipherText
-    // read: plainText, modulus, publicExponent
+    // set: paddedCipherText
+    // read: paddedPlainText, modulus, publicExponent
 
   void decrypt();
-    // set: plainText
-    // read: cipherText, modulus, privateExponent
+    // set: paddedPlainText
+    // read: paddedCipherText, modulus, privateExponent
 
   void cryptanalyze();
-    // set: plainText
-    // read: cipherText, modulus, publicExponent
+    // set: paddedPlainText
+    // read: paddedCipherText, modulus, publicExponent
 
 public:
 // public overloaded methods:
