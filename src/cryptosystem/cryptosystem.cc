@@ -31,7 +31,7 @@ void unpadText(Text &text, const PaddedText &paddedText) {
 
 unsigned char getUnsignedChar(char ch) {
   if (ch < 0) {
-    return ch + 256;
+    return ch + TWO_EXP_8;
   } else {
     return ch;
   }
@@ -39,7 +39,7 @@ unsigned char getUnsignedChar(char ch) {
 
 char getChar(unsigned char uCh) {
   if (uCh >= 128) {
-    return uCh - 256;
+    return uCh - TWO_EXP_8;
   } else {
     return uCh;
   }

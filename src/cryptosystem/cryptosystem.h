@@ -28,7 +28,8 @@ using Bool = char;
 
 ////////////////////////////////////////////////////////////
 
-const BigInt ALPHABET_SIZE(256);
+const unsigned int TWO_EXP_8 = 256;
+const BigInt ALPHABET_SIZE = TWO_EXP_8;
 
 const Bool TRUE = true;
 const Bool FALSE = false;
