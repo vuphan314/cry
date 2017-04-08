@@ -52,6 +52,8 @@ void demoRsa() {
 ////////////////////////////////////////////////////////////
 
 int main() {
-  testCryptosystems();
+  // testPaddingUnpadding();
+  // testCharConversion();
+  // testCryptosystems();
   // demoRsa();
 }
