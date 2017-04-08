@@ -52,6 +52,6 @@ void demoRsa() {
 ////////////////////////////////////////////////////////////
 
 int main() {
-  // testCryptosystems();
+  testCryptosystems();
   demoRsa();
 }

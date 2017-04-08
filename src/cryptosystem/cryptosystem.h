@@ -62,7 +62,7 @@ void padText(PaddedText &paddedText, // set this
   const Text &text);
 
 void unpadText(Text &text, // set this
-  PaddedText paddedText); // pass this by value
+  const PaddedText &paddedText);
 
 unsigned char getUnsignedChar(char ch);
 

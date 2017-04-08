@@ -18,14 +18,14 @@ void padText(PaddedText &paddedText, const Text &text) {
   }
 }
 
-void unpadText(Text &text, PaddedText paddedText) {
+void unpadText(Text &text, const PaddedText &paddedText) {
   // std::cout << "Unpadding.\n";
   text.clear();
-  BigInt paddedChar;
-  while (paddedText > 0) {
-    paddedChar = paddedText % ALPHABET_SIZE;
+  BigInt paddedChar, remainingPaddedText = paddedText;
+  while (remainingPaddedText > 0) {
+    paddedChar = remainingPaddedText % ALPHABET_SIZE;
     text.push_back(getChar(paddedChar.get_ui()));
-    paddedText /= ALPHABET_SIZE;
+    remainingPaddedText /= ALPHABET_SIZE;
   }
 }
 
