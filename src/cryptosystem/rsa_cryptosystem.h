@@ -7,10 +7,12 @@
 
 ////////////////////////////////////////////////////////////
 
-const SizeT DEFAULT_MODULUS_LENGTH = 256;
 const SizeT BREAKABLE_MODULUS_LENGTH = 32;
+const SizeT DEFAULT_MODULUS_LENGTH = 256;
 
-const SizeT SEED = 672087;
+const SizeT DEFAULT_PUBLIC_EXPONENT = 65537;
+
+const SizeT DEFAULT_SEED = 672087;
 
 ////////////////////////////////////////////////////////////
 

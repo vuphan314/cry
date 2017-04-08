@@ -29,43 +29,42 @@ void RsaCryptosystem::setPrivateKeyElements(
 
 void RsaCryptosystem::generateKeys(
     SizeT modulusLength) {
-  SizeT PRIME_LENGTH = (modulusLength / 2) - 1;
-  SizeT SEED = 672087;
+  const SizeT PRIME_LENGTH = (modulusLength / 2) - 1;
 
   mpz_t p;
   mpz_t q;
   mpz_t n;
   mpz_t L;
   mpz_t d;
-  mpz_t mod;
   mpz_t e;
-  mpz_t twoToThePowerOf512;
+  mpz_t mod;
+  mpz_t TWO_EXP_PRIME_LENGTH;
 
   mpz_init(p);
   mpz_init(q);
   mpz_init(n);
   mpz_init(L);
   mpz_init(d);
+  mpz_init_set_ui(e, DEFAULT_PUBLIC_EXPONENT);
   mpz_init(mod);
-  mpz_init_set_ui(e, 65537);
-  mpz_init_set_ui(twoToThePowerOf512, 1);
-
-  mpz_mul_2exp(twoToThePowerOf512, twoToThePowerOf512,
+  mpz_init_set_ui(TWO_EXP_PRIME_LENGTH, 1);
+  mpz_mul_2exp(TWO_EXP_PRIME_LENGTH, TWO_EXP_PRIME_LENGTH,
     PRIME_LENGTH);
+    // TWO_EXP_PRIME_LENGTH is const afterward
 
   //******************************************************//
   // THIS MAKES THE ALGORITHM CRYPTOGRAPHICALLY INSECURE  //
   /**/           gmp_randstate_t state;                   //
   /**/           gmp_randinit_default(state);             //
-  /**/           gmp_randseed_ui(state, SEED);            //
+  /**/           gmp_randseed_ui(state, DEFAULT_SEED);    //
   //******************************************************//
 
   do {
     mpz_urandomb(p, state, PRIME_LENGTH);
-    mpz_add(p, p, twoToThePowerOf512);
+    mpz_add(p, p, TWO_EXP_PRIME_LENGTH);
 
     mpz_urandomb(q, state, PRIME_LENGTH);
-    mpz_add(q, q, twoToThePowerOf512);
+    mpz_add(q, q, TWO_EXP_PRIME_LENGTH);
 
     do {
       mpz_nextprime(p, p);
@@ -88,9 +87,6 @@ void RsaCryptosystem::generateKeys(
 
   mpz_mul(L, p1, q1);
   mpz_invert(d, e, L);
-
-  mpz_clear(p1);
-  mpz_clear(q1);
 
   //******************************************************//
   //   The remaining code is just for testing purposes    //
