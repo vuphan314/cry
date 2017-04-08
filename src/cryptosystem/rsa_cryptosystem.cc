@@ -28,9 +28,9 @@ void RsaCryptosystem::setPrivateKeyElements(
 // private overloaded methods:
 
 void RsaCryptosystem::generateKeys(
-    unsigned int modulusLength) {
-  unsigned int PRIME_LENGTH = (modulusLength/2)-1;
-  unsigned int seed = 672087;
+    SizeT modulusLength) {
+  SizeT PRIME_LENGTH = (modulusLength/2)-1;
+  SizeT seed = 672087;
 
   mpz_t p;
   mpz_t q;

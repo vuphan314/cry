@@ -17,11 +17,13 @@ private:
 
 // private helper methods:
   void setPublicKeyElements(const Key &publicKey);
+    // set: modulus, publicExponent
 
   void setPrivateKeyElements(const Key &privateKey);
+    // set: modulus, privateExponent
 
 // private overloaded methods:
-  void generateKeys(unsigned int modulusLength);
+  void generateKeys(SizeT modulusLength);
     // set: modulus, publicExponent, privateExponent
 
   void encrypt();
