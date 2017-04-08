@@ -34,7 +34,7 @@ void RsaCryptosystem::generateKeys(
   mpz_t p;
   mpz_t q;
   mpz_t n;
-  mpz_t L;
+  mpz_t l;
   mpz_t d;
   mpz_t e;
   mpz_t mod;
@@ -43,7 +43,7 @@ void RsaCryptosystem::generateKeys(
   mpz_init(p);
   mpz_init(q);
   mpz_init(n);
-  mpz_init(L);
+  mpz_init(l);
   mpz_init(d);
   mpz_init_set_ui(e, DEFAULT_PUBLIC_EXPONENT);
   mpz_init(mod);
@@ -85,8 +85,8 @@ void RsaCryptosystem::generateKeys(
   mpz_sub_ui(p1, p1, 1);
   mpz_sub_ui(q1, q1, 1);
 
-  mpz_mul(L, p1, q1);
-  mpz_invert(d, e, L);
+  mpz_mul(l, p1, q1);
+  mpz_invert(d, e, l);
 
   //******************************************************//
   //   The remaining code is just for testing purposes    //
