@@ -135,36 +135,26 @@ void RsaCryptosystem::decrypt() {
 void RsaCryptosystem::cryptanalyze() {
   padText(paddedCipherText, cipherText);
 
-  mpz_t n, p;
-  mpz_init_set(n, modulus.get_mpz_t());
-  mpz_init_set_ui(p, 2);
+  mpz_t n, e, d, p, q, l;
+  mpz_inits(n, e, d, p, q, l, NULL);
+
+  mpz_set(n, modulus.get_mpz_t());
+
+  mpz_set_ui(p, 2);
   do {
     mpz_nextprime(p, p);
   } while (!(mpz_divisible_p(n, p)));
 
-  mpz_t q;
-  mpz_init(q);
-  mpz_fdiv_q(q, n, p);
+  mpz_tdiv_q(q, n, p);
 
-  mpz_t p1, q1;
-  mpz_init_set(p1, p);
-  mpz_init_set(q1, q);
-  mpz_sub_ui(p1, p1, 1);
-  mpz_sub_ui(q1, q1, 1);
+  setTotient(l, p, q);
 
-  mpz_t L;
-  mpz_init(L);
-  mpz_mul(L, p1, q1);
+  mpz_set(e, publicExponent.get_mpz_t());
 
-  mpz_t e, d;
-  mpz_init_set(e, publicExponent.get_mpz_t());
-  mpz_init(d);
-  mpz_invert(d, e, L);
+  mpz_invert(d, e, l);
 
   mpz_powm(paddedPlainText.get_mpz_t(),
-    paddedCipherText.get_mpz_t(),
-    d,
-    n);
+    paddedCipherText.get_mpz_t(), d, n);
 
   unpadText(plainText, paddedPlainText);
 }
@@ -208,4 +198,16 @@ void RsaCryptosystem::cryptanalyze(Text &plainText,
   setPublicKeyElements(publicKey);
   cryptanalyze();
   plainText = this->plainText;
+}
+
+////////////////////////////////////////////////////////////
+// global functions:
+
+void setTotient(mpz_t l, mpz_t p, mpz_t q) {
+  mpz_t p1, q1;
+  mpz_init_set(p1, p);
+  mpz_init_set(q1, q);
+  mpz_sub_ui(p1, p1, 1);
+  mpz_sub_ui(q1, q1, 1);
+  mpz_mul(l, p1, q1);
 }
