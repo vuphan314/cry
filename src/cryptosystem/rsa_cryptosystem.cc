@@ -139,9 +139,36 @@ void RsaCryptosystem::decrypt() {
 void RsaCryptosystem::cryptanalyze() {
   padText(paddedCipherText, cipherText);
 
-  paddedPlainText = paddedCipherText;
-    // replace the line above by RSA cryptanalysis
-  std::cout << "Vu will fix this.\n";
+  mpz_t N, p;
+  mpz_init_set(N, modulus.get_mpz_t());
+  mpz_init_set_ui(p, 2);
+  do {
+    mpz_nextprime(p, p);
+  } while (!(mpz_divisible_p(N, p)));
+
+  mpz_t q;
+  mpz_init(q);
+  mpz_fdiv_q(q, N, p);
+
+  mpz_t p1, q1;
+  mpz_init_set(p1, p);
+  mpz_init_set(q1, q);
+  mpz_sub_ui(p1, p1, 1);
+  mpz_sub_ui(q1, q1, 1);
+
+  mpz_t L;
+  mpz_init(L);
+  mpz_mul(L, p1, q1);
+
+  mpz_t e, d;
+  mpz_init_set(e, publicExponent.get_mpz_t());
+  mpz_init(d);
+  mpz_invert(d, e, L);
+
+  mpz_powm(paddedPlainText.get_mpz_t(),
+    paddedCipherText.get_mpz_t(),
+    d,
+    N);
 
   unpadText(plainText, paddedPlainText);
 }

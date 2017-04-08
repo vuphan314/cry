@@ -43,10 +43,10 @@ void demoRsa() {
   std::cout << "decryption:\n\tplaintext: \"" <<
     plainText << "\"\n";
 
-  // rsaCryptosystem.cryptanalyze(plainText, cipherText,
-  //   publicKey);
-  // std::cout << "cryptanalysis:\n\tplaintext: \"" <<
-  //   plainText << "\"\n";
+  rsaCryptosystem.cryptanalyze(plainText, cipherText,
+    publicKey);
+  std::cout << "cryptanalysis:\n\tplaintext: \"" <<
+    plainText << "\"\n";
 }
 
 ////////////////////////////////////////////////////////////
