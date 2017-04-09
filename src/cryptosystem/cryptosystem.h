@@ -34,11 +34,13 @@ using Bool = char;
 const unsigned char TWO_EXP_7 = 128;
 const unsigned int TWO_EXP_8 = 256;
 const BigInt ALPHABET_SIZE = TWO_EXP_8;
+  // 1 char is 8-bit long
 
 const Bool TRUE = true;
 const Bool FALSE = false;
 
 const SizeT COUT_PERIOD = (2 << 15) - 1;
+  // &-mask to get least significant bits
 const auto COUT_WIDTH = std::setw(15);
 const auto COUT_PRECISION = std::setprecision(4);
 
@@ -67,11 +69,17 @@ public:
 ////////////////////////////////////////////////////////////
 // global functions:
 
+void setTotient(mpz_t l, mpz_t p, mpz_t q);
+
+// padding/unpadding:
+
 void padText(PaddedText &paddedText, // set this
   const Text &text);
 
 void unpadText(Text &text, // set this
   const PaddedText &paddedText);
+
+// char conversion:
 
 unsigned char getUnsignedChar(char ch);
 

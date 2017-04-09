@@ -202,16 +202,3 @@ void RsaCryptosystem::cryptanalyze(Text &plainText,
   cryptanalyze();
   unpadText(plainText, paddedPlainText);
 }
-
-////////////////////////////////////////////////////////////
-// global functions:
-
-void setTotient(mpz_t l, mpz_t p, mpz_t q) {
-  mpz_t p1, q1;
-  mpz_init_set(p1, p);
-  mpz_init_set(q1, q);
-  mpz_sub_ui(p1, p1, 1);
-  mpz_sub_ui(q1, q1, 1);
-  mpz_lcm(l, p1, q1); // yes: Carmichael totient
-  // mpz_mul(l, p1, q1); // no: Euler totient
-}
