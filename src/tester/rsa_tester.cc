@@ -8,7 +8,7 @@ RsaTester::RsaTester() {
 }
 
 void RsaTester::demo() {
-  std::cout << "method RsaTester::demo:\n\n";
+  std::cout << "method RsaTester::demo\n";
 
   Key publicKey, privateKey;
   cryptosystem->generateKeys(publicKey, privateKey,

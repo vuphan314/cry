@@ -2,8 +2,17 @@
 
 ////////////////////////////////////////////////////////////
 
+void demoRsa() {
+  std::cout << "function demoRsa\n";
+  RsaTester rsaTester;
+  rsaTester.demo();
+  std::cout << "\n";
+}
+
+////////////////////////////////////////////////////////////
+
 void testCryptosystems() {
-  std::cout << "\nfunction testCryptosystems:\n";
+  std::cout << "function testCryptosystems\n";
   std::vector<CryptosystemName>
     cryptosystemNames{RSA, DUMMY};
   for (CryptosystemName cryptosystemName :
@@ -16,21 +25,15 @@ void testCryptosystems() {
       std::cout << "Some test failed.\n";
     }
   }
-}
-
-////////////////////////////////////////////////////////////
-
-void demoRsa() {
-  RsaTester rsaTester;
-  rsaTester.demo();
+  std::cout << "\n";
 }
 
 ////////////////////////////////////////////////////////////
 
 int main() {
   std::cout << "\n";
-  // testPaddingUnpadding();
-  // testCharConversion();
-  // testCryptosystems();
   demoRsa();
+  testCryptosystems();
+  testPaddingUnpadding();
+  testCharConversion();
 }

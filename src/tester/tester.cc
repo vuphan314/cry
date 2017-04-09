@@ -33,10 +33,10 @@ Bool testPaddingUnpadding() {
     "\".\n";
 
   if (unpaddedText == text) {
-    std::cout << "Test passed.\n";
+    std::cout << "Test passed.\n\n";
     return TRUE;
   } else {
-    std::cout << "Test failed.\n";
+    std::cout << "Test failed.\n\n";
     return FALSE;
   }
 }
@@ -46,16 +46,16 @@ Bool testCharConversion() {
   for (int ch = -TWO_EXP_7; ch < TWO_EXP_7; ch++) {
       // `char ch` would do 127++ == -128, looping forever
     if (getChar(getUnsignedChar(ch)) != ch) {
-      std::cout << "Test failed.\n";
+      std::cout << "Test failed.\n\n";
       return FALSE;
     }
   }
   for (unsigned int uCh = 0; uCh < TWO_EXP_8; uCh++) {
     if (getUnsignedChar(getChar(uCh)) != uCh) {
-      std::cout << "Test failed.\n";
+      std::cout << "Test failed.\n\n";
       return FALSE;
     }
   }
-  std::cout << "Test passed.\n";
+  std::cout << "Test passed.\n\n";
   return TRUE;
 }

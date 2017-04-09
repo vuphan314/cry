@@ -78,15 +78,15 @@ void RsaCryptosystem::generateKeys(
   //******************************************************//
   if (verbosity) {
     std::cout << "p: " << std::hex << p << std::endl;
-    std::cout << std::dec << "Number is this big: "
+    std::cout << std::dec << "number is this big: "
       << mpz_sizeinbase(p, 2) << std::endl;
 
     std::cout << "q: " << std::hex << q << std::endl;
-    std::cout << std::dec << "Number is this big: "
+    std::cout << std::dec << "number is this big: "
       << mpz_sizeinbase(q, 2) << std::endl;
 
     std::cout << "n: " << std::hex << n << std::endl;
-    std::cout << std::dec << "Number is this big: "
+    std::cout << std::dec << "number is this big: "
       << mpz_sizeinbase(n, 2) << std::endl;
 
     std::cout << "e: " << std::hex << e << std::endl;
