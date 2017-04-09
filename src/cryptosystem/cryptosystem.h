@@ -53,6 +53,10 @@ public:
 // purely virtual methods,
 // must be defined by non-abstract derived class:
   virtual void generateKeys(
+    Key &publicKey, Key &privateKey, // set these
+    SizeT keyElementLength) = 0;
+
+  virtual void generateKeys(
     Key &publicKey, Key &privateKey // set these
     ) = 0;
 

@@ -13,6 +13,8 @@ public:
   RsaTester();
     // constructor to set data member cryptosystem
 
+  void demo();
+
   Bool testKeyGeneration();
 
   Bool testEncryption();

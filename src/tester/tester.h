@@ -13,6 +13,8 @@ protected:
     // set by constructor of non-abstract derived class
 
 public:
+  virtual void demo();
+
   Bool testAll();
 
 // purely virtual methods,

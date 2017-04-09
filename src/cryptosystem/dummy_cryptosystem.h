@@ -9,6 +9,10 @@
 
 class DummyCryptosystem : public Cryptosystem {
 public:
+  void generateKeys(
+    Key &publicKey, Key &privateKey, // set these
+    SizeT keyElementLength);
+
   void generateKeys(Key &publicKey, Key &privateKey);
     // set these
 

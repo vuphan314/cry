@@ -21,41 +21,16 @@ void testCryptosystems() {
 ////////////////////////////////////////////////////////////
 
 void demoRsa() {
-  std::cout << "\nfunction demoRsa:\n\n";
-  RsaCryptosystem rsaCryptosystem;
-
-  Key publicKey, privateKey;
-  rsaCryptosystem.generateKeys(publicKey, privateKey,
-    BREAKABLE_MODULUS_LENGTH);
-  std::cout << "key-generation:\n\tmodulus: " <<
-    publicKey.at(0) << "\n\tpublic exponent: " <<
-    publicKey.at(1) << "\n\tprivate exponent: " <<
-    privateKey.at(1) << "\n";
-
-  Text plainText = BREAKABLE_PLAIN_TEXT, cipherText;
-  std::cout << "plaintext: \"" << plainText << "\"\n";
-
-  rsaCryptosystem.encrypt(cipherText, plainText, publicKey);
-  std::cout << "encryption:\n\tciphertext: \"" <<
-    cipherText << "\"\n";
-
-  rsaCryptosystem.decrypt(plainText, cipherText,
-    privateKey);
-  std::cout << "decryption:\n\tplaintext: \"" <<
-    plainText << "\"\n";
-
-  std::cout << "cryptanalysis:\n";
-  rsaCryptosystem.cryptanalyze(plainText, cipherText,
-    publicKey);
-  std::cout << "\tplaintext: \"" << plainText << "\"\n";
+  RsaTester rsaTester;
+  rsaTester.demo();
 }
 
 ////////////////////////////////////////////////////////////
 
 int main() {
   std::cout << "\n";
-  testPaddingUnpadding();
-  testCharConversion();
+  // testPaddingUnpadding();
+  // testCharConversion();
   // testCryptosystems();
-  // demoRsa();
+  demoRsa();
 }

@@ -7,6 +7,36 @@ RsaTester::RsaTester() {
   cryptosystem = new RsaCryptosystem;
 }
 
+void RsaTester::demo() {
+  std::cout << "method RsaTester::demo:\n\n";
+
+  Key publicKey, privateKey;
+  cryptosystem->generateKeys(publicKey, privateKey,
+    BREAKABLE_MODULUS_LENGTH);
+  std::cout << "key-generation:\n\tmodulus: " <<
+    publicKey.at(0) << "\n\tpublic exponent: " <<
+    publicKey.at(1) << "\n\tprivate exponent: " <<
+    privateKey.at(1) << "\n";
+
+  Text plainText = BREAKABLE_PLAIN_TEXT;
+  std::cout << "plaintext: \"" << plainText << "\"\n";
+
+  Text cipherText;
+  cryptosystem->encrypt(cipherText, plainText, publicKey);
+  std::cout << "encryption:\n\tciphertext: \"" <<
+    cipherText << "\"\n";
+
+  cryptosystem->decrypt(plainText, cipherText,
+    privateKey);
+  std::cout << "decryption:\n\tplaintext: \"" <<
+    plainText << "\"\n";
+
+  std::cout << "cryptanalysis:\n";
+  cryptosystem->cryptanalyze(plainText, cipherText,
+    publicKey);
+  std::cout << "\tplaintext: \"" << plainText << "\"\n";
+}
+
 Bool RsaTester::testKeyGeneration() {
   std::cout << "method RsaTester::testKeyGeneration\n";
   Key publicKey, privateKey;
