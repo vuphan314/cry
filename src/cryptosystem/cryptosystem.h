@@ -38,6 +38,7 @@ const BigInt ALPHABET_SIZE = TWO_EXP_8;
 const Bool TRUE = true;
 const Bool FALSE = false;
 
+const SizeT COUT_PERIOD = (2 << 15) - 1;
 const auto COUT_WIDTH = std::setw(15);
 const auto COUT_PRECISION = std::setprecision(4);
 

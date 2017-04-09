@@ -127,17 +127,28 @@ void RsaCryptosystem::cryptanalyze() {
   mpf_set_z(nFloat, n);
   mpf_sqrt(rootN, nFloat);
   mpz_set_ui(p, 1);
+  SizeT cc = 0; // currentCount
+  std::cout <<
+    "\tprivate RsaCryptosystem::cryptanalyze started\n";
   do {
     mpz_nextprime(p, p);
     mpf_set_z(pFloat, p);
     mpf_div(currentRatio, pFloat, rootN);
-    double currentPercentage = 100 * mpf_get_d(currentRatio);
-    Duration remainingDuration = getRemainingDuration(
-      startTime, currentPercentage);
-    cout << COUT_WIDTH << COUT_PRECISION << std::fixed <<
-      currentPercentage << "%" <<
-      COUT_WIDTH << remainingDuration << "h left.\n";
+    cc++;
+    if (!(cc & COUT_PERIOD)) {
+      double currentPercentage = 100 *
+        mpf_get_d(currentRatio);
+      Duration remainingDuration = getRemainingDuration(
+        startTime, currentPercentage);
+      cout << COUT_WIDTH << COUT_PRECISION << std::fixed <<
+        currentPercentage << "%" <<
+        COUT_WIDTH << remainingDuration << "h left\n";
+    }
   } while (!(mpz_divisible_p(n, p)));
+  Duration totalDuration = getDuration(startTime);
+  std::cout <<
+    "\tprivate RsaCryptosystem::cryptanalyze ended in " <<
+    totalDuration << "s\n";
 
   mpz_divexact(q, n, p);
 
