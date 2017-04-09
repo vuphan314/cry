@@ -119,14 +119,26 @@ void RsaCryptosystem::cryptanalyze() {
   mpz_t n, e, d, p, q, l;
   mpz_inits(n, e, d, p, q, l, NULL);
 
+  mpf_t pFloat, nFloat, rootN, currentRatio;
+  mpf_inits(pFloat, nFloat, rootN, currentRatio, NULL);
+
   mpz_set(n, modulus.get_mpz_t());
 
+  mpf_set_z(nFloat, n);
+  mpf_sqrt(rootN, nFloat);
   mpz_set_ui(p, 1);
   do {
     mpz_nextprime(p, p);
+    mpf_set_z(pFloat, p);
+    mpf_div(currentRatio, pFloat, rootN);
+    double currentPercentage = 100 * mpf_get_d(currentRatio);
+    Duration remainingDuration = getRemainingDuration(
+      startTime, currentPercentage);
+    cout << currentPercentage << "%\t" <<
+      remainingDuration << "h left.\n";
   } while (!(mpz_divisible_p(n, p)));
 
-  mpz_tdiv_q(q, n, p);
+  mpz_divexact(q, n, p);
 
   setTotient(l, p, q);
 
