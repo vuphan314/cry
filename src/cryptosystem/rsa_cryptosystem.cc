@@ -121,7 +121,7 @@ void RsaCryptosystem::cryptanalyze() {
 
   mpz_set(n, modulus.get_mpz_t());
 
-  mpz_set_ui(p, 2);
+  mpz_set_ui(p, 1);
   do {
     mpz_nextprime(p, p);
   } while (!(mpz_divisible_p(n, p)));
