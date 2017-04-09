@@ -53,8 +53,9 @@ void demoRsa() {
 ////////////////////////////////////////////////////////////
 
 int main() {
-  // testPaddingUnpadding();
-  // testCharConversion();
+  std::cout << "\n";
+  testPaddingUnpadding();
+  testCharConversion();
   // testCryptosystems();
-  demoRsa();
+  // demoRsa();
 }

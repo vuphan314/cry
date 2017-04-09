@@ -15,7 +15,7 @@ Bool Tester::testAll() {
 Bool testPaddingUnpadding() {
   std::cout << "Testing padding/unpadding.\n";
 
-  Text text("this string is my original text");
+  Text text("this is my string");
   std::cout << "Text: \"" << text << "\".\n";
 
   PaddedText paddedText;
@@ -24,10 +24,16 @@ Bool testPaddingUnpadding() {
 
   Text unpaddedText;
   unpadText(unpaddedText, paddedText);
-  std::cout << "Unpadded Text: \"" << unpaddedText <<
+  std::cout << "Unpadded text: \"" << unpaddedText <<
     "\".\n";
 
-  return unpaddedText == text;
+  if (unpaddedText == text) {
+    std::cout << "Test passed.\n";
+    return TRUE;
+  } else {
+    std::cout << "Test failed.\n";
+    return FALSE;
+  }
 }
 
 Bool testCharConversion() {
