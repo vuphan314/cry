@@ -33,7 +33,7 @@ void testCryptosystems() {
 int main() {
   std::cout << "\n";
   demoRsa();
-  testCryptosystems();
-  testPaddingUnpadding();
-  testCharConversion();
+  // testCryptosystems();
+  // testPaddingUnpadding();
+  // testCharConversion();
 }
