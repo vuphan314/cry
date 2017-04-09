@@ -8,8 +8,7 @@
 ////////////////////////////////////////////////////////////
 
 const Text BREAKABLE_PLAIN_TEXT = "0123";
-const SizeT BREAKABLE_MODULUS_LENGTH = 32;
-// const SizeT BREAKABLE_MODULUS_LENGTH = 64;
+const SizeT BREAKABLE_MODULUS_LENGTH = 32; // 32
 
 const SizeT DEFAULT_MODULUS_LENGTH = 256;
 const SizeT DEFAULT_PUBLIC_EXPONENT = 65537;

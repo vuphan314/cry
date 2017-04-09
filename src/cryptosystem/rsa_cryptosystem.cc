@@ -134,8 +134,9 @@ void RsaCryptosystem::cryptanalyze() {
     double currentPercentage = 100 * mpf_get_d(currentRatio);
     Duration remainingDuration = getRemainingDuration(
       startTime, currentPercentage);
-    cout << currentPercentage << "%\t" <<
-      remainingDuration << "h left.\n";
+    cout << COUT_WIDTH << COUT_PRECISION << std::fixed <<
+      currentPercentage << "%" <<
+      COUT_WIDTH << remainingDuration << "h left.\n";
   } while (!(mpz_divisible_p(n, p)));
 
   mpz_divexact(q, n, p);

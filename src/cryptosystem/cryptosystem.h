@@ -3,6 +3,7 @@
 
 ////////////////////////////////////////////////////////////
 
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -36,6 +37,9 @@ const BigInt ALPHABET_SIZE = TWO_EXP_8;
 
 const Bool TRUE = true;
 const Bool FALSE = false;
+
+const auto COUT_WIDTH = std::setw(15);
+const auto COUT_PRECISION = std::setprecision(4);
 
 ////////////////////////////////////////////////////////////
 
