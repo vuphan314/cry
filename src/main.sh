@@ -11,6 +11,7 @@ plainText=
 
 # clear
 # reset
+make subsystem
 make
 ./cry.out $minModulusLength $plainText
 # make clean
