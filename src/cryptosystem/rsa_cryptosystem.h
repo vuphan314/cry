@@ -42,6 +42,7 @@ private:
   void encrypt();
     // set: paddedCipherText
     // read: paddedPlainText, modulus, publicExponent
+    // check: minModulusLength
 
   void decrypt();
     // set: paddedPlainText
@@ -54,7 +55,7 @@ private:
 public:
   RsaCryptosystem(SizeT minModulusLength =
     DEFAULT_MIN_MODULUS_LENGTH);
-  
+
 // public overloaded methods:
   void generateKeys(
     Key &publicKey, Key &privateKey); // set these

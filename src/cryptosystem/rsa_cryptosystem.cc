@@ -32,7 +32,7 @@ void RsaCryptosystem::setPrivateKeyElements(
 // private overloaded methods:
 
 void RsaCryptosystem::generateKeys() {
-  const SizeT minPrimeLength = (minModulusLength / 2) - 1;
+  SizeT minPrimeLength = (minModulusLength / 2) - 1;
 
   mpz_t n, e, d, p, q, l, mod, twoExpMinPrimeLength;
   mpz_inits(n, e, d, p, q, l, mod, twoExpMinPrimeLength,
@@ -129,7 +129,7 @@ void RsaCryptosystem::cryptanalyze() {
   mpf_set_z(nFloat, n);
   mpf_sqrt(rootN, nFloat);
   mpz_set_ui(p, 1);
-  SizeT cc = 0; // currentCount
+  SizeT cc = 0; // current count
   std::cout << "\tprivate method " <<
     "RsaCryptosystem::cryptanalyze started\n";
   do {
@@ -177,20 +177,20 @@ void RsaCryptosystem::generateKeys(Key &publicKey,
   generateKeys();
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
-  std::cout << "max text length: " <<
-    getMaxTextLength() << "-char\n";
+  std::cout << "(max text length: " <<
+    getMaxTextLength() << "-char)\n";
 }
 
 void RsaCryptosystem::encrypt(Text &cipherText,
     const Text &plainText, const Key &publicKey) {
-  setPublicKeyElements(publicKey);
-  padText(paddedPlainText, plainText);
-  if (getMaxTextLength())
-
-  if (mpz_cmp(paddedPlainText.get_mpz_t(), modulus.get_mpz_t()) >= 0) {
-    std::cout << "plain text too big for modulus length\n";
+  SizeT plainTextLength = plainText.size();
+  if (getMaxTextLength() < plainTextLength) {
+    std::cout << "(plain text length: " << plainTextLength <<
+      "-char, too long)\n";
     throw exception();
   }
+  setPublicKeyElements(publicKey);
+  padText(paddedPlainText, plainText);
   encrypt();
   unpadText(cipherText, paddedCipherText);
 }

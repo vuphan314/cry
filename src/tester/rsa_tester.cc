@@ -10,18 +10,20 @@ RsaTester::RsaTester(SizeT minModulusLength) {
 void RsaTester::demo(Text plainText) {
   std::cout << "method RsaTester::demo\n";
 
+  std::cout << "key-generation ";
   Key publicKey, privateKey;
   cryptosystem->generateKeys(publicKey, privateKey);
-  std::cout << "key-generation:\n\tmodulus: " <<
+  std::cout << "\tmodulus: " <<
     publicKey.at(0) << "\n\tpublic exponent: " <<
     publicKey.at(1) << "\n\tprivate exponent: " <<
     privateKey.at(1) << "\n";
 
   std::cout << "plaintext: \"" << plainText << "\"\n";
 
+  std::cout << "encryption ";
   Text cipherText;
   cryptosystem->encrypt(cipherText, plainText, publicKey);
-  std::cout << "encryption:\n\tciphertext: \"" <<
+  std::cout << "\tciphertext: \"" <<
     cipherText << "\"\n";
 
   cryptosystem->decrypt(plainText, cipherText,
