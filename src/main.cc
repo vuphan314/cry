@@ -43,6 +43,7 @@ int main(int argc, char const *argv[]) {
       break;
     default:
       cout << "wrong argc\n";
+      return 0;
   }
   // testCryptosystems();
   // testPaddingUnpadding();
