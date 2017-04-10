@@ -10,7 +10,8 @@ cryptographic framework
 ### git
 - first time:
   ```
-  git clone https://github.com/vuphan314/cry
+  git clone --recurse-submodules \
+    https://github.com/vuphan314/cry
   cd cry/
   git branch -a
   git checkout mybranch
