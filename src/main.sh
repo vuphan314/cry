@@ -2,5 +2,5 @@
 # reset
 make
 # ./cry.out
-./cry.out 32 hello
+./cry.out 8 h
 # make clean

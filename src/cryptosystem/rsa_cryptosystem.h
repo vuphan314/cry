@@ -8,9 +8,9 @@
 ////////////////////////////////////////////////////////////
 
 const Text BREAKABLE_PLAIN_TEXT = "0123"; // 01234
-const SizeT BREAKABLE_MODULUS_LENGTH = 32; // 46
+const SizeT BREAKABLE_MIN_MODULUS_LENGTH = 32; // 46
 
-const SizeT DEFAULT_MODULUS_LENGTH = 256;
+const SizeT DEFAULT_MIN_MODULUS_LENGTH = 256;
 const SizeT DEFAULT_PUBLIC_EXPONENT = 65537;
 const SizeT DEFAULT_SEED = 672087;
 
@@ -31,7 +31,7 @@ private:
     // set: modulus, privateExponent
 
 // private overloaded methods:
-  void generateKeys(SizeT modulusLength);
+  void generateKeys(SizeT minModulusLength);
     // set: modulus, publicExponent, privateExponent
 
   void encrypt();
@@ -50,7 +50,7 @@ public:
 // public overloaded methods:
   void generateKeys(
     Key &publicKey, Key &privateKey, // set these
-    SizeT modulusLength);
+    SizeT minModulusLength);
 
   void generateKeys(
     Key &publicKey, Key &privateKey); // set these

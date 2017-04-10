@@ -28,19 +28,18 @@ void RsaCryptosystem::setPrivateKeyElements(
 // private overloaded methods:
 
 void RsaCryptosystem::generateKeys(
-    SizeT modulusLength) {
-  const SizeT PRIME_LENGTH = (modulusLength / 2) - 1;
+    SizeT minModulusLength) {
+  const SizeT minPrimeLength = (minModulusLength / 2) - 1;
 
-  mpz_t n, e, d, p, q, l, mod, TWO_EXP_PRIME_LENGTH;
-  mpz_inits(n, e, d, p, q, l, mod, TWO_EXP_PRIME_LENGTH,
+  mpz_t n, e, d, p, q, l, mod, twoExpMinPrimeLength;
+  mpz_inits(n, e, d, p, q, l, mod, twoExpMinPrimeLength,
     NULL);
 
   mpz_set_ui(e, DEFAULT_PUBLIC_EXPONENT);
 
-  mpz_set_ui(TWO_EXP_PRIME_LENGTH, 1);
-  mpz_mul_2exp(TWO_EXP_PRIME_LENGTH, TWO_EXP_PRIME_LENGTH,
-    PRIME_LENGTH);
-  // TWO_EXP_PRIME_LENGTH is const afterward
+  mpz_set_ui(twoExpMinPrimeLength, 1);
+  mpz_mul_2exp(twoExpMinPrimeLength, twoExpMinPrimeLength,
+    minPrimeLength);
 
   //******************************************************//
   // THIS MAKES THE ALGORITHM CRYPTOGRAPHICALLY INSECURE  //
@@ -50,11 +49,11 @@ void RsaCryptosystem::generateKeys(
   //******************************************************//
 
   do {
-    mpz_urandomb(p, state, PRIME_LENGTH);
-    mpz_add(p, p, TWO_EXP_PRIME_LENGTH);
+    mpz_urandomb(p, state, minPrimeLength);
+    mpz_add(p, p, twoExpMinPrimeLength);
 
-    mpz_urandomb(q, state, PRIME_LENGTH);
-    mpz_add(q, q, TWO_EXP_PRIME_LENGTH);
+    mpz_urandomb(q, state, minPrimeLength);
+    mpz_add(q, q, twoExpMinPrimeLength);
 
     do {
       mpz_nextprime(p, p);
@@ -67,7 +66,7 @@ void RsaCryptosystem::generateKeys(
     } while (mpz_cmp_ui(mod, 1) == 0);
 
     mpz_mul(n, p, q);
-  } while (mpz_sizeinbase(n, 2) < modulusLength);
+  } while (mpz_sizeinbase(n, 2) < minModulusLength);
 
   setTotient(l, p, q);
 
@@ -167,8 +166,8 @@ void RsaCryptosystem::cryptanalyze() {
 // public overloaded methods:
 
 void RsaCryptosystem::generateKeys(
-    Key &publicKey, Key &privateKey, SizeT modulusLength) {
-  generateKeys(modulusLength);
+    Key &publicKey, Key &privateKey, SizeT minModulusLength) {
+  generateKeys(minModulusLength);
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
 }
@@ -176,21 +175,25 @@ void RsaCryptosystem::generateKeys(
 void RsaCryptosystem::generateKeys(
     Key &publicKey, Key &privateKey) {
   generateKeys(publicKey, privateKey,
-    DEFAULT_MODULUS_LENGTH);
+    DEFAULT_MIN_MODULUS_LENGTH);
 }
 
 void RsaCryptosystem::encrypt(Text &cipherText,
     const Text &plainText, const Key &publicKey) {
-  padText(paddedPlainText, plainText);
   setPublicKeyElements(publicKey);
+  padText(paddedPlainText, plainText);
+  if (mpz_cmp(paddedPlainText.get_mpz_t(), modulus.get_mpz_t()) >= 0) {
+    std::cout << "plain text too big for modulus length\n";
+    throw exception();
+  }
   encrypt();
   unpadText(cipherText, paddedCipherText);
 }
 
 void RsaCryptosystem::decrypt(Text &plainText,
     const Text &cipherText, const Key &privateKey) {
-  padText(paddedCipherText, cipherText);
   setPrivateKeyElements(privateKey);
+  padText(paddedCipherText, cipherText);
   decrypt();
   unpadText(plainText, paddedPlainText);
 }

@@ -33,8 +33,9 @@ using Bool = char;
 
 const unsigned char TWO_EXP_7 = 128;
 const unsigned int TWO_EXP_8 = 256;
+
+const unsigned char CHAR_LENGTH = 8;
 const BigInt ALPHABET_SIZE = TWO_EXP_8;
-  // 1 char is 8-bit long
 
 const Bool TRUE = true;
 const Bool FALSE = false;
