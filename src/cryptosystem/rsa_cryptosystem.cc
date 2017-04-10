@@ -13,6 +13,10 @@ http://stackoverflow.com/questions/9791761/using-gmp-for-cryptography-how-to-get
 
 // private helper methods:
 
+SizeT RsaCryptosystem::getMaxTextLength() {
+  return minModulusLength / CHAR_LENGTH;
+}
+
 void RsaCryptosystem::setPublicKeyElements(
     const Key &publicKey) {
   modulus = publicKey.at(0);
@@ -27,46 +31,32 @@ void RsaCryptosystem::setPrivateKeyElements(
 
 // private overloaded methods:
 
-void RsaCryptosystem::generateKeys(
-    unsigned int modulusLength) {
-  unsigned int PRIME_LENGTH = (modulusLength/2)-1;
-  unsigned int seed = 672087;
+void RsaCryptosystem::generateKeys() {
+  SizeT minPrimeLength = (minModulusLength / 2) - 1;
 
-  mpz_t p;
-  mpz_t q;
-  mpz_t N;
-  mpz_t L;
-  mpz_t d;
-  mpz_t e;
-  mpz_t twoToThePowerOf512;
-  mpz_t mod;
-  mpz_t testValue;
+  mpz_t n, e, d, p, q, l, mod, twoExpMinPrimeLength;
+  mpz_inits(n, e, d, p, q, l, mod, twoExpMinPrimeLength,
+    NULL);
 
-  mpz_init(p);
-  mpz_init(q);
-  mpz_init(N);
-  mpz_init(L);
-  mpz_init(d);
-  mpz_init_set_ui(e, 65537);
-  mpz_init(mod);
-  mpz_init_set_ui(twoToThePowerOf512, 1);
+  mpz_set_ui(e, DEFAULT_PUBLIC_EXPONENT);
 
-  mpz_mul_2exp(twoToThePowerOf512, twoToThePowerOf512,
-    PRIME_LENGTH);
+  mpz_set_ui(twoExpMinPrimeLength, 1);
+  mpz_mul_2exp(twoExpMinPrimeLength, twoExpMinPrimeLength,
+    minPrimeLength);
 
   //******************************************************//
-  //  THIS MAKES THE ALGORITHM CRYPTOGRAHICALLY INSECURE  //
+  // THIS MAKES THE ALGORITHM CRYPTOGRAPHICALLY INSECURE  //
   /**/           gmp_randstate_t state;                   //
   /**/           gmp_randinit_default(state);             //
-  /**/           gmp_randseed_ui(state, seed);            //
+  /**/           gmp_randseed_ui(state, DEFAULT_SEED);    //
   //******************************************************//
 
   do {
-    mpz_urandomb(p, state, PRIME_LENGTH);
-    mpz_add(p, p, twoToThePowerOf512);
+    mpz_urandomb(p, state, minPrimeLength);
+    mpz_add(p, p, twoExpMinPrimeLength);
 
-    mpz_urandomb(q, state, PRIME_LENGTH);
-    mpz_add(q, q, twoToThePowerOf512);
+    mpz_urandomb(q, state, minPrimeLength);
+    mpz_add(q, q, twoExpMinPrimeLength);
 
     do {
       mpz_nextprime(p, p);
@@ -78,106 +68,148 @@ void RsaCryptosystem::generateKeys(
       mpz_mod(mod, q, e);
     } while (mpz_cmp_ui(mod, 1) == 0);
 
-    mpz_mul(N, p, q);
-  } while (mpz_sizeinbase(N, 2) < modulusLength);
+    mpz_mul(n, p, q);
+  } while (mpz_sizeinbase(n, 2) < minModulusLength);
 
-  mpz_t p1, q1;
-  mpz_init_set(p1, p);
-  mpz_init_set(q1, q);
-  mpz_sub_ui(p1, p1, 1);
-  mpz_sub_ui(q1, q1, 1);
+  setTotient(l, p, q);
 
-  mpz_mul(L, p1, q1);
-  mpz_invert(d, e, L);
-
-  mpz_clear(p1);
-  mpz_clear(q1);
+  mpz_invert(d, e, l);
 
   //******************************************************//
   //   The remaining code is just for testing purposes    //
   //******************************************************//
   if (verbosity) {
     std::cout << "p: " << std::hex << p << std::endl;
-    std::cout << std::dec << "Number is this big: "
+    std::cout << std::dec << "number is this big: "
       << mpz_sizeinbase(p, 2) << std::endl;
 
     std::cout << "q: " << std::hex << q << std::endl;
-    std::cout << std::dec << "Number is this big: "
+    std::cout << std::dec << "number is this big: "
       << mpz_sizeinbase(q, 2) << std::endl;
 
-    std::cout << "N: " << std::hex << N << std::endl;
-    std::cout << std::dec << "Number is this big: "
-      << mpz_sizeinbase(N, 2) << std::endl;
+    std::cout << "n: " << std::hex << n << std::endl;
+    std::cout << std::dec << "number is this big: "
+      << mpz_sizeinbase(n, 2) << std::endl;
 
     std::cout << "e: " << std::hex << e << std::endl;
 
     std::cout << "d: " << std::hex << d << std::endl;
   }
 
-  modulus = KeyElement(N);
+  modulus = KeyElement(n);
   publicExponent = KeyElement(e);
   privateExponent = KeyElement(d);
 }
 
 void RsaCryptosystem::encrypt() {
-  padText(paddedPlainText, plainText);
   mpz_powm(paddedCipherText.get_mpz_t(),
     paddedPlainText.get_mpz_t(),
     publicExponent.get_mpz_t(),
     modulus.get_mpz_t());
-  unpadText(cipherText, paddedCipherText);
 }
 
 void RsaCryptosystem::decrypt() {
-  padText(paddedCipherText, cipherText);
   mpz_powm(paddedPlainText.get_mpz_t(),
     paddedCipherText.get_mpz_t(),
     privateExponent.get_mpz_t(),
     modulus.get_mpz_t());
-  unpadText(plainText, paddedPlainText);
 }
 
 void RsaCryptosystem::cryptanalyze() {
-  padText(paddedCipherText, cipherText);
+  Time startTime = getTime();
 
-  paddedPlainText = paddedCipherText;
-    // replace the line above by RSA cryptanalysis
-  std::cout << "Vu will fix this.\n";
+  mpz_t n, e, d, p, q, l;
+  mpz_inits(n, e, d, p, q, l, NULL);
 
-  unpadText(plainText, paddedPlainText);
+  mpf_t pFloat, nFloat, rootN, currentRatio;
+  mpf_inits(pFloat, nFloat, rootN, currentRatio, NULL);
+
+  mpz_set(n, modulus.get_mpz_t());
+
+  mpf_set_z(nFloat, n);
+  mpf_sqrt(rootN, nFloat);
+  mpz_set_ui(p, 1);
+  SizeT cc = 0; // current count
+  std::cout << "\tprivate method " <<
+    "RsaCryptosystem::cryptanalyze started\n";
+  do {
+    mpz_nextprime(p, p);
+    mpf_set_z(pFloat, p);
+    mpf_div(currentRatio, pFloat, rootN);
+    cc++;
+    if (!(cc & COUT_PERIOD)) {
+      double currentPercentage = 100 *
+        mpf_get_d(currentRatio);
+      Duration remainingDuration = getRemainingDuration(
+        startTime, currentPercentage);
+      cout << COUT_WIDTH << COUT_PRECISION << std::fixed <<
+        currentPercentage << "%" <<
+        COUT_WIDTH << remainingDuration << "h left\n";
+    }
+  } while (!(mpz_divisible_p(n, p)));
+  Duration totalDuration = getDuration(startTime);
+  std::cout << "\tprivate method " <<
+    "RsaCryptosystem::cryptanalyze ended in " <<
+    totalDuration << "s\n";
+
+  mpz_divexact(q, n, p);
+
+  setTotient(l, p, q);
+
+  mpz_set(e, publicExponent.get_mpz_t());
+
+  mpz_invert(d, e, l);
+
+  mpz_powm(paddedPlainText.get_mpz_t(),
+    paddedCipherText.get_mpz_t(), d, n);
 }
 
 // public:
+
+RsaCryptosystem::RsaCryptosystem(SizeT minModulusLength) {
+  this->minModulusLength = minModulusLength;
+}
 
 // public overloaded methods:
 
 void RsaCryptosystem::generateKeys(Key &publicKey,
     Key &privateKey) {
-  generateKeys(256);
+  generateKeys();
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
+  std::cout << "(max text length: " <<
+    getMaxTextLength() << "-char)\n";
 }
 
 void RsaCryptosystem::encrypt(Text &cipherText,
     const Text &plainText, const Key &publicKey) {
-  this->plainText = plainText;
+  SizeT plainTextLength = plainText.size();
+  std::cout << "(plain text length: " << plainTextLength <<
+  "-char)\n";
+  long long excessiveLength = plainTextLength -
+    getMaxTextLength();
+  if (excessiveLength > 0) {
+    std::cout << excessiveLength << " chars too long\n";
+    throw exception();
+  }
   setPublicKeyElements(publicKey);
+  padText(paddedPlainText, plainText);
   encrypt();
-  cipherText = this->cipherText;
+  unpadText(cipherText, paddedCipherText);
 }
 
 void RsaCryptosystem::decrypt(Text &plainText,
     const Text &cipherText, const Key &privateKey) {
-  this->cipherText = cipherText;
   setPrivateKeyElements(privateKey);
+  padText(paddedCipherText, cipherText);
   decrypt();
-  plainText = this->plainText;
+  unpadText(plainText, paddedPlainText);
 }
 
 void RsaCryptosystem::cryptanalyze(Text &plainText,
     const Text &cipherText, const Key &publicKey) {
-  this->cipherText = cipherText;
+  padText(paddedCipherText, cipherText);
   setPublicKeyElements(publicKey);
   cryptanalyze();
-  plainText = this->plainText;
+  unpadText(plainText, paddedPlainText);
 }

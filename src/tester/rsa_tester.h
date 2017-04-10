@@ -10,8 +10,11 @@
 
 class RsaTester : public Tester {
 public:
-  RsaTester();
+  RsaTester(SizeT minModulusLength =
+    DEFAULT_MIN_MODULUS_LENGTH);
     // constructor to set data member cryptosystem
+
+  void demo(Text plainText);
 
   Bool testKeyGeneration();
 

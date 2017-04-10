@@ -7,36 +7,55 @@
 
 ////////////////////////////////////////////////////////////
 
+const SizeT DEFAULT_SEED = 672087;
+const SizeT DEFAULT_PUBLIC_EXPONENT = 65537;
+const SizeT DEFAULT_MIN_MODULUS_LENGTH = 256;
+
+const SizeT BREAKABLE_MIN_MODULUS_LENGTH = 32;
+const Text BREAKABLE_PLAIN_TEXT = "four";
+
+////////////////////////////////////////////////////////////
+
 class RsaCryptosystem : public Cryptosystem {
 private:
+  SizeT minModulusLength;
   KeyElement modulus, // n, cryptographically public
     publicExponent, // e, cryptographically public
     privateExponent; // d, cryptographically private
-  Text plainText, cipherText;
   PaddedText paddedPlainText, paddedCipherText;
 
 // private helper methods:
+  SizeT getMaxTextLength();
+    // read: minModulusLength
+
   void setPublicKeyElements(const Key &publicKey);
+    // set: modulus, publicExponent
 
   void setPrivateKeyElements(const Key &privateKey);
+    // set: modulus, privateExponent
 
 // private overloaded methods:
-  void generateKeys(unsigned int modulusLength);
+  void generateKeys();
     // set: modulus, publicExponent, privateExponent
+    // read: minModulusLength
 
   void encrypt();
-    // set: cipherText
-    // read: plainText, modulus, publicExponent
+    // set: paddedCipherText
+    // read: paddedPlainText, modulus, publicExponent
+    // check: minModulusLength
 
   void decrypt();
-    // set: plainText
-    // read: cipherText, modulus, privateExponent
+    // set: paddedPlainText
+    // read: paddedCipherText, modulus, privateExponent
 
   void cryptanalyze();
-    // set: plainText
-    // read: cipherText, modulus, publicExponent
+    // set: paddedPlainText
+    // read: paddedCipherText, modulus, publicExponent
 
 public:
+  RsaCryptosystem(SizeT minModulusLength =
+    DEFAULT_MIN_MODULUS_LENGTH);
+
 // public overloaded methods:
   void generateKeys(
     Key &publicKey, Key &privateKey); // set these

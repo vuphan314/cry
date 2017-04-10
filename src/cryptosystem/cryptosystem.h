@@ -3,12 +3,15 @@
 
 ////////////////////////////////////////////////////////////
 
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <vector>
 
 #include <gmp.h>
 #include <gmpxx.h>
+
+#include "../../cplusplus/src/timing.h"
 
 ////////////////////////////////////////////////////////////
 
@@ -28,10 +31,19 @@ using Bool = char;
 
 ////////////////////////////////////////////////////////////
 
-const BigInt ALPHABET_SIZE(256);
+const unsigned char TWO_EXP_7 = 128;
+const unsigned int TWO_EXP_8 = 256;
+
+const unsigned char CHAR_LENGTH = 8;
+const BigInt ALPHABET_SIZE = TWO_EXP_8;
 
 const Bool TRUE = true;
 const Bool FALSE = false;
+
+const SizeT COUT_PERIOD = (2 << 15) - 1;
+  // &-mask to get least significant bits
+const auto COUT_WIDTH = std::setw(15);
+const auto COUT_PRECISION = std::setprecision(4);
 
 ////////////////////////////////////////////////////////////
 
@@ -58,11 +70,17 @@ public:
 ////////////////////////////////////////////////////////////
 // global functions:
 
+void setTotient(mpz_t l, mpz_t p, mpz_t q);
+
+// padding/unpadding:
+
 void padText(PaddedText &paddedText, // set this
   const Text &text);
 
 void unpadText(Text &text, // set this
-  PaddedText paddedText); // pass this by value
+  const PaddedText &paddedText);
+
+// char conversion:
 
 unsigned char getUnsignedChar(char ch);
 

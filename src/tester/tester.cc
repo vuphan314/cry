@@ -3,6 +3,11 @@
 ////////////////////////////////////////////////////////////
 // class Tester:
 
+void Tester::demo() {
+  std::cout << "method Tester::demo\n";
+  testAll();
+}
+
 Bool Tester::testAll() {
   std::cout << "method Tester::testAll\n";
   return testKeyGeneration() && testEncryption() &&
@@ -15,7 +20,7 @@ Bool Tester::testAll() {
 Bool testPaddingUnpadding() {
   std::cout << "Testing padding/unpadding.\n";
 
-  Text text("this string is my original text");
+  Text text("this is my string");
   std::cout << "Text: \"" << text << "\".\n";
 
   PaddedText paddedText;
@@ -24,27 +29,33 @@ Bool testPaddingUnpadding() {
 
   Text unpaddedText;
   unpadText(unpaddedText, paddedText);
-  std::cout << "Unpadded Text: \"" << unpaddedText <<
+  std::cout << "Unpadded text: \"" << unpaddedText <<
     "\".\n";
 
-  return unpaddedText == text;
+  if (unpaddedText == text) {
+    std::cout << "Test passed.\n\n";
+    return TRUE;
+  } else {
+    std::cout << "Test failed.\n\n";
+    return FALSE;
+  }
 }
 
 Bool testCharConversion() {
   std::cout << "Testing char conversion.\n";
-  for (int ch = -128; ch < 128; ch++) {
+  for (int ch = -TWO_EXP_7; ch < TWO_EXP_7; ch++) {
       // `char ch` would do 127++ == -128, looping forever
     if (getChar(getUnsignedChar(ch)) != ch) {
-      std::cout << "Test failed.\n";
+      std::cout << "Test failed.\n\n";
       return FALSE;
     }
   }
-  for (unsigned int uCh = 0; uCh < 256; uCh++) {
+  for (unsigned int uCh = 0; uCh < TWO_EXP_8; uCh++) {
     if (getUnsignedChar(getChar(uCh)) != uCh) {
-      std::cout << "Test failed.\n";
+      std::cout << "Test failed.\n\n";
       return FALSE;
     }
   }
-  std::cout << "Test passed.\n";
+  std::cout << "Test passed.\n\n";
   return TRUE;
 }

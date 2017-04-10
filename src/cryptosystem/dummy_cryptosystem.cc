@@ -4,6 +4,9 @@
 // class DummyCryptosystem:
 
 void DummyCryptosystem::generateKeys(Key &publicKey,
+  Key &privateKey, SizeT keyElementLength) {};
+
+void DummyCryptosystem::generateKeys(Key &publicKey,
   Key &privateKey) {};
 
 void DummyCryptosystem::encrypt(Text &cipherText,
