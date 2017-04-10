@@ -13,6 +13,10 @@ http://stackoverflow.com/questions/9791761/using-gmp-for-cryptography-how-to-get
 
 // private helper methods:
 
+SizeT RsaCryptosystem::getMaxTextLength() {
+  return minModulusLength / CHAR_LENGTH;
+}
+
 void RsaCryptosystem::setPublicKeyElements(
     const Key &publicKey) {
   modulus = publicKey.at(0);
@@ -27,8 +31,7 @@ void RsaCryptosystem::setPrivateKeyElements(
 
 // private overloaded methods:
 
-void RsaCryptosystem::generateKeys(
-    SizeT minModulusLength) {
+void RsaCryptosystem::generateKeys() {
   const SizeT minPrimeLength = (minModulusLength / 2) - 1;
 
   mpz_t n, e, d, p, q, l, mod, twoExpMinPrimeLength;
@@ -163,25 +166,27 @@ void RsaCryptosystem::cryptanalyze() {
 
 // public:
 
-// public overloaded methods:
-
-void RsaCryptosystem::generateKeys(
-    Key &publicKey, Key &privateKey, SizeT minModulusLength) {
-  generateKeys(minModulusLength);
-  publicKey = {modulus, publicExponent};
-  privateKey = {modulus, privateExponent};
+RsaCryptosystem::RsaCryptosystem(SizeT minModulusLength) {
+  this->minModulusLength = minModulusLength;
 }
 
-void RsaCryptosystem::generateKeys(
-    Key &publicKey, Key &privateKey) {
-  generateKeys(publicKey, privateKey,
-    DEFAULT_MIN_MODULUS_LENGTH);
+// public overloaded methods:
+
+void RsaCryptosystem::generateKeys(Key &publicKey,
+    Key &privateKey) {
+  generateKeys();
+  publicKey = {modulus, publicExponent};
+  privateKey = {modulus, privateExponent};
+  std::cout << "max text length: " <<
+    getMaxTextLength() << "-char\n";
 }
 
 void RsaCryptosystem::encrypt(Text &cipherText,
     const Text &plainText, const Key &publicKey) {
   setPublicKeyElements(publicKey);
   padText(paddedPlainText, plainText);
+  if (getMaxTextLength())
+
   if (mpz_cmp(paddedPlainText.get_mpz_t(), modulus.get_mpz_t()) >= 0) {
     std::cout << "plain text too big for modulus length\n";
     throw exception();

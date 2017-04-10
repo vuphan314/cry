@@ -2,11 +2,12 @@
 
 ////////////////////////////////////////////////////////////
 
-void demoRsa(SizeT minModulusLength = BREAKABLE_MIN_MODULUS_LENGTH,
+void demoRsa(SizeT minModulusLength =
+    BREAKABLE_MIN_MODULUS_LENGTH,
     Text plainText = BREAKABLE_PLAIN_TEXT) {
   std::cout << "function demoRsa\n";
-  RsaTester rsaTester;
-  rsaTester.demo(minModulusLength, plainText);
+  RsaTester rsaTester(minModulusLength);
+  rsaTester.demo(plainText);
   std::cout << "\n";
 }
 

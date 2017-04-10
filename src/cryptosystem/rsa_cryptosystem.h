@@ -18,12 +18,16 @@ const SizeT DEFAULT_SEED = 672087;
 
 class RsaCryptosystem : public Cryptosystem {
 private:
+  SizeT minModulusLength;
   KeyElement modulus, // n, cryptographically public
     publicExponent, // e, cryptographically public
     privateExponent; // d, cryptographically private
   PaddedText paddedPlainText, paddedCipherText;
 
 // private helper methods:
+  SizeT getMaxTextLength();
+    // read: minModulusLength
+
   void setPublicKeyElements(const Key &publicKey);
     // set: modulus, publicExponent
 
@@ -31,8 +35,9 @@ private:
     // set: modulus, privateExponent
 
 // private overloaded methods:
-  void generateKeys(SizeT minModulusLength);
+  void generateKeys();
     // set: modulus, publicExponent, privateExponent
+    // read: minModulusLength
 
   void encrypt();
     // set: paddedCipherText
@@ -47,11 +52,10 @@ private:
     // read: paddedCipherText, modulus, publicExponent
 
 public:
+  RsaCryptosystem(SizeT minModulusLength =
+    DEFAULT_MIN_MODULUS_LENGTH);
+  
 // public overloaded methods:
-  void generateKeys(
-    Key &publicKey, Key &privateKey, // set these
-    SizeT minModulusLength);
-
   void generateKeys(
     Key &publicKey, Key &privateKey); // set these
 
