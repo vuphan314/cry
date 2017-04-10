@@ -184,9 +184,12 @@ void RsaCryptosystem::generateKeys(Key &publicKey,
 void RsaCryptosystem::encrypt(Text &cipherText,
     const Text &plainText, const Key &publicKey) {
   SizeT plainTextLength = plainText.size();
-  if (getMaxTextLength() < plainTextLength) {
-    std::cout << "(plain text length: " << plainTextLength <<
-      "-char, too long)\n";
+  std::cout << "(plain text length: " << plainTextLength <<
+  "-char)\n";
+  long long excessiveLength = plainTextLength -
+    getMaxTextLength();
+  if (excessiveLength > 0) {
+    std::cout << excessiveLength << " chars too long\n";
     throw exception();
   }
   setPublicKeyElements(publicKey);
