@@ -11,7 +11,7 @@ cryptographic framework
 - first time:
   ```
   git clone --recurse-submodules \
-    https://github.com/vuphan314/cry/
+    https://github.com/vuphan314/cry
   cd cry/
   git branch -a
   git checkout mybranch
