@@ -2,10 +2,11 @@
 
 ////////////////////////////////////////////////////////////
 
-void demoRsa() {
+void demoRsa(SizeT modulusLength = BREAKABLE_MODULUS_LENGTH,
+    Text plainText = BREAKABLE_PLAIN_TEXT) {
   std::cout << "function demoRsa\n";
   RsaTester rsaTester;
-  rsaTester.demo();
+  rsaTester.demo(modulusLength, plainText);
   std::cout << "\n";
 }
 
@@ -30,9 +31,18 @@ void testCryptosystems() {
 
 ////////////////////////////////////////////////////////////
 
-int main() {
+int main(int argc, char const *argv[]) {
   std::cout << "\n";
-  demoRsa();
+  switch (argc) {
+    case 3:
+      demoRsa(atoi(argv[1]), argv[2]);
+      break;
+    case 1:
+      demoRsa();
+      break;
+    default:
+      cout << "wrong argc\n";
+  }
   // testCryptosystems();
   // testPaddingUnpadding();
   // testCharConversion();

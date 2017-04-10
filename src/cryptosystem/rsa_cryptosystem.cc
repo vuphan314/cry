@@ -128,8 +128,8 @@ void RsaCryptosystem::cryptanalyze() {
   mpf_sqrt(rootN, nFloat);
   mpz_set_ui(p, 1);
   SizeT cc = 0; // currentCount
-  std::cout <<
-    "\tprivate RsaCryptosystem::cryptanalyze started\n";
+  std::cout << "\tprivate method " <<
+    "RsaCryptosystem::cryptanalyze started\n";
   do {
     mpz_nextprime(p, p);
     mpf_set_z(pFloat, p);
@@ -146,8 +146,8 @@ void RsaCryptosystem::cryptanalyze() {
     }
   } while (!(mpz_divisible_p(n, p)));
   Duration totalDuration = getDuration(startTime);
-  std::cout <<
-    "\tprivate RsaCryptosystem::cryptanalyze ended in " <<
+  std::cout << "\tprivate method " <<
+    "RsaCryptosystem::cryptanalyze ended in " <<
     totalDuration << "s\n";
 
   mpz_divexact(q, n, p);

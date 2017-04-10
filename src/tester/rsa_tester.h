@@ -13,7 +13,7 @@ public:
   RsaTester();
     // constructor to set data member cryptosystem
 
-  void demo();
+  void demo(SizeT modulusLength, Text plainText);
 
   Bool testKeyGeneration();
 
