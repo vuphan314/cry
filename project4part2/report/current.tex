@@ -46,7 +46,8 @@ How did I implement this function?
   \begin{enumerate}
   \item choose some distinct prime numbers $p$ and $q$
   \item let $n = p * q$
-  \item let $l$ be the least common multiple of $p$ and $q$
+  \item let $l$ be the least common multiple of
+    $p - 1$ and $q - 1$
   \item choose some $e$ such that:
   \begin{itemize}
     \item $1 < e < l$
@@ -110,7 +111,7 @@ How did I implement this function?
       $p$ and $q$ are prime numbers
       ($n$ was created this way in the key-generation step)
     \item let $l$ be the least common multiple of
-      $p$ and $q$
+      $p - 1$ and $q - 1$
     \item let $d$ be the multiplicative inverse of $e$
       modulo $l$
     \end{enumerate}

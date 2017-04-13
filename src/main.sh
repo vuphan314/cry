@@ -6,7 +6,7 @@ plainText=$2
 # minModulusLength=32 # 0s cryptanalysis
 # plainText=0123
 
-# minModulusLength=46 # 8s cryptanalysis
+# minModulusLength=46 # 10s cryptanalysis
 # plainText=four6
 
 # minModulusLength=64 # 1h cryptanalysis
