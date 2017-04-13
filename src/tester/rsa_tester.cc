@@ -18,23 +18,22 @@ void RsaTester::demo(Text plainText) {
     publicKey.at(1) << "\n\tprivate exponent: " <<
     privateKey.at(1) << "\n";
 
-  std::cout << "plaintext: \"" << plainText << "\"\n";
+  std::cout << "plaintext: " << plainText << "\n";
 
   std::cout << "encryption ";
   Text cipherText;
   cryptosystem->encrypt(cipherText, plainText, publicKey);
-  std::cout << "\tciphertext: \"" <<
-    cipherText << "\"\n";
+  std::cout << "\tciphertext: " << cipherText << "\n";
 
   cryptosystem->decrypt(plainText, cipherText,
     privateKey);
-  std::cout << "decryption:\n\tplaintext: \"" <<
-    plainText << "\"\n";
+  std::cout << "decryption:\n\tplaintext: " << plainText <<
+    "\n";
 
   std::cout << "cryptanalysis:\n";
   cryptosystem->cryptanalyze(plainText, cipherText,
     publicKey);
-  std::cout << "\tplaintext: \"" << plainText << "\"\n";
+  std::cout << "\tplaintext: " << plainText << "\n";
 }
 
 Bool RsaTester::testKeyGeneration() {
