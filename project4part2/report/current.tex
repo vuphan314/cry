@@ -8,21 +8,24 @@ The \cs{} \rsa{} is implemented in the \cf{} \cry.
 
 \subsection{Terminology}
 
-\begin{enumerate}
-\item choose some distinct prime numbers $p$ and $q$
-\item let the \textdef{modulus} $n$ be $p * q$
-\item let $l$ be the least common multiple of $p$ and $q$
-\item choose a \textdef{public exponent} $e$ such that:
-  \begin{itemize}
-  \item $e$ is an integer
-  \item $1 < e < l$
-  \item $e$ and $l$ are coprime
-  \end{itemize}
-\item let the \textdef{private exponent} $d$ be
-  the multiplicative inverse of $e$ modulo $l$
-\item let the \textdef{public key} be the pair $(n, e)$
-\item let the \textdef{private key} be the pair $(n, d)$
-\end{enumerate}
+Each \textdef{key element} is a positive integer:
+\begin{itemize}
+\item $n$: \textdef{modulus}
+\item $e$: \textdef{public exponent}
+\item $d$: \textdef{private exponent}
+\end{itemize}
+
+Each \textdef{key} is a pair of key elements:
+\begin{itemize}
+\item $(n, e)$: \textdef{public key}
+\item $(n, d)$: \textdef{private key}
+\end{itemize}
+
+Each \textdef{padded text} is a nonnegative integer:
+\begin{itemize}
+\item $m$: \textdef{padded plaintext}
+\item $c$: \textdef{padded ciphertext}
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -31,12 +34,41 @@ The \cs{} \rsa{} is implemented in the \cf{} \cry.
 Michael:
 How did I implement this function?
 
+\begin{itemize}
+\item Input: none
+\item Output: $((n, e), (n, d))$
+\item Algorithm:
+  \begin{enumerate}
+  \item choose some distinct prime numbers $p$ and $q$
+  \item let $n = p * q$
+  \item let $l$ be the least common multiple of $p$ and $q$
+  \item choose some $e$ such that:
+  \begin{itemize}
+    \item $1 < e < l$
+    \item $e$ and $l$ are coprime
+  \end{itemize}
+  \item let $d$ be the multiplicative inverse of $e$
+    modulo $l$
+  \item return $((n, e), (n, d))$
+  \end{enumerate}
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Encryption}
 
 Daniel:
 How did I implement this function?
+
+\begin{itemize}
+\item Input: $(m, (n, e))$
+\item Output: $c$
+\item Algorithm:
+  \begin{enumerate}
+  \item let $c = m^e$ modulo $n$
+  \item return $c$
+  \end{enumerate}
+\end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -45,9 +77,41 @@ How did I implement this function?
 Daniel:
 How did I implement this function?
 
+\begin{itemize}
+\item Input: $(c, (n, d))$
+\item Output: $m$
+\item Algorithm:
+  \begin{enumerate}
+  \item let $m = c^d$ modulo $n$
+  \item return $m$
+  \end{enumerate}
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Cryptanalysis}
 
 Vu:
 How did I implement this function?
+
+\begin{itemize}
+\item Input: $(c, (n, e))$
+\item Output: $m$
+\item Algorithm:
+  \begin{enumerate}
+  \item find $d$:
+    \begin{enumerate}
+    \item factor $n = p * q$ where
+      $p$ and $q$ are prime numbers
+      ($n$ was created this way in the key-generation step)
+    \item let $l$ be the least common multiple of $p$ and $q$
+    \item let $d$ be the multiplicative inverse of $e$
+      modulo $l$
+    \end{enumerate}
+  \item compute $m$:
+    \begin{enumerate}
+    \item let $m = c^d$ modulo $n$
+    \item return $c$
+    \end{enumerate}
+  \end{enumerate}
+\end{itemize}
