@@ -3,6 +3,15 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-\frametitle{Daniel, please write this.}
-We are using \code{C++} with \code{GMP} and so on.
+\frametitle{Implementation Overview}
+
+%We are using \code{C++} with \code{GMP} and so on.
+\begine{itemize}
+  \item Our project consists of \code{C, C++}, files as well as a \code{Makefile}
+  \item As previous presented, it also includes several libraries to help with cryptosystem functionality,
+        the main one being the GMP library
+  \item The C and C++ files are compiled using \code{make}, which recompiles only code which has been modified,
+        as well as linking libraries to the project (such as GMP)
+\end{itemize}
+
 \end{frame}
