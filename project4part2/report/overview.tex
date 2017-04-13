@@ -1,21 +1,27 @@
 \section{Implementation Overview}
 
-Daniel, please write this.
+% Daniel, please write this.
 
-%We are using \code{C++} with \code{GMP} and so on.
-
-Our application is written in \code{C++}. There were several reasons for this.
-First, it had all the functionality we needed to keep the system in one language,
- without incorporating separate functionalities in separate languages. Also, for
- functions involving large numbers, we needed a library that would allow us to not
- only represent large numbers, but also perform the needed arithmetic on them.
- GMP (Gnu Multiple Precision) library was what we chose for this task. It allows
- for extremely large numbers to be represented, having its only bound essentially
- be the computer's memory.
-
-Included in our code is also a Makefile. Using the simple \code{make} command,
-the compiler looks for a Makefile, and runs through the recipes, compiling only
-the files that have been changed and need to be recompiled. The user can write
-\code{Makefile} to specify the dependencies among source files.  
+% We are using \code{C++} with \code{GMP} and so on.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{itemize}
+\item Our application is written in \code{C++}. There were
+  several reasons for this. First, it had all the
+  functionality we needed to keep the system in one
+  language, without incorporating separate functionalities
+  in separate languages. Also, for functions involving large
+  numbers, we needed a library that would allow us to not
+  only represent large numbers, but also perform the needed
+  arithmetic on them. GMP (Gnu Multiple Precision) library
+  was what we chose for this task. It allows for extremely
+  large numbers to be represented, having its only bound
+  essentially be the computer's memory.
+\item Included in our code is also a \code{makefile}.
+  Using the simple \code{make} command, the compiler looks
+  for a \code{makefile}, and runs through the recipes,
+  compiling only the files that have been changed and need
+  to be recompiled. The user can write \code{makefile} to
+  specify the dependencies among source files.
+\end{itemize}
