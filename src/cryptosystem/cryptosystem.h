@@ -57,14 +57,17 @@ public:
     Key &publicKey, Key &privateKey // set these
     ) = 0;
 
-  virtual void encrypt(Text &cipherText, // set this
+  virtual void encrypt(
+    PaddedText &paddedCipherText, // set this
     const Text &plainText, const Key &publicKey) = 0;
 
   virtual void decrypt(Text &plainText, // set this
-    const Text &cipherText, const Key &privateKey) = 0;
+    const PaddedText &paddedCipherText,
+    const Key &privateKey) = 0;
 
   virtual void cryptanalyze(Text &plainText, // set this
-    const Text &cipherText, const Key &publicKey) = 0;
+    const PaddedText &paddedCipherText,
+    const Key &publicKey) = 0;
 };
 
 ////////////////////////////////////////////////////////////

@@ -79,21 +79,22 @@ void RsaCryptosystem::generateKeys() {
   //   The remaining code is just for testing purposes    //
   //******************************************************//
   if (verbosity) {
-    std::cout << "p: " << std::hex << p << std::endl;
-    std::cout << std::dec << "number is this big: "
-      << mpz_sizeinbase(p, 2) << std::endl;
+    std::cout << "p: 0x" << std::hex << p << std::endl;
+    std::cout << "bit-count: " << std::dec <<
+      mpz_sizeinbase(p, 2) << std::endl;
 
-    std::cout << "q: " << std::hex << q << std::endl;
-    std::cout << std::dec << "number is this big: "
-      << mpz_sizeinbase(q, 2) << std::endl;
+    std::cout << "q: 0x" << std::hex << q << std::endl;
+    std::cout << "bit-count: " << std::dec <<
+      mpz_sizeinbase(q, 2) << std::endl;
 
-    std::cout << "n: " << std::hex << n << std::endl;
-    std::cout << std::dec << "number is this big: "
-      << mpz_sizeinbase(n, 2) << std::endl;
+    std::cout << "n: 0x" << std::hex << n << std::endl;
+    std::cout << "bit-count: " << std::dec <<
+      mpz_sizeinbase(n, 2) << std::endl;
 
-    std::cout << "e: " << std::hex << e << std::endl;
+    std::cout << "e: 0x" << std::hex << e << std::endl;
 
-    std::cout << "d: " << std::hex << d << std::endl;
+    std::cout << "d: 0x" << d << std::endl <<
+      std::dec; // for the next std::cout
   }
 
   modulus = KeyElement(n);
@@ -182,7 +183,7 @@ void RsaCryptosystem::generateKeys(Key &publicKey,
     getMaxTextLength() << "-char)\n";
 }
 
-void RsaCryptosystem::encrypt(Text &cipherText,
+void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
     const Text &plainText, const Key &publicKey) {
   SizeT plainTextLength = plainText.size();
   std::cout << "(plain text length: " << plainTextLength <<
@@ -193,23 +194,25 @@ void RsaCryptosystem::encrypt(Text &cipherText,
     std::cout << excessiveLength << " char(s) too long\n";
     throw exception();
   }
-  setPublicKeyElements(publicKey);
   padText(paddedPlainText, plainText);
+  setPublicKeyElements(publicKey);
   encrypt();
-  unpadText(cipherText, paddedCipherText);
+  paddedCipherText = this->paddedCipherText;
 }
 
 void RsaCryptosystem::decrypt(Text &plainText,
-    const Text &cipherText, const Key &privateKey) {
+    const PaddedText &paddedCipherText,
+    const Key &privateKey) {
+  this->paddedCipherText = paddedCipherText;
   setPrivateKeyElements(privateKey);
-  padText(paddedCipherText, cipherText);
   decrypt();
   unpadText(plainText, paddedPlainText);
 }
 
 void RsaCryptosystem::cryptanalyze(Text &plainText,
-    const Text &cipherText, const Key &publicKey) {
-  padText(paddedCipherText, cipherText);
+    const PaddedText &paddedCipherText,
+    const Key &publicKey) {
+  this->paddedCipherText = paddedCipherText;
   setPublicKeyElements(publicKey);
   cryptanalyze();
   unpadText(plainText, paddedPlainText);
