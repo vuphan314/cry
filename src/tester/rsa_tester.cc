@@ -18,23 +18,24 @@ void RsaTester::demo(Text plainText) {
     publicKey.at(1) << "\n\tprivate exponent: " <<
     privateKey.at(1) << "\n";
 
-  std::cout << "plaintext: \"" << plainText << "\"\n";
+  std::cout << "plaintext: " << plainText << "\n";
 
   std::cout << "encryption ";
-  Text cipherText;
-  cryptosystem->encrypt(cipherText, plainText, publicKey);
-  std::cout << "\tciphertext: \"" <<
-    cipherText << "\"\n";
+  PaddedText paddedCipherText;
+  cryptosystem->encrypt(paddedCipherText, plainText,
+    publicKey);
+  std::cout << "\tpadded ciphertext: " <<
+    paddedCipherText << "\n";
 
-  cryptosystem->decrypt(plainText, cipherText,
+  cryptosystem->decrypt(plainText, paddedCipherText,
     privateKey);
-  std::cout << "decryption:\n\tplaintext: \"" <<
-    plainText << "\"\n";
+  std::cout << "decryption:\n\tplaintext: " << plainText <<
+    "\n";
 
   std::cout << "cryptanalysis:\n";
-  cryptosystem->cryptanalyze(plainText, cipherText,
+  cryptosystem->cryptanalyze(plainText, paddedCipherText,
     publicKey);
-  std::cout << "\tplaintext: \"" << plainText << "\"\n";
+  std::cout << "\tplaintext: " << plainText << "\n";
 }
 
 Bool RsaTester::testKeyGeneration() {
@@ -48,27 +49,33 @@ Bool RsaTester::testKeyGeneration() {
 
 Bool RsaTester::testEncryption() {
   std::cout << "method RsaTester::testEncryption\n";
-  Key publicKey, privateKey;
-  cryptosystem->generateKeys(publicKey, privateKey);
-  Text cipherText, plainText = "my plain text";
-  cryptosystem->encrypt(cipherText, plainText, publicKey);
+  // Key publicKey, privateKey;
+  // cryptosystem->generateKeys(publicKey, privateKey);
+  // Text plainText = "my plain text";
+  // PaddedText paddedCipherText;
+  // cryptosystem->encrypt(paddedCipherText, plainText,
+  //   publicKey);
   return TRUE; // is cipherText set as expected?
 }
 
 Bool RsaTester::testDecryption() {
   std::cout << "method RsaTester::testDecryption\n";
-  Key publicKey, privateKey;
-  cryptosystem->generateKeys(publicKey, privateKey);
-  Text plainText, cipherText = "jkasUAYDSB823746?><&^";
-  cryptosystem->decrypt(plainText, cipherText, privateKey);
+  // Key publicKey, privateKey;
+  // cryptosystem->generateKeys(publicKey, privateKey);
+  // PaddedText paddedCipherText = DEFAULT_PADDED_CIPHER_TEXT;
+  // Text plainText;
+  // cryptosystem->decrypt(plainText, paddedCipherText,
+  //   privateKey);
   return TRUE; // is plainText set as expected?
 }
 
 Bool RsaTester::testCryptanalysis() {
   std::cout << "method RsaTester::testCryptanalysis\n";
-  Key publicKey, privateKey;
-  cryptosystem->generateKeys(publicKey, privateKey);
-  Text plainText, cipherText = "jkasUAYDSB823746?><&^";
-  cryptosystem->decrypt(plainText, cipherText, publicKey);
+  // Key publicKey, privateKey;
+  // cryptosystem->generateKeys(publicKey, privateKey);
+  // PaddedText paddedCipherText = DEFAULT_PADDED_CIPHER_TEXT;
+  // Text plainText;
+  // cryptosystem->decrypt(plainText, paddedCipherText,
+  //   publicKey);
   return TRUE; // is plainText set as expected?
 }

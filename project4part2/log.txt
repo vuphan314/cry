@@ -1,0 +1,28 @@
+vu@Vu-PC:~/repos/cry/src$ ./main.sh 46 four6
+make -C ../cplusplus/src/
+make[1]: Entering directory '/home/vu/repos/cry/cplusplus/src'
+make[1]: 'cplusplus.out' is up to date.
+make[1]: Leaving directory '/home/vu/repos/cry/cplusplus/src'
+make: 'cry.out' is up to date.
+
+function demoRsa
+method RsaTester::demo
+key-generation (min modulus length: 46-bit, max text length: 5-char)
+	modulus: 39638690422081
+	public exponent: 65537
+	private exponent: 1814547467203
+plaintext: four6
+encryption (plain text length: 5-char)
+	padded ciphertext: 4811445672687
+decryption:
+	plaintext: four6
+cryptanalysis:
+	private method RsaCryptosystem::cryptanalyze started
+        13.0504%         0.0019h left
+        27.6772%         0.0015h left
+        42.8762%         0.0015h left
+        58.4685%         0.0012h left
+        74.3418%         0.0007h left
+        90.4416%         0.0003h left
+	private method RsaCryptosystem::cryptanalyze ended in 10.0000s
+	plaintext: four6

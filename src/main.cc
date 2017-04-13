@@ -35,11 +35,11 @@ void testCryptosystems() {
 int main(int argc, char const *argv[]) {
   std::cout << "\n";
   switch (argc) {
-    case 3:
-      demoRsa(atoi(argv[1]), argv[2]);
-      break;
     case 1:
       demoRsa();
+      break;
+    case 3:
+      demoRsa(atoi(argv[1]), argv[2]);
       break;
     default:
       cout << "wrong argc\n";

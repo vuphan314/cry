@@ -1,44 +1,56 @@
 \section{Finished Work}
 
+\begin{frame}
+\frametitle{}
 The \cs{} \rsa{} has been implemented in the \cf{} \cry.
-
-\cite{RSA}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Terminology}
 
+\begin{frame}
+\frametitle{}
 Each \textdef{key element} is a positive integer:
 \begin{itemize}
 \item $n$: \textdef{modulus}
 \item $e$: \textdef{public exponent}
 \item $d$: \textdef{private exponent}
 \end{itemize}
+\end{frame}
 
+\begin{frame}
+\frametitle{}
 Each \textdef{key} is a pair of key elements:
 \begin{itemize}
 \item $(n, e)$: \textdef{public key}
 \item $(n, d)$: \textdef{private key}
 \end{itemize}
+\end{frame}
 
+\begin{frame}
+\frametitle{}
 Each \textdef{padded text} is a nonnegative integer:
 \begin{itemize}
 \item $m$: \textdef{padded plaintext}
 \item $c$: \textdef{padded ciphertext}
 \end{itemize}
+\end{frame}
 
+\begin{frame}
+\frametitle{}
 Each (unpadded) \textdef{text} is a string.
 Padding and unpadding were already described in
 the project 4 progress report at: \\ \url
 {https://github.com/vuphan314/cry/releases/tag/v0.4.0-alpha}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Key Generation}
 
-Michael:
-How did I implement this function?
-
+\begin{frame}
+\frametitle{Michael}
 \begin{itemize}
 \item Input: none
 \item Output: $((n, e), (n, d))$
@@ -58,14 +70,14 @@ How did I implement this function?
   \item return $((n, e), (n, d))$
   \end{enumerate}
 \end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Encryption}
 
-Daniel:
-How did I implement this function?
-
+\begin{frame}
+\frametitle{Daniel}
 \begin{itemize}
 \item Input: $(m, (n, e))$
 \item Output: $c$
@@ -75,14 +87,14 @@ How did I implement this function?
   \item return $c$
   \end{enumerate}
 \end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Decryption}
 
-Daniel:
-How did I implement this function?
-
+\begin{frame}
+\frametitle{Daniel}
 \begin{itemize}
 \item Input: $(c, (n, d))$
 \item Output: $m$
@@ -92,14 +104,14 @@ How did I implement this function?
   \item return $m$
   \end{enumerate}
 \end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Cryptanalysis}
 
-Vu:
-How did I implement this function?
-
+\begin{frame}
+\frametitle{Vu}
 \begin{itemize}
 \item Input: $(c, (n, e))$
 \item Output: $m$
@@ -122,9 +134,18 @@ How did I implement this function?
     \end{enumerate}
   \end{enumerate}
 \end{itemize}
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Demo}
 
-\codes{\lstinputlisting{../log.txt}}
+\begin{frame}
+\frametitle{}
+\lstinputlisting[basicstyle=\small, lastline=9]{../log.txt}
+\end{frame}
+
+\begin{frame}
+\frametitle{}
+\lstinputlisting[basicstyle=\small, firstline=10]{../log.txt}
+\end{frame}

@@ -1,15 +1,12 @@
 \documentclass[aspectratio=169]{beamer}
 \usetheme{Madrid}
 \AtBeginSection{\frame{\sectionpage}}
-% \AtBeginSubsection{\frame{\subsectionpage}}
+\AtBeginSubsection{\frame{\subsectionpage}}
 
 \usepackage{../../cry}
 
-\usepackage{../tikz-uml}
-\usetikzlibrary{positioning}
-
-\title[\tc]{\deliv{\sds}{Presentation}}
-\date{\datesds}
+\title[\tc]{\deliv{\imp}{Part 2: Presentation}}
+\date{\dateimptwo}
 
 \begin{document}
 
@@ -33,19 +30,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{description}
-\input{analysis}
-\input{uml/uml}
-\input{prototype}
-\input{implementation}
+\input{overview}
+\input{current}
+\input{future}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Acknowledgement}
-\begin{frame}
-\code{TikZ-UML}: \tex{} package for UML \\
-by Dr. Nicolas Kielbasiewicz, UMA/POems, ENSTA - ParisTech \\
-\url{http://perso.ensta-paristech.fr/~kielbasi/tikzuml/}
-\end{frame}
+\section{Conclusion}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
