@@ -1,0 +1,43 @@
+\documentclass[aspectratio=169]{beamer}
+\usetheme{Madrid}
+\AtBeginSection{\frame{\sectionpage}}
+\AtBeginSubsection{\frame{\subsectionpage}}
+
+\usepackage{../../cry}
+
+\title[\tc]{\deliv{\imp}{Part 2: Presentation}}
+\date{\dateimptwo}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\maketitle
+\begin{center}
+\names
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Contents}
+\setlength{\columnsep}{0.11in}
+% \begin{multicols}{2}
+\tableofcontents
+% \end{multicols}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{description}
+\input{overview}
+\input{current}
+\input{future}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
