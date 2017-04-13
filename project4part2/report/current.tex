@@ -2,12 +2,26 @@
 
 The \cs{} \rsa{} is implemented in the \cf{} \cry.
 
+\cite{RSA}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Terminology}
 
 \begin{enumerate}
-\item choose prime numbers $p$ and $q$
+\item choose some distinct prime numbers $p$ and $q$
+\item let the \textdef{modulus} $n$ be $p * q$
+\item let $l$ be the least common multiple of $p$ and $q$
+\item choose a \textdef{public exponent} $e$ such that:
+  \begin{itemize}
+  \item $e$ is an integer
+  \item $1 < e < l$
+  \item $e$ and $l$ are coprime
+  \end{itemize}
+\item let the \textdef{private exponent} $d$ be
+  the multiplicative inverse of $e$ modulo $l$
+\item let the \textdef{public key} be the pair $(n, e)$
+\item let the \textdef{private key} be the pair $(n, d)$
 \end{enumerate}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
