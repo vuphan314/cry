@@ -42,7 +42,7 @@ const Bool FALSE = false;
 
 const SizeT COUT_PERIOD = (2 << 15) - 1;
   // &-mask to get least significant bits
-const auto COUT_WIDTH = std::setw(15);
+const auto COUT_WIDTH = std::setw(25);
 const auto COUT_PRECISION = std::setprecision(4);
 
 ////////////////////////////////////////////////////////////
