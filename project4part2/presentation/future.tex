@@ -16,5 +16,27 @@
   \item We will try to make \dummy{} an asymmetric \cs{}
     (like \rsa) instead of a symmetric \cs{} (like \aes).
   \end{itemize}
+\item We are on track to complete \cry{} within the allotted
+  time budget. If we are unable to develop a suitable
+  asymmetric \cs{}, we will develop a symmetric \cs{}
+  instead.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{}
+\begin{itemize}
+  \item To develop \dummy{}, we need to follow a basic
+    process.
+  \item First, we need to identify a suitable invertible
+    function, such that the function's inverse is
+    non-trivial.
+  \item Second, we need to devise an algorithm to generate
+    a private key, and a public key.
+  \item As a bad example, we could select the multiplication
+    function. We could choose the public key 5, and the
+    private key 1/5. We multiply the plaintext by 5 to get
+    the ciphertext, and we multiply the ciphertext by 1/5 to
+    get the plaintext.
 \end{itemize}
 \end{frame}
