@@ -22,11 +22,11 @@ by \bob \bigskip
 Shell input: \generatekeysindemo
 Shell output: \generatekeysoutdemo
 
-File \private{\bobdemo}:
-\codestt{\lstinputlisting{../../src/demo/receiver.private}}
-
 File \public{\bobdemo}:
 \codestt{\lstinputlisting{../../src/demo/receiver.public}}
+
+File \private{\bobdemo}:
+\codestt{\lstinputlisting{../../src/demo/receiver.private}}
 
 \bob{} adds, commits, and pushes
 the file \public{\bobdemo} to \github.
@@ -36,13 +36,13 @@ the file \public{\bobdemo} to \github.
 \subsection{Encryption}
 by \alice \bigskip
 
-\alice{} creates the file \private{\alicedemo}:
+\alice{} creates the file \private{\alicedemo} (plaintext):
 \codestt{\lstinputlisting{../../src/demo/sender.private}}
 
 Shell input: \encryptindemo
 Shell output: \encryptoutdemo
 
-File \public{\alicedemo}:
+File \public{\alicedemo} (padded ciphertext):
 \codestt{\lstinputlisting{../../src/demo/sender.public}}
 
 \alice{} adds, commits, and pushes

@@ -1,2 +1,4 @@
-cryptosystemName=RSA
-publicKey=3233,17
+cryptosystem=rsa
+publicKey=
+  172014975789562774694897382365563045699
+  65537
