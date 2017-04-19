@@ -39,9 +39,11 @@ Each \textdef{padded text} is a nonnegative integer:
 
 \begin{frame}
 \frametitle{}
-Each (unpadded) \textdef{text} is a string.
-Padding and unpadding were already described in
-the project 4 progress report at: \\ \url
+Each (unpadded) \textdef{text} is a string. \\
+Our padding simply means we convert a string to an integer
+\\
+For more information, refer to our project 4 progress report
+at: \\ \url
 {https://github.com/vuphan314/cry/releases/tag/v0.4.0-alpha}
 \end{frame}
 
@@ -53,7 +55,7 @@ the project 4 progress report at: \\ \url
 \frametitle{Michael}
 \begin{itemize}
 \item Input: none
-\item Output: $((n, e), (n, d))$
+\item Output: $((n, e), (n, d))$ (public key, private key)
 \item Algorithm:
   \begin{enumerate}
   \item choose some distinct prime numbers $p$ and $q$
@@ -64,8 +66,12 @@ the project 4 progress report at: \\ \url
   \begin{itemize}
     \item $1 < e < l$
     \item $e$ and $l$ are coprime
+    \item In our case, we set $e$ to the decimal integer
+      65537. This guarantees that $e$ and $l$ are coprime,
+      makes the modular exponentiation quick, and is very
+      common practice.
   \end{itemize}
-  \item let $d$ be the multiplicative inverse of $e$
+  \item let $d$ be the modular inverse of $e$
     modulo $l$
   \item return $((n, e), (n, d))$
   \end{enumerate}
@@ -79,8 +85,8 @@ the project 4 progress report at: \\ \url
 \begin{frame}
 \frametitle{Daniel}
 \begin{itemize}
-\item Input: $(m, (n, e))$
-\item Output: $c$
+\item Input: $(m, (n, e))$ (padded plaintext, public key)
+\item Output: $c$ (padded ciphertext)
 \item Algorithm:
   \begin{enumerate}
   \item let $c = m^e$ modulo $n$
@@ -96,8 +102,8 @@ the project 4 progress report at: \\ \url
 \begin{frame}
 \frametitle{Daniel}
 \begin{itemize}
-\item Input: $(c, (n, d))$
-\item Output: $m$
+\item Input: $(c, (n, d))$ (padded ciphertext, private key)
+\item Output: $m$ (padded plaintext)
 \item Algorithm:
   \begin{enumerate}
   \item let $m = c^d$ modulo $n$
@@ -113,8 +119,8 @@ the project 4 progress report at: \\ \url
 \begin{frame}
 \frametitle{Vu}
 \begin{itemize}
-\item Input: $(c, (n, e))$
-\item Output: $m$
+\item Input: $(c, (n, e))$ (padded ciphertext, public key)
+\item Output: $m$ (padded plaintext)
 \item Algorithm:
   \begin{enumerate}
   \item find $d$:
