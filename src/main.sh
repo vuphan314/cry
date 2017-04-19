@@ -13,7 +13,7 @@ plainText=$2
 # plainText=01234567
 
 # minModulusLength=128 # 506-millennium cryptanalysis
-# plainText='cry\nbaby'
+# plainText="cry\nbaby"
 
 ############################################################
 
