@@ -39,12 +39,9 @@ Each \textdef{padded text} is a nonnegative integer:
 
 \begin{frame}
 \frametitle{}
-Each (unpadded) \textdef{text} is a string.
-Padding is a technique to make a string equal in length to
-the key size. If this were not so, the security of block
-ciphers would be compromised.
-However, in our case our padding function simply converts
-a string type to an integer type.
+Each (unpadded) \textdef{text} is a string. \\
+Our padding simply means we convert a string to an integer
+\\
 For more information, refer to our project 4 progress report
 at: \\ \url
 {https://github.com/vuphan314/cry/releases/tag/v0.4.0-alpha}
@@ -70,8 +67,9 @@ at: \\ \url
     \item $1 < e < l$
     \item $e$ and $l$ are coprime
     \item In our case, we set $e$ to the decimal integer
-      65537. This guaruntees that $e$ and $l$ are coprime,
-      and is very common practice.
+      65537. This guarantees that $e$ and $l$ are coprime,
+      makes the modular exponentiation quick, and is very
+      common practice.
   \end{itemize}
   \item let $d$ be the modular inverse of $e$
     modulo $l$
