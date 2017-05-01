@@ -19,8 +19,8 @@ private:
     // privateKey = (n, e, E)
 
 public:
-  void generateKeys(Key &publicKey, Key &privateKey);
-    // set these
+  void generateKeys(
+    Key &publicKey, Key &privateKey); // set these
 
   void encrypt(PaddedText &paddedCipherText, // set this
     const Text &plainText, const Key &publicKey);
