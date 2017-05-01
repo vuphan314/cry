@@ -26,6 +26,10 @@ protected:
   void setPrivateKeyElements(const Key &privateKey);
     // set: modulus, privateExponent, secretAddend
 
+  void recoverPrivateKeyElements();
+    // set: privateExponent, secretAddend
+    // read: modulus, publicExponent, publicAddend
+
 // protected overloaded methods:
   void generateKeys();
     // set: modulus, publicExponent, privateExponent,

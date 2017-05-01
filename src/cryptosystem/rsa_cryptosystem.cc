@@ -197,8 +197,8 @@ void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
     std::cout << excessiveLength << " char(s) too long\n";
     throw exception();
   }
-  padText(paddedPlainText, plainText);
   setPublicKeyElements(publicKey);
+  padText(paddedPlainText, plainText);
   encrypt();
   paddedCipherText = this->paddedCipherText;
 }
@@ -206,8 +206,8 @@ void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
 void RsaCryptosystem::decrypt(Text &plainText,
     const PaddedText &paddedCipherText,
     const Key &privateKey) {
-  this->paddedCipherText = paddedCipherText;
   setPrivateKeyElements(privateKey);
+  this->paddedCipherText = paddedCipherText;
   decrypt();
   unpadText(plainText, paddedPlainText);
 }
@@ -215,8 +215,8 @@ void RsaCryptosystem::decrypt(Text &plainText,
 void RsaCryptosystem::cryptanalyze(Text &plainText,
     const PaddedText &paddedCipherText,
     const Key &publicKey) {
-  this->paddedCipherText = paddedCipherText;
   setPublicKeyElements(publicKey);
+  this->paddedCipherText = paddedCipherText;
   cryptanalyze();
   unpadText(plainText, paddedPlainText);
 }
