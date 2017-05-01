@@ -7,19 +7,45 @@
 
 ////////////////////////////////////////////////////////////
 
-const long DEFAULT_PRIVATE_ADDEND = 42;
+const long DEFAULT_SECRET_ADDEND = 42;
   // mpz_t: no long long
 
 ////////////////////////////////////////////////////////////
 
 class DummyCryptosystem : public RsaCryptosystem {
-private:
+protected:
   KeyElement publicAddend, // E
-    privateAddend; // D
+    secretAddend; // D
     // publicKey = (n, d, D)
     // privateKey = (n, e, E)
 
+// protected helper methods:
+  void setPublicKeyElements(const Key &publicKey);
+    // set: modulus, publicExponent, publicAddend
+
+  void setPrivateKeyElements(const Key &privateKey);
+    // set: modulus, privateExponent, secretAddend
+
+// protected overloaded methods:
+  void generateKeys();
+    // set: modulus, publicExponent, privateExponent,
+    // publicAddend, secretAddend
+
+  void encrypt();
+    // set: paddedCipherText
+    // read: paddedPlainText, secretAddend
+
+  void decrypt();
+    // set: paddedPlainText
+    // read: paddedCipherText, secretAddend
+
+  void cryptanalyze();
+    // set: paddedPlainText
+    // read: paddedCipherText, modulus, publicExponent,
+    // publicAddend
+
 public:
+// public overloaded methods:
   void generateKeys(
     Key &publicKey, Key &privateKey); // set these
 

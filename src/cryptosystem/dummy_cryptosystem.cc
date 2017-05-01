@@ -3,20 +3,58 @@
 ////////////////////////////////////////////////////////////
 // class DummyCryptosystem:
 
+// protected:
+
+// protected helper methods:
+
+void DummyCryptosystem::setPublicKeyElements(
+    const Key &publicKey) {
+  RsaCryptosystem::setPublicKeyElements(publicKey);
+  publicAddend = publicKey.at(2);
+}
+
+void DummyCryptosystem::setPrivateKeyElements(
+    const Key &privateKey) {
+  RsaCryptosystem::setPrivateKeyElements(privateKey);
+  secretAddend = privateKey.at(2);
+}
+
+// protected overloaded methods:
+
+void DummyCryptosystem::generateKeys() {
+  DummyCryptosystem::generateKeys();
+  paddedPlainText = DEFAULT_SECRET_ADDEND;
+  DummyCryptosystem::encrypt();
+  publicAddend = paddedCipherText;
+  secretAddend = paddedPlainText;
+}
+
+void DummyCryptosystem::encrypt() {
+  paddedCipherText = paddedPlainText + secretAddend;
+}
+
+void DummyCryptosystem::decrypt() {
+  paddedPlainText = paddedCipherText - secretAddend;
+}
+
+void DummyCryptosystem::cryptanalyze() {
+
+}
+
+// public:
+// public overloaded methods:
+
 void DummyCryptosystem::generateKeys(Key &publicKey,
     Key &privateKey) {
-  RsaCryptosystem::generateKeys();
-  privateAddend = DEFAULT_PRIVATE_ADDEND;
-  paddedPlainText = privateAddend;
-  RsaCryptosystem::encrypt();
-  publicAddend = paddedCipherText;
   publicKey.push_back(publicAddend);
-  privateKey.push_back(privateAddend);
+  privateKey.push_back(secretAddend);
 }
 
 void DummyCryptosystem::encrypt(
   PaddedText &paddedCipherText, const Text &plainText,
-  const Key &publicKey) {}
+  const Key &publicKey) {
+
+}
 
 void DummyCryptosystem::decrypt(Text &plainText,
   const PaddedText &paddedCipherText,
