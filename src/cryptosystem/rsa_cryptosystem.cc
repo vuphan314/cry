@@ -29,6 +29,53 @@ void RsaCryptosystem::setPrivateKeyElements(
   privateExponent = privateKey.at(1);
 }
 
+void RsaCryptosystem::recoverPrivateKeyElements() {
+  mpz_t n, e, d, p, q, l;
+  mpz_inits(n, e, d, p, q, l, NULL);
+
+  mpf_t pFloat, nFloat, rootN, currentRatio;
+  mpf_inits(pFloat, nFloat, rootN, currentRatio, NULL);
+
+  mpz_set(n, modulus.get_mpz_t());
+  mpf_set_z(nFloat, n);
+  mpf_sqrt(rootN, nFloat);
+
+  Time startTime = getTime();
+  std::cout << "\tmethod RsaCryptosystem::"
+    "recoverPrivateKeyElements started\n";
+  mpz_set_ui(p, 1);
+  SizeT cc = 0; // current count
+  do {
+    mpz_nextprime(p, p);
+    mpf_set_z(pFloat, p);
+    mpf_div(currentRatio, pFloat, rootN);
+    cc++;
+    if (!(cc & COUT_PERIOD)) {
+      double currentPercentage = 100 *
+        mpf_get_d(currentRatio);
+      Duration remainingDuration = getRemainingDuration(
+        startTime, currentPercentage);
+      cout << COUT_WIDTH << COUT_PRECISION << std::fixed <<
+        currentPercentage << "%" <<
+        COUT_WIDTH << remainingDuration << "h left\n";
+    }
+  } while (!(mpz_divisible_p(n, p)));
+  Duration totalDuration = getDuration(startTime);
+  std::cout << "\tmethod RsaCryptosystem::"
+    "recoverPrivateKeyElements ended in " <<
+    totalDuration << "s\n";
+
+  mpz_divexact(q, n, p);
+
+  setTotient(l, p, q);
+
+  mpz_set(e, publicExponent.get_mpz_t());
+
+  mpz_invert(d, e, l);
+
+  privateExponent = PaddedText(d);
+}
+
 // protected overloaded methods:
 
 void RsaCryptosystem::generateKeys() {
@@ -117,52 +164,8 @@ void RsaCryptosystem::decrypt() {
 }
 
 void RsaCryptosystem::cryptanalyze() {
-  Time startTime = getTime();
-
-  mpz_t n, e, d, p, q, l;
-  mpz_inits(n, e, d, p, q, l, NULL);
-
-  mpf_t pFloat, nFloat, rootN, currentRatio;
-  mpf_inits(pFloat, nFloat, rootN, currentRatio, NULL);
-
-  mpz_set(n, modulus.get_mpz_t());
-
-  mpf_set_z(nFloat, n);
-  mpf_sqrt(rootN, nFloat);
-  mpz_set_ui(p, 1);
-  SizeT cc = 0; // current count
-  std::cout << "\tprivate method " <<
-    "RsaCryptosystem::cryptanalyze started\n";
-  do {
-    mpz_nextprime(p, p);
-    mpf_set_z(pFloat, p);
-    mpf_div(currentRatio, pFloat, rootN);
-    cc++;
-    if (!(cc & COUT_PERIOD)) {
-      double currentPercentage = 100 *
-        mpf_get_d(currentRatio);
-      Duration remainingDuration = getRemainingDuration(
-        startTime, currentPercentage);
-      cout << COUT_WIDTH << COUT_PRECISION << std::fixed <<
-        currentPercentage << "%" <<
-        COUT_WIDTH << remainingDuration << "h left\n";
-    }
-  } while (!(mpz_divisible_p(n, p)));
-  Duration totalDuration = getDuration(startTime);
-  std::cout << "\tprivate method " <<
-    "RsaCryptosystem::cryptanalyze ended in " <<
-    totalDuration << "s\n";
-
-  mpz_divexact(q, n, p);
-
-  setTotient(l, p, q);
-
-  mpz_set(e, publicExponent.get_mpz_t());
-
-  mpz_invert(d, e, l);
-
-  mpz_powm(paddedPlainText.get_mpz_t(),
-    paddedCipherText.get_mpz_t(), d, n);
+  recoverPrivateKeyElements();
+  decrypt();
 }
 
 // public:
