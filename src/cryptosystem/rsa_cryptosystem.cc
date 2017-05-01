@@ -9,9 +9,9 @@ http://stackoverflow.com/questions/9791761/using-gmp-for-cryptography-how-to-get
 ////////////////////////////////////////////////////////////
 // class RsaCryptosystem:
 
-// private:
+// protected:
 
-// private helper methods:
+// protected helper methods:
 
 SizeT RsaCryptosystem::getMaxTextLength() {
   return minModulusLength / CHAR_LENGTH;
@@ -29,7 +29,7 @@ void RsaCryptosystem::setPrivateKeyElements(
   privateExponent = privateKey.at(1);
 }
 
-// private overloaded methods:
+// protected overloaded methods:
 
 void RsaCryptosystem::generateKeys() {
   SizeT minPrimeLength = (minModulusLength / 2) - 1;
