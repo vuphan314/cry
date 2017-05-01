@@ -19,9 +19,11 @@ const Text BREAKABLE_PLAIN_TEXT = "four";
 class RsaCryptosystem : public Cryptosystem {
 private:
   SizeT minModulusLength;
-  KeyElement modulus, // n, cryptographically public
-    publicExponent, // e, cryptographically public
-    privateExponent; // d, cryptographically private
+  KeyElement modulus, // n
+    publicExponent, // e
+    privateExponent; // d
+    // publicKey = (n, d)
+    // privateKey = (n, e)
   PaddedText paddedPlainText, paddedCipherText;
 
 // private helper methods:

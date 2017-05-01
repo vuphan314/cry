@@ -3,11 +3,25 @@
 
 ////////////////////////////////////////////////////////////
 
+const SizeT DEFAULT_PRIVATE_ADDEND = 42;
+
+////////////////////////////////////////////////////////////
+
 #include "cryptosystem.h"
+#include "rsa_cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
 
 class DummyCryptosystem : public Cryptosystem {
+private:
+  KeyElement modulus, // n
+    publicExponent, // e
+    privateExponent, // d
+    publicAddend, // E
+    privateAddend; // D
+    // publicKey = (n, d, D)
+    // privateKey = (n, e, E)
+
 public:
   void generateKeys(
     Key &publicKey, Key &privateKey, // set these
