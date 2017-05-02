@@ -123,7 +123,7 @@ void RsaCryptosystem::generateKeys() {
   mpz_invert(d, e, l);
 
   //******************************************************//
-  //   The remaining code is just for testing purposes    //
+  //   This code block is just for testing purposes       //
   //******************************************************//
   if (verbosity) {
     std::cout << "p: 0x" << std::hex << p << std::endl;
@@ -181,16 +181,16 @@ void RsaCryptosystem::generateKeys(Key &publicKey,
   generateKeys();
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
-  std::cout << "(min modulus length: " <<
-    minModulusLength << "-bit, max text length: " <<
-    getMaxTextLength() << "-char)\n";
+  std::cout << "\tmin modulus length: " <<
+    minModulusLength << "-bit\n\tmax text length: " <<
+    getMaxTextLength() << "-char\n";
 }
 
 void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
     const Text &plainText, const Key &publicKey) {
   SizeT plainTextLength = plainText.size();
-  std::cout << "(plain text length: " << plainTextLength <<
-    "-char)\n";
+  std::cout << "\tplain text length: " << plainTextLength <<
+    "-char\n";
   long long excessiveLength = plainTextLength -
     getMaxTextLength();
   if (excessiveLength > 0) {

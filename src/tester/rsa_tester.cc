@@ -8,19 +8,18 @@ RsaTester::RsaTester(SizeT minModulusLength) {
 }
 
 Bool RsaTester::testCryptosystem(Text plainText) {
-  std::cout << "method RsaTester::test\n";
+  std::cout << "method RsaTester::testCryptosystem\n";
 
-  std::cout << "key-generation ";
+  std::cout << "key-generation:\n";
   Key publicKey, privateKey;
   cryptosystem->generateKeys(publicKey, privateKey);
-  std::cout << "\tmodulus: " <<
-    publicKey.at(0) << "\n\tpublic exponent: " <<
-    publicKey.at(1) << "\n\tprivate exponent: " <<
-    privateKey.at(1) << "\n";
+  std::cout << "\tmodulus: " << publicKey.at(0) <<
+    "\n\tpublic exponent: " << publicKey.at(1) <<
+    "\n\tprivate exponent: " << privateKey.at(1) << "\n";
 
   std::cout << "plaintext: \"" << plainText << "\"\n";
 
-  std::cout << "encryption ";
+  std::cout << "encryption:\n";
   PaddedText paddedCipherText;
   cryptosystem->encrypt(paddedCipherText, plainText,
     publicKey);

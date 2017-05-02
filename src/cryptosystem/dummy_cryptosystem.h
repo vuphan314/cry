@@ -8,7 +8,7 @@
 ////////////////////////////////////////////////////////////
 
 const long DEFAULT_SECRET_ADDEND = 42;
-  // constructor mpz_class rejects long long
+  // constructor mpz_class rejects type long long
 
 ////////////////////////////////////////////////////////////
 
@@ -49,6 +49,9 @@ protected:
     // publicAddend
 
 public:
+  DummyCryptosystem(SizeT minModulusLength =
+    DEFAULT_MIN_MODULUS_LENGTH);
+
 // public overloaded methods:
   void generateKeys(
     Key &publicKey, Key &privateKey); // set these

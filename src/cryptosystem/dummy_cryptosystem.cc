@@ -29,7 +29,7 @@ void DummyCryptosystem::recoverPrivateKeyElements() {
 // protected overloaded methods:
 
 void DummyCryptosystem::generateKeys() {
-  DummyCryptosystem::generateKeys();
+  RsaCryptosystem::generateKeys();
   paddedPlainText = DEFAULT_SECRET_ADDEND;
   DummyCryptosystem::encrypt();
   publicAddend = paddedCipherText;
@@ -50,6 +50,11 @@ void DummyCryptosystem::decrypt() {
 // }
 
 // public:
+
+DummyCryptosystem::DummyCryptosystem(
+    SizeT minModulusLength) {
+  this->minModulusLength = minModulusLength;
+}
 
 // public overloaded methods:
 
