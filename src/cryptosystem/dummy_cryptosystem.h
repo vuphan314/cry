@@ -43,7 +43,7 @@ protected:
     // set: paddedPlainText
     // read: paddedCipherText, secretAddend
 
-  // void cryptanalyze();
+  void cryptanalyze();
     // set: paddedPlainText
     // read: paddedCipherText, modulus, publicExponent,
     // publicAddend
@@ -59,13 +59,13 @@ public:
   void encrypt(PaddedText &paddedCipherText, // set this
     const Text &plainText, const Key &publicKey);
 
-  // void decrypt(Text &plainText, // set this
-  //   const PaddedText &paddedCipherText,
-  //   const Key &privateKey);
+  void decrypt(Text &plainText, // set this
+    const PaddedText &paddedCipherText,
+    const Key &privateKey);
 
-  // void cryptanalyze(Text &plainText, // set this
-  //   const PaddedText &paddedCipherText,
-  //   const Key &publicKey);
+  void cryptanalyze(Text &plainText, // set this
+    const PaddedText &paddedCipherText,
+    const Key &publicKey);
 };
 
 ////////////////////////////////////////////////////////////
