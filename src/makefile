@@ -37,15 +37,15 @@ dummy_tester.o: tester/dummy_tester.cc \
 		tester/dummy_tester.h \
 		cryptosystem/dummy_cryptosystem.h \
 		tester/rsa_tester.h \
-		cryptosystem/rsa_cryptosystem.h \
 		tester/tester.h \
+		cryptosystem/rsa_cryptosystem.h \
 		cryptosystem/cryptosystem.h $(SUBMODULE_HEADERS)
 	$(COMPILER) tester/dummy_tester.cc $(ASSEMBLING_OPTIONS)
 
 rsa_tester.o: tester/rsa_tester.cc \
 		tester/rsa_tester.h \
-		cryptosystem/rsa_cryptosystem.h \
 		tester/tester.h \
+		cryptosystem/rsa_cryptosystem.h \
 		cryptosystem/cryptosystem.h $(SUBMODULE_HEADERS)
 	$(COMPILER) tester/rsa_tester.cc $(ASSEMBLING_OPTIONS)
 

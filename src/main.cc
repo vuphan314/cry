@@ -36,7 +36,7 @@ int main(int argc, char const *argv[]) {
   std::cout << "\n";
   switch (argc) {
     case 1:
-      // breakRsa();
+      breakRsa();
       break;
     case 3:
       breakRsa(atoi(argv[1]), argv[2]);
@@ -45,7 +45,7 @@ int main(int argc, char const *argv[]) {
       cout << "wrong argc\n";
       throw std::exception();
   }
-  testCryptosystems();
+  // testCryptosystems();
   // testPaddingUnpadding();
   // testCharConversion();
 }
