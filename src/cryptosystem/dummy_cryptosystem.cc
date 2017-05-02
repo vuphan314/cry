@@ -31,7 +31,7 @@ void DummyCryptosystem::recoverPrivateKeyElements() {
 void DummyCryptosystem::generateKeys() {
   RsaCryptosystem::generateKeys();
   paddedPlainText = DEFAULT_SECRET_ADDEND;
-  DummyCryptosystem::encrypt();
+  RsaCryptosystem::encrypt();
   publicAddend = paddedCipherText;
   secretAddend = paddedPlainText;
 }
