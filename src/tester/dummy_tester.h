@@ -10,7 +10,8 @@
 
 class DummyTester : public RsaTester {
 public:
-  Bool testCryptosystem(Text plainText);
+  Bool testCryptosystem(Text plainText =
+    BREAKABLE_PLAIN_TEXT);
 };
 
 ////////////////////////////////////////////////////////////

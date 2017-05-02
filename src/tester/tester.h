@@ -3,7 +3,7 @@
 
 ////////////////////////////////////////////////////////////
 
-#include "../cryptosystem/cryptosystem.h"
+#include "../cryptosystem/rsa_cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
 
@@ -15,7 +15,8 @@ protected:
 public:
 // purely virtual methods,
 // must be defined by non-abstract derived class:
-  virtual Bool testCryptosystem(Text plainText) = 0;
+  virtual Bool testCryptosystem(Text plainText =
+    BREAKABLE_PLAIN_TEXT) = 0;
 };
 
 ////////////////////////////////////////////////////////////

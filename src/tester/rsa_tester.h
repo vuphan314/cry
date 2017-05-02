@@ -11,10 +11,11 @@
 class RsaTester : public Tester {
 public:
   RsaTester(SizeT minModulusLength =
-    DEFAULT_MIN_MODULUS_LENGTH);
+    BREAKABLE_MIN_MODULUS_LENGTH);
     // constructor to set data member cryptosystem
 
-  Bool testCryptosystem(Text plainText);
+  Bool testCryptosystem(Text plainText =
+    BREAKABLE_PLAIN_TEXT);
 };
 
 ////////////////////////////////////////////////////////////

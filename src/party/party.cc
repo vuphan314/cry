@@ -9,7 +9,7 @@ Party::Party(CryptosystemName cryptosystemName) {
 
 Bool Party::test() {
   std::cout << "method Party::test\n";
-  return tester->testCryptosystem("party");
+  return tester->testCryptosystem();
 }
 
 ////////////////////////////////////////////////////////////

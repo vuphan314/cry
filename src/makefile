@@ -51,6 +51,7 @@ rsa_tester.o: tester/rsa_tester.cc \
 
 tester.o: tester/tester.cc \
 		tester/tester.h \
+		cryptosystem/rsa_cryptosystem.h \
 		cryptosystem/cryptosystem.h $(SUBMODULE_HEADERS)
 	$(COMPILER) tester/tester.cc $(ASSEMBLING_OPTIONS)
 
