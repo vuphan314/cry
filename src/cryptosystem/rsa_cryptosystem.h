@@ -17,14 +17,16 @@ const Text BREAKABLE_PLAIN_TEXT = "four";
 ////////////////////////////////////////////////////////////
 
 class RsaCryptosystem : public Cryptosystem {
-private:
+protected:
   SizeT minModulusLength;
-  KeyElement modulus, // n, cryptographically public
-    publicExponent, // e, cryptographically public
-    privateExponent; // d, cryptographically private
+  KeyElement modulus, // n
+    publicExponent, // e
+    privateExponent; // d
+    // publicKey = (n, d)
+    // privateKey = (n, e)
   PaddedText paddedPlainText, paddedCipherText;
 
-// private helper methods:
+// protected helper methods:
   SizeT getMaxTextLength();
     // read: minModulusLength
 
@@ -34,7 +36,11 @@ private:
   void setPrivateKeyElements(const Key &privateKey);
     // set: modulus, privateExponent
 
-// private overloaded methods:
+  void recoverPrivateKeyElements();
+    // set: privateExponent
+    // read: modulus, publicExponent
+
+// protected overloaded methods:
   void generateKeys();
     // set: modulus, publicExponent, privateExponent
     // read: minModulusLength
@@ -42,7 +48,6 @@ private:
   void encrypt();
     // set: paddedCipherText
     // read: paddedPlainText, modulus, publicExponent
-    // check: minModulusLength
 
   void decrypt();
     // set: paddedPlainText
@@ -62,6 +67,7 @@ public:
 
   void encrypt(PaddedText &paddedCipherText, // set this
     const Text &plainText, const Key &publicKey);
+    // check minModulusLength
 
   void decrypt(Text &plainText, // set this
     const PaddedText &paddedCipherText,

@@ -9,9 +9,9 @@ http://stackoverflow.com/questions/9791761/using-gmp-for-cryptography-how-to-get
 ////////////////////////////////////////////////////////////
 // class RsaCryptosystem:
 
-// private:
+// protected:
 
-// private helper methods:
+// protected helper methods:
 
 SizeT RsaCryptosystem::getMaxTextLength() {
   return minModulusLength / CHAR_LENGTH;
@@ -29,7 +29,54 @@ void RsaCryptosystem::setPrivateKeyElements(
   privateExponent = privateKey.at(1);
 }
 
-// private overloaded methods:
+void RsaCryptosystem::recoverPrivateKeyElements() {
+  mpz_t n, e, d, p, q, l;
+  mpz_inits(n, e, d, p, q, l, NULL);
+
+  mpf_t pFloat, nFloat, rootN, currentRatio;
+  mpf_inits(pFloat, nFloat, rootN, currentRatio, NULL);
+
+  mpz_set(n, modulus.get_mpz_t());
+  mpf_set_z(nFloat, n);
+  mpf_sqrt(rootN, nFloat);
+
+  Time startTime = getTime();
+  std::cout << "\tmethod RsaCryptosystem::"
+    "recoverPrivateKeyElements started\n";
+  mpz_set_ui(p, 1);
+  SizeT cc = 0; // current count
+  do {
+    mpz_nextprime(p, p);
+    mpf_set_z(pFloat, p);
+    mpf_div(currentRatio, pFloat, rootN);
+    cc++;
+    if (!(cc & COUT_PERIOD)) {
+      double currentPercentage = 100 *
+        mpf_get_d(currentRatio);
+      Duration remainingDuration = getRemainingDuration(
+        startTime, currentPercentage);
+      cout << COUT_WIDTH << COUT_PRECISION << std::fixed <<
+        currentPercentage << "%" <<
+        COUT_WIDTH << remainingDuration << "h left\n";
+    }
+  } while (!(mpz_divisible_p(n, p)));
+  Duration totalDuration = getDuration(startTime);
+  std::cout << "\tmethod RsaCryptosystem::"
+    "recoverPrivateKeyElements ended in " <<
+    totalDuration << "s\n";
+
+  mpz_divexact(q, n, p);
+
+  setTotient(l, p, q);
+
+  mpz_set(e, publicExponent.get_mpz_t());
+
+  mpz_invert(d, e, l);
+
+  privateExponent = PaddedText(d);
+}
+
+// protected overloaded methods:
 
 void RsaCryptosystem::generateKeys() {
   SizeT minPrimeLength = (minModulusLength / 2) - 1;
@@ -76,7 +123,7 @@ void RsaCryptosystem::generateKeys() {
   mpz_invert(d, e, l);
 
   //******************************************************//
-  //   The remaining code is just for testing purposes    //
+  //   This code block is just for testing purposes       //
   //******************************************************//
   if (verbosity) {
     std::cout << "p: 0x" << std::hex << p << std::endl;
@@ -94,7 +141,7 @@ void RsaCryptosystem::generateKeys() {
     std::cout << "e: 0x" << std::hex << e << std::endl;
 
     std::cout << "d: 0x" << d << std::endl <<
-      std::dec; // for the next std::cout
+      std::dec; // decimal for the next cout
   }
 
   modulus = KeyElement(n);
@@ -117,52 +164,8 @@ void RsaCryptosystem::decrypt() {
 }
 
 void RsaCryptosystem::cryptanalyze() {
-  Time startTime = getTime();
-
-  mpz_t n, e, d, p, q, l;
-  mpz_inits(n, e, d, p, q, l, NULL);
-
-  mpf_t pFloat, nFloat, rootN, currentRatio;
-  mpf_inits(pFloat, nFloat, rootN, currentRatio, NULL);
-
-  mpz_set(n, modulus.get_mpz_t());
-
-  mpf_set_z(nFloat, n);
-  mpf_sqrt(rootN, nFloat);
-  mpz_set_ui(p, 1);
-  SizeT cc = 0; // current count
-  std::cout << "\tprivate method " <<
-    "RsaCryptosystem::cryptanalyze started\n";
-  do {
-    mpz_nextprime(p, p);
-    mpf_set_z(pFloat, p);
-    mpf_div(currentRatio, pFloat, rootN);
-    cc++;
-    if (!(cc & COUT_PERIOD)) {
-      double currentPercentage = 100 *
-        mpf_get_d(currentRatio);
-      Duration remainingDuration = getRemainingDuration(
-        startTime, currentPercentage);
-      cout << COUT_WIDTH << COUT_PRECISION << std::fixed <<
-        currentPercentage << "%" <<
-        COUT_WIDTH << remainingDuration << "h left\n";
-    }
-  } while (!(mpz_divisible_p(n, p)));
-  Duration totalDuration = getDuration(startTime);
-  std::cout << "\tprivate method " <<
-    "RsaCryptosystem::cryptanalyze ended in " <<
-    totalDuration << "s\n";
-
-  mpz_divexact(q, n, p);
-
-  setTotient(l, p, q);
-
-  mpz_set(e, publicExponent.get_mpz_t());
-
-  mpz_invert(d, e, l);
-
-  mpz_powm(paddedPlainText.get_mpz_t(),
-    paddedCipherText.get_mpz_t(), d, n);
+  recoverPrivateKeyElements();
+  decrypt();
 }
 
 // public:
@@ -178,33 +181,34 @@ void RsaCryptosystem::generateKeys(Key &publicKey,
   generateKeys();
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
-  std::cout << "(min modulus length: " <<
-    minModulusLength << "-bit, max text length: " <<
-    getMaxTextLength() << "-char)\n";
+  std::cout << "\tmin modulus length: " <<
+    minModulusLength << "-bit\n\tmax text length: " <<
+    getMaxTextLength() << "-char\n";
 }
 
 void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
     const Text &plainText, const Key &publicKey) {
   SizeT plainTextLength = plainText.size();
-  std::cout << "(plain text length: " << plainTextLength <<
-    "-char)\n";
+  std::cout << "\tplaintext length: " << plainTextLength <<
+    "-char\n";
   long long excessiveLength = plainTextLength -
     getMaxTextLength();
   if (excessiveLength > 0) {
     std::cout << excessiveLength << " char(s) too long\n";
     throw exception();
+  } else {
+    setPublicKeyElements(publicKey);
+    padText(paddedPlainText, plainText);
+    encrypt();
+    paddedCipherText = this->paddedCipherText;
   }
-  padText(paddedPlainText, plainText);
-  setPublicKeyElements(publicKey);
-  encrypt();
-  paddedCipherText = this->paddedCipherText;
 }
 
 void RsaCryptosystem::decrypt(Text &plainText,
     const PaddedText &paddedCipherText,
     const Key &privateKey) {
-  this->paddedCipherText = paddedCipherText;
   setPrivateKeyElements(privateKey);
+  this->paddedCipherText = paddedCipherText;
   decrypt();
   unpadText(plainText, paddedPlainText);
 }
@@ -212,8 +216,8 @@ void RsaCryptosystem::decrypt(Text &plainText,
 void RsaCryptosystem::cryptanalyze(Text &plainText,
     const PaddedText &paddedCipherText,
     const Key &publicKey) {
-  this->paddedCipherText = paddedCipherText;
   setPublicKeyElements(publicKey);
+  this->paddedCipherText = paddedCipherText;
   cryptanalyze();
   unpadText(plainText, paddedPlainText);
 }

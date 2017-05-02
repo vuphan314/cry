@@ -3,18 +3,58 @@
 
 ////////////////////////////////////////////////////////////
 
-#include "cryptosystem.h"
+#include "rsa_cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
 
-class DummyCryptosystem : public Cryptosystem {
-public:
-  void generateKeys(
-    Key &publicKey, Key &privateKey, // set these
-    SizeT keyElementLength);
+const long DEFAULT_SECRET_ADDEND = 11111111;
+  // constructor mpz_class rejects type long long
 
-  void generateKeys(Key &publicKey, Key &privateKey);
-    // set these
+////////////////////////////////////////////////////////////
+
+class DummyCryptosystem : public RsaCryptosystem {
+protected:
+  KeyElement publicAddend, // E
+    secretAddend; // D
+    // publicKey = (n, d, D)
+    // privateKey = (n, e, E)
+
+// protected helper methods:
+  void setPublicKeyElements(const Key &publicKey);
+    // set: modulus, publicExponent, publicAddend
+
+  void setPrivateKeyElements(const Key &privateKey);
+    // set: modulus, privateExponent, secretAddend
+
+  void recoverPrivateKeyElements();
+    // set: privateExponent, secretAddend
+    // read: modulus, publicExponent, publicAddend
+
+// protected overloaded methods:
+  void generateKeys();
+    // set: modulus, publicExponent, privateExponent,
+    // publicAddend, secretAddend
+
+  void encrypt();
+    // set: paddedCipherText
+    // read: paddedPlainText, secretAddend
+
+  void decrypt();
+    // set: paddedPlainText
+    // read: paddedCipherText, secretAddend
+
+  void cryptanalyze();
+    // set: paddedPlainText
+    // read: paddedCipherText, modulus, publicExponent,
+    // publicAddend
+
+public:
+  DummyCryptosystem(SizeT minModulusLength =
+    DEFAULT_MIN_MODULUS_LENGTH);
+
+// public overloaded methods:
+  void generateKeys(
+    Key &publicKey, Key &privateKey); // set these
 
   void encrypt(PaddedText &paddedCipherText, // set this
     const Text &plainText, const Key &publicKey);

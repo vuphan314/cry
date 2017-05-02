@@ -7,9 +7,9 @@ Party::Party(CryptosystemName cryptosystemName) {
   tester = getTester(cryptosystemName);
 }
 
-Bool Party::testParty() {
-  std::cout << "method Party::testParty\n";
-  return tester->testAll();
+Bool Party::test() {
+  std::cout << "method Party::test\n";
+  return tester->testCryptosystem();
 }
 
 ////////////////////////////////////////////////////////////
@@ -17,10 +17,10 @@ Bool Party::testParty() {
 
 Tester *getTester(CryptosystemName cryptosystemName) {
   switch (cryptosystemName) {
-    case RSA:
-      return new RsaTester;
     case DUMMY:
       return new DummyTester;
+    case RSA:
+      return new RsaTester;
     default:
       std::cout << "Wrong cryptosystem name.\n";
       throw std::exception();

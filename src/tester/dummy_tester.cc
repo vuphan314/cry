@@ -3,26 +3,55 @@
 ////////////////////////////////////////////////////////////
 // class DummyTester:
 
-DummyTester::DummyTester() {
-  cryptosystem = new DummyCryptosystem;
+DummyTester::DummyTester(SizeT minModulusLength) {
+  cryptosystem = new DummyCryptosystem(minModulusLength);
 }
 
-Bool DummyTester::testKeyGeneration() {
-  std::cout << "method DummyTester::testKeyGeneration\n";
-  return TRUE;
-}
+Bool DummyTester::testCryptosystem(Text plainText) {
+  std::cout << "method DummyTester::testCryptosystem\n";
 
-Bool DummyTester::testEncryption() {
-  std::cout << "method DummyTester::testEncryption\n";
-  return TRUE;
-}
+// key generation:
+  std::cout << "key-generation:\n";
+  Key publicKey, privateKey;
+  cryptosystem->generateKeys(publicKey, privateKey);
+  std::cout << "\tmodulus: " << publicKey.at(0) <<
+    "\n\tpublic exponent: " << publicKey.at(1) <<
+    "\n\tprivate exponent: " << privateKey.at(1) <<
+    "\n\tpublic addend: " << publicKey.at(2) <<
+    "\n\tsecret addend: " << privateKey.at(2) << "\n";
 
-Bool DummyTester::testDecryption() {
-  std::cout << "method DummyTester::testDecryption\n";
-  return TRUE;
-}
+// plaintext:
+  std::cout << "plaintext: \"" << plainText << "\"\n";
 
-Bool DummyTester::testCryptanalysis() {
-  std::cout << "method DummyTester::testCryptanalysis\n";
+// encryption:
+  std::cout << "encryption:\n";
+  PaddedText paddedCipherText;
+  cryptosystem->encrypt(paddedCipherText, plainText,
+    publicKey);
+
+  PaddedText paddedPlainText;
+  padText(paddedPlainText, plainText);
+  std::cout << "\tpadded plaintext: " << paddedPlainText <<
+    "\n";
+
+  std::cout << "\tpadded ciphertext: " <<
+    paddedCipherText << "\n";
+
+  Text cipherText;
+  unpadText(cipherText, paddedCipherText);
+  std::cout << "\tciphertext: \"" << cipherText << "\"\n";
+
+// decryption:
+  cryptosystem->decrypt(plainText, paddedCipherText,
+    privateKey);
+  std::cout << "decryption:\n\tplaintext: \"" <<
+    plainText << "\"\n";
+
+// cryptanalysis:
+  std::cout << "cryptanalysis:\n";
+  cryptosystem->cryptanalyze(plainText, paddedCipherText,
+    publicKey);
+  std::cout << "\tplaintext: \"" << plainText << "\"\n";
+
   return TRUE;
 }

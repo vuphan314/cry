@@ -4,21 +4,18 @@
 ////////////////////////////////////////////////////////////
 
 #include "../cryptosystem/dummy_cryptosystem.h"
-#include "tester.h"
+#include "rsa_tester.h"
 
 ////////////////////////////////////////////////////////////
 
-class DummyTester : public Tester {
+class DummyTester : public RsaTester {
 public:
-  DummyTester();
+  DummyTester(SizeT minModulusLength =
+    BREAKABLE_MIN_MODULUS_LENGTH);
+    // constructor to set data member cryptosystem
 
-  Bool testKeyGeneration();
-
-  Bool testEncryption();
-
-  Bool testDecryption();
-
-  Bool testCryptanalysis();
+  Bool testCryptosystem(Text plainText =
+    BREAKABLE_PLAIN_TEXT);
 };
 
 ////////////////////////////////////////////////////////////

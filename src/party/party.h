@@ -19,7 +19,7 @@ protected:
 public:
   Party(CryptosystemName cryptosystemName);
 
-  Bool testParty();
+  Bool test();
 };
 
 ////////////////////////////////////////////////////////////
