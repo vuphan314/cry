@@ -189,7 +189,7 @@ void RsaCryptosystem::generateKeys(Key &publicKey,
 void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
     const Text &plainText, const Key &publicKey) {
   SizeT plainTextLength = plainText.size();
-  std::cout << "\tplain text length: " << plainTextLength <<
+  std::cout << "\tplaintext length: " << plainTextLength <<
     "-char\n";
   long long excessiveLength = plainTextLength -
     getMaxTextLength();
