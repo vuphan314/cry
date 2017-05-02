@@ -141,7 +141,7 @@ void RsaCryptosystem::generateKeys() {
     std::cout << "e: 0x" << std::hex << e << std::endl;
 
     std::cout << "d: 0x" << d << std::endl <<
-      std::dec; // for the next std::cout
+      std::dec; // decimal for the next cout
   }
 
   modulus = KeyElement(n);

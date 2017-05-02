@@ -13,19 +13,9 @@ protected:
     // set by constructor of non-abstract derived class
 
 public:
-  virtual void demo();
-
-  Bool testAll();
-
 // purely virtual methods,
 // must be defined by non-abstract derived class:
-  virtual Bool testKeyGeneration() = 0;
-
-  virtual Bool testEncryption() = 0;
-
-  virtual Bool testDecryption() = 0;
-
-  virtual Bool testCryptanalysis() = 0;
+  virtual Bool testCryptosystem(Text plainText) = 0;
 };
 
 ////////////////////////////////////////////////////////////

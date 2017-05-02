@@ -4,21 +4,13 @@
 ////////////////////////////////////////////////////////////
 
 #include "../cryptosystem/dummy_cryptosystem.h"
-#include "tester.h"
+#include "rsa_tester.h"
 
 ////////////////////////////////////////////////////////////
 
-class DummyTester : public Tester {
+class DummyTester : public RsaTester {
 public:
-  DummyTester();
-
-  Bool testKeyGeneration();
-
-  Bool testEncryption();
-
-  Bool testDecryption();
-
-  Bool testCryptanalysis();
+  Bool testCryptosystem(Text plainText);
 };
 
 ////////////////////////////////////////////////////////////

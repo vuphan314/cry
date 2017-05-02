@@ -36,6 +36,7 @@ party.o: party/party.cc \
 dummy_tester.o: tester/dummy_tester.cc \
 		tester/dummy_tester.h \
 		cryptosystem/dummy_cryptosystem.h \
+		tester/rsa_tester.h \
 		cryptosystem/rsa_cryptosystem.h \
 		tester/tester.h \
 		cryptosystem/cryptosystem.h $(SUBMODULE_HEADERS)

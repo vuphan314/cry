@@ -1,20 +1,6 @@
 #include "tester.h"
 
 ////////////////////////////////////////////////////////////
-// class Tester:
-
-void Tester::demo() {
-  std::cout << "method Tester::demo\n";
-  testAll();
-}
-
-Bool Tester::testAll() {
-  std::cout << "method Tester::testAll\n";
-  return testKeyGeneration() && testEncryption() &&
-    testDecryption() && testCryptanalysis();
-}
-
-////////////////////////////////////////////////////////////
 // global functions:
 
 Bool testPaddingUnpadding() {

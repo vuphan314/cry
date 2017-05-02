@@ -49,7 +49,7 @@ const auto COUT_PRECISION = std::setprecision(4);
 
 class Cryptosystem { // abstract
 public:
-  Bool verbosity = FALSE;
+  Bool verbosity = FALSE; // whether to cout verbosely
 
 // purely virtual methods,
 // must be defined by non-abstract derived class:

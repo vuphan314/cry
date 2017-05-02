@@ -7,8 +7,8 @@ RsaTester::RsaTester(SizeT minModulusLength) {
   cryptosystem = new RsaCryptosystem(minModulusLength);
 }
 
-void RsaTester::demo(Text plainText) {
-  std::cout << "method RsaTester::demo\n";
+Bool RsaTester::testCryptosystem(Text plainText) {
+  std::cout << "method RsaTester::test\n";
 
   std::cout << "key-generation ";
   Key publicKey, privateKey;
@@ -36,46 +36,6 @@ void RsaTester::demo(Text plainText) {
   cryptosystem->cryptanalyze(plainText, paddedCipherText,
     publicKey);
   std::cout << "\tplaintext: \"" << plainText << "\"\n";
-}
 
-Bool RsaTester::testKeyGeneration() {
-  std::cout << "method RsaTester::testKeyGeneration\n";
-  Key publicKey, privateKey;
-  cryptosystem->verbosity = TRUE;
-  cryptosystem->generateKeys(publicKey, privateKey);
-  cryptosystem->verbosity = FALSE;
-  return TRUE; // are publicKey/privateKey set as expected?
-}
-
-Bool RsaTester::testEncryption() {
-  std::cout << "method RsaTester::testEncryption\n";
-  // Key publicKey, privateKey;
-  // cryptosystem->generateKeys(publicKey, privateKey);
-  // Text plainText = "my plain text";
-  // PaddedText paddedCipherText;
-  // cryptosystem->encrypt(paddedCipherText, plainText,
-  //   publicKey);
-  return TRUE; // is cipherText set as expected?
-}
-
-Bool RsaTester::testDecryption() {
-  std::cout << "method RsaTester::testDecryption\n";
-  // Key publicKey, privateKey;
-  // cryptosystem->generateKeys(publicKey, privateKey);
-  // PaddedText paddedCipherText = DEFAULT_PADDED_CIPHER_TEXT;
-  // Text plainText;
-  // cryptosystem->decrypt(plainText, paddedCipherText,
-  //   privateKey);
-  return TRUE; // is plainText set as expected?
-}
-
-Bool RsaTester::testCryptanalysis() {
-  std::cout << "method RsaTester::testCryptanalysis\n";
-  // Key publicKey, privateKey;
-  // cryptosystem->generateKeys(publicKey, privateKey);
-  // PaddedText paddedCipherText = DEFAULT_PADDED_CIPHER_TEXT;
-  // Text plainText;
-  // cryptosystem->decrypt(plainText, paddedCipherText,
-  //   publicKey);
-  return TRUE; // is plainText set as expected?
+  return TRUE;
 }
