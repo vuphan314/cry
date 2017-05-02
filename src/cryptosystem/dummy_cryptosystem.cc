@@ -44,12 +44,13 @@ void DummyCryptosystem::decrypt() {
   paddedPlainText = paddedCipherText - secretAddend;
 }
 
-void DummyCryptosystem::cryptanalyze() {
-  recoverPrivateKeyElements();
-  decrypt();
-}
+// void DummyCryptosystem::cryptanalyze() {
+//   recoverPrivateKeyElements();
+//   decrypt();
+// }
 
 // public:
+
 // public overloaded methods:
 
 void DummyCryptosystem::generateKeys(Key &publicKey,
@@ -68,20 +69,20 @@ void DummyCryptosystem::encrypt(
   paddedCipherText = this->paddedCipherText;
 }
 
-void DummyCryptosystem::decrypt(Text &plainText,
-    const PaddedText &paddedCipherText,
-    const Key &privateKey) {
-  setPrivateKeyElements(privateKey);
-  this->paddedCipherText = paddedCipherText;
-  decrypt();
-  unpadText(plainText, paddedPlainText);
-}
+// void DummyCryptosystem::decrypt(Text &plainText,
+//     const PaddedText &paddedCipherText,
+//     const Key &privateKey) {
+//   setPrivateKeyElements(privateKey);
+//   this->paddedCipherText = paddedCipherText;
+//   decrypt();
+//   unpadText(plainText, paddedPlainText);
+// }
 
-void DummyCryptosystem::cryptanalyze(Text &plainText,
-    const PaddedText &paddedCipherText,
-    const Key &publicKey) {
-  setPublicKeyElements(publicKey);
-  this->paddedCipherText = paddedCipherText;
-  cryptanalyze();
-  unpadText(plainText, paddedPlainText);
-}
+// void DummyCryptosystem::cryptanalyze(Text &plainText,
+//     const PaddedText &paddedCipherText,
+//     const Key &publicKey) {
+//   setPublicKeyElements(publicKey);
+//   this->paddedCipherText = paddedCipherText;
+//   cryptanalyze();
+//   unpadText(plainText, paddedPlainText);
+// }
