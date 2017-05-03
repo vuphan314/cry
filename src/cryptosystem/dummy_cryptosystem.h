@@ -7,46 +7,46 @@
 
 ////////////////////////////////////////////////////////////
 
-const long DEFAULT_SECRET_ADDEND = 11111111;
+const long DEFAULT_SECRET_FACTOR = 2;
   // constructor mpz_class rejects type long long
 
 ////////////////////////////////////////////////////////////
 
 class DummyCryptosystem : public RsaCryptosystem {
 protected:
-  KeyElement publicAddend, // E
-    secretAddend; // D
+  KeyElement publicFactor, // E
+    secretFactor; // D
     // publicKey = (n, d, D)
     // privateKey = (n, e, E)
 
 // protected helper methods:
   void setPublicKeyElements(const Key &publicKey);
-    // set: modulus, publicExponent, publicAddend
+    // set: modulus, publicExponent, publicFactor
 
   void setPrivateKeyElements(const Key &privateKey);
-    // set: modulus, privateExponent, secretAddend
+    // set: modulus, privateExponent, secretFactor
 
   void recoverPrivateKeyElements();
-    // set: privateExponent, secretAddend
-    // read: modulus, publicExponent, publicAddend
+    // set: privateExponent, secretFactor
+    // read: modulus, publicExponent, publicFactor
 
 // protected overloaded methods:
   void generateKeys();
     // set: modulus, publicExponent, privateExponent,
-    // publicAddend, secretAddend
+    // publicFactor, secretFactor
 
   void encrypt();
     // set: paddedCipherText
-    // read: paddedPlainText, secretAddend
+    // read: paddedPlainText, secretFactor
 
   void decrypt();
     // set: paddedPlainText
-    // read: paddedCipherText, secretAddend
+    // read: paddedCipherText, secretFactor
 
   void cryptanalyze();
     // set: paddedPlainText
     // read: paddedCipherText, modulus, publicExponent,
-    // publicAddend
+    // publicFactor
 
 public:
   DummyCryptosystem(SizeT minModulusLength =
