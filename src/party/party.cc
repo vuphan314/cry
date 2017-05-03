@@ -30,6 +30,12 @@ Action Party::getAction(int argc, const char *argv[]) {
   }
 }
 
+void doKeyGeneration(string &receiversName, CryptosystemName &cryptosystemName, const char *argv[]) {
+/* read parameter argv;
+    set parameters receiversName, cryptosystemName 
+*/
+}
+
 // file input/output:
 
 void Party::writeReceiversFiles(const string &receiversName,

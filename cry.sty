@@ -215,25 +215,25 @@
 
 \newcommand{\generatekeysindemo}{\codestt
   {\$ cry generatekeys
-  -receiver=\bobdemo{} -\cs=\csdemo}}
+  \bobdemo{} \csdemo}}
 \newcommand{\generatekeysoutdemo}{\codestt
   {files \private{\bobdemo} and \public{\bobdemo}
   were created}}
 
 \newcommand{\encryptindemo}{\codestt
   {\$ cry encrypt
-  -sender=\alicedemo{} -receiver=\bobdemo}}
+  \alicedemo{} \bobdemo}}
 \newcommand{\encryptoutdemo}{\codestt
   {file \public{\alicedemo} was created}}
 
 \newcommand{\decryptindemo}{\codestt
   {\$ cry decrypt
-  -receiver=\bobdemo{} -sender=\alicedemo}}
+  \bobdemo{} \alicedemo}}
 \newcommand{\decryptoutdemo}{\codestt
   {plaintext is \plaintextex}}
 
 \newcommand{\cryptanalyzeindemo}{\codestt
   {\$ cry cryptanalyze
-  -receiver=\bobdemo{} -sender=\alicedemo}}
+  \bobdemo{} \alicedemo}}
 \newcommand{\cryptanalyzeoutdemo}{\codestt
   {plaintext is \plaintextex}}
