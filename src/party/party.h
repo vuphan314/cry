@@ -27,7 +27,17 @@ public:
 // command-line argument parsing:
   Action getAction(int argc, const char *argv[]);
 
-  void doKeyGeneration(string &receiversName, CryptosystemName &cryptosystemName, const char *argv[]);
+  void doKeyGeneration(string &receiversName,
+    CryptosystemName &cryptosystemName, const char *argv[]);
+
+  void doEncryption(string &sendersName,
+    string &receiversName, const char *argv[]);
+
+  void doDecryption(string &receiversName,
+    string &sendersName, const char *argv[]);
+
+  void doCryptanalysis(string &receiversName,
+    string &sendersName, const char *argv[]);
 
 // file input/output:
   void writeReceiversFiles(const string &receiversName,
