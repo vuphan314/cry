@@ -7,9 +7,7 @@
 
 ////////////////////////////////////////////////////////////
 
-const SizeT DEFAULT_MAX_SECRET_FACTOR_LENGTH = 4;
-// const long DEFAULT_SECRET_FACTOR = 2;
-  // constructor mpz_class rejects type long long
+const SizeT DEFAULT_MAX_SECRET_FACTOR_LENGTH = 24;
 
 ////////////////////////////////////////////////////////////
 
