@@ -27,7 +27,7 @@ public:
 // command-line argument parsing:
   Action getAction(int argc, const char *argv[]);
 
-  void generateKeys();
+  void doKeyGeneration(CryptosystemName &cryptosystemName, string &receiversName, int argc, const char *argv[])
 
 // file input/output:
   void writeReceiversFiles(const string &receiversName,
