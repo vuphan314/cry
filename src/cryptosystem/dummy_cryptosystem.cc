@@ -36,7 +36,16 @@ void DummyCryptosystem::recoverPrivateKeyElements() {
 
 void DummyCryptosystem::generateKeys() {
   RsaCryptosystem::generateKeys();
-  paddedPlainText = DEFAULT_SECRET_FACTOR;
+
+  gmp_randstate_t randomState;
+  seedRandomState(randomState);
+
+  mpz_t newSecretFactor;
+  mpz_init(newSecretFactor);
+  mpz_urandomb(newSecretFactor, randomState, DEFAULT_MAX_SECRET_FACTOR_LENGTH);
+
+  paddedPlainText = PaddedText(newSecretFactor);
+  // paddedPlainText = DEFAULT_SECRET_FACTOR;
   RsaCryptosystem::encrypt();
   publicFactor = paddedCipherText;
   secretFactor = paddedPlainText;

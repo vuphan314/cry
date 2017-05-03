@@ -87,15 +87,15 @@ void RsaCryptosystem::generateKeys() {
 
   //******************************************************//
   // THIS MAKES THE ALGORITHM CRYPTOGRAPHICALLY INSECURE  //
-  /**/           gmp_randstate_t state;                   //
-  /**/           seedRandomState(state);                  //
+  /**/           gmp_randstate_t randomState;             //
+  /**/           seedRandomState(randomState);            //
   //******************************************************//
 
   do {
-    mpz_urandomb(p, state, minPrimeLength);
+    mpz_urandomb(p, randomState, minPrimeLength);
     mpz_add(p, p, twoExpMinPrimeLength);
 
-    mpz_urandomb(q, state, minPrimeLength);
+    mpz_urandomb(q, randomState, minPrimeLength);
     mpz_add(q, q, twoExpMinPrimeLength);
 
     do {
