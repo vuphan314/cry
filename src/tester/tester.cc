@@ -7,7 +7,7 @@ Bool testPaddingUnpadding() {
   std::cout << "Testing padding/unpadding.\n";
 
   Text text("this is my string");
-  std::cout << "Text: \"" << text << "\".\n";
+  std::cout << "Text: " << text << ".\n";
 
   PaddedText paddedText;
   padText(paddedText, text);
@@ -15,8 +15,8 @@ Bool testPaddingUnpadding() {
 
   Text unpaddedText;
   unpadText(unpaddedText, paddedText);
-  std::cout << "Unpadded text: \"" << unpaddedText <<
-    "\".\n";
+  std::cout << "Unpadded text: " << unpaddedText <<
+    ".\n";
 
   if (unpaddedText == text) {
     std::cout << "Test passed.\n\n";

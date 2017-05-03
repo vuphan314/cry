@@ -19,7 +19,7 @@ Bool RsaTester::testCryptosystem(Text plainText) {
     "\n\tprivate exponent: " << privateKey.at(1) << "\n";
 
 // plaintext:
-  std::cout << "plaintext: \"" << plainText << "\"\n";
+  std::cout << "plaintext: " << plainText << "\n";
 
 // encryption:
   std::cout << "encryption:\n";
@@ -32,14 +32,14 @@ Bool RsaTester::testCryptosystem(Text plainText) {
 // decryption:
   cryptosystem->decrypt(plainText, paddedCipherText,
     privateKey);
-  std::cout << "decryption:\n\tplaintext: \"" <<
-    plainText << "\"\n";
+  std::cout << "decryption:\n\tplaintext: " <<
+    plainText << "\n";
 
 // cryptanalysis:
   std::cout << "cryptanalysis:\n";
   cryptosystem->cryptanalyze(plainText, paddedCipherText,
     publicKey);
-  std::cout << "\tplaintext: \"" << plainText << "\"\n";
+  std::cout << "\tplaintext: " << plainText << "\n";
 
   return TRUE;
 }
