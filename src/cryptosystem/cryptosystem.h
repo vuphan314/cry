@@ -31,6 +31,8 @@ using Bool = char;
 
 ////////////////////////////////////////////////////////////
 
+const SizeT DEFAULT_RANDOM_SEED = 672087;
+
 const unsigned char TWO_EXP_7 = 128;
 const unsigned int TWO_EXP_8 = 256;
 
@@ -73,6 +75,8 @@ public:
 
 ////////////////////////////////////////////////////////////
 // global functions:
+
+void seedRandomState(gmp_randstate_t randomState);
 
 void setTotient(mpz_t l, mpz_t p, mpz_t q);
 

@@ -1,9 +1,3 @@
-/*
-http://stackoverflow.com/questions/9791761/using-gmp-for-cryptography-how-to-get-random-numbers
-*/
-
-////////////////////////////////////////////////////////////
-
 #include "rsa_cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
@@ -94,8 +88,7 @@ void RsaCryptosystem::generateKeys() {
   //******************************************************//
   // THIS MAKES THE ALGORITHM CRYPTOGRAPHICALLY INSECURE  //
   /**/           gmp_randstate_t state;                   //
-  /**/           gmp_randinit_default(state);             //
-  /**/           gmp_randseed_ui(state, DEFAULT_SEED);    //
+  /**/           seedRandomState(state);                  //
   //******************************************************//
 
   do {
