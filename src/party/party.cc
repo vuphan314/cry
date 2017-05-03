@@ -17,17 +17,50 @@ Bool Party::test() {
 Action Party::getAction(int argc, const char *argv[]) {
   Bool condition;
   if (condition) { // replace by proper condition
+    // $ cry generatekeys <receiver> <cryptosystem>
     return KEY_GENERATION;
   } else if (condition) { // replace by proper condition
+    // $ cry encrypt <sender> <receiver>
     return ENCRYPTION;
   } else if (condition) { // replace by proper condition
+    // $ cry decrypt <receiver> <sender>
     return DECRYPTION;
   } else if (condition) { // replace by proper condition
+    // $ cry cryptanalyze <receiver> <sender>
     return CRYPTANALYSIS;
   } else {
-    std::cout << "wrong action\n";
+    std::cout << "wrong command\n";
     throw exception();
   }
+}
+
+void Party::doKeyGeneration(string &receiversName,
+    CryptosystemName &cryptosystemName,
+    const char *argv[]) {
+/* read parameter argv and
+    set parameters receiversName, cryptosystemName
+*/
+}
+
+void Party::doEncryption(string &sendersName,
+    string &receiversName, const char *argv[]) {
+/* read parameter argv and
+    set parameters sendersName, receiversName
+*/
+}
+
+void Party::doDecryption(string &receiversName,
+    string &sendersName, const char *argv[]) {
+/* read parameter argv and
+    set parameters receiversName, sendersName
+*/
+}
+
+void Party::doCryptanalysis(string &receiversName,
+    string &sendersName, const char *argv[]) {
+/* read parameter argv and
+    set parameters receiversName, sendersName
+*/
 }
 
 // file input/output:

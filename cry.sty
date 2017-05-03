@@ -137,7 +137,7 @@
 \newcommand{\bob}{\party{Bob}}
 \newcommand{\eve}{\party{Eve}}
 
-\newcommand{\plaintextex}{\quotes{cry\textbackslash nbaby}}
+\newcommand{\plaintextex}{\quotes{this is \\ plaintext}}
 \newcommand{\ciphertextex}
   {45150111034551695356553471309655905870}
 
@@ -214,28 +214,26 @@
 \newcommand{\public}[1]{\code{#1.public}}
 
 \newcommand{\generatekeysindemo}{\codestt
-  {\$ cry generatekeys -\cs=\csdemo{} -receiver=\bobdemo}}
+  {\$ cry generatekeys
+  \bobdemo{} \csdemo}}
 \newcommand{\generatekeysoutdemo}{\codestt
   {files \private{\bobdemo} and \public{\bobdemo}
   were created}}
 
 \newcommand{\encryptindemo}{\codestt
   {\$ cry encrypt
-  -sendersprivatefile=\private{\alicedemo} \textbackslash \\
-  > -receiverspublicfile=\public{\bobdemo}}}
+  \alicedemo{} \bobdemo}}
 \newcommand{\encryptoutdemo}{\codestt
   {file \public{\alicedemo} was created}}
 
 \newcommand{\decryptindemo}{\codestt
   {\$ cry decrypt
-  -senderspublicfile=\public{\alicedemo} \textbackslash \\
-  > -receiversprivatefile=\private{\bobdemo}}}
+  \bobdemo{} \alicedemo}}
 \newcommand{\decryptoutdemo}{\codestt
   {plaintext is \plaintextex}}
 
 \newcommand{\cryptanalyzeindemo}{\codestt
   {\$ cry cryptanalyze
-  -senderspublicfile=\public{\alicedemo} \textbackslash \\
-  > -receiverspublicfile=\public{\bobdemo}}}
+  \bobdemo{} \alicedemo}}
 \newcommand{\cryptanalyzeoutdemo}{\codestt
   {plaintext is \plaintextex}}
