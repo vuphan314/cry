@@ -25,7 +25,9 @@ public:
   Bool test();
 
 // command-line argument parsing:
-  Action getAction(int argc, char const *argv[]);
+  Action getAction(int argc, const char *argv[]);
+
+  void generateKeys();
 
 // file input/output:
   void writeReceiversFiles(const string &receiversName,

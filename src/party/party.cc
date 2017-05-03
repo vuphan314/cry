@@ -14,7 +14,7 @@ Bool Party::test() {
 
 // command-line argument parsing:
 
-Action Party::getAction(int argc, char const *argv[]) {
+Action Party::getAction(int argc, const char *argv[]) {
   Bool condition;
   if (condition) { // replace by proper condition
     return KEY_GENERATION;
