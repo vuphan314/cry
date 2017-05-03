@@ -12,9 +12,27 @@ Bool Party::test() {
   return tester->testCryptosystem();
 }
 
+// command-line argument parsing:
+
+Action Party::getAction(int argc, char const *argv[]) {
+  Bool condition;
+  if (condition) { // replace by proper condition
+    return KEY_GENERATION;
+  } else if (condition) { // replace by proper condition
+    return ENCRYPTION;
+  } else if (condition) { // replace by proper condition
+    return DECRYPTION;
+  } else if (condition) { // replace by proper condition
+    return CRYPTANALYSIS;
+  } else {
+    std::cout << "wrong action\n";
+    throw exception();
+  }
+}
+
 // file input/output:
 
-void writeReceiversFiles(const string &receiversName,
+void Party::writeReceiversFiles(const string &receiversName,
     const CryptosystemName &cryptosystemName,
     const Key &publicKey, const Key &privateKey) {
 /* guide: */
@@ -30,7 +48,7 @@ void writeReceiversFiles(const string &receiversName,
 */
 }
 
-void readReceiversPublicFile(
+void Party::readReceiversPublicFile(
     CryptosystemName &cryptosystemName, Key &publicKey,
     const string &receiversName) {
 /* guide: */
@@ -44,7 +62,7 @@ void readReceiversPublicFile(
 */
 }
 
-void readSendersPrivateFile(Text &plainText,
+void Party::readSendersPrivateFile(Text &plainText,
     const string &sendersName) {
 /* guide: */
   Text plain;
@@ -56,7 +74,7 @@ void readSendersPrivateFile(Text &plainText,
 */
 }
 
-void writeSendersPublicFile(const string &sendersName,
+void Party::writeSendersPublicFile(const string &sendersName,
     const PaddedText &paddedCipherText) {
 /* guide: */
   string sender("sender");

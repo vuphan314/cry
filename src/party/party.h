@@ -8,6 +8,9 @@
 
 ////////////////////////////////////////////////////////////
 
+enum Action {KEY_GENERATION, ENCRYPTION, DECRYPTION,
+  CRYPTANALYSIS}; // for command-line argument parsing
+
 enum CryptosystemName {DUMMY, RSA};
 
 ////////////////////////////////////////////////////////////
@@ -20,6 +23,9 @@ public:
   Party(CryptosystemName cryptosystemName = RSA);
 
   Bool test();
+
+// command-line argument parsing:
+  Action getAction(int argc, char const *argv[]);
 
 // file input/output:
   void writeReceiversFiles(const string &receiversName,
