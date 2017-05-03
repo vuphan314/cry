@@ -24,7 +24,7 @@ using Key = std::vector<KeyElement>;
 
 using PaddedText = BigInt;
 
-using Text = std::string; // unpadded
+using Text = string; // unpadded
 
 using Bool = char;
   // 1-byte char is more efficient than 2-byte bool

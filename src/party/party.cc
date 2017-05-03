@@ -12,6 +12,62 @@ Bool Party::test() {
   return tester->testCryptosystem();
 }
 
+// file input/output:
+
+void writeReceiversFiles(const string &receiversName,
+    const CryptosystemName &cryptosystemName,
+    const Key &publicKey, const Key &privateKey) {
+/* guide: */
+  string receiver("receiver");
+  CryptosystemName cn(RSA);
+  KeyElement n("172014975789562774694897382365563045699"),
+    e("65537"), d("7542263449887751984019792124906530513");
+  Key publicK{n, e}, privateK{n, d};
+/* writeReceiversFiles(receiver, cn, publicK, privateK)
+    (over)writes files named "./receiver.public",
+    "./receiver.private";
+  see examples in directory "../demo/"
+*/
+}
+
+void readReceiversPublicFile(
+    CryptosystemName &cryptosystemName, Key &publicKey,
+    const string &receiversName) {
+/* guide: */
+  CryptosystemName cn;
+  Key publicK;
+  string receiver("receiver");
+/* readReceiversPublicFile(cn, publicK, receiver)
+    reads file named "./receiver.public" and
+    sets parameters cn, publicK;
+  see examples in directory "../demo/"
+*/
+}
+
+void readSendersPrivateFile(Text &plainText,
+    const string &sendersName) {
+/* guide: */
+  Text plain;
+  string sender("sender");
+/* readSendersPrivateFile(plain, sender)
+    reads file named "./sender.private" and
+    sets parameter plain;
+  see examples in directory "../demo/"
+*/
+}
+
+void writeSendersPublicFile(const string &sendersName,
+    const PaddedText &paddedCipherText) {
+/* guide: */
+  string sender("sender");
+  PaddedText cipher(
+    "45150111034551695356553471309655905870");
+/* writeSendersPublicFile(sender, cipher)
+    (over)writes file named "./sender.public";
+  see examples in directory "../demo/"
+*/
+}
+
 ////////////////////////////////////////////////////////////
 // global function:
 
