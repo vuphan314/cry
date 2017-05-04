@@ -16,6 +16,8 @@ void testIO() {
 
   Text plain;
   string sender("p_sender");
+
+  party.readSendersPrivateFile(plain, sender);
 }
 
 ////////////////////////////////////////////////////////////

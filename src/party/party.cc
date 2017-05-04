@@ -110,16 +110,11 @@ void Party::readSendersPrivateFile(Text &plainText,
   myFile.open(senderName + ".private");
 
   if (myFile.is_open()){
-    getline(myFile, plain);
+    getline(myFile, plainText);
   } else {
     throw DefaultException("file is not open");
   }
   myFile.close();
-/* readSendersPrivateFile(plain, sender)
-    reads file named "./sender.private" and
-    sets parameter plain;
-  see examples in directory "../demo/"
-*/
 }
 
 void Party::writeSendersPublicFile(const string &senderName,
