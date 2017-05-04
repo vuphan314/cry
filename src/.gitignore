@@ -1,0 +1,3 @@
+# ignore Cry test public/private files:
+*.pu
+*.pr
