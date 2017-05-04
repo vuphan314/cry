@@ -166,8 +166,26 @@ void verifyInputStreamOpening(const ifstream &inputStream) {
 
 // testing:
 
+void testCryptosystems() {
+  std::cout << "function testCryptosystems\n";
+  std::vector<CryptosystemName>cryptosystemNames;
+  cryptosystemNames.push_back(DUMMY);
+  // cryptosystemNames.push_back(RSA);
+  for (CryptosystemName cryptosystemName :
+      cryptosystemNames) {
+    std::cout << "\n";
+    Party party(cryptosystemName);
+    if (party.test()) {
+      std::cout << "Test passed.\n";
+    } else {
+      std::cout << "Test failed.\n";
+    }
+  }
+  std::cout << "\n";
+}
+
 void testInputOutput() {
-  cout << "testInputOutput:\n\n";
+  cout << "testInputOutput\n\n";
 
   Party party;
   string receiverName("party_receiver");

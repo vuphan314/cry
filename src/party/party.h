@@ -87,6 +87,8 @@ void verifyInputStreamOpening(const ifstream &inputStream);
 
 // testing:
 
+void testCryptosystems();
+
 void testInputOutput();
 
 ////////////////////////////////////////////////////////////
