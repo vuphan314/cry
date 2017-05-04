@@ -64,7 +64,7 @@ void Party::doCryptanalysis(string &receiverName,
 
 // file input/output:
 
-void Party::writeReceiversFiles(const string &receiverName,
+void Party::writeReceiverFiles(const string &receiverName,
     const CryptosystemName &cryptosystemName,
     const Key &publicKey, const Key &privateKey) {
   ofstream myFile;
@@ -83,7 +83,7 @@ void Party::writeReceiversFiles(const string &receiverName,
   myFile.close();
 }
 
-void Party::readReceiversPublicFile(
+void Party::readReceiverPublicFile(
     CryptosystemName &cryptosystemName, Key &publicKey,
     const string &receiverName) {
   ifstream myFile;
@@ -104,7 +104,7 @@ void Party::readReceiversPublicFile(
   }
 }
 
-void Party::readSendersPrivateFile(Text &plainText,
+void Party::readSenderPrivateFile(Text &plainText,
     const string &senderName) {
   ifstream myFile;
   myFile.open(senderName + ".private");
@@ -117,7 +117,7 @@ void Party::readSendersPrivateFile(Text &plainText,
   myFile.close();
 }
 
-void Party::writeSendersPublicFile(const string &senderName,
+void Party::writeSenderPublicFile(const string &senderName,
     const PaddedText &paddedCipherText) {
 /* guide: */
   string sender("sender");
@@ -128,7 +128,7 @@ void Party::writeSendersPublicFile(const string &senderName,
   myFile.open(sender + ".public");
   myFile << cipher;
   myFile.close();
-/* writeSendersPublicFile(sender, cipher)
+/* writeSenderPublicFile(sender, cipher)
     (over)writes file named "./sender.public";
   see examples in directory "../demo/"
 */

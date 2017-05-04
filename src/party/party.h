@@ -53,18 +53,18 @@ public:
     string &senderName, const char *argv[]);
 
 // file input/output:
-  void writeReceiversFiles(const string &receiverName,
+  void writeReceiverFiles(const string &receiverName,
     const CryptosystemName &cryptosystemName,
     const Key &publicKey, const Key &privateKey);
 
-  void readReceiversPublicFile(
+  void readReceiverPublicFile(
     CryptosystemName &cryptosystemName, Key &publicKey,
     const string &receiverName);
 
-  void readSendersPrivateFile(Text &plainText,
+  void readSenderPrivateFile(Text &plainText,
     const string &senderName);
 
-  void writeSendersPublicFile(const string &senderName,
+  void writeSenderPublicFile(const string &senderName,
     const PaddedText &paddedCipherText);
 };
 
