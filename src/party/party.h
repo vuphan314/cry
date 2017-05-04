@@ -60,14 +60,19 @@ public:
     const Key &publicKey, const Key &privateKey);
 
   void readReceiverPublicFile(
-    CryptosystemName &cryptosystemName, Key &publicKey,
+    CryptosystemName &cryptosystemName, // set this
+    Key &publicKey, // set this
     const string &receiverName);
 
-  void readSenderPrivateFile(Text &plainText,
+  void readSenderPrivateFile(Text &plainText, // set this
     const string &senderName);
 
   void writeSenderPublicFile(const string &senderName,
     const PaddedText &paddedCipherText);
+
+  void readSenderPublicFile(
+    PaddedText &paddedCipherText, // set this
+    const string &senderName);
 };
 
 ////////////////////////////////////////////////////////////

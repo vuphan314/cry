@@ -123,6 +123,20 @@ void Party::writeSenderPublicFile(const string &senderName,
   outputStream.close();
 }
 
+void Party::readSenderPublicFile(
+    PaddedText &paddedCipherText,
+    const string &senderName) {
+  ifstream inputStream;
+  inputStream.open(senderName + PUBLIC_EXTENSION);
+  verifyInputStreamOpening(inputStream);
+
+  string s;
+  getline(inputStream, s);
+  paddedCipherText = PaddedText(s);
+
+  inputStream.close();
+}
+
 ////////////////////////////////////////////////////////////
 // global function:
 

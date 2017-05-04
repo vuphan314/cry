@@ -2,25 +2,47 @@
 
 ////////////////////////////////////////////////////////////
 
-void testIO() {
-  Party party;
+void testInputOutput() {
+  cout << "testInputOutput:\n\n";
 
-  string receiver("p_receiver");
-  CryptosystemName cn(DUMMY);
+  Party party;
+  string receiverName("party_receiver");
+  CryptosystemName cryptosystemName(RSA);
   KeyElement n("172014975789562774694897382365563045699"),
     e("65537"), d("7542263449887751984019792124906530513");
-  Key publicK{n, e}, privateK{n, d};
+  Key publicKey{n, e}, privateKey{n, d};
 
-  party.writeReceiverFiles(receiver, cn, publicK, privateK);
-  party.readReceiverPublicFile(cn, publicK, receiver);
+  party.writeReceiverFiles(receiverName, cryptosystemName,
+    publicKey, privateKey);
+  cout << "writeReceiverFiles wrote:\n\t"
+    "./" << receiverName << ".*\n";
 
-  Text plain;
-  string sender("p_sender");
-  PaddedText cipher(
+  party.readReceiverPublicFile(cryptosystemName, publicKey,
+    receiverName);
+  cout << "readReceiverPublicFile read:\n\t"
+    "cryptosystemName: " << cryptosystemName << "\n\t"
+    "publicKey:\n";
+  for (const KeyElement &keyElement : publicKey) {
+    cout << "\t\t" << keyElement << "\n";
+  }
+
+  Text plainText;
+  string senderName("party_sender");
+
+  party.readSenderPrivateFile(plainText, senderName);
+  cout << "readSenderPrivateFile read:\n\t"
+    "plainText: " << plainText << "\n";
+
+  PaddedText paddedCipherText(
     "45150111034551695356553471309655905870");
 
-  party.readSenderPrivateFile(plain, sender);
-  party.writeSenderPublicFile(sender, cipher);
+  party.writeSenderPublicFile(senderName, paddedCipherText);
+  cout << "writeSenderPublicFile wrote:\n\t"
+    "./" << senderName << PUBLIC_EXTENSION << "\n";
+
+  party.readSenderPublicFile(paddedCipherText, senderName);
+  cout << "readSenderPublicFile read:\n\t"
+    "paddedCipherText: " << paddedCipherText << "\n";
 }
 
 ////////////////////////////////////////////////////////////
@@ -58,7 +80,7 @@ void testCryptosystems() {
 
 int main(int argc, const char *argv[]) {
   std::cout << "\n";
-  testIO();
+  testInputOutput();
   // switch (argc) {
   //   case 1:
   //     breakRsa();
