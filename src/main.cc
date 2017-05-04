@@ -12,8 +12,10 @@ void testIO() {
   Key publicK{n, e}, privateK{n, d};
 
   party.writeReceiversFiles(receiver, cn, publicK, privateK);
-
   party.readReceiversPublicFile(cn, publicK, receiver);
+
+  Text plain;
+  string sender("p_sender");
 }
 
 ////////////////////////////////////////////////////////////

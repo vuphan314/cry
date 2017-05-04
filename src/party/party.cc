@@ -33,50 +33,50 @@ Action Party::getAction(int argc, const char *argv[]) {
   }
 }
 
-void Party::doKeyGeneration(string &receiversName,
+void Party::doKeyGeneration(string &receiverName,
     CryptosystemName &cryptosystemName,
     const char *argv[]) {
 /* read parameter argv and
-    set parameters receiversName, cryptosystemName
+    set parameters receiverName, cryptosystemName
 */
 }
 
-void Party::doEncryption(string &sendersName,
-    string &receiversName, const char *argv[]) {
+void Party::doEncryption(string &senderName,
+    string &receiverName, const char *argv[]) {
 /* read parameter argv and
-    set parameters sendersName, receiversName
+    set parameters senderName, receiverName
 */
 }
 
-void Party::doDecryption(string &receiversName,
-    string &sendersName, const char *argv[]) {
+void Party::doDecryption(string &receiverName,
+    string &senderName, const char *argv[]) {
 /* read parameter argv and
-    set parameters receiversName, sendersName
+    set parameters receiverName, senderName
 */
 }
 
-void Party::doCryptanalysis(string &receiversName,
-    string &sendersName, const char *argv[]) {
+void Party::doCryptanalysis(string &receiverName,
+    string &senderName, const char *argv[]) {
 /* read parameter argv and
-    set parameters receiversName, sendersName
+    set parameters receiverName, senderName
 */
 }
 
 // file input/output:
 
-void Party::writeReceiversFiles(const string &receiversName,
+void Party::writeReceiversFiles(const string &receiverName,
     const CryptosystemName &cryptosystemName,
     const Key &publicKey, const Key &privateKey) {
   ofstream myFile;
 
-  myFile.open(receiversName + ".public");
+  myFile.open(receiverName + ".public");
   myFile << cryptosystemName << endl;
   for (const KeyElement &keyElement : publicKey) {
     myFile << keyElement << endl;
   }
   myFile.close();
 
-  myFile.open(receiversName + ".private");
+  myFile.open(receiverName + ".private");
   for (const KeyElement &keyElement : privateKey) {
     myFile << keyElement << endl;
   }
@@ -85,9 +85,9 @@ void Party::writeReceiversFiles(const string &receiversName,
 
 void Party::readReceiversPublicFile(
     CryptosystemName &cryptosystemName, Key &publicKey,
-    const string &receiversName) {
+    const string &receiverName) {
   ifstream myFile;
-  myFile.open(receiversName + ".public");
+  myFile.open(receiverName + ".public");
   if (myFile.is_open()){
     getline(myFile, cryptosystemName);
     verifyCryptosystemName(cryptosystemName);
@@ -105,13 +105,9 @@ void Party::readReceiversPublicFile(
 }
 
 void Party::readSendersPrivateFile(Text &plainText,
-    const string &sendersName) {
-/* guide: */
-  Text plain;
-  string sender("sender");
-
+    const string &senderName) {
   ifstream myFile;
-  myFile.open(sender + ".private");
+  myFile.open(senderName + ".private");
 
   if (myFile.is_open()){
     getline(myFile, plain);
@@ -126,7 +122,7 @@ void Party::readSendersPrivateFile(Text &plainText,
 */
 }
 
-void Party::writeSendersPublicFile(const string &sendersName,
+void Party::writeSendersPublicFile(const string &senderName,
     const PaddedText &paddedCipherText) {
 /* guide: */
   string sender("sender");

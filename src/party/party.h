@@ -40,31 +40,31 @@ public:
 // command-line argument parsing:
   Action getAction(int argc, const char *argv[]);
 
-  void doKeyGeneration(string &receiversName,
+  void doKeyGeneration(string &receiverName,
     CryptosystemName &cryptosystemName, const char *argv[]);
 
-  void doEncryption(string &sendersName,
-    string &receiversName, const char *argv[]);
+  void doEncryption(string &senderName,
+    string &receiverName, const char *argv[]);
 
-  void doDecryption(string &receiversName,
-    string &sendersName, const char *argv[]);
+  void doDecryption(string &receiverName,
+    string &senderName, const char *argv[]);
 
-  void doCryptanalysis(string &receiversName,
-    string &sendersName, const char *argv[]);
+  void doCryptanalysis(string &receiverName,
+    string &senderName, const char *argv[]);
 
 // file input/output:
-  void writeReceiversFiles(const string &receiversName,
+  void writeReceiversFiles(const string &receiverName,
     const CryptosystemName &cryptosystemName,
     const Key &publicKey, const Key &privateKey);
 
   void readReceiversPublicFile(
     CryptosystemName &cryptosystemName, Key &publicKey,
-    const string &receiversName);
+    const string &receiverName);
 
   void readSendersPrivateFile(Text &plainText,
-    const string &sendersName);
+    const string &senderName);
 
-  void writeSendersPublicFile(const string &sendersName,
+  void writeSendersPublicFile(const string &senderName,
     const PaddedText &paddedCipherText);
 };
 
