@@ -85,6 +85,10 @@ void verifyCryptosystemName(const CryptosystemName&
 
 void verifyInputStreamOpening(const ifstream &inputStream);
 
+// testing:
+
+void testInputOutput();
+
 ////////////////////////////////////////////////////////////
 
 #endif // PARTY_PARTY_H
