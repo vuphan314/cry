@@ -3,7 +3,15 @@
 ////////////////////////////////////////////////////////////
 
 void testIO() {
-  
+  Party party;
+
+  string receiver("p_receiver");
+  CryptosystemName cn(DUMMY);
+  KeyElement n("172014975789562774694897382365563045699"),
+    e("65537"), d("7542263449887751984019792124906530513");
+  Key publicK{n, e}, privateK{n, d};
+
+  party.writeReceiversFiles(receiver, cn, publicK, privateK);
 }
 
 ////////////////////////////////////////////////////////////

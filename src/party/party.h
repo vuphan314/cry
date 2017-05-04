@@ -10,15 +10,17 @@
 
 ////////////////////////////////////////////////////////////
 
-enum Action {KEY_GENERATION, ENCRYPTION, DECRYPTION,
-  CRYPTANALYSIS}; // for command-line argument parsing
-
-enum CryptosystemName {DUMMY, RSA};
+using CryptosystemName = string;
 
 ////////////////////////////////////////////////////////////
 
-const string IO_DUMMY = "dummy";
-const string IO_RSA = "rsa";
+const CryptosystemName DUMMY = "dummy";
+const CryptosystemName RSA = "rsa";
+
+////////////////////////////////////////////////////////////
+
+enum Action {KEY_GENERATION, ENCRYPTION, DECRYPTION,
+  CRYPTANALYSIS}; // for command-line argument parsing
 
 ////////////////////////////////////////////////////////////
 
@@ -27,7 +29,7 @@ protected:
   Tester *tester;
 
 public:
-  Party(CryptosystemName cryptosystemName = RSA);
+  Party(CryptosystemName cryptosystemName = DUMMY);
 
   Bool test();
 

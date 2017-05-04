@@ -105,9 +105,9 @@ void Party::readReceiversPublicFile(
   } else {
     throw DefaultException("file is not open");
   }
-  if (cryptoName == IO_RSA){
+  if (cryptoName == RSA){
     cn = RSA;
-  } else if (cryptoName == IO_DUMMY){
+  } else if (cryptoName == DUMMY){
     cn = DUMMY;
   } else {
     throw DefaultException("wrong cryptosystem name");
@@ -165,12 +165,11 @@ void Party::writeSendersPublicFile(const string &sendersName,
 // global function:
 
 Tester *getTester(CryptosystemName cryptosystemName) {
-  switch (cryptosystemName) {
-    case DUMMY:
-      return new DummyTester;
-    case RSA:
+  if (cryptosystemName == DUMMY) {
+    return new DummyTester;
+  } else if (cryptosystemName == RSA) {
       return new RsaTester;
-    default:
+  } else {
       throw DefaultException("wrong cryptosystem name");
   }
 }
