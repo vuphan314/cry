@@ -17,9 +17,11 @@ using CryptosystemName = string;
 
 const CryptosystemName DUMMY = "dummy";
 const CryptosystemName RSA = "rsa";
-
 const unordered_set<CryptosystemName> CRYPTOSYSTEM_NAMES
   {DUMMY, RSA};
+
+const string PUBLIC_EXTENSION = ".pu";
+const string PRIVATE_EXTENSION = ".pr";
 
 ////////////////////////////////////////////////////////////
 
@@ -75,6 +77,8 @@ Tester *getTester(CryptosystemName cryptosystemName);
 
 void verifyCryptosystemName(const CryptosystemName&
   cryptosystemName);
+
+void verifyInputStreamOpening(const ifstream &inputStream);
 
 ////////////////////////////////////////////////////////////
 

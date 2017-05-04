@@ -16,8 +16,11 @@ void testIO() {
 
   Text plain;
   string sender("p_sender");
+  PaddedText cipher(
+    "45150111034551695356553471309655905870");
 
   party.readSenderPrivateFile(plain, sender);
+  party.writeSenderPublicFile(sender, cipher);
 }
 
 ////////////////////////////////////////////////////////////

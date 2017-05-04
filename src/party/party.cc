@@ -67,71 +67,60 @@ void Party::doCryptanalysis(string &receiverName,
 void Party::writeReceiverFiles(const string &receiverName,
     const CryptosystemName &cryptosystemName,
     const Key &publicKey, const Key &privateKey) {
-  ofstream myFile;
+  ofstream outputStream;
 
-  myFile.open(receiverName + ".public");
-  myFile << cryptosystemName << endl;
+  outputStream.open(receiverName + PUBLIC_EXTENSION);
+  outputStream << cryptosystemName << endl;
   for (const KeyElement &keyElement : publicKey) {
-    myFile << keyElement << endl;
+    outputStream << keyElement << endl;
   }
-  myFile.close();
+  outputStream.close();
 
-  myFile.open(receiverName + ".private");
+  outputStream.open(receiverName + PRIVATE_EXTENSION);
   for (const KeyElement &keyElement : privateKey) {
-    myFile << keyElement << endl;
+    outputStream << keyElement << endl;
   }
-  myFile.close();
+  outputStream.close();
 }
 
 void Party::readReceiverPublicFile(
     CryptosystemName &cryptosystemName, Key &publicKey,
     const string &receiverName) {
-  ifstream myFile;
-  myFile.open(receiverName + ".public");
-  if (myFile.is_open()){
-    getline(myFile, cryptosystemName);
-    verifyCryptosystemName(cryptosystemName);
+  ifstream inputStream;
+  inputStream.open(receiverName + PUBLIC_EXTENSION);
+  verifyInputStreamOpening(inputStream);
 
-    publicKey.clear();
-    string s;
-    while (getline(myFile, s)) {
-      publicKey.push_back(KeyElement(s));
-    }
+  getline(inputStream, cryptosystemName);
+  verifyCryptosystemName(cryptosystemName);
 
-    myFile.close();
-  } else {
-    throw DefaultException("file is not open");
+  publicKey.clear();
+  string s;
+  while (getline(inputStream, s)) {
+    publicKey.push_back(KeyElement(s));
   }
+
+  inputStream.close();
 }
 
 void Party::readSenderPrivateFile(Text &plainText,
     const string &senderName) {
-  ifstream myFile;
-  myFile.open(senderName + ".private");
+  ifstream inputStream;
+  inputStream.open(senderName + PRIVATE_EXTENSION);
+  verifyInputStreamOpening(inputStream);
 
-  if (myFile.is_open()){
-    getline(myFile, plainText);
-  } else {
-    throw DefaultException("file is not open");
-  }
-  myFile.close();
+  getline(inputStream, plainText);
+
+  inputStream.close();
 }
 
 void Party::writeSenderPublicFile(const string &senderName,
     const PaddedText &paddedCipherText) {
-/* guide: */
-  string sender("sender");
-  PaddedText cipher(
-    "45150111034551695356553471309655905870");
+  ofstream outputStream;
+  outputStream.open(senderName + PUBLIC_EXTENSION);
 
-  ofstream myFile;
-  myFile.open(sender + ".public");
-  myFile << cipher;
-  myFile.close();
-/* writeSenderPublicFile(sender, cipher)
-    (over)writes file named "./sender.public";
-  see examples in directory "../demo/"
-*/
+  outputStream << paddedCipherText << endl;
+
+  outputStream.close();
 }
 
 ////////////////////////////////////////////////////////////
@@ -152,5 +141,11 @@ void verifyCryptosystemName(const CryptosystemName&
   if (CRYPTOSYSTEM_NAMES.find(cryptosystemName) ==
       CRYPTOSYSTEM_NAMES.end()) {
     throw DefaultException("wrong cryptosystem name");
+  }
+}
+
+void verifyInputStreamOpening(const ifstream &inputStream) {
+  if (!inputStream.is_open()) {
+    throw DefaultException("opening input-file failed");
   }
 }
