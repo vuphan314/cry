@@ -86,40 +86,21 @@ void Party::writeReceiversFiles(const string &receiversName,
 void Party::readReceiversPublicFile(
     CryptosystemName &cryptosystemName, Key &publicKey,
     const string &receiversName) {
-/* guide: */
-  CryptosystemName cn;
-  Key publicK;
-  string receiver("receiver");
-
   ifstream myFile;
-  myFile.open(receiver + ".public");
-
-  string n;
-  string e;
-  string cryptoName;
-
+  myFile.open(receiversName + ".public");
   if (myFile.is_open()){
-    getline(myFile, cryptoName);
-    getline(myFile, n);
-    getline(myFile, e);
+    getline(myFile, cryptosystemName);
+    verifyCryptosystemName(cryptosystemName);
+
+    publicKey.clear();
+    string s;
+    while (getline(myFile, s)) {
+      publicKey.push_back(KeyElement(s));
+    }
   } else {
     throw DefaultException("file is not open");
   }
-  if (cryptoName == RSA){
-    cn = RSA;
-  } else if (cryptoName == DUMMY){
-    cn = DUMMY;
-  } else {
-    throw DefaultException("wrong cryptosystem name");
-  }
-  publicK[0] = stoi(n);
-  publicK[1] = stoi(e);
   myFile.close();
-/* readReceiversPublicFile(cn, publicK, receiver)
-    reads file named "./receiver.public" and
-    sets parameters cn, publicK;
-  see examples in directory "../demo/"
-*/
 }
 
 void Party::readSendersPrivateFile(Text &plainText,
@@ -171,5 +152,13 @@ Tester *getTester(CryptosystemName cryptosystemName) {
       return new RsaTester;
   } else {
       throw DefaultException("wrong cryptosystem name");
+  }
+}
+
+void verifyCryptosystemName(const CryptosystemName&
+    cryptosystemName) {
+  if (CRYPTOSYSTEM_NAMES.find(cryptosystemName) ==
+      CRYPTOSYSTEM_NAMES.end()) {
+    throw DefaultException("wrong cryptosystem name");
   }
 }

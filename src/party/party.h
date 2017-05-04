@@ -4,6 +4,7 @@
 ////////////////////////////////////////////////////////////
 
 #include <fstream>
+#include <unordered_set>
 
 #include "../tester/dummy_tester.h"
 #include "../tester/rsa_tester.h"
@@ -16,6 +17,9 @@ using CryptosystemName = string;
 
 const CryptosystemName DUMMY = "dummy";
 const CryptosystemName RSA = "rsa";
+
+const unordered_set<CryptosystemName> CRYPTOSYSTEM_NAMES
+  {DUMMY, RSA};
 
 ////////////////////////////////////////////////////////////
 
@@ -68,6 +72,9 @@ public:
 // global function:
 
 Tester *getTester(CryptosystemName cryptosystemName);
+
+void verifyCryptosystemName(const CryptosystemName&
+  cryptosystemName);
 
 ////////////////////////////////////////////////////////////
 
