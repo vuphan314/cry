@@ -175,7 +175,7 @@ void RsaCryptosystem::generateKeys(Key &publicKey,
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
   std::cout << "\tmin modulus length: " <<
-    minModulusLength << "-bit\n\tmax text length: " <<
+    minModulusLength << "-bit\n\tmax plaintext length: " <<
     getMaxTextLength() << "-char\n";
 }
 

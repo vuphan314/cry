@@ -7,12 +7,12 @@ make: 'cry.out' is up to date.
 
 function demoRsa
 method RsaTester::demo
-key-generation (min modulus length: 46-bit, max text length: 5-char)
+key-generation (min modulus length: 46-bit, max plaintext length: 5-char)
 	modulus: 39638690422081
 	public exponent: 65537
 	private exponent: 1814547467203
 plaintext: four6
-encryption (plain text length: 5-char)
+encryption (plaintext length: 5-char)
 	padded ciphertext: 4811445672687
 decryption:
 	plaintext: four6

@@ -7,7 +7,7 @@
   as collaborators
 \item \bob{} adds the binary file \cryout{}
   to the repository
-\item \bob{} inserts the line \code{*.private}
+\item \bob{} inserts the line \code{*.pr}
   into the file \code{.gitignore}
 \item \bob{} commits and pushes the changes
 \item everyone pulls from \github{}
@@ -23,10 +23,10 @@ Shell input: \generatekeysindemo
 Shell output: \generatekeysoutdemo
 
 File \public{\bobdemo}:
-\codestt{\lstinputlisting{../../src/demo/receiver.public}}
+\codestt{\lstinputlisting{../../src/party_receiver.pu}}
 
 File \private{\bobdemo}:
-\codestt{\lstinputlisting{../../src/demo/receiver.private}}
+\codestt{\lstinputlisting{../../src/party_receiver.pr}}
 
 \bob{} adds, commits, and pushes
 the file \public{\bobdemo} to \github.
@@ -37,13 +37,13 @@ the file \public{\bobdemo} to \github.
 by \alice \bigskip
 
 \alice{} creates the file \private{\alicedemo} (plaintext):
-\codestt{\lstinputlisting{../../src/demo/sender.private}}
+\codestt{\lstinputlisting{../../src/party_sender.pr}}
 
 Shell input: \encryptindemo
 Shell output: \encryptoutdemo
 
 File \public{\alicedemo} (padded ciphertext):
-\codestt{\lstinputlisting{../../src/demo/sender.public}}
+\codestt{\lstinputlisting{../../src/party_sender.pu}}
 
 \alice{} adds, commits, and pushes
 the file \public{\alicedemo} to \github.
