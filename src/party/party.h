@@ -5,6 +5,7 @@
 
 #include "../tester/dummy_tester.h"
 #include "../tester/rsa_tester.h"
+#include <fstream>
 
 ////////////////////////////////////////////////////////////
 
