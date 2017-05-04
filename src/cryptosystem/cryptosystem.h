@@ -29,6 +29,8 @@ using Text = string; // unpadded
 using Bool = char;
   // 1-byte char is more efficient than 2-byte bool
 
+using DefaultException = logic_error;
+
 ////////////////////////////////////////////////////////////
 
 const SizeT DEFAULT_RANDOM_SEED = 672087;

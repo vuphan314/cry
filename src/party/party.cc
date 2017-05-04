@@ -29,8 +29,7 @@ Action Party::getAction(int argc, const char *argv[]) {
     // $ cry cryptanalyze <receiver> <sender>
     return CRYPTANALYSIS;
   } else {
-    std::cout << "wrong command\n";
-    throw exception();
+    throw DefaultException("wrong command");
   }
 }
 
@@ -177,7 +176,6 @@ Tester *getTester(CryptosystemName cryptosystemName) {
     case RSA:
       return new RsaTester;
     default:
-      std::cout << "Wrong cryptosystem name.\n";
-      throw std::exception();
+      throw DefaultException("wrong cryptosystem name");
   }
 }
