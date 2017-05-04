@@ -97,10 +97,11 @@ void Party::readReceiversPublicFile(
     while (getline(myFile, s)) {
       publicKey.push_back(KeyElement(s));
     }
+
+    myFile.close();
   } else {
     throw DefaultException("file is not open");
   }
-  myFile.close();
 }
 
 void Party::readSendersPrivateFile(Text &plainText,

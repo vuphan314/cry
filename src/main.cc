@@ -11,7 +11,7 @@ void testIO() {
     e("65537"), d("7542263449887751984019792124906530513");
   Key publicK{n, e}, privateK{n, d};
 
-  // party.writeReceiversFiles(receiver, cn, publicK, privateK);
+  party.writeReceiversFiles(receiver, cn, publicK, privateK);
 
   party.readReceiversPublicFile(cn, publicK, receiver);
 }
