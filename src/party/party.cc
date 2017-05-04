@@ -67,25 +67,20 @@ void Party::doCryptanalysis(string &receiversName,
 void Party::writeReceiversFiles(const string &receiversName,
     const CryptosystemName &cryptosystemName,
     const Key &publicKey, const Key &privateKey) {
-/* guide: */
-  string receiver("receiver");
-  CryptosystemName cn(RSA);
-  KeyElement n("172014975789562774694897382365563045699"),
-    e("65537"), d("7542263449887751984019792124906530513");
-  Key publicK{n, e}, privateK{n, d};
-
   ofstream myFile;
-  myFile.open(receiver + ".public");
-  myFile << cn << endl << n << endl << e;
+
+  myFile.open(receiversName + ".public");
+  myFile << cryptosystemName << endl;
+  for (const KeyElement &keyElement : publicKey) {
+    myFile << keyElement << endl;
+  }
   myFile.close();
-  myFile.open(receiver + ".private");
-  myFile << cn << endl << n << endl << d;
+
+  myFile.open(receiversName + ".private");
+  for (const KeyElement &keyElement : privateKey) {
+    myFile << keyElement << endl;
+  }
   myFile.close();
-/* writeReceiversFiles(receiver, cn, publicK, privateK)
-    (over)writes files named "./receiver.public",
-    "./receiver.private";
-  see examples in directory "../demo/"
-*/
 }
 
 void Party::readReceiversPublicFile(
@@ -108,14 +103,14 @@ void Party::readReceiversPublicFile(
     getline(myFile, n);
     getline(myFile, e);
   } else {
-    cout << "NOPE" << endl;
+    throw DefaultException("file is not open");
   }
-  if (cryptoName == "RSA"){
+  if (cryptoName == IO_RSA){
     cn = RSA;
-  } else if (cryptoName == "DUMMY"){
+  } else if (cryptoName == IO_DUMMY){
     cn = DUMMY;
   } else {
-    throw "unknown cryptosystem";
+    throw DefaultException("wrong cryptosystem name");
   }
   publicK[0] = stoi(n);
   publicK[1] = stoi(e);
@@ -139,7 +134,7 @@ void Party::readSendersPrivateFile(Text &plainText,
   if (myFile.is_open()){
     getline(myFile, plain);
   } else {
-    cout << "NOPE" << endl;
+    throw DefaultException("file is not open");
   }
   myFile.close();
 /* readSendersPrivateFile(plain, sender)

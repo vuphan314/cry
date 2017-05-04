@@ -2,6 +2,12 @@
 
 ////////////////////////////////////////////////////////////
 
+void testIO() {
+  
+}
+
+////////////////////////////////////////////////////////////
+
 void breakRsa(SizeT minModulusLength =
     BREAKABLE_MIN_MODULUS_LENGTH,
     Text plainText = BREAKABLE_PLAIN_TEXT) {
@@ -35,6 +41,7 @@ void testCryptosystems() {
 
 int main(int argc, const char *argv[]) {
   std::cout << "\n";
+  testIO();
   // switch (argc) {
   //   case 1:
   //     breakRsa();
@@ -46,7 +53,7 @@ int main(int argc, const char *argv[]) {
   //     cout << "wrong argc\n";
   //     throw std::exception();
   // }
-  testCryptosystems();
+  // testCryptosystems();
   // testPaddingUnpadding();
   // testCharConversion();
 }
