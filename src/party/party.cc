@@ -95,7 +95,7 @@ void Party::doDecryption(const string &receiverName,
 
   CryptosystemName cryptosystemName;
   Key privateKey;
-  readReceiverPublicFile(cryptosystemName, privateKey,
+  readReceiverFiles(cryptosystemName, privateKey,
     receiverName);
   setDataMembers(cryptosystemName);
 
@@ -104,7 +104,7 @@ void Party::doDecryption(const string &receiverName,
   Text plainText;
   cryptosystem->decrypt(plainText, paddedCipherText,
     privateKey);
-  cout << "plaintext: " << plainText << "\n";
+  cout << "\tplaintext: " << plainText << "\n";
 
   cout << "doDecryption ended\n";
 }
