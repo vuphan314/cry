@@ -56,17 +56,22 @@ void Party::doAction(int argc, const char *argv[]) {
 
 void Party::doKeyGeneration(const string &receiverName,
     const CryptosystemName &cryptosystemName) {
+  cout << "doKeyGeneration started\n";
+
   verifyCryptosystemName(cryptosystemName);
   setDataMembers(cryptosystemName);
   Key publicKey, privateKey;
   cryptosystem->generateKeys(publicKey, privateKey);
   writeReceiverFiles(receiverName, cryptosystemName,
     publicKey, privateKey);
-  cout << "doKeyGeneration done\n";
+
+  cout << "doKeyGeneration ended\n";
 }
 
 void Party::doEncryption(const string &senderName,
     const string &receiverName) {
+  cout << "doEncryption started\n";
+
   CryptosystemName cryptosystemName;
   Key publicKey;
   readReceiverPublicFile(cryptosystemName, publicKey,
@@ -80,10 +85,14 @@ void Party::doEncryption(const string &senderName,
   cryptosystem->encrypt(paddedCipherText, plainText,
     publicKey);
   writeSenderPublicFile(senderName, paddedCipherText);
+
+  cout << "doEncryption ended\n";
 }
 
 void Party::doDecryption(const string &receiverName,
     const string &senderName) {
+  cout << "doDecryption started\n";
+
   CryptosystemName cryptosystemName;
   Key privateKey;
   readReceiverPublicFile(cryptosystemName, privateKey,
@@ -95,6 +104,9 @@ void Party::doDecryption(const string &receiverName,
   Text plainText;
   cryptosystem->decrypt(plainText, paddedCipherText,
     privateKey);
+  cout << "plaintext: " << plainText << "\n";
+
+  cout << "doDecryption ended\n";
 }
 
 void Party::doCryptanalysis(const string &receiverName,
