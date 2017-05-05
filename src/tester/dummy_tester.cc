@@ -17,11 +17,11 @@ Bool DummyTester::testCryptosystem(Text plainText) {
   std::cout << "\tmodulus: " << publicKey.at(0) <<
     "\n\tpublic exponent: " << publicKey.at(1) <<
     "\n\tprivate exponent: " << privateKey.at(1) <<
-    "\n\tpublic addend: " << publicKey.at(2) <<
-    "\n\tsecret addend: " << privateKey.at(2) << "\n";
+    "\n\tpublic factor: " << publicKey.at(2) <<
+    "\n\tsecret factor: " << privateKey.at(2) << "\n";
 
 // plaintext:
-  std::cout << "plaintext: \"" << plainText << "\"\n";
+  std::cout << "plaintext: " << plainText << "\n";
 
 // encryption:
   std::cout << "encryption:\n";
@@ -39,19 +39,19 @@ Bool DummyTester::testCryptosystem(Text plainText) {
 
   Text cipherText;
   unpadText(cipherText, paddedCipherText);
-  std::cout << "\tciphertext: \"" << cipherText << "\"\n";
+  std::cout << "\tciphertext: " << cipherText << "\n";
 
 // decryption:
   cryptosystem->decrypt(plainText, paddedCipherText,
     privateKey);
-  std::cout << "decryption:\n\tplaintext: \"" <<
-    plainText << "\"\n";
+  std::cout << "decryption:\n\tplaintext: " <<
+    plainText << "\n";
 
 // cryptanalysis:
   std::cout << "cryptanalysis:\n";
   cryptosystem->cryptanalyze(plainText, paddedCipherText,
     publicKey);
-  std::cout << "\tplaintext: \"" << plainText << "\"\n";
+  std::cout << "\tplaintext: " << plainText << "\n";
 
   return TRUE;
 }

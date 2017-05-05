@@ -3,6 +3,12 @@
 ////////////////////////////////////////////////////////////
 // global functions:
 
+void seedRandomState(gmp_randstate_t randomState) {
+  gmp_randinit_default(randomState);
+  gmp_randseed_ui(randomState, DEFAULT_RANDOM_SEED);
+}
+// https://stackoverflow.com/questions/9791761/using-gmp-for-cryptography-how-to-get-random-numbers
+
 void setTotient(mpz_t l, mpz_t p, mpz_t q) {
   mpz_t p1, q1;
   mpz_init_set(p1, p);

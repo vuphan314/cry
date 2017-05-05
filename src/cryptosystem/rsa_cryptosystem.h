@@ -7,7 +7,6 @@
 
 ////////////////////////////////////////////////////////////
 
-const SizeT DEFAULT_SEED = 672087;
 const SizeT DEFAULT_PUBLIC_EXPONENT = 65537;
 const SizeT DEFAULT_MIN_MODULUS_LENGTH = 256;
 

@@ -10,13 +10,13 @@
 void DummyCryptosystem::setPublicKeyElements(
     const Key &publicKey) {
   RsaCryptosystem::setPublicKeyElements(publicKey);
-  publicAddend = publicKey.at(2);
+  publicFactor = publicKey.at(2);
 }
 
 void DummyCryptosystem::setPrivateKeyElements(
     const Key &privateKey) {
   RsaCryptosystem::setPrivateKeyElements(privateKey);
-  secretAddend = privateKey.at(2);
+  secretFactor = privateKey.at(2);
 }
 
 void DummyCryptosystem::recoverPrivateKeyElements() {
@@ -25,9 +25,9 @@ void DummyCryptosystem::recoverPrivateKeyElements() {
   PaddedText tmp = paddedCipherText;
     // previously set by public method cryptanalyze
 
-  paddedCipherText = publicAddend;
+  paddedCipherText = publicFactor;
   RsaCryptosystem::decrypt();
-  secretAddend = paddedPlainText;
+  secretFactor = paddedPlainText;
 
   paddedCipherText = tmp;
 }
@@ -36,18 +36,26 @@ void DummyCryptosystem::recoverPrivateKeyElements() {
 
 void DummyCryptosystem::generateKeys() {
   RsaCryptosystem::generateKeys();
-  paddedPlainText = DEFAULT_SECRET_ADDEND;
+
+  gmp_randstate_t randomState;
+  seedRandomState(randomState);
+  mpz_t newSecretFactor;
+  mpz_init(newSecretFactor);
+  mpz_urandomb(newSecretFactor, randomState,
+    DEFAULT_MAX_SECRET_FACTOR_LENGTH);
+
+  paddedPlainText = PaddedText(newSecretFactor);
   RsaCryptosystem::encrypt();
-  publicAddend = paddedCipherText;
-  secretAddend = paddedPlainText;
+  publicFactor = paddedCipherText;
+  secretFactor = paddedPlainText;
 }
 
 void DummyCryptosystem::encrypt() {
-  paddedCipherText = paddedPlainText + secretAddend;
+  paddedCipherText = paddedPlainText * secretFactor;
 }
 
 void DummyCryptosystem::decrypt() {
-  paddedPlainText = paddedCipherText - secretAddend;
+  paddedPlainText = paddedCipherText / secretFactor;
 }
 
 void DummyCryptosystem::cryptanalyze() {
@@ -67,8 +75,8 @@ DummyCryptosystem::DummyCryptosystem(
 void DummyCryptosystem::generateKeys(Key &publicKey,
     Key &privateKey) {
   generateKeys();
-  publicKey = {modulus, publicExponent, publicAddend};
-  privateKey = {modulus, privateExponent, secretAddend};
+  publicKey = {modulus, publicExponent, publicFactor};
+  privateKey = {modulus, privateExponent, secretFactor};
 }
 
 void DummyCryptosystem::encrypt(

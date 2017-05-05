@@ -13,28 +13,12 @@ void breakRsa(SizeT minModulusLength =
 
 ////////////////////////////////////////////////////////////
 
-void testCryptosystems() {
-  std::cout << "function testCryptosystems\n";
-  std::vector<CryptosystemName>cryptosystemNames;
-  cryptosystemNames.push_back(DUMMY);
-  cryptosystemNames.push_back(RSA);
-  for (CryptosystemName cryptosystemName :
-      cryptosystemNames) {
-    std::cout << "\n";
-    Party party(cryptosystemName);
-    if (party.test()) {
-      std::cout << "Test passed.\n";
-    } else {
-      std::cout << "Test failed.\n";
-    }
-  }
-  std::cout << "\n";
-}
-
-////////////////////////////////////////////////////////////
-
 int main(int argc, const char *argv[]) {
   std::cout << "\n";
+
+  // testCryptosystems();
+  testInputOutput();
+
   // switch (argc) {
   //   case 1:
   //     breakRsa();
@@ -46,7 +30,7 @@ int main(int argc, const char *argv[]) {
   //     cout << "wrong argc\n";
   //     throw std::exception();
   // }
-  testCryptosystems();
+
   // testPaddingUnpadding();
   // testCharConversion();
 }

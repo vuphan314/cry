@@ -137,7 +137,8 @@
 \newcommand{\bob}{\party{Bob}}
 \newcommand{\eve}{\party{Eve}}
 
-\newcommand{\plaintextex}{\quotes{this is \\ plaintext}}
+\newcommand{\plaintextex}{\quotes
+  {plaintext is limited to 1 line}}
 \newcommand{\ciphertextex}
   {45150111034551695356553471309655905870}
 
@@ -210,8 +211,8 @@
 \newcommand{\alicedemo}{alice}
 \newcommand{\evedemo}{eve}
 
-\newcommand{\private}[1]{\code{#1.private}}
-\newcommand{\public}[1]{\code{#1.public}}
+\newcommand{\private}[1]{\code{#1.pr}}
+\newcommand{\public}[1]{\code{#1.pu}}
 
 \newcommand{\generatekeysindemo}{\codestt
   {\$ cry generatekeys

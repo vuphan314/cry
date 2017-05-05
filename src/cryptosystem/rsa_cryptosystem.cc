@@ -1,9 +1,3 @@
-/*
-http://stackoverflow.com/questions/9791761/using-gmp-for-cryptography-how-to-get-random-numbers
-*/
-
-////////////////////////////////////////////////////////////
-
 #include "rsa_cryptosystem.h"
 
 ////////////////////////////////////////////////////////////
@@ -93,16 +87,15 @@ void RsaCryptosystem::generateKeys() {
 
   //******************************************************//
   // THIS MAKES THE ALGORITHM CRYPTOGRAPHICALLY INSECURE  //
-  /**/           gmp_randstate_t state;                   //
-  /**/           gmp_randinit_default(state);             //
-  /**/           gmp_randseed_ui(state, DEFAULT_SEED);    //
+  /**/           gmp_randstate_t randomState;             //
+  /**/           seedRandomState(randomState);            //
   //******************************************************//
 
   do {
-    mpz_urandomb(p, state, minPrimeLength);
+    mpz_urandomb(p, randomState, minPrimeLength);
     mpz_add(p, p, twoExpMinPrimeLength);
 
-    mpz_urandomb(q, state, minPrimeLength);
+    mpz_urandomb(q, randomState, minPrimeLength);
     mpz_add(q, q, twoExpMinPrimeLength);
 
     do {
@@ -126,21 +119,21 @@ void RsaCryptosystem::generateKeys() {
   //   This code block is just for testing purposes       //
   //******************************************************//
   if (verbosity) {
-    std::cout << "p: 0x" << std::hex << p << std::endl;
+    std::cout << "p: 0x" << std::hex << p << endl;
     std::cout << "bit-count: " << std::dec <<
-      mpz_sizeinbase(p, 2) << std::endl;
+      mpz_sizeinbase(p, 2) << endl;
 
-    std::cout << "q: 0x" << std::hex << q << std::endl;
+    std::cout << "q: 0x" << std::hex << q << endl;
     std::cout << "bit-count: " << std::dec <<
-      mpz_sizeinbase(q, 2) << std::endl;
+      mpz_sizeinbase(q, 2) << endl;
 
-    std::cout << "n: 0x" << std::hex << n << std::endl;
+    std::cout << "n: 0x" << std::hex << n << endl;
     std::cout << "bit-count: " << std::dec <<
-      mpz_sizeinbase(n, 2) << std::endl;
+      mpz_sizeinbase(n, 2) << endl;
 
-    std::cout << "e: 0x" << std::hex << e << std::endl;
+    std::cout << "e: 0x" << std::hex << e << endl;
 
-    std::cout << "d: 0x" << d << std::endl <<
+    std::cout << "d: 0x" << d << endl <<
       std::dec; // decimal for the next cout
   }
 
@@ -182,7 +175,7 @@ void RsaCryptosystem::generateKeys(Key &publicKey,
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
   std::cout << "\tmin modulus length: " <<
-    minModulusLength << "-bit\n\tmax text length: " <<
+    minModulusLength << "-bit\n\tmax plaintext length: " <<
     getMaxTextLength() << "-char\n";
 }
 
