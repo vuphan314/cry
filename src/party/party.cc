@@ -7,7 +7,7 @@ Party::Party(const CryptosystemName &cryptosystemName) {
   setDataMembers(cryptosystemName);
 }
 
-Party::setDataMembers(
+void Party::setDataMembers(
     const CryptosystemName &cryptosystemName) {
   if (cryptosystemName == DUMMY) {
     tester = new DummyTester;
@@ -27,81 +27,81 @@ Bool Party::test() {
 
 // command-line argument parsing:
 
-void Party::doAction(int argc, const char *argv[]) {
-  if (argc != 4) {
-    throw DefaultException("argc must be 4");
-  }
-  string action = argv[1];
-  if (action == KEY_GENERATION) {
-    // $ cry generatekeys <receiver> <cryptosystem>
-    string receiverName = argv[2];
-    CryptosystemName CryptosystemName = argv[3];
-    verifyCryptosystemName(cryptosystemName);
-    doKeyGeneration(receiverName, cryptosystemName, );
-  } else if (action == ENCRYPTION) {
-    // $ cry encrypt <sender> <receiver>
-    return ENCRYPTIONION;
-  } else if (action == DECRYPTION) {
-    // $ cry decrypt <receiver> <sender>
-    return DECRYPTIONION;
-  } else if (action == CRYPTANALYSIS) {
-    // $ cry cryptanalyze <receiver> <sender>
-    return CRYPTANALYSIS;
-  } else {
-    throw DefaultException("wrong command");
-  }
-}
-
-void Party::doKeyGeneration(string &receiverName,
-    CryptosystemName &cryptosystemName,
-) {
-/* read parameter argv and
-    set parameters receiverName, cryptosystemName
-*/
-    receiversName = argv[2]
-    cryptosystemName = argv[3]
-}
-
-void Party::doEncryption(string &senderName,
-    string &receiverName) {
-/* read parameter argv and
-    set parameters senderName, receiverName
-*/
-    sendersName = argv[2]
-    receiversName = argv[3]
-}
-
-void Party::doDecryption(string &receiverName,
-    string &senderName) {
-  CryptosystemName cryptosystemName;
-  Key privateKey;
-  readReceiverPublicFile(cryptosystemName, privateKey,
-    receiverName);
-  setDataMembers(cryptosystemName);
-
-  PaddedText paddedCipherText;
-  readSenderPublicFile(paddedCipherText, senderName);
-
-  Text plainText;
-  cryptosystem->decrypt(plainText, paddedCipherText,
-    privateKey);
-}
-
-void Party::doCryptanalysis(string &receiverName,
-    string &senderName) {
-  CryptosystemName cryptosystemName;
-  Key publicKey;
-  readReceiverPublicFile(cryptosystemName, publicKey,
-    receiverName);
-  setDataMembers(cryptosystemName);
-
-  PaddedText paddedCipherText;
-  readSenderPublicFile(paddedCipherText, senderName);
-
-  Text plainText;
-  cryptosystem->cryptanalyze(plainText, paddedCipherText,
-    publicKey);
-}
+// void Party::doAction(int argc, const char *argv[]) {
+//   if (argc != 4) {
+//     throw DefaultException("argc must be 4");
+//   }
+//   string action = argv[1];
+//   if (action == KEY_GENERATION) {
+//     // $ cry generatekeys <receiver> <cryptosystem>
+//     string receiverName = argv[2];
+//     CryptosystemName CryptosystemName = argv[3];
+//     verifyCryptosystemName(cryptosystemName);
+//     doKeyGeneration(receiverName, cryptosystemName, );
+//   } else if (action == ENCRYPTION) {
+//     // $ cry encrypt <sender> <receiver>
+//     return ENCRYPTIONION;
+//   } else if (action == DECRYPTION) {
+//     // $ cry decrypt <receiver> <sender>
+//     return DECRYPTIONION;
+//   } else if (action == CRYPTANALYSIS) {
+//     // $ cry cryptanalyze <receiver> <sender>
+//     return CRYPTANALYSIS;
+//   } else {
+//     throw DefaultException("wrong command");
+//   }
+// }
+//
+// void Party::doKeyGeneration(string &receiverName,
+//     CryptosystemName &cryptosystemName,
+// ) {
+// /* read parameter argv and
+//     set parameters receiverName, cryptosystemName
+// */
+//     receiversName = argv[2]
+//     cryptosystemName = argv[3]
+// }
+//
+// void Party::doEncryption(string &senderName,
+//     string &receiverName) {
+// /* read parameter argv and
+//     set parameters senderName, receiverName
+// */
+//     sendersName = argv[2]
+//     receiversName = argv[3]
+// }
+//
+// void Party::doDecryption(string &receiverName,
+//     string &senderName) {
+//   CryptosystemName cryptosystemName;
+//   Key privateKey;
+//   readReceiverPublicFile(cryptosystemName, privateKey,
+//     receiverName);
+//   setDataMembers(cryptosystemName);
+//
+//   PaddedText paddedCipherText;
+//   readSenderPublicFile(paddedCipherText, senderName);
+//
+//   Text plainText;
+//   cryptosystem->decrypt(plainText, paddedCipherText,
+//     privateKey);
+// }
+//
+// void Party::doCryptanalysis(string &receiverName,
+//     string &senderName) {
+//   CryptosystemName cryptosystemName;
+//   Key publicKey;
+//   readReceiverPublicFile(cryptosystemName, publicKey,
+//     receiverName);
+//   setDataMembers(cryptosystemName);
+//
+//   PaddedText paddedCipherText;
+//   readSenderPublicFile(paddedCipherText, senderName);
+//
+//   Text plainText;
+//   cryptosystem->cryptanalyze(plainText, paddedCipherText,
+//     publicKey);
+// }
 
 // file input/output:
 
@@ -109,19 +109,17 @@ void Party::writeReceiverFiles(const string &receiverName,
     const CryptosystemName &cryptosystemName,
     const Key &publicKey, const Key &privateKey) {
   ofstream outputStream;
-
   outputStream.open(receiverName + PUBLIC_EXTENSION);
   outputStream << cryptosystemName << endl;
   for (const KeyElement &keyElement : publicKey) {
     outputStream << keyElement << endl;
   }
-  outputStream.close();
+  outputStream.close(); // needed for re-opening
 
   outputStream.open(receiverName + PRIVATE_EXTENSION);
   for (const KeyElement &keyElement : privateKey) {
     outputStream << keyElement << endl;
   }
-  outputStream.close();
 }
 
 void Party::readReceiverFiles(
@@ -129,11 +127,11 @@ void Party::readReceiverFiles(
     Key &privateKey,
     const string &receiverName) {
   ifstream inputStream;
-
   inputStream.open(receiverName + PUBLIC_EXTENSION);
   verifyInputStreamOpening(inputStream);
   getline(inputStream, cryptosystemName);
   verifyCryptosystemName(cryptosystemName);
+  inputStream.close(); // needed for re-opening
 
   inputStream.open(receiverName + PRIVATE_EXTENSION);
   verifyInputStreamOpening(inputStream);
@@ -150,10 +148,8 @@ void Party::readReceiverPublicFile(
   ifstream inputStream;
   inputStream.open(receiverName + PUBLIC_EXTENSION);
   verifyInputStreamOpening(inputStream);
-
   getline(inputStream, cryptosystemName);
   verifyCryptosystemName(cryptosystemName);
-
   publicKey.clear();
   string s;
   while (getline(inputStream, s)) {
@@ -166,7 +162,6 @@ void Party::readSenderPrivateFile(Text &plainText,
   ifstream inputStream;
   inputStream.open(senderName + PRIVATE_EXTENSION);
   verifyInputStreamOpening(inputStream);
-
   getline(inputStream, plainText);
 }
 
@@ -174,10 +169,7 @@ void Party::writeSenderPublicFile(const string &senderName,
     const PaddedText &paddedCipherText) {
   ofstream outputStream;
   outputStream.open(senderName + PUBLIC_EXTENSION);
-
   outputStream << paddedCipherText << endl;
-
-  outputStream.close();
 }
 
 void Party::readSenderPublicFile(
@@ -186,7 +178,6 @@ void Party::readSenderPublicFile(
   ifstream inputStream;
   inputStream.open(senderName + PUBLIC_EXTENSION);
   verifyInputStreamOpening(inputStream);
-
   string s;
   getline(inputStream, s);
   paddedCipherText = PaddedText(s);
@@ -243,6 +234,15 @@ void testInputOutput() {
     publicKey, privateKey);
   cout << "writeReceiverFiles wrote:\n\t"
     "./" << receiverName << ".*\n";
+
+  party.readReceiverFiles(cryptosystemName, privateKey,
+    receiverName);
+  cout << "readReceiverFiles read:\n\t"
+    "cryptosystemName: " << cryptosystemName << "\n\t"
+    "privateKey:\n";
+  for (const KeyElement &keyElement : privateKey) {
+    cout << "\t\t" << keyElement << "\n";
+  }
 
   party.readReceiverPublicFile(cryptosystemName, publicKey,
     receiverName);
