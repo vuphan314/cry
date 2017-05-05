@@ -17,42 +17,47 @@ using CryptosystemName = string;
 
 const CryptosystemName DUMMY = "dummy";
 const CryptosystemName RSA = "rsa";
-const unordered_set<CryptosystemName> CRYPTOSYSTEM_NAMES
-  {DUMMY, RSA};
+const unordered_set<CryptosystemName> CRYPTOSYSTEM_NAMES{
+  DUMMY, RSA};
+
+const string KEY_GENERATION = "generatekeys";
+const string ENCRYPTION = "encrypt";
+const string DECRYPTION = "decrypt";
+const string CRYPTANALYSIS = "cryptanalyze";
+const unordered_set<string> ACTIONS{KEY_GENERATION,
+  ENCRYPTION, DECRYPTION, CRYPTANALYSIS};
 
 const string PUBLIC_EXTENSION = ".pu";
 const string PRIVATE_EXTENSION = ".pr";
 
 ////////////////////////////////////////////////////////////
 
-enum Action {KEY_GENERATION, ENCRYPTION, DECRYPTION,
-  CRYPTANALYSIS}; // for command-line argument parsing
-
-////////////////////////////////////////////////////////////
-
 class Party {
 protected:
   Tester *tester;
+  Cryptosystem *cryptosystem;
+
+  void setDataMembers(const CryptosystemName &cryptosystemName);
 
 public:
-  Party(CryptosystemName cryptosystemName = DUMMY);
+  Party(const CryptosystemName &cryptosystemName = DUMMY);
 
   Bool test();
 
 // command-line argument parsing:
-  Action getAction(int argc, const char *argv[]);
+  void doAction(int argc, const char *argv[]);
 
   void doKeyGeneration(string &receiverName,
-    CryptosystemName &cryptosystemName, const char *argv[]);
+    CryptosystemName &cryptosystemName);
 
   void doEncryption(string &senderName,
-    string &receiverName, const char *argv[]);
+    string &receiverName);
 
   void doDecryption(string &receiverName,
-    string &senderName, const char *argv[]);
+    string &senderName);
 
   void doCryptanalysis(string &receiverName,
-    string &senderName, const char *argv[]);
+    string &senderName);
 
 // file input/output:
   void writeReceiverFiles(const string &receiverName,
@@ -77,8 +82,6 @@ public:
 
 ////////////////////////////////////////////////////////////
 // global function:
-
-Tester *getTester(CryptosystemName cryptosystemName);
 
 void verifyCryptosystemName(const CryptosystemName&
   cryptosystemName);

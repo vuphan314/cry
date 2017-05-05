@@ -3,8 +3,20 @@
 ////////////////////////////////////////////////////////////
 // class Party:
 
-Party::Party(CryptosystemName cryptosystemName) {
-  tester = getTester(cryptosystemName);
+Party::Party(const CryptosystemName &cryptosystemName) {
+  setDataMembers(cryptosystemName);
+}
+
+Party::setDataMembers(const CryptosystemName &cryptosystemName) {
+  if (cryptosystemName == DUMMY) {
+    tester = new DummyTester;
+    cryptosystem = new DummyCryptosystem;
+  } else if (cryptosystemName == RSA) {
+    tester = new RsaTester;
+    cryptosystem = new RsaCryptosystem;
+  } else {
+      throw DefaultException("wrong cryptosystem name");
+  }
 }
 
 Bool Party::test() {
@@ -14,18 +26,24 @@ Bool Party::test() {
 
 // command-line argument parsing:
 
-Action Party::getAction(int argc, const char *argv[]) {
-  Bool condition;
-  if (argv[1].compare("generatekeys")) { // replace by proper condition
+void Party::doAction(int argc, const char *argv[]) {
+  if (argc != 4) {
+    throw DefaultException("argc must be 4");
+  }
+  string action = argv[1];
+  if (action == KEY_GENERATION) {
     // $ cry generatekeys <receiver> <cryptosystem>
-    return KEY_GENERATION;
-  } else if (argv[1].compare("encrypt")) { // replace by proper condition
+    string receiverName = argv[2];
+    CryptosystemName CryptosystemName = argv[3];
+    verifyCryptosystemName(cryptosystemName);
+    doKeyGeneration(receiverName, cryptosystemName, );
+  } else if (action == ENCRYPTION) {
     // $ cry encrypt <sender> <receiver>
-    return ENCRYPTION;
-  } else if (argv[1].compare("decrypt")) { // replace by proper condition
+    return ENCRYPTIONION;
+  } else if (action == DECRYPTION) {
     // $ cry decrypt <receiver> <sender>
-    return DECRYPTION;
-  } else if (argv[1].compare("cryptanalyze")) { // replace by proper condition
+    return DECRYPTIONION;
+  } else if (action == CRYPTANALYSIS) {
     // $ cry cryptanalyze <receiver> <sender>
     return CRYPTANALYSIS;
   } else {
@@ -35,7 +53,7 @@ Action Party::getAction(int argc, const char *argv[]) {
 
 void Party::doKeyGeneration(string &receiverName,
     CryptosystemName &cryptosystemName,
-    const char *argv[]) {
+) {
 /* read parameter argv and
     set parameters receiverName, cryptosystemName
 */
@@ -44,7 +62,7 @@ void Party::doKeyGeneration(string &receiverName,
 }
 
 void Party::doEncryption(string &senderName,
-    string &receiverName, const char *argv[]) {
+    string &receiverName) {
 /* read parameter argv and
     set parameters senderName, receiverName
 */
@@ -53,7 +71,7 @@ void Party::doEncryption(string &senderName,
 }
 
 void Party::doDecryption(string &receiverName,
-    string &senderName, const char *argv[]) {
+    string &senderName) {
 /* read parameter argv and
     set parameters receiverName, senderName
 */
@@ -62,12 +80,13 @@ void Party::doDecryption(string &receiverName,
 }
 
 void Party::doCryptanalysis(string &receiverName,
-    string &senderName, const char *argv[]) {
-/* read parameter argv and
-    set parameters receiverName, senderName
-*/
-    receiversName = argv[2]
-    sendersName = argv[3]
+    string &senderName) {
+  CryptosystemName cryptosystemName;
+  Key publicKey;
+  readReceiverPublicFile(cryptosystemName, publicKey, receiverName);
+
+  PaddedText paddedCipherText;
+  readSenderPublicFile(paddedCipherText, senderName);
 }
 
 // file input/output:
@@ -100,6 +119,7 @@ void Party::readReceiverPublicFile(
 
   getline(inputStream, cryptosystemName);
   verifyCryptosystemName(cryptosystemName);
+  this->test
 
   publicKey.clear();
   string s;
@@ -147,16 +167,6 @@ void Party::readSenderPublicFile(
 
 ////////////////////////////////////////////////////////////
 // global function:
-
-Tester *getTester(CryptosystemName cryptosystemName) {
-  if (cryptosystemName == DUMMY) {
-    return new DummyTester;
-  } else if (cryptosystemName == RSA) {
-      return new RsaTester;
-  } else {
-      throw DefaultException("wrong cryptosystem name");
-  }
-}
 
 void verifyCryptosystemName(const CryptosystemName&
     cryptosystemName) {
