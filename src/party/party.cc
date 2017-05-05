@@ -16,16 +16,16 @@ Bool Party::test() {
 
 Action Party::getAction(int argc, const char *argv[]) {
   Bool condition;
-  if (condition) { // replace by proper condition
+  if (argv[1].compare("generatekeys")) { // replace by proper condition
     // $ cry generatekeys <receiver> <cryptosystem>
     return KEY_GENERATION;
-  } else if (condition) { // replace by proper condition
+  } else if (argv[1].compare("encrypt")) { // replace by proper condition
     // $ cry encrypt <sender> <receiver>
     return ENCRYPTION;
-  } else if (condition) { // replace by proper condition
+  } else if (argv[1].compare("decrypt")) { // replace by proper condition
     // $ cry decrypt <receiver> <sender>
     return DECRYPTION;
-  } else if (condition) { // replace by proper condition
+  } else if (argv[1].compare("cryptanalyze")) { // replace by proper condition
     // $ cry cryptanalyze <receiver> <sender>
     return CRYPTANALYSIS;
   } else {
@@ -39,6 +39,8 @@ void Party::doKeyGeneration(string &receiverName,
 /* read parameter argv and
     set parameters receiverName, cryptosystemName
 */
+    receiversName = argv[2]
+    cryptosystemName = argv[3]
 }
 
 void Party::doEncryption(string &senderName,
@@ -46,6 +48,8 @@ void Party::doEncryption(string &senderName,
 /* read parameter argv and
     set parameters senderName, receiverName
 */
+    sendersName = argv[2]
+    receiversName = argv[3]
 }
 
 void Party::doDecryption(string &receiverName,
@@ -53,6 +57,8 @@ void Party::doDecryption(string &receiverName,
 /* read parameter argv and
     set parameters receiverName, senderName
 */
+    receiversName = argv[2]
+    sendersName = argv[3]
 }
 
 void Party::doCryptanalysis(string &receiverName,
@@ -60,6 +66,8 @@ void Party::doCryptanalysis(string &receiverName,
 /* read parameter argv and
     set parameters receiverName, senderName
 */
+    receiversName = argv[2]
+    sendersName = argv[3]
 }
 
 // file input/output:
