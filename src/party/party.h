@@ -20,10 +20,10 @@ const CryptosystemName RSA = "rsa";
 const unordered_set<CryptosystemName> CRYPTOSYSTEM_NAMES{
   DUMMY, RSA};
 
-const string KEY_GENERATION = "generatekeys";
-const string ENCRYPTION = "encrypt";
-const string DECRYPTION = "decrypt";
-const string CRYPTANALYSIS = "cryptanalyze";
+const string KEY_GENERATION = "g";
+const string ENCRYPTION = "e";
+const string DECRYPTION = "d";
+const string CRYPTANALYSIS = "c";
 const unordered_set<string> ACTIONS{KEY_GENERATION,
   ENCRYPTION, DECRYPTION, CRYPTANALYSIS};
 

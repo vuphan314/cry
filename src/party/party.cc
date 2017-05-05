@@ -62,6 +62,7 @@ void Party::doKeyGeneration(const string &receiverName,
   cryptosystem->generateKeys(publicKey, privateKey);
   writeReceiverFiles(receiverName, cryptosystemName,
     publicKey, privateKey);
+  cout << "doKeyGeneration done\n";
 }
 
 void Party::doEncryption(const string &senderName,
@@ -128,6 +129,9 @@ void Party::writeReceiverFiles(const string &receiverName,
   for (const KeyElement &keyElement : privateKey) {
     outputStream << keyElement << endl;
   }
+
+  cout << "writeReceiverFiles wrote files:\n\t"
+    "./" << receiverName << ".*\n";
 }
 
 void Party::readReceiverFiles(
@@ -178,6 +182,9 @@ void Party::writeSenderPublicFile(const string &senderName,
   ofstream outputStream;
   outputStream.open(senderName + PUBLIC_EXTENSION);
   outputStream << paddedCipherText << endl;
+
+  cout << "writeSenderPublicFile wrote file:\n\t"
+    "./" << senderName << PUBLIC_EXTENSION << "\n";
 }
 
 void Party::readSenderPublicFile(
@@ -239,7 +246,7 @@ void testInputOutput() {
   cout << "testInputOutput\n\n";
 
   Party party;
-  string receiverName("party_receiver");
+  string receiverName("pr");
   CryptosystemName cryptosystemName(RSA);
   KeyElement n("172014975789562774694897382365563045699"),
     e("65537"), d("7542263449887751984019792124906530513");
@@ -247,8 +254,6 @@ void testInputOutput() {
 
   party.writeReceiverFiles(receiverName, cryptosystemName,
     publicKey, privateKey);
-  cout << "writeReceiverFiles wrote:\n\t"
-    "./" << receiverName << ".*\n";
 
   party.readReceiverFiles(cryptosystemName, privateKey,
     receiverName);
@@ -269,7 +274,7 @@ void testInputOutput() {
   }
 
   Text plainText;
-  string senderName("party_sender");
+  string senderName("ps");
 
   party.readSenderPrivateFile(plainText, senderName);
   cout << "readSenderPrivateFile read:\n\t"
@@ -279,8 +284,6 @@ void testInputOutput() {
     "45150111034551695356553471309655905870");
 
   party.writeSenderPublicFile(senderName, paddedCipherText);
-  cout << "writeSenderPublicFile wrote:\n\t"
-    "./" << senderName << PUBLIC_EXTENSION << "\n";
 
   party.readSenderPublicFile(paddedCipherText, senderName);
   cout << "readSenderPublicFile read:\n\t"
