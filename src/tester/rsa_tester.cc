@@ -10,7 +10,7 @@ RsaTester::RsaTester(SizeT minModulusLength) {
 Bool RsaTester::testCryptosystem(Text plainText) {
   std::cout << "method RsaTester::testCryptosystem\n";
 
-// key generation:
+// key-generation:
   std::cout << "key-generation:\n";
   Key publicKey, privateKey;
   cryptosystem->generateKeys(publicKey, privateKey);

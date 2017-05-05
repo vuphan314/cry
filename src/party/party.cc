@@ -7,7 +7,8 @@ Party::Party(const CryptosystemName &cryptosystemName) {
   setDataMembers(cryptosystemName);
 }
 
-Party::setDataMembers(const CryptosystemName &cryptosystemName) {
+Party::setDataMembers(
+    const CryptosystemName &cryptosystemName) {
   if (cryptosystemName == DUMMY) {
     tester = new DummyTester;
     cryptosystem = new DummyCryptosystem;
@@ -72,21 +73,34 @@ void Party::doEncryption(string &senderName,
 
 void Party::doDecryption(string &receiverName,
     string &senderName) {
-/* read parameter argv and
-    set parameters receiverName, senderName
-*/
-    receiversName = argv[2]
-    sendersName = argv[3]
+  CryptosystemName cryptosystemName;
+  Key privateKey;
+  readReceiverPublicFile(cryptosystemName, privateKey,
+    receiverName);
+  setDataMembers(cryptosystemName);
+
+  PaddedText paddedCipherText;
+  readSenderPublicFile(paddedCipherText, senderName);
+
+  Text plainText;
+  cryptosystem->decrypt(plainText, paddedCipherText,
+    privateKey);
 }
 
 void Party::doCryptanalysis(string &receiverName,
     string &senderName) {
   CryptosystemName cryptosystemName;
   Key publicKey;
-  readReceiverPublicFile(cryptosystemName, publicKey, receiverName);
+  readReceiverPublicFile(cryptosystemName, publicKey,
+    receiverName);
+  setDataMembers(cryptosystemName);
 
   PaddedText paddedCipherText;
   readSenderPublicFile(paddedCipherText, senderName);
+
+  Text plainText;
+  cryptosystem->cryptanalyze(plainText, paddedCipherText,
+    publicKey);
 }
 
 // file input/output:

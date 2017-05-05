@@ -10,7 +10,7 @@ DummyTester::DummyTester(SizeT minModulusLength) {
 Bool DummyTester::testCryptosystem(Text plainText) {
   std::cout << "method DummyTester::testCryptosystem\n";
 
-// key generation:
+// key-generation:
   std::cout << "key-generation:\n";
   Key publicKey, privateKey;
   cryptosystem->generateKeys(publicKey, privateKey);

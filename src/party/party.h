@@ -37,7 +37,8 @@ protected:
   Tester *tester;
   Cryptosystem *cryptosystem;
 
-  void setDataMembers(const CryptosystemName &cryptosystemName);
+  void setDataMembers(
+    const CryptosystemName &cryptosystemName);
 
 public:
   Party(const CryptosystemName &cryptosystemName = DUMMY);
@@ -60,21 +61,32 @@ public:
     string &senderName);
 
 // file input/output:
+  // key-generation:
   void writeReceiverFiles(const string &receiverName,
     const CryptosystemName &cryptosystemName,
     const Key &publicKey, const Key &privateKey);
 
+  // decryption 1/2:
+  void readReceiverFiles(
+    CryptosystemName &cryptosystemName, // set this
+    Key &privateKey, // set this
+    const string &receiverName);
+
+  // encryption 1/3, cryptanalysis 1/2:
   void readReceiverPublicFile(
     CryptosystemName &cryptosystemName, // set this
     Key &publicKey, // set this
     const string &receiverName);
 
+  // encryption 2/3:
   void readSenderPrivateFile(Text &plainText, // set this
     const string &senderName);
 
+  // encryption 3/3:
   void writeSenderPublicFile(const string &senderName,
     const PaddedText &paddedCipherText);
 
+  // decryption 2/2, cryptanalysis 2/2:
   void readSenderPublicFile(
     PaddedText &paddedCipherText, // set this
     const string &senderName);
@@ -87,7 +99,6 @@ void verifyCryptosystemName(const CryptosystemName&
   cryptosystemName);
 
 void verifyInputStreamOpening(const ifstream &inputStream);
-
 // testing:
 
 void testCryptosystems();
