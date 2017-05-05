@@ -124,6 +124,26 @@ void Party::writeReceiverFiles(const string &receiverName,
   outputStream.close();
 }
 
+void Party::readReceiverFiles(
+    CryptosystemName &cryptosystemName,
+    Key &privateKey,
+    const string &receiverName) {
+  ifstream inputStream;
+
+  inputStream.open(receiverName + PUBLIC_EXTENSION);
+  verifyInputStreamOpening(inputStream);
+  getline(inputStream, cryptosystemName);
+  verifyCryptosystemName(cryptosystemName);
+
+  inputStream.open(receiverName + PRIVATE_EXTENSION);
+  verifyInputStreamOpening(inputStream);
+  privateKey.clear();
+  string s;
+  while (getline(inputStream, s)) {
+    privateKey.push_back(KeyElement(s));
+  }
+}
+
 void Party::readReceiverPublicFile(
     CryptosystemName &cryptosystemName, Key &publicKey,
     const string &receiverName) {
@@ -133,15 +153,12 @@ void Party::readReceiverPublicFile(
 
   getline(inputStream, cryptosystemName);
   verifyCryptosystemName(cryptosystemName);
-  this->test
 
   publicKey.clear();
   string s;
   while (getline(inputStream, s)) {
     publicKey.push_back(KeyElement(s));
   }
-
-  inputStream.close();
 }
 
 void Party::readSenderPrivateFile(Text &plainText,
@@ -151,8 +168,6 @@ void Party::readSenderPrivateFile(Text &plainText,
   verifyInputStreamOpening(inputStream);
 
   getline(inputStream, plainText);
-
-  inputStream.close();
 }
 
 void Party::writeSenderPublicFile(const string &senderName,
@@ -175,8 +190,6 @@ void Party::readSenderPublicFile(
   string s;
   getline(inputStream, s);
   paddedCipherText = PaddedText(s);
-
-  inputStream.close();
 }
 
 ////////////////////////////////////////////////////////////
