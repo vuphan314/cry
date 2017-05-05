@@ -17,10 +17,30 @@ plainText=$2
 
 ############################################################
 
+executable=./cry.out
+
+receiver=pr
+sender=ps
+cryptosystem=rsa
+
+keyGeneration="g $receiver $cryptosystem"
+encryption="e $sender $receiver"
+decryption="d $receiver $sender"
+cryptanalysis="c $receiver $sender"
+
+function run {
+  $executable $keyGeneration
+  $executable $encryption
+  $executable $decryption
+  $executable $cryptanalysis
+}
+
+############################################################
+
 # clear
 # reset
 make subsystem
 make
 # ./cry.out $minModulusLength $plainText
-./cry.out $1 $2 $3 $4
+run
 # make clean

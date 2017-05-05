@@ -111,6 +111,8 @@ void Party::doDecryption(const string &receiverName,
 
 void Party::doCryptanalysis(const string &receiverName,
     const string &senderName) {
+  cout << "doCryptanalysis started\n";
+
   CryptosystemName cryptosystemName;
   Key publicKey;
   readReceiverPublicFile(cryptosystemName, publicKey,
@@ -122,6 +124,9 @@ void Party::doCryptanalysis(const string &receiverName,
   Text plainText;
   cryptosystem->cryptanalyze(plainText, paddedCipherText,
     publicKey);
+  cout << "\tplaintext: " << plainText << "\n";
+
+  cout << "doCryptanalysis ended\n";
 }
 
 // file input/output:
@@ -248,7 +253,7 @@ void testCryptosystems() {
 }
 
 void testAction(int argc, const char *argv[]) {
-  cout << "testAction\n\n";
+  cout << "testAction:\n";
 
   Party party;
   party.doAction(argc, argv);
@@ -258,7 +263,7 @@ void testInputOutput() {
   cout << "testInputOutput\n\n";
 
   Party party;
-  string receiverName("pr");
+  string receiverName(DEFAULT_RECEIVER);
   CryptosystemName cryptosystemName(RSA);
   KeyElement n("172014975789562774694897382365563045699"),
     e("65537"), d("7542263449887751984019792124906530513");
@@ -286,7 +291,7 @@ void testInputOutput() {
   }
 
   Text plainText;
-  string senderName("ps");
+  string senderName(DEFAULT_SENDER);
 
   party.readSenderPrivateFile(plainText, senderName);
   cout << "readSenderPrivateFile read:\n\t"

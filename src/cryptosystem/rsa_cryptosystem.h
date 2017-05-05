@@ -10,7 +10,8 @@
 const SizeT DEFAULT_PUBLIC_EXPONENT = 65537;
 const SizeT DEFAULT_MIN_MODULUS_LENGTH = 256;
 
-const SizeT BREAKABLE_MIN_MODULUS_LENGTH = 32;
+// const SizeT BREAKABLE_MIN_MODULUS_LENGTH = 32;
+const SizeT BREAKABLE_MIN_MODULUS_LENGTH = 46;
 const Text BREAKABLE_PLAIN_TEXT = "four";
 
 ////////////////////////////////////////////////////////////
@@ -58,7 +59,7 @@ protected:
 
 public:
   RsaCryptosystem(SizeT minModulusLength =
-    DEFAULT_MIN_MODULUS_LENGTH);
+    BREAKABLE_MIN_MODULUS_LENGTH);
 
 // public overloaded methods:
   void generateKeys(

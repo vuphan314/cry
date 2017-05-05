@@ -30,6 +30,9 @@ const unordered_set<string> ACTIONS{KEY_GENERATION,
 const string PUBLIC_EXTENSION = ".pu";
 const string PRIVATE_EXTENSION = ".pr";
 
+const string DEFAULT_SENDER = "ps"; // party: sender
+const string DEFAULT_RECEIVER = "pr"; // party: receiver
+
 ////////////////////////////////////////////////////////////
 
 class Party {
