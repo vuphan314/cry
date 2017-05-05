@@ -33,20 +33,16 @@ void Party::doAction(int argc, const char *argv[]) {
   }
   string action = argv[1];
   if (action == KEY_GENERATION) {
-    // $ cry generatekeys <receiver> <cryptosystem>
     string receiverName = argv[2];
     CryptosystemName cryptosystemName = argv[3];
     doKeyGeneration(receiverName, cryptosystemName);
   } else if (action == ENCRYPTION) {
-    // $ cry encrypt <sender> <receiver>
     string senderName = argv[2], receiverName = argv[3];
     doEncryption(senderName, receiverName);
   } else if (action == DECRYPTION) {
-    // $ cry decrypt <receiver> <sender>
     string receiverName = argv[2], senderName = argv[3];
     doDecryption(receiverName, senderName);
   } else if (action == CRYPTANALYSIS) {
-    // $ cry cryptanalyze <receiver> <sender>
     string receiverName = argv[2], senderName = argv[3];
     doCryptanalysis(receiverName, senderName);
   } else {
@@ -252,8 +248,8 @@ void testCryptosystems() {
   std::cout << "\n";
 }
 
-void testAction() {
-  cout << "testAction\n\n";
+void testActions() {
+  cout << "testActions\n\n";
 
   Party party;
   int argc = 4;

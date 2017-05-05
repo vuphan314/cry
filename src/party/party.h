@@ -98,15 +98,16 @@ public:
 ////////////////////////////////////////////////////////////
 // global function:
 
-void verifyCryptosystemName(const CryptosystemName&
-  cryptosystemName);
+void verifyCryptosystemName(
+  const CryptosystemName& cryptosystemName);
 
 void verifyInputStreamOpening(const ifstream &inputStream);
+
 // testing:
 
 void testCryptosystems();
 
-void testAction();
+void testActions();
 
 void testInputOutput();
 

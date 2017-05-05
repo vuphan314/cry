@@ -1,46 +1,49 @@
-# ./main.sh [minModulusLength plainText]
-
-minModulusLength=$1
-plainText=$2
-
-# minModulusLength=32 # 0s cryptanalysis
-# plainText=0123
-
-# minModulusLength=46 # 10s cryptanalysis
-# plainText=four6
-
-# minModulusLength=64 # 1h cryptanalysis
-# plainText=01234567
-
-# minModulusLength=128 # 506-millennium cryptanalysis
-# plainText="cry\nbaby"
+EXECUTABLE=./cry.out
 
 ############################################################
 
-executable=./cry.out
+function run_doAction {
+  sender=ps
+  receiver=pr
+  cryptosystem=rsa
 
-receiver=pr
-sender=ps
-cryptosystem=rsa
+  keyGeneration="g $receiver $cryptosystem"
+  encryption="e $sender $receiver"
+  decryption="d $receiver $sender"
+  cryptanalysis="c $receiver $sender"
 
-keyGeneration="g $receiver $cryptosystem"
-encryption="e $sender $receiver"
-decryption="d $receiver $sender"
-cryptanalysis="c $receiver $sender"
-
-function run {
-  $executable $keyGeneration
-  # $executable $encryption
-  # $executable $decryption
-  # $executable $cryptanalysis
+  $EXECUTABLE $keyGeneration
+  $EXECUTABLE $encryption
+  $EXECUTABLE $decryption
+  $EXECUTABLE $cryptanalysis
 }
 
 ############################################################
 
-# clear
-# reset
+function run_breakRsa {
+  minModulusLength=$1
+  plainText=$2
+
+  # minModulusLength=32 # 0s cryptanalysis
+  # plainText=0123
+
+  # minModulusLength=46 # 8s cryptanalysis
+  # plainText=four6
+
+  # minModulusLength=64 # 1h cryptanalysis
+  # plainText=01234567
+
+  # minModulusLength=128 # 506-millennium cryptanalysis
+  # plainText="crybabies"
+
+  $EXECUTABLE $minModulusLength $plainText $3
+}
+
+############################################################
+
 make subsystem
 make
-# ./cry.out $minModulusLength $plainText
-run
-# make clean
+
+# $EXECUTABLE
+run_doAction
+# run_breakRsa $1 $2 $3
