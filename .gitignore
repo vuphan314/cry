@@ -217,3 +217,7 @@ TSWLatexianTemp*
 
 # KBibTeX
 *~[0-9]*
+
+*.pr
+
+*.pu
