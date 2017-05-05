@@ -228,6 +228,13 @@ void testCryptosystems() {
   std::cout << "\n";
 }
 
+void testAction(int argc, const char *argv[]) {
+  cout << "testAction\n\n";
+
+  Party party;
+  party.doAction(argc, argv);
+}
+
 void testInputOutput() {
   cout << "testInputOutput\n\n";
 

@@ -17,7 +17,8 @@ int main(int argc, const char *argv[]) {
   std::cout << "\n";
 
   // testCryptosystems();
-  testInputOutput();
+  testAction(argc, argv);
+  // testInputOutput();
 
   // switch (argc) {
   //   case 1:
