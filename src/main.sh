@@ -30,9 +30,9 @@ cryptanalysis="c $receiver $sender"
 
 function run {
   $executable $keyGeneration
-  $executable $encryption
-  $executable $decryption
-  $executable $cryptanalysis
+  # $executable $encryption
+  # $executable $decryption
+  # $executable $cryptanalysis
 }
 
 ############################################################

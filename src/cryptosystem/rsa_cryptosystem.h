@@ -10,8 +10,8 @@
 const SizeT DEFAULT_PUBLIC_EXPONENT = 65537;
 const SizeT DEFAULT_MIN_MODULUS_LENGTH = 256;
 
-// const SizeT BREAKABLE_MIN_MODULUS_LENGTH = 32;
-const SizeT BREAKABLE_MIN_MODULUS_LENGTH = 46;
+// const SizeT BREAKABLE_MIN_MODULUS_LENGTH = 32; // 0s-break
+const SizeT BREAKABLE_MIN_MODULUS_LENGTH = 46; // 8s-break
 const Text BREAKABLE_PLAIN_TEXT = "four";
 
 ////////////////////////////////////////////////////////////

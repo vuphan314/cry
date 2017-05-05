@@ -106,7 +106,7 @@ void verifyInputStreamOpening(const ifstream &inputStream);
 
 void testCryptosystems();
 
-void testAction(int argc, const char *argv[]);
+void testAction();
 
 void testInputOutput();
 

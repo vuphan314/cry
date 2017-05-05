@@ -252,11 +252,34 @@ void testCryptosystems() {
   std::cout << "\n";
 }
 
-void testAction(int argc, const char *argv[]) {
-  cout << "testAction:\n";
+void testAction() {
+  cout << "testAction\n\n";
 
   Party party;
-  party.doAction(argc, argv);
+  int argc = 4;
+  const char *executable = "filler",
+    *sender = DEFAULT_SENDER.c_str(),
+    *receiver = DEFAULT_RECEIVER.c_str(),
+    *cryptosystem = "rsa";
+
+  const char *argvG[argc] = {executable,
+    KEY_GENERATION.c_str(), receiver, cryptosystem};
+  party.doAction(argc, argvG);
+  cout << "\n";
+
+  const char *argvE[argc] = {executable, ENCRYPTION.c_str(),
+    sender, receiver};
+  party.doAction(argc, argvE);
+  cout << "\n";
+
+  const char *argvD[argc] = {executable, DECRYPTION.c_str(),
+    receiver, sender};
+  party.doAction(argc, argvD);
+  cout << "\n";
+
+  const char *argvC[argc] = {executable,
+    CRYPTANALYSIS.c_str(), receiver, sender};
+  party.doAction(argc, argvC);
 }
 
 void testInputOutput() {
