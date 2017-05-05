@@ -51,57 +51,62 @@ Bool Party::test() {
 //     throw DefaultException("wrong command");
 //   }
 // }
-//
-// void Party::doKeyGeneration(string &receiverName,
-//     CryptosystemName &cryptosystemName,
-// ) {
-// /* read parameter argv and
-//     set parameters receiverName, cryptosystemName
-// */
-//     receiversName = argv[2]
-//     cryptosystemName = argv[3]
-// }
-//
-// void Party::doEncryption(string &senderName,
-//     string &receiverName) {
-// /* read parameter argv and
-//     set parameters senderName, receiverName
-// */
-//     sendersName = argv[2]
-//     receiversName = argv[3]
-// }
-//
-// void Party::doDecryption(string &receiverName,
-//     string &senderName) {
-//   CryptosystemName cryptosystemName;
-//   Key privateKey;
-//   readReceiverPublicFile(cryptosystemName, privateKey,
-//     receiverName);
-//   setDataMembers(cryptosystemName);
-//
-//   PaddedText paddedCipherText;
-//   readSenderPublicFile(paddedCipherText, senderName);
-//
-//   Text plainText;
-//   cryptosystem->decrypt(plainText, paddedCipherText,
-//     privateKey);
-// }
-//
-// void Party::doCryptanalysis(string &receiverName,
-//     string &senderName) {
-//   CryptosystemName cryptosystemName;
-//   Key publicKey;
-//   readReceiverPublicFile(cryptosystemName, publicKey,
-//     receiverName);
-//   setDataMembers(cryptosystemName);
-//
-//   PaddedText paddedCipherText;
-//   readSenderPublicFile(paddedCipherText, senderName);
-//
-//   Text plainText;
-//   cryptosystem->cryptanalyze(plainText, paddedCipherText,
-//     publicKey);
-// }
+
+void Party::doKeyGeneration(const string &receiverName,
+    const CryptosystemName &cryptosystemName) {
+  setDataMembers(cryptosystemName);
+  Key publicKey, privateKey;
+  cryptosystem->generateKeys(publicKey, privateKey);
+  writeReceiverFiles(receiverName, cryptosystemName,
+    publicKey, privateKey);
+}
+
+void Party::doEncryption(const string &senderName,
+    const string &receiverName) {
+  CryptosystemName cryptosystemName;
+  Key publicKey;
+  readReceiverPublicFile(cryptosystemName, publicKey,
+    receiverName);
+  setDataMembers(cryptosystemName);
+
+  Text plainText;
+  readSenderPrivateFile(plainText, senderName);
+
+  PaddedText paddedCipherText;
+  cryptosystem->encrypt(paddedCipherText, plainText,
+    publicKey);
+  writeSenderPublicFile(senderName, paddedCipherText);
+}
+
+void Party::doDecryption(const string &receiverName,
+    const string &senderName) {
+  CryptosystemName cryptosystemName;
+  Key privateKey;
+  readReceiverPublicFile(cryptosystemName, privateKey,
+    receiverName);
+  setDataMembers(cryptosystemName);
+
+  PaddedText paddedCipherText;
+  readSenderPublicFile(paddedCipherText, senderName);
+  Text plainText;
+  cryptosystem->decrypt(plainText, paddedCipherText,
+    privateKey);
+}
+
+void Party::doCryptanalysis(const string &receiverName,
+    const string &senderName) {
+  CryptosystemName cryptosystemName;
+  Key publicKey;
+  readReceiverPublicFile(cryptosystemName, publicKey,
+    receiverName);
+  setDataMembers(cryptosystemName);
+
+  PaddedText paddedCipherText;
+  readSenderPublicFile(paddedCipherText, senderName);
+  Text plainText;
+  cryptosystem->cryptanalyze(plainText, paddedCipherText,
+    publicKey);
+}
 
 // file input/output:
 

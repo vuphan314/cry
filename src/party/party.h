@@ -48,20 +48,20 @@ public:
 // command-line argument parsing:
   void doAction(int argc, const char *argv[]);
 
-  void doKeyGeneration(string &receiverName,
-    CryptosystemName &cryptosystemName);
+  void doKeyGeneration(const string &receiverName,
+    const CryptosystemName &cryptosystemName);
 
-  void doEncryption(string &senderName,
-    string &receiverName);
+  void doEncryption(const string &senderName,
+    const string &receiverName);
 
-  void doDecryption(string &receiverName,
-    string &senderName);
+  void doDecryption(const string &receiverName,
+    const string &senderName);
 
-  void doCryptanalysis(string &receiverName,
-    string &senderName);
+  void doCryptanalysis(const string &receiverName,
+    const string &senderName);
 
 // file input/output:
-  // key-generation:
+  // key-generation 1/1:
   void writeReceiverFiles(const string &receiverName,
     const CryptosystemName &cryptosystemName,
     const Key &publicKey, const Key &privateKey);
