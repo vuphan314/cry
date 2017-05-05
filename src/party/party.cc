@@ -252,7 +252,7 @@ void testActions() {
   cout << "testActions\n\n";
 
   Party party;
-  int argc = 4;
+  const int argc = 4;
   const char *executable = "filler",
     *sender = DEFAULT_SENDER.c_str(),
     *receiver = DEFAULT_RECEIVER.c_str(),
