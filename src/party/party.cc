@@ -5,7 +5,7 @@
 
 Party::Party(const CryptosystemName &cryptosystemName) {
   setDataMembers(cryptosystemName);
-}
+} // constructor
 
 void Party::setDataMembers(
     const CryptosystemName &cryptosystemName) {
@@ -234,8 +234,8 @@ void verifyInputStreamOpening(const ifstream &inputStream) {
 void testCryptosystems() {
   std::cout << "function testCryptosystems\n";
   std::vector<CryptosystemName>cryptosystemNames;
-  // cryptosystemNames.push_back(DUMMY);
-  cryptosystemNames.push_back(RSA);
+  cryptosystemNames.push_back(DUMMY);
+  // cryptosystemNames.push_back(RSA);
   for (CryptosystemName cryptosystemName :
       cryptosystemNames) {
     std::cout << "\n";

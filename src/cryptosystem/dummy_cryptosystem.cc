@@ -65,8 +65,6 @@ void DummyCryptosystem::cryptanalyze() {
 
 // public:
 
-DummyCryptosystem::DummyCryptosystem() {} // constructor
-
 // public overloaded methods:
 
 void DummyCryptosystem::generateKeys(Key &publicKey,
@@ -79,9 +77,8 @@ void DummyCryptosystem::generateKeys(Key &publicKey,
 
 void DummyCryptosystem::encrypt(
     PaddedText &paddedCipherText, const Text &plainText,
-    const Key &publicKey) {
+    const Key &publicKey, const SizeT &strength) {
   setPublicKeyElements(publicKey);
-  cout << "yoyo";
   padText(paddedPlainText, plainText);
   encrypt();
   paddedCipherText = this->paddedCipherText;

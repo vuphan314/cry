@@ -28,10 +28,8 @@ Bool DummyTester::testCryptosystem(const SizeT &strength,
 // encryption:
   std::cout << "encryption:\n";
   PaddedText paddedCipherText;
-  cout << "todo0\n";
   cryptosystem->encrypt(paddedCipherText, plainText,
-    publicKey);
-  cout << "todo9\n";
+    publicKey, strength);
 
   PaddedText paddedPlainText;
   padText(paddedPlainText, plainText);

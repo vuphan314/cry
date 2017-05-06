@@ -45,6 +45,7 @@ protected:
 
 public:
   Party(const CryptosystemName &cryptosystemName = DUMMY);
+    // constructor
 
   Bool test();
 
