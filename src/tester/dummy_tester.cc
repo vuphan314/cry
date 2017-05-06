@@ -27,6 +27,7 @@ Bool DummyTester::testCryptosystem(const SizeT &strength,
 
 // encryption:
   std::cout << "encryption:\n";
+
   PaddedText paddedCipherText;
   cryptosystem->encrypt(paddedCipherText, plainText,
     publicKey, strength);
@@ -55,5 +56,6 @@ Bool DummyTester::testCryptosystem(const SizeT &strength,
     publicKey);
   std::cout << "\tplaintext: " << t << "\n";
 
+// return:
   return TRUE;
 }
