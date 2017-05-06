@@ -4,12 +4,11 @@
 // class DummyTester:
 
 DummyTester::DummyTester() {
-  throw DefaultException("1");
   cryptosystem = new DummyCryptosystem;
 }
 
-Bool DummyTester::testCryptosystem(SizeT strength,
-    Text plainText) {
+Bool DummyTester::testCryptosystem(const SizeT &strength,
+    const Text &plainText) {
   std::cout << "method DummyTester::testCryptosystem\n";
 
 // key-generation:
@@ -29,9 +28,10 @@ Bool DummyTester::testCryptosystem(SizeT strength,
 // encryption:
   std::cout << "encryption:\n";
   PaddedText paddedCipherText;
-  // throw DefaultException("0");
+  cout << "todo0\n";
   cryptosystem->encrypt(paddedCipherText, plainText,
     publicKey);
+  cout << "todo9\n";
 
   PaddedText paddedPlainText;
   padText(paddedPlainText, plainText);
@@ -46,16 +46,16 @@ Bool DummyTester::testCryptosystem(SizeT strength,
   std::cout << "\tciphertext: " << cipherText << "\n";
 
 // decryption:
-  cryptosystem->decrypt(plainText, paddedCipherText,
-    privateKey);
-  std::cout << "decryption:\n\tplaintext: " <<
-    plainText << "\n";
+  std::cout << "decryption:\n";
+  Text t;
+  cryptosystem->decrypt(t, paddedCipherText, privateKey);
+  std::cout << "\tplaintext: " << t << "\n";
 
 // cryptanalysis:
   std::cout << "cryptanalysis:\n";
-  cryptosystem->cryptanalyze(plainText, paddedCipherText,
+  cryptosystem->cryptanalyze(t, paddedCipherText,
     publicKey);
-  std::cout << "\tplaintext: " << plainText << "\n";
+  std::cout << "\tplaintext: " << t << "\n";
 
   return TRUE;
 }

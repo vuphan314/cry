@@ -7,8 +7,8 @@ RsaTester::RsaTester() {
   cryptosystem = new RsaCryptosystem;
 }
 
-Bool RsaTester::testCryptosystem(SizeT strength,
-    Text plainText) {
+Bool RsaTester::testCryptosystem(const SizeT &strength,
+    const Text &plainText) {
   std::cout << "method RsaTester::testCryptosystem\n";
 
 // key-generation:
@@ -32,16 +32,16 @@ Bool RsaTester::testCryptosystem(SizeT strength,
     paddedCipherText << "\n";
 
 // decryption:
-  cryptosystem->decrypt(plainText, paddedCipherText,
-    privateKey);
-  std::cout << "decryption:\n\tplaintext: " <<
-    plainText << "\n";
+  std::cout << "decryption:\n";
+  Text t;
+  cryptosystem->decrypt(t, paddedCipherText, privateKey);
+  std::cout << "\tplaintext: " << t << "\n";
 
 // cryptanalysis:
   std::cout << "cryptanalysis:\n";
-  cryptosystem->cryptanalyze(plainText, paddedCipherText,
+  cryptosystem->cryptanalyze(t, paddedCipherText,
     publicKey);
-  std::cout << "\tplaintext: " << plainText << "\n";
+  std::cout << "\tplaintext: " << t << "\n";
 
   return TRUE;
 }

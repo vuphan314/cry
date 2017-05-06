@@ -180,6 +180,7 @@ void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
   std::cout << "\tplaintext length: " << plainTextLength <<
     "-char\n";
 
+  cout << "todorsa\n";
   long long excessiveLength = plainTextLength -
     getMaxTextLength(strength);
   if (excessiveLength > 0) {

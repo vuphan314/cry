@@ -48,6 +48,8 @@ protected:
     // publicFactor
 
 public:
+  DummyCryptosystem(); // contructor
+
 // public overloaded methods:
   void generateKeys(
     Key &publicKey, Key &privateKey, // set these

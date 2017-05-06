@@ -16,8 +16,8 @@ public:
 // purely virtual methods,
 // must be defined by non-abstract derived class:
   virtual Bool testCryptosystem(
-    SizeT strength = TRIVIAL_STRENGTH,
-    Text plainText = TRIVIAL_PLAIN_TEXT) = 0;
+    const SizeT &strength = TRIVIAL_STRENGTH,
+    const Text &plainText = TRIVIAL_PLAIN_TEXT) = 0;
 };
 
 ////////////////////////////////////////////////////////////

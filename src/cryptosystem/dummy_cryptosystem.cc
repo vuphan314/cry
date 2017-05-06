@@ -51,7 +51,6 @@ void DummyCryptosystem::generateKeys() {
 }
 
 void DummyCryptosystem::encrypt() {
-  throw DefaultException("bug");
   paddedCipherText = paddedPlainText * secretFactor;
 }
 
@@ -65,6 +64,8 @@ void DummyCryptosystem::cryptanalyze() {
 }
 
 // public:
+
+DummyCryptosystem::DummyCryptosystem() {} // constructor
 
 // public overloaded methods:
 
@@ -80,9 +81,8 @@ void DummyCryptosystem::encrypt(
     PaddedText &paddedCipherText, const Text &plainText,
     const Key &publicKey) {
   setPublicKeyElements(publicKey);
+  cout << "yoyo";
   padText(paddedPlainText, plainText);
-    throw DefaultException("2");
-
   encrypt();
   paddedCipherText = this->paddedCipherText;
 }

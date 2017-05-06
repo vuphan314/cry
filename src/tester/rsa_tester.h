@@ -13,8 +13,8 @@ public:
     // constructor to set data member cryptosystem
 
   Bool testCryptosystem(
-    SizeT strength = TRIVIAL_STRENGTH,
-    Text plainText = TRIVIAL_PLAIN_TEXT);
+    const SizeT &strength = TRIVIAL_STRENGTH,
+    const Text &plainText = TRIVIAL_PLAIN_TEXT);
 };
 
 ////////////////////////////////////////////////////////////
