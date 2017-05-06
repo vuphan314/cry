@@ -179,7 +179,7 @@ void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
   SizeT plainTextLength = plainText.size();
   std::cout << "\tplaintext length: " << plainTextLength <<
     "-char\n";
-  throw DefaultException("3");
+
   long long excessiveLength = plainTextLength -
     getMaxTextLength(strength);
   if (excessiveLength > 0) {
