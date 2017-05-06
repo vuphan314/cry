@@ -7,10 +7,6 @@
 
 // protected helper methods:
 
-SizeT RsaCryptosystem::getMaxTextLength() {
-  return minModulusLength / CHAR_LENGTH;
-}
-
 void RsaCryptosystem::setPublicKeyElements(
     const Key &publicKey) {
   modulus = publicKey.at(0);
@@ -167,28 +163,29 @@ void RsaCryptosystem::cryptanalyze() {
 
 void RsaCryptosystem::generateKeys(Key &publicKey,
     Key &privateKey, const SizeT &strength) {
-  this->minModulusLength = strength;
+  minModulusLength = strength;
   generateKeys();
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
 
   std::cout << "\tmin modulus length: " <<
     minModulusLength << "-bit\n\tmax plaintext length: " <<
-    getMaxTextLength() << "-char\n";
+    getMaxTextLength(strength) << "-char\n";
 }
 
 void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
-    const Text &plainText, const Key &publicKey) {
+    const Text &plainText, const Key &publicKey,
+    const SizeT &strength) {
   SizeT plainTextLength = plainText.size();
   std::cout << "\tplaintext length: " << plainTextLength <<
     "-char\n";
 
-  // long long excessiveLength = plainTextLength -
-  //   getMaxTextLength();
-  // if (excessiveLength > 0) {
-  //   throw DefaultException(to_string(excessiveLength) +
-  //     " char(s) too long");
-  // }
+  long long excessiveLength = plainTextLength -
+    getMaxTextLength(strength);
+  if (excessiveLength > 0) {
+    throw DefaultException(to_string(excessiveLength) +
+      " char(s) too long");
+  }
 
   setPublicKeyElements(publicKey);
   padText(paddedPlainText, plainText);
@@ -212,4 +209,12 @@ void RsaCryptosystem::cryptanalyze(Text &plainText,
   this->paddedCipherText = paddedCipherText;
   cryptanalyze();
   unpadText(plainText, paddedPlainText);
+}
+
+////////////////////////////////////////////////////////////
+// global function:
+
+SizeT getMaxTextLength(
+    const SizeT &strength) {
+  return strength / CHAR_LENGTH;
 }

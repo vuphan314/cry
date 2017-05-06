@@ -67,7 +67,8 @@ public:
 
   virtual void encrypt(
     PaddedText &paddedCipherText, // set this
-    const Text &plainText, const Key &publicKey) = 0;
+    const Text &plainText, const Key &publicKey,
+    const SizeT &strength = TRIVIAL_STRENGTH) = 0;
 
   virtual void decrypt(Text &plainText, // set this
     const PaddedText &paddedCipherText,

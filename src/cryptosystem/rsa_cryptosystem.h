@@ -26,9 +26,6 @@ protected:
   PaddedText paddedPlainText, paddedCipherText;
 
 // protected helper methods:
-  SizeT getMaxTextLength();
-    // read: minModulusLength
-
   void setPublicKeyElements(const Key &publicKey);
     // set: modulus, publicExponent
 
@@ -64,7 +61,8 @@ public:
     // set minModulusLength
 
   void encrypt(PaddedText &paddedCipherText, // set this
-    const Text &plainText, const Key &publicKey);
+    const Text &plainText, const Key &publicKey,
+    const SizeT &strength = TRIVIAL_STRENGTH);
     // check minModulusLength
 
   void decrypt(Text &plainText, // set this
@@ -75,6 +73,11 @@ public:
     const PaddedText &paddedCipherText,
     const Key &publicKey);
 };
+
+////////////////////////////////////////////////////////////
+// global functions:
+
+SizeT getMaxTextLength(const SizeT &strength);
 
 ////////////////////////////////////////////////////////////
 
