@@ -4,6 +4,7 @@
 // class DummyTester:
 
 DummyTester::DummyTester() {
+  throw DefaultException("1");
   cryptosystem = new DummyCryptosystem;
 }
 
@@ -28,6 +29,7 @@ Bool DummyTester::testCryptosystem(SizeT strength,
 // encryption:
   std::cout << "encryption:\n";
   PaddedText paddedCipherText;
+  // throw DefaultException("0");
   cryptosystem->encrypt(paddedCipherText, plainText,
     publicKey);
 

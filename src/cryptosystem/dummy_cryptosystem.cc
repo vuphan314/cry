@@ -51,6 +51,7 @@ void DummyCryptosystem::generateKeys() {
 }
 
 void DummyCryptosystem::encrypt() {
+  throw DefaultException("bug");
   paddedCipherText = paddedPlainText * secretFactor;
 }
 
@@ -80,6 +81,8 @@ void DummyCryptosystem::encrypt(
     const Key &publicKey) {
   setPublicKeyElements(publicKey);
   padText(paddedPlainText, plainText);
+    throw DefaultException("2");
+
   encrypt();
   paddedCipherText = this->paddedCipherText;
 }

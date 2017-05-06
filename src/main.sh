@@ -44,6 +44,6 @@ function run_breakRsa {
 make subsystem
 make
 
-# $EXECUTABLE
-run_doAction
+$EXECUTABLE
+# run_doAction
 # run_breakRsa $1 $2 $3

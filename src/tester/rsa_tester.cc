@@ -27,7 +27,7 @@ Bool RsaTester::testCryptosystem(SizeT strength,
   std::cout << "encryption:\n";
   PaddedText paddedCipherText;
   cryptosystem->encrypt(paddedCipherText, plainText,
-    publicKey);
+    publicKey, strength);
   std::cout << "\tpadded ciphertext: " <<
     paddedCipherText << "\n";
 
