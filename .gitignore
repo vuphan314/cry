@@ -1,8 +1,9 @@
 # Cry ignores:
 
-*.pu # public
-*.pr # private
+*.pu
+*.pr
 
+src/cry
 
 ############################################################
 # GitHub default ignores: C++
