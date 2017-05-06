@@ -1,0 +1,28 @@
+\subsection{Use Case Diagram}
+
+\begin{tikzpicture}
+
+\begin{umlsystem}[x=10, fill=red!10]{Cry}
+\umlusecase{Generate Keys}
+\umlusecase[y=-2]{Encrypt}
+\umlusecase[y=-4]{Decrypt}
+\umlusecase[y=-6]{Cryptanalysis}
+\end{umlsystem}
+
+\umlactor[x=1, y=-2]{Party}
+\umlactor[x=4, y=0]{Bob}
+\umlactor[x=4, y=-2]{Alice}
+\umlactor[x=4, y=-4]{Eve}
+
+\umlinherit{Bob}{Party}
+\umlinherit{Alice}{Party}
+\umlinherit{Eve}{Party}
+
+\umlassoc{Bob}{usecase-1}
+\umlassoc{Bob}{usecase-3}
+\umlassoc{Alice}{usecase-2}
+\umlassoc{Eve}{usecase-4}
+
+\end{tikzpicture}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
