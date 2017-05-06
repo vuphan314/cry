@@ -8,7 +8,9 @@
     \umlactor{Receiver}
     \umlobject{Cry}
     \umlobject{GitHub}
-    \begin{umlcall}[op={generateKeys}]{Receiver}{Cry}
+    \begin{umlcall}
+    [op={generate keys}, return={create public and private
+      keys}, padding=5]{Receiver}{Cry}
     \end{umlcall}
     \begin{umlcall}[op={push public key}]{Receiver}{GitHub}
     \end{umlcall}
@@ -21,11 +23,12 @@
     \umlactor{Sender}
     \umlobject{Cry}
     \umlobject{GitHub}
-    \begin{umlcall}[op={get public key}]{Sender}{GitHub}
+    \begin{umlcall}[op={get public key}]{GitHub}{Sender}
     \end{umlcall}
-    \begin{umlcall}[op={encrypt plaintext}]{Sender}{Cry}
+    \begin{umlcall}[op={encrypt plaintext}, return={create
+      ciphertext}, padding=5]{Sender}{Cry}
     \end{umlcall}
-    \begin{umlcall}[op={send ciphertext}]{Sender}{GitHub}
+    \begin{umlcall}[op={push ciphertext}]{Sender}{GitHub}
     \end{umlcall}
   \end{umlseqdiag}
 \end{tikzpicture}}
@@ -36,9 +39,10 @@
     \umlactor{Receiver}
     \umlobject{Cry}
     \umlobject{GitHub}
-    \begin{umlcall}[op={get ciphertext}]{Receiver}{GitHub}
+    \begin{umlcall}[op={get ciphertext}]{GitHub}{Receiver}
     \end{umlcall}
-    \begin{umlcall}[op={decrypt ciphertext}]{Receiver}{Cry}
+    \begin{umlcall}[op={decrypt ciphertext}, return={create
+      plaintext}, padding=5]{Receiver}{Cry}
     \end{umlcall}
   \end{umlseqdiag}
 \end{tikzpicture}}
@@ -50,11 +54,10 @@
     \umlobject{Cry}
     \umlobject{GitHub}
     \begin{umlcall}[op={get public key and ciphertext}]
-      {Cryptographer}{GitHub}
+      {GitHub}{Cryptographer}
     \end{umlcall}
-    \begin{umlcall}[op={run cryptanalysis}]{User}{Cry}
-    \end{umlcall}
-    \begin{umlcall}[op={display results}]{Cry}{User}
+    \begin{umlcall}[op={run cryptanalysis}, return={display
+      results}, padding=5]{Cryptographer}{Cry}
     \end{umlcall}
   \end{umlseqdiag}
 \end{tikzpicture}}
