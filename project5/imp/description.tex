@@ -2,13 +2,6 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Implementation overview
-
-How to implement your project?
-  Any related technique
-
-Any implementation/technical issue?
-
 Dependencies
 \begin{itemize}
   \item GMP
@@ -17,7 +10,19 @@ Dependencies
 Use
 \begin{itemize}
   \item Key Generation
+  \begin{itemize}
+    ./cry.out g {receiver_name} {cryptosystem_name}
+  \end{itemize}
   \item Encryption
+  \begin{itemize}
+    ./cry.out e {sender_name} {receiver_name}
+  \end{itemize}
   \item Decryption
+  \begin{itemize}
+    ./cry.out d {receiver_name} {sender_name}
+  \end{itemize}
   \item Cryptanalysis
+  \begin{itemize}
+    ./cry.out c {receiver_name} {sender_name}
+  \end{itemize}
 \end{itemize}
