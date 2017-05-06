@@ -3,17 +3,19 @@
 ////////////////////////////////////////////////////////////
 // class RsaTester:
 
-RsaTester::RsaTester(SizeT minModulusLength) {
-  cryptosystem = new RsaCryptosystem(minModulusLength);
+RsaTester::RsaTester() {
+  cryptosystem = new RsaCryptosystem;
 }
 
-Bool RsaTester::testCryptosystem(Text plainText) {
+Bool RsaTester::testCryptosystem(SizeT strength,
+    Text plainText) {
   std::cout << "method RsaTester::testCryptosystem\n";
 
 // key-generation:
   std::cout << "key-generation:\n";
   Key publicKey, privateKey;
-  cryptosystem->generateKeys(publicKey, privateKey);
+  cryptosystem->generateKeys(publicKey, privateKey,
+    strength);
   std::cout << "\tmodulus: " << publicKey.at(0) <<
     "\n\tpublic exponent: " << publicKey.at(1) <<
     "\n\tprivate exponent: " << privateKey.at(1) << "\n";

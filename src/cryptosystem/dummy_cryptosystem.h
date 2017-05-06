@@ -48,12 +48,11 @@ protected:
     // publicFactor
 
 public:
-  DummyCryptosystem(SizeT minModulusLength =
-    DEFAULT_MIN_MODULUS_LENGTH);
-
 // public overloaded methods:
   void generateKeys(
-    Key &publicKey, Key &privateKey); // set these
+    Key &publicKey, Key &privateKey, // set these
+    const SizeT &strength = TRIVIAL_STRENGTH);
+  // set minModulusLength
 
   void encrypt(PaddedText &paddedCipherText, // set this
     const Text &plainText, const Key &publicKey);

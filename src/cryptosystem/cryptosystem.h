@@ -35,6 +35,9 @@ using DefaultException = logic_error;
 
 const SizeT DEFAULT_RANDOM_SEED = 672087;
 
+const SizeT TRIVIAL_STRENGTH = 32; // RSA 0s-break
+const Text TRIVIAL_PLAIN_TEXT = "four";
+
 const unsigned char TWO_EXP_7 = 128;
 const unsigned int TWO_EXP_8 = 256;
 
@@ -59,8 +62,8 @@ public:
 // purely virtual methods,
 // must be defined by non-abstract derived class:
   virtual void generateKeys(
-    Key &publicKey, Key &privateKey // set these
-    ) = 0;
+    Key &publicKey, Key &privateKey, // set these
+    const SizeT &strength = TRIVIAL_STRENGTH) = 0;
 
   virtual void encrypt(
     PaddedText &paddedCipherText, // set this

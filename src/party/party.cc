@@ -143,8 +143,9 @@ void Party::writeReceiverFiles(const string &receiverName,
     outputStream << keyElement << endl;
   }
 
-  cout << "writeReceiverFiles wrote files:\n\t"
-    "./" << receiverName << ".*\n";
+  cout << "writeReceiverFiles wrote files: ./" <<
+    receiverName << PUBLIC_EXTENSION << ", ./" <<
+    receiverName << PRIVATE_EXTENSION << "\n";
 }
 
 void Party::readReceiverFiles(
@@ -196,8 +197,8 @@ void Party::writeSenderPublicFile(const string &senderName,
   outputStream.open(senderName + PUBLIC_EXTENSION);
   outputStream << paddedCipherText << endl;
 
-  cout << "writeSenderPublicFile wrote file:\n\t"
-    "./" << senderName << PUBLIC_EXTENSION << "\n";
+  cout << "writeSenderPublicFile wrote file: ./" <<
+    senderName << PUBLIC_EXTENSION << "\n";
 }
 
 void Party::readSenderPublicFile(

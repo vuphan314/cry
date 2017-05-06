@@ -10,12 +10,12 @@
 
 class DummyTester : public RsaTester {
 public:
-  DummyTester(SizeT minModulusLength =
-    BREAKABLE_MIN_MODULUS_LENGTH);
+  DummyTester();
     // constructor to set data member cryptosystem
 
-  Bool testCryptosystem(Text plainText =
-    BREAKABLE_PLAIN_TEXT);
+  Bool testCryptosystem(
+    SizeT strength = TRIVIAL_STRENGTH,
+    Text plainText = TRIVIAL_PLAIN_TEXT);
 };
 
 ////////////////////////////////////////////////////////////

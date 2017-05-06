@@ -8,11 +8,10 @@
 ////////////////////////////////////////////////////////////
 
 const SizeT DEFAULT_PUBLIC_EXPONENT = 65537;
-const SizeT DEFAULT_MIN_MODULUS_LENGTH = 256;
+const SizeT DEFAULT_MIN_MODULUS_LENGTH = 2048;
 
-// const SizeT BREAKABLE_MIN_MODULUS_LENGTH = 32; // 0s-break
 const SizeT BREAKABLE_MIN_MODULUS_LENGTH = 46; // 8s-break
-const Text BREAKABLE_PLAIN_TEXT = "four";
+const Text BREAKABLE_PLAIN_TEXT = "five5";
 
 ////////////////////////////////////////////////////////////
 
@@ -58,12 +57,11 @@ protected:
     // read: paddedCipherText, modulus, publicExponent
 
 public:
-  RsaCryptosystem(SizeT minModulusLength =
-    BREAKABLE_MIN_MODULUS_LENGTH);
-
 // public overloaded methods:
   void generateKeys(
-    Key &publicKey, Key &privateKey); // set these
+    Key &publicKey, Key &privateKey, // set these
+    const SizeT &strength = TRIVIAL_STRENGTH);
+    // set minModulusLength
 
   void encrypt(PaddedText &paddedCipherText, // set this
     const Text &plainText, const Key &publicKey);

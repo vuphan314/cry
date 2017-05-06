@@ -65,15 +65,11 @@ void DummyCryptosystem::cryptanalyze() {
 
 // public:
 
-DummyCryptosystem::DummyCryptosystem(
-    SizeT minModulusLength) {
-  this->minModulusLength = minModulusLength;
-}
-
 // public overloaded methods:
 
 void DummyCryptosystem::generateKeys(Key &publicKey,
-    Key &privateKey) {
+    Key &privateKey, const SizeT &strength) {
+  this->minModulusLength = strength;
   generateKeys();
   publicKey = {modulus, publicExponent, publicFactor};
   privateKey = {modulus, privateExponent, secretFactor};

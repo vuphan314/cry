@@ -163,17 +163,15 @@ void RsaCryptosystem::cryptanalyze() {
 
 // public:
 
-RsaCryptosystem::RsaCryptosystem(SizeT minModulusLength) {
-  this->minModulusLength = minModulusLength;
-}
-
 // public overloaded methods:
 
 void RsaCryptosystem::generateKeys(Key &publicKey,
-    Key &privateKey) {
+    Key &privateKey, const SizeT &strength) {
+  this->minModulusLength = strength;
   generateKeys();
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
+
   std::cout << "\tmin modulus length: " <<
     minModulusLength << "-bit\n\tmax plaintext length: " <<
     getMaxTextLength() << "-char\n";
@@ -185,12 +183,12 @@ void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
   std::cout << "\tplaintext length: " << plainTextLength <<
     "-char\n";
 
-  long long excessiveLength = plainTextLength -
-    getMaxTextLength();
-  if (excessiveLength > 0) {
-    throw DefaultException(to_string(excessiveLength) +
-      " char(s) too long");
-  }
+  // long long excessiveLength = plainTextLength -
+  //   getMaxTextLength();
+  // if (excessiveLength > 0) {
+  //   throw DefaultException(to_string(excessiveLength) +
+  //     " char(s) too long");
+  // }
 
   setPublicKeyElements(publicKey);
   padText(paddedPlainText, plainText);

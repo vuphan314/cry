@@ -3,17 +3,19 @@
 ////////////////////////////////////////////////////////////
 // class DummyTester:
 
-DummyTester::DummyTester(SizeT minModulusLength) {
-  cryptosystem = new DummyCryptosystem(minModulusLength);
+DummyTester::DummyTester() {
+  cryptosystem = new DummyCryptosystem;
 }
 
-Bool DummyTester::testCryptosystem(Text plainText) {
+Bool DummyTester::testCryptosystem(SizeT strength,
+    Text plainText) {
   std::cout << "method DummyTester::testCryptosystem\n";
 
 // key-generation:
   std::cout << "key-generation:\n";
   Key publicKey, privateKey;
-  cryptosystem->generateKeys(publicKey, privateKey);
+  cryptosystem->generateKeys(publicKey, privateKey,
+    strength);
   std::cout << "\tmodulus: " << publicKey.at(0) <<
     "\n\tpublic exponent: " << publicKey.at(1) <<
     "\n\tprivate exponent: " << privateKey.at(1) <<

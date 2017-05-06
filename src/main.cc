@@ -3,11 +3,11 @@
 ////////////////////////////////////////////////////////////
 
 void breakRsa(
-    SizeT minModulusLength = BREAKABLE_MIN_MODULUS_LENGTH,
+    SizeT strength = BREAKABLE_MIN_MODULUS_LENGTH,
     Text plainText = BREAKABLE_PLAIN_TEXT) {
   std::cout << "function breakRsa\n";
-  RsaTester rsaTester(minModulusLength);
-  rsaTester.testCryptosystem(plainText);
+  RsaTester rsaTester;
+  rsaTester.testCryptosystem(strength, plainText);
   std::cout << "\n";
 }
 
