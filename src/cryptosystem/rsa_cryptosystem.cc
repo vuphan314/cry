@@ -184,17 +184,18 @@ void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
   SizeT plainTextLength = plainText.size();
   std::cout << "\tplaintext length: " << plainTextLength <<
     "-char\n";
+
   long long excessiveLength = plainTextLength -
     getMaxTextLength();
   if (excessiveLength > 0) {
-    std::cout << excessiveLength << " char(s) too long\n";
-    throw exception();
-  } else {
-    setPublicKeyElements(publicKey);
-    padText(paddedPlainText, plainText);
-    encrypt();
-    paddedCipherText = this->paddedCipherText;
+    throw DefaultException(to_string(excessiveLength) +
+      " char(s) too long");
   }
+
+  setPublicKeyElements(publicKey);
+  padText(paddedPlainText, plainText);
+  encrypt();
+  paddedCipherText = this->paddedCipherText;
 }
 
 void RsaCryptosystem::decrypt(Text &plainText,
