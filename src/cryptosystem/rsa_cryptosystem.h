@@ -63,7 +63,7 @@ public:
   void encrypt(PaddedText &paddedCipherText, // set this
     const Text &plainText, const Key &publicKey,
     const SizeT &strength = TRIVIAL_STRENGTH);
-    // check minModulusLength
+    // check plainText.size() against strength
 
   void decrypt(Text &plainText, // set this
     const PaddedText &paddedCipherText,
