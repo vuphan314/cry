@@ -14,14 +14,14 @@
 \umlactor[x=4, y=-2]{Alice}
 \umlactor[x=4, y=-4]{Eve}
 
-\umlinherit{Bob}{Party}
-\umlinherit{Alice}{Party}
-\umlinherit{Eve}{Party}
+\umlassoc{Bob}{Party}
+\umlassoc{Alice}{Party}
+\umlassoc{Eve}{Party}
 
-\umlassoc{Bob}{usecase-1}
-\umlassoc{Bob}{usecase-3}
-\umlassoc{Alice}{usecase-2}
-\umlassoc{Eve}{usecase-4}
+\umlinherit{Bob}{usecase-1}
+\umlinherit{Bob}{usecase-3}
+\umlinherit{Alice}{usecase-2}
+\umlinherit{Eve}{usecase-4}
 
 \end{tikzpicture}
 
