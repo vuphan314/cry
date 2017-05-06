@@ -1,7 +1,7 @@
 # Cry ignores:
 
-#*.pu # public
-#*.pr # private
+*.pu # public
+*.pr # private
 
 
 ############################################################
