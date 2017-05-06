@@ -2,9 +2,27 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Implementation overview
+Dependencies
+\begin{itemize}
+  \item GMP
+\end{itemize}
 
-How to implement your project?
-  Any related technique
-
-Any implementation/technical issue?
+Use
+\begin{itemize}
+  \item Key Generation
+  \begin{itemize}
+    \item ./cry.out g receiverName cryptosystemName
+  \end{itemize}
+  \item Encryption
+  \begin{itemize}
+    \item ./cry.out e senderName receiverName
+  \end{itemize}
+  \item Decryption
+  \begin{itemize}
+    \item ./cry.out d receiverName senderName
+  \end{itemize}
+  \item Cryptanalysis
+  \begin{itemize}
+    \item ./cry.out c receiverName senderName
+  \end{itemize}
+\end{itemize}
