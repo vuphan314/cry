@@ -2,7 +2,7 @@ COMPILER = g++
 LINKING_OPTIONS = -o $(EXECUTABLE) -lgmpxx -lgmp
 ASSEMBLING_OPTIONS = -c -std=c++11 -Ofast
 
-EXECUTABLE = cry.out
+EXECUTABLE = cry
 OBJECTS = main.o party.o \
 	dummy_tester.o rsa_tester.o tester.o \
 	dummy_cryptosystem.o rsa_cryptosystem.o cryptosystem.o \
