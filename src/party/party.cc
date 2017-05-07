@@ -20,9 +20,10 @@ void Party::setDataMembers(
   }
 }
 
-Bool Party::test() {
-  cout << "method Party::test\n";
-  return tester->testCryptosystem();
+void Party::testParty(const SizeT &strength,
+    const Text &plainText) {
+  cout << "Party::testParty\n";
+  tester->testCryptosystem(strength, plainText);
 }
 
 // command-line argument parsing:
@@ -39,7 +40,18 @@ void Party::doAction(const ArgV &argV) {
     helpActions(); return;
   }
   string action = argV.at(1);
-  if (action == KEY_GENERATION) {
+  if (action == TEST) {
+    if (argC < 4) {
+      helpTesting(); return;
+    }
+    Text plainText = argV.at(2);
+    CryptosystemName cryptosystemName = argV.at(3);
+    SizeT strength = TRIVIAL_STRENGTH;
+    if (argC == 5) {
+      strength = stoll(argV.at(4));
+    }
+    doTesting(plainText, cryptosystemName, strength);
+  } else if (action == KEY_GENERATION) {
     if (argC < 4) {
       helpKeyGeneration(); return;
     }
@@ -75,6 +87,17 @@ void Party::doAction(const ArgV &argV) {
   } else {
     throw DefaultException("argV.at(1): wrong Cry action");
   }
+}
+
+void Party::doTesting(const Text &plainText,
+    const CryptosystemName &cryptosystemName,
+    const SizeT &strength) {
+  cout << "doTesting started\n";
+
+  verifyCryptosystemName(cryptosystemName);
+  testCryptosystem(plainText, cryptosystemName, strength);
+
+  cout << "doTesting ended\n";
 }
 
 void Party::doKeyGeneration(const string &receiverName,
@@ -273,6 +296,15 @@ void helpActions() {
     CRYPTANALYZING << "\n";
 }
 
+void helpTesting() {
+  cout << "syntax:\n\t" <<
+    TESTING << "<plaintext> <cryptosystem> [<strength>]\n"
+    "examples:\n\t" <<
+    TESTING << TRIVIAL_PLAIN_TEXT << " " << RSA << "\n\t" <<
+    TESTING << BREAKABLE_PLAIN_TEXT << " " << DUMMY <<
+    " " << BREAKABLE_STRENGTH << "\n";
+}
+
 void helpKeyGeneration() {
   cout << "syntax:\n\t" <<
     KEY_GENERATING << RECEIVER <<
@@ -340,31 +372,27 @@ void verifyInputStreamOpening(const ifstream &inputStream) {
   }
 }
 
-// testing:
-
-void testCryptosystems() {
-  cout << "function testCryptosystems\n";
-  vector<CryptosystemName>cryptosystemNames;
-  cryptosystemNames.push_back(RSA);
-  cryptosystemNames.push_back(DUMMY);
-  for (CryptosystemName cryptosystemName :
-      cryptosystemNames) {
-    cout << "\n";
-    Party party(cryptosystemName);
-    if (party.test()) {
-      cout << "Test passed.\n";
-    } else {
-      cout << "Test failed.\n";
-    }
-  }
+void testCryptosystem(const Text &plainText,
+    const CryptosystemName &cryptosystemName,
+    const SizeT &strength) {
+  cout << "testCryptosystem\n";
+  Party party(cryptosystemName);
+  party.testParty(strength, plainText);
   cout << "\n";
 }
+
+// testing:
 
 void testActions() {
   cout << "testActions\n\n";
 
   Party party;
   string cryptosystem = RSA;
+
+  ArgV argVT{EXECUTABLE, TEST, TRIVIAL_PLAIN_TEXT,
+    cryptosystem};
+  party.doAction(argVT);
+  cout << "\n";
 
   ArgV argVG{EXECUTABLE, KEY_GENERATION, SPECIFIC_RECEIVER,
     cryptosystem};

@@ -13,7 +13,7 @@ public:
   DummyTester();
     // constructor to set data member cryptosystem
 
-  Bool testCryptosystem(const SizeT &strength,
+  void testCryptosystem(const SizeT &strength,
     const Text &plainText);
 };
 

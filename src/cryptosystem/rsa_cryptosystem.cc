@@ -31,8 +31,8 @@ void RsaCryptosystem::recoverPrivateKeyElements() {
   mpf_sqrt(rootN, nFloat);
 
   Time startTime = getTime();
-  cout << "\tmethod RsaCryptosystem::"
-    "recoverPrivateKeyElements started\n";
+  cout << "\t" "RsaCryptosystem::recoverPrivateKeyElements"
+    " started\n";
   mpz_set_ui(p, 1);
   SizeT cc = 0; // current count
   do {
@@ -51,9 +51,8 @@ void RsaCryptosystem::recoverPrivateKeyElements() {
     }
   } while (!(mpz_divisible_p(n, p)));
   Duration totalDuration = getDuration(startTime);
-  cout << "\tmethod RsaCryptosystem::"
-    "recoverPrivateKeyElements ended in " <<
-    totalDuration << "s\n";
+  cout << "\t" "RsaCryptosystem::recoverPrivateKeyElements"
+    " ended in " << totalDuration << "s\n";
 
   mpz_divexact(q, n, p);
 

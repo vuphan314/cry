@@ -15,9 +15,8 @@ protected:
 public:
 // purely virtual methods,
 // must be defined by non-abstract derived class:
-  virtual Bool testCryptosystem(
-    const SizeT &strength = BREAKABLE_STRENGTH,
-    const Text &plainText = BREAKABLE_PLAIN_TEXT) = 0;
+  virtual void testCryptosystem(const SizeT &strength,
+    const Text &plainText) = 0;
 };
 
 ////////////////////////////////////////////////////////////

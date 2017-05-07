@@ -28,8 +28,7 @@ int main(int argc, const char *argv[]) {
   //     throw DefaultException("wrong argc");
   // }
 
-  testCryptosystems();
-  // testActions();
+  testActions();
   // testInputOutput();
 
   // testPaddingUnpadding();
