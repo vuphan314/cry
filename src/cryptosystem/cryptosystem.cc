@@ -22,7 +22,7 @@ void setTotient(mpz_t l, mpz_t p, mpz_t q) {
 // padding/unpadding:
 
 void padText(PaddedText &paddedText, const Text &text) {
-  // std::cout << "Padding.\n";
+  // cout << "Padding.\n";
   paddedText = 0;
   BigInt multiplier(1);
   SizeT i = 0, n = text.size();
@@ -37,7 +37,7 @@ void padText(PaddedText &paddedText, const Text &text) {
 }
 
 void unpadText(Text &text, const PaddedText &paddedText) {
-  // std::cout << "Unpadding.\n";
+  // cout << "Unpadding.\n";
   text.clear();
   BigInt paddedChar, remainingPaddedText = paddedText;
   while (remainingPaddedText > 0) {

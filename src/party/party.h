@@ -13,6 +13,8 @@
 
 using CryptosystemName = string;
 
+using ArgV = vector<string>;
+
 ////////////////////////////////////////////////////////////
 
 const CryptosystemName DUMMY = "dummy";

@@ -21,7 +21,7 @@ void Party::setDataMembers(
 }
 
 Bool Party::test() {
-  std::cout << "method Party::test\n";
+  cout << "method Party::test\n";
   return tester->testCryptosystem();
 }
 
@@ -257,21 +257,21 @@ void verifyInputStreamOpening(const ifstream &inputStream) {
 // testing:
 
 void testCryptosystems() {
-  std::cout << "function testCryptosystems\n";
+  cout << "function testCryptosystems\n";
   std::vector<CryptosystemName>cryptosystemNames;
   cryptosystemNames.push_back(DUMMY);
   cryptosystemNames.push_back(RSA);
   for (CryptosystemName cryptosystemName :
       cryptosystemNames) {
-    std::cout << "\n";
+    cout << "\n";
     Party party(cryptosystemName);
     if (party.test()) {
-      std::cout << "Test passed.\n";
+      cout << "Test passed.\n";
     } else {
-      std::cout << "Test failed.\n";
+      cout << "Test failed.\n";
     }
   }
-  std::cout << "\n";
+  cout << "\n";
 }
 
 void testActions() {
