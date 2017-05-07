@@ -280,7 +280,7 @@ void helpKeyGeneration() {
     "examples:\n\t" <<
     KEY_GENERATING << SPECIFIC_RECEIVER << " " << RSA <<
     "\n\t" <<
-    KEY_GENERATING << SPECIFIC_RECEIVER << " " << DUMMY <<
+    KEY_GENERATING << SPECIFIC_RECEIVER << " " << RSA <<
     " " << BREAKABLE_MIN_MODULUS_LENGTH << "\n"
     "OVERWRITE FILES:\n\t" <<
     RECEIVER_PUBLIC << ", " << RECEIVER_PRIVATE << "\n";
