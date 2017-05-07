@@ -67,16 +67,21 @@ public:
   void doKeyGeneration(const string &receiverName,
     const CryptosystemName &cryptosystemName,
     const SizeT &strength);
-    // write
+    // write: RECEIVER_PUBLIC, RECEIVER_PRIVATE
 
   void doEncryption(const string &senderName,
     const string &receiverName);
+    // read: RECEIVER_PUBLIC, SENDER_PRIVATE
+    // write: SENDER_PUBLIC
 
   void doDecryption(const string &receiverName,
     const string &senderName);
+    // read: RECEIVER_PUBLIC, RECEIVER_PRIVATE,
+    //  SENDER_PUBLIC
 
   void doCryptanalysis(const string &receiverName,
     const string &senderName);
+    // read: RECEIVER_PUBLIC, SENDER_PUBLIC
 
 // file IO:
   // key-generation 1/1:

@@ -270,8 +270,8 @@ void helpActions() {
 
 void helpKeyGeneration() {
   cout << "syntax:\n\t" <<
-    EXECUTABLE << " " << KEY_GENERATION <<
-    " <receiver> <cryptosystem> [<strength>]\n"
+    EXECUTABLE << " " << KEY_GENERATION << " " <<
+    RECEIVER << " <cryptosystem> [<strength>]\n"
     "examples:\n\t" <<
     EXECUTABLE << " " << KEY_GENERATION << " " <<
     SPECIFIC_RECEIVER << " " << RSA << "\n\t" <<
@@ -284,8 +284,7 @@ void helpKeyGeneration() {
 
 void helpEncryption() {
   cout << "syntax:\n\t" <<
-    EXECUTABLE << " " << ENCRYPTION <<
-    " <sender> <receiver>\n" <<
+    EXECUTABLE << " " << ENCRYPTION << " " << SENDER << " " << RECEIVER << "\n" <<
     "example:\n\t" <<
     EXECUTABLE << " " << ENCRYPTION << " " <<
     SPECIFIC_SENDER << " " << SPECIFIC_RECEIVER << "\n"
@@ -297,8 +296,8 @@ void helpEncryption() {
 
 void helpDecryption() {
   cout << "syntax:\n\t" <<
-    EXECUTABLE << " " << DECRYPTION <<
-    " <receiver> <sender>\n" <<
+    EXECUTABLE << " " << DECRYPTION << " " <<
+    RECEIVER << " " << SENDER << "\n" <<
     "example:\n\t" <<
     EXECUTABLE << " " << DECRYPTION << " " <<
     SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n"
@@ -309,8 +308,7 @@ void helpDecryption() {
 
 void helpCryptanalysis() {
   cout << "syntax:\n\t" <<
-    EXECUTABLE << " " << CRYPTANALYSIS <<
-    " <receiver> <sender>\n" <<
+    EXECUTABLE << " " << CRYPTANALYSIS << " "  << RECEIVER << " " << SENDER << "\n"
     "example:\n\t" <<
     EXECUTABLE << " " << CRYPTANALYSIS << " " <<
     SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n"
