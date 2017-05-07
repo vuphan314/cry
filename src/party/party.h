@@ -104,7 +104,7 @@ public:
 ////////////////////////////////////////////////////////////
 // global function:
 
-void setArgV(ArgV &argV, int argc, char *argv[]);
+void setArgV(ArgV &argV, int argc, const char *argv[]);
 
 void verifyCryptosystemName(
   const CryptosystemName& cryptosystemName);
