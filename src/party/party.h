@@ -112,6 +112,8 @@ void helpKeyGeneration();
 
 void helpEncryption();
 
+void helpDecryption();
+
 void setArgV(ArgV &argV, int argc, const char *argv[]);
 
 void verifyCryptosystemName(

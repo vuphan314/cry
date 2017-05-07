@@ -56,8 +56,13 @@ void Party::doAction(int argc, const char *argv[]) {
       helpEncryption();
     }
   } else if (action == DECRYPTION) {
-    string receiverName = argV.at(2), senderName = argV.at(3);
-    doDecryption(receiverName, senderName);
+    if (argc == 4) {
+      string receiverName = argV.at(2),
+        senderName = argV.at(3);
+      doDecryption(receiverName, senderName);
+    } else {
+      helpDecryption();
+    }
   } else if (action == CRYPTANALYSIS) {
     string receiverName = argV.at(2), senderName = argV.at(3);
     doCryptanalysis(receiverName, senderName);
@@ -279,6 +284,15 @@ void helpEncryption() {
     "example:\n\t" <<
     EXECUTABLE << " " << ENCRYPTION << " " <<
     DEFAULT_SENDER << " " << DEFAULT_RECEIVER << "\n";
+}
+
+void helpDecryption() {
+  cout << "syntax:\n\t" <<
+    EXECUTABLE << " " << DECRYPTION <<
+    " <receiver> <sender>\n" <<
+    "example:\n\t" <<
+    EXECUTABLE << " " << DECRYPTION << " " <<
+    DEFAULT_RECEIVER << " " << DEFAULT_SENDER << "\n";
 }
 
 void setArgV(ArgV &argV, int argc, const char *argv[]) {

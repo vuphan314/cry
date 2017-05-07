@@ -13,14 +13,14 @@ function run_doAction {
   cryptosystem=rsa
 
   keyGeneration="$KEY_GENERATION $receiver $cryptosystem"
-  # encryption="$ENCRYPTION $sender $receiver"
-  encryption="$ENCRYPTION"
-  decryption="$DECRYPTION $receiver $sender"
+  encryption="$ENCRYPTION $sender $receiver"
+  # decryption="$DECRYPTION $receiver $sender"
+  decryption="$DECRYPTION $receiver"
   cryptanalysis="$CRYPTANALYSIS $receiver $sender"
 
   # $EXECUTABLE $keyGeneration
-  $EXECUTABLE $encryption
-  # $EXECUTABLE $decryption
+  # $EXECUTABLE $encryption
+  $EXECUTABLE $decryption
   # $EXECUTABLE $cryptanalysis
 }
 
