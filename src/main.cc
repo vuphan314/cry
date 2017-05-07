@@ -17,7 +17,7 @@ int main(int argc, const char *argv[]) {
   cout << "\n";
 
   Party party;
-  party.doAction(argc, argv);
+  // party.doAction(argc, argv);
 
   // switch (argc) {
   //   case 1:
@@ -30,7 +30,7 @@ int main(int argc, const char *argv[]) {
 
   // testCryptosystems();
   // testActions();
-  // testInputOutput();
+  testInputOutput();
 
   // testPaddingUnpadding();
   // testCharConversion();

@@ -32,10 +32,11 @@ const string DECRYPTING = EXECUTABLE + DECRYPTION + " ";
 const string CRYPTANALYZING = EXECUTABLE + CRYPTANALYSIS +
   " ";
 
-const string SPECIFIC_SENDER = "sender";
-const string SPECIFIC_RECEIVER = "receiver";
-const string SENDER = "<" + SPECIFIC_SENDER + ">";
-const string RECEIVER = "<" + SPECIFIC_RECEIVER + ">";
+const string SPECIFIC_SENDER = "send";
+const string SPECIFIC_RECEIVER = "receive";
+
+const string SENDER = "<sender>";
+const string RECEIVER = "<receiver>";
 
 const string DIR = "./";
 const string PUBLIC = ".public";

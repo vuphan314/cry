@@ -3,7 +3,7 @@
 *.public
 
 #*.private
-receiver.private
+receive.private
 
 src/cry
 
