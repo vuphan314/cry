@@ -17,8 +17,6 @@ using ArgV = vector<string>;
 
 ////////////////////////////////////////////////////////////
 
-const string EXECUTABLE = "./cry";
-
 const string KEY_GENERATION = "g";
 const string ENCRYPTION = "e";
 const string DECRYPTION = "d";
@@ -26,10 +24,18 @@ const string CRYPTANALYSIS = "c";
 const unordered_set<string> ACTIONS{KEY_GENERATION,
   ENCRYPTION, DECRYPTION, CRYPTANALYSIS};
 
+const string EXECUTABLE = "./cry ";
+const string KEY_GENERATING = EXECUTABLE + KEY_GENERATION +
+  " ";
+const string ENCRYPTING = EXECUTABLE + ENCRYPTION + " ";
+const string DECRYPTING = EXECUTABLE + DECRYPTION + " ";
+const string CRYPTANALYZING = EXECUTABLE + CRYPTANALYSIS +
+  " ";
+
 const string SPECIFIC_SENDER = "sender";
 const string SPECIFIC_RECEIVER = "receiver";
-const string SENDER = "<" + SPECIFIC_SENDER + ">";
-const string RECEIVER = "<" + SPECIFIC_RECEIVER + ">";
+const string SENDER = "<" + SPECIFIC_SENDER + "> ";
+const string RECEIVER = "<" + SPECIFIC_RECEIVER + "> ";
 
 const string DIR = "./";
 const string PUBLIC = ".public";

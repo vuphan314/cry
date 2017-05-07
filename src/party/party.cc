@@ -259,23 +259,23 @@ void Party::readSenderPublicFile(
 
 void helpActions() {
   cout << "key-generation:\n\t" <<
-    EXECUTABLE << " " << KEY_GENERATION << "\n"
+    KEY_GENERATING << "\n"
     "encryption:\n\t" <<
-    EXECUTABLE << " " << ENCRYPTION << "\n"
+    ENCRYPTING << "\n"
     "decryption:\n\t" <<
-    EXECUTABLE << " " << DECRYPTION << "\n"
+    DECRYPTING << "\n"
     "cryptanalyze:\n\t" <<
-    EXECUTABLE << " " << CRYPTANALYSIS << "\n";
+    CRYPTANALYZING << "\n";
 }
 
 void helpKeyGeneration() {
   cout << "syntax:\n\t" <<
-    EXECUTABLE << " " << KEY_GENERATION << " " <<
+    KEY_GENERATING <<
     RECEIVER << " <cryptosystem> [<strength>]\n"
     "examples:\n\t" <<
-    EXECUTABLE << " " << KEY_GENERATION << " " <<
+    KEY_GENERATING <<
     SPECIFIC_RECEIVER << " " << RSA << "\n\t" <<
-    EXECUTABLE << " " << KEY_GENERATION << " " <<
+    KEY_GENERATING <<
     SPECIFIC_RECEIVER << " " << DUMMY << " " <<
     BREAKABLE_MIN_MODULUS_LENGTH << "\n"
     "OVERWRITE FILES:\n\t" <<
@@ -284,9 +284,9 @@ void helpKeyGeneration() {
 
 void helpEncryption() {
   cout << "syntax:\n\t" <<
-    EXECUTABLE << " " << ENCRYPTION << " " << SENDER << " " << RECEIVER << "\n" <<
+    ENCRYPTING << SENDER << RECEIVER << "\n" <<
     "example:\n\t" <<
-    EXECUTABLE << " " << ENCRYPTION << " " <<
+    ENCRYPTING <<
     SPECIFIC_SENDER << " " << SPECIFIC_RECEIVER << "\n"
     "read files:\n\t" <<
     RECEIVER_PUBLIC << ", " << SENDER_PRIVATE << "\n" <<
@@ -296,10 +296,10 @@ void helpEncryption() {
 
 void helpDecryption() {
   cout << "syntax:\n\t" <<
-    EXECUTABLE << " " << DECRYPTION << " " <<
-    RECEIVER << " " << SENDER << "\n" <<
+    DECRYPTING <<
+    RECEIVER << SENDER << "\n" <<
     "example:\n\t" <<
-    EXECUTABLE << " " << DECRYPTION << " " <<
+    DECRYPTING <<
     SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n"
     "read files:\n\t" <<
     RECEIVER_PUBLIC << ", " << RECEIVER_PRIVATE << ", " <<
@@ -308,9 +308,9 @@ void helpDecryption() {
 
 void helpCryptanalysis() {
   cout << "syntax:\n\t" <<
-    EXECUTABLE << " " << CRYPTANALYSIS << " "  << RECEIVER << " " << SENDER << "\n"
+    CRYPTANALYZING  << RECEIVER << SENDER << "\n"
     "example:\n\t" <<
-    EXECUTABLE << " " << CRYPTANALYSIS << " " <<
+    CRYPTANALYZING <<
     SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n"
     "read files:\n\t" <<
     RECEIVER_PUBLIC << ", " << SENDER_PUBLIC << "\n";
