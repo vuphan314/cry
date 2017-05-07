@@ -268,13 +268,16 @@ void helpActions() {
 void helpKeyGeneration() {
   cout << "syntax:\n\t" <<
     EXECUTABLE << " " << KEY_GENERATION <<
-    " <receiver> <cryptosystem> [<strength>]\n" <<
+    " <receiver> <cryptosystem> [<strength>]\n"
     "examples:\n\t" <<
     EXECUTABLE << " " << KEY_GENERATION << " " <<
     DEFAULT_RECEIVER << " " << RSA << "\n\t" <<
     EXECUTABLE << " " << KEY_GENERATION << " " <<
     DEFAULT_RECEIVER << " " << DUMMY << " " <<
-    BREAKABLE_MIN_MODULUS_LENGTH << "\n";
+    BREAKABLE_MIN_MODULUS_LENGTH << "\n"
+    "WARNING:\n\t"
+    "WILL OVERWRITE FILES: "
+    "./<receiver>.public, ./<receiver.private>\n";
 }
 
 void helpEncryption() {
@@ -283,7 +286,9 @@ void helpEncryption() {
     " <sender> <receiver>\n" <<
     "example:\n\t" <<
     EXECUTABLE << " " << ENCRYPTION << " " <<
-    DEFAULT_SENDER << " " << DEFAULT_RECEIVER << "\n";
+    DEFAULT_SENDER << " " << DEFAULT_RECEIVER << "\n"
+    "WARNING:\n\t"
+    "WILL OVERWRITE FILE: ./<sender>.public\n";
 }
 
 void helpDecryption() {
