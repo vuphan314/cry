@@ -20,7 +20,7 @@ using SizeT = unsigned long long;
 using BigInt = mpz_class; // multiple-precision integer
 
 using KeyElement = BigInt;
-using Key = std::vector<KeyElement>;
+using Key = vector<KeyElement>;
 
 using PaddedText = BigInt;
 
