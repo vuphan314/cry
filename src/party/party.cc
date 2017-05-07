@@ -281,7 +281,7 @@ void helpKeyGeneration() {
     KEY_GENERATING << SPECIFIC_RECEIVER << " " << RSA <<
     "\n\t" <<
     KEY_GENERATING << SPECIFIC_RECEIVER << " " << RSA <<
-    " " << BREAKABLE_MIN_MODULUS_LENGTH << "\n"
+    " " << BREAKABLE_STRENGTH << "\n"
     "OVERWRITE FILES:\n\t" <<
     RECEIVER_PUBLIC << ", " << RECEIVER_PRIVATE << "\n";
 }
@@ -345,8 +345,8 @@ void verifyInputStreamOpening(const ifstream &inputStream) {
 void testCryptosystems() {
   cout << "function testCryptosystems\n";
   vector<CryptosystemName>cryptosystemNames;
-  cryptosystemNames.push_back(DUMMY);
   cryptosystemNames.push_back(RSA);
+  cryptosystemNames.push_back(DUMMY);
   for (CryptosystemName cryptosystemName :
       cryptosystemNames) {
     cout << "\n";

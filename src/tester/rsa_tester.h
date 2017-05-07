@@ -12,9 +12,8 @@ public:
   RsaTester();
     // constructor to set data member cryptosystem
 
-  Bool testCryptosystem(
-    const SizeT &strength = TRIVIAL_STRENGTH,
-    const Text &plainText = TRIVIAL_PLAIN_TEXT);
+  Bool testCryptosystem(const SizeT &strength,
+    const Text &plainText);
 };
 
 ////////////////////////////////////////////////////////////
