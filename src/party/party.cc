@@ -364,7 +364,7 @@ void testActions() {
   cout << "testActions\n\n";
 
   Party party;
-  string cryptosystem = "rsa";
+  string cryptosystem = RSA;
 
   ArgV argVG{EXECUTABLE, KEY_GENERATION, SPECIFIC_RECEIVER,
     cryptosystem};
