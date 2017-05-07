@@ -1,9 +1,9 @@
 EXECUTABLE="./cry"
 
-KEY_GENERATION="generatekeys"
-ENCRYPTION="encrypt"
-DECRYPTION="decrypt"
-CRYPTANALYSIS="cryptanalyze"
+KEY_GENERATION="g"
+ENCRYPTION="e"
+DECRYPTION="d"
+CRYPTANALYSIS="c"
 
 ############################################################
 

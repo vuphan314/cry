@@ -258,10 +258,13 @@ void Party::readSenderPublicFile(
 // global function:
 
 void helpActions() {
-  cout << "try one command:\n\t" <<
-    EXECUTABLE << " " << KEY_GENERATION << "\n\t" <<
-    EXECUTABLE << " " << ENCRYPTION << "\n\t" <<
-    EXECUTABLE << " " << DECRYPTION << "\n\t" <<
+  cout << "key-generation:\n\t" <<
+    EXECUTABLE << " " << KEY_GENERATION << "\n"
+    "encryption:\n\t" <<
+    EXECUTABLE << " " << ENCRYPTION << "\n"
+    "decryption:\n\t" <<
+    EXECUTABLE << " " << DECRYPTION << "\n"
+    "cryptanalyze:\n\t" <<
     EXECUTABLE << " " << CRYPTANALYSIS << "\n";
 }
 
