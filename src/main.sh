@@ -3,8 +3,8 @@ EXECUTABLE=./cry
 ############################################################
 
 function run_doAction {
-  sender=ps
-  receiver=pr
+  sender=sender
+  receiver=receiver
   cryptosystem=rsa
 
   keyGeneration="g $receiver $cryptosystem"
@@ -44,6 +44,6 @@ function run_breakRsa {
 make subsystem
 make
 
-$EXECUTABLE $1 $2 $3 $4 $5
-# run_doAction
+# $EXECUTABLE $1 $2 $3 $4 $5
+run_doAction
 # run_breakRsa $1 $2 $3

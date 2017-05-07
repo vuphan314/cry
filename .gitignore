@@ -1,7 +1,9 @@
 # Cry ignores:
 
 *.pu
-*.pr
+
+#*.pr
+receiver.pr
 
 src/cry
 
