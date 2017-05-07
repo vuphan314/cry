@@ -21,45 +21,74 @@ void Party::setDataMembers(
 }
 
 Bool Party::test() {
-  std::cout << "method Party::test\n";
+  cout << "method Party::test\n";
   return tester->testCryptosystem();
 }
 
 // command-line argument parsing:
 
 void Party::doAction(int argc, const char *argv[]) {
-  if (argc != 4) {
-    throw DefaultException("argc must be 4");
+  ArgV argV;
+  setArgV(argV, argc, argv);
+  doAction(argV);
+}
+
+void Party::doAction(const ArgV &argV) {
+  SizeT argC = argV.size();
+  if (argC < 2 || argC > 5) {
+    helpActions(); return;
   }
-  string action = argv[1];
+  string action = argV.at(1);
   if (action == KEY_GENERATION) {
-    string receiverName = argv[2];
-    CryptosystemName cryptosystemName = argv[3];
-    doKeyGeneration(receiverName, cryptosystemName);
+    if (argC < 4) {
+      helpKeyGeneration(); return;
+    }
+    string receiverName = argV.at(2);
+    CryptosystemName cryptosystemName = argV.at(3);
+    SizeT strength = TRIVIAL_STRENGTH;
+    if (argC == 5) {
+      strength = stoll(argV.at(4));
+    }
+    doKeyGeneration(receiverName, cryptosystemName,
+      strength);
   } else if (action == ENCRYPTION) {
-    string senderName = argv[2], receiverName = argv[3];
+    if (argC != 4) {
+      helpEncryption(); return;
+    }
+    string senderName = argV.at(2),
+      receiverName = argV.at(3);
     doEncryption(senderName, receiverName);
   } else if (action == DECRYPTION) {
-    string receiverName = argv[2], senderName = argv[3];
+    if (argC != 4) {
+      helpDecryption(); return;
+    }
+    string receiverName = argV.at(2),
+      senderName = argV.at(3);
     doDecryption(receiverName, senderName);
   } else if (action == CRYPTANALYSIS) {
-    string receiverName = argv[2], senderName = argv[3];
+    if (argC != 4) {
+      helpCryptanalysis(); return;
+    }
+    string receiverName = argV.at(2),
+      senderName = argV.at(3);
     doCryptanalysis(receiverName, senderName);
   } else {
-    throw DefaultException("argv[1]: wrong Cry action");
+    throw DefaultException("argV.at(1): wrong Cry action");
   }
 }
 
 void Party::doKeyGeneration(const string &receiverName,
-    const CryptosystemName &cryptosystemName) {
+    const CryptosystemName &cryptosystemName,
+    const SizeT &strength) {
   cout << "doKeyGeneration started\n";
 
   verifyCryptosystemName(cryptosystemName);
   setDataMembers(cryptosystemName);
   Key publicKey, privateKey;
-  cryptosystem->generateKeys(publicKey, privateKey);
+  cryptosystem->generateKeys(publicKey, privateKey,
+    strength);
   writeReceiverFiles(receiverName, cryptosystemName,
-    publicKey, privateKey);
+    strength, publicKey, privateKey);
 
   cout << "doKeyGeneration ended\n";
 }
@@ -69,9 +98,10 @@ void Party::doEncryption(const string &senderName,
   cout << "doEncryption started\n";
 
   CryptosystemName cryptosystemName;
+  SizeT strength;
   Key publicKey;
-  readReceiverPublicFile(cryptosystemName, publicKey,
-    receiverName);
+  readReceiverPublicFile(cryptosystemName, strength,
+    publicKey, receiverName);
   setDataMembers(cryptosystemName);
 
   Text plainText;
@@ -79,7 +109,7 @@ void Party::doEncryption(const string &senderName,
 
   PaddedText paddedCipherText;
   cryptosystem->encrypt(paddedCipherText, plainText,
-    publicKey);
+    publicKey, strength);
   writeSenderPublicFile(senderName, paddedCipherText);
 
   cout << "doEncryption ended\n";
@@ -110,9 +140,10 @@ void Party::doCryptanalysis(const string &receiverName,
   cout << "doCryptanalysis started\n";
 
   CryptosystemName cryptosystemName;
+  SizeT strength;
   Key publicKey;
-  readReceiverPublicFile(cryptosystemName, publicKey,
-    receiverName);
+  readReceiverPublicFile(cryptosystemName, strength,
+    publicKey, receiverName);
   setDataMembers(cryptosystemName);
 
   PaddedText paddedCipherText;
@@ -125,41 +156,47 @@ void Party::doCryptanalysis(const string &receiverName,
   cout << "doCryptanalysis ended\n";
 }
 
-// file input/output:
+// file IO:
 
 void Party::writeReceiverFiles(const string &receiverName,
     const CryptosystemName &cryptosystemName,
-    const Key &publicKey, const Key &privateKey) {
+    const SizeT &strength, const Key &publicKey,
+    const Key &privateKey) {
   ofstream outputStream;
-  outputStream.open(receiverName + PUBLIC_EXTENSION);
-  outputStream << cryptosystemName << endl;
+  outputStream.open(DIR + receiverName +
+    PUBLIC);
+  outputStream << cryptosystemName << endl << strength <<
+    endl;
   for (const KeyElement &keyElement : publicKey) {
     outputStream << keyElement << endl;
   }
   outputStream.close(); // needed for re-opening
 
-  outputStream.open(receiverName + PRIVATE_EXTENSION);
+  outputStream.open(DIR + receiverName +
+    PRIVATE);
   for (const KeyElement &keyElement : privateKey) {
     outputStream << keyElement << endl;
   }
 
-  cout << "writeReceiverFiles wrote files: ./" <<
-    receiverName << PUBLIC_EXTENSION << ", ./" <<
-    receiverName << PRIVATE_EXTENSION << "\n";
+  cout << "writeReceiverFiles wrote files: " <<
+    DIR << receiverName << PUBLIC <<
+    ", " << DIR << receiverName <<
+    PRIVATE << "\n";
 }
 
 void Party::readReceiverFiles(
-    CryptosystemName &cryptosystemName,
-    Key &privateKey,
+    CryptosystemName &cryptosystemName, Key &privateKey,
     const string &receiverName) {
   ifstream inputStream;
-  inputStream.open(receiverName + PUBLIC_EXTENSION);
+  inputStream.open(DIR + receiverName +
+    PUBLIC);
   verifyInputStreamOpening(inputStream);
   getline(inputStream, cryptosystemName);
   verifyCryptosystemName(cryptosystemName);
   inputStream.close(); // needed for re-opening
 
-  inputStream.open(receiverName + PRIVATE_EXTENSION);
+  inputStream.open(DIR + receiverName +
+    PRIVATE);
   verifyInputStreamOpening(inputStream);
   privateKey.clear();
   string s;
@@ -169,15 +206,21 @@ void Party::readReceiverFiles(
 }
 
 void Party::readReceiverPublicFile(
-    CryptosystemName &cryptosystemName, Key &publicKey,
-    const string &receiverName) {
+    CryptosystemName &cryptosystemName, SizeT &strength,
+    Key &publicKey, const string &receiverName) {
   ifstream inputStream;
-  inputStream.open(receiverName + PUBLIC_EXTENSION);
+  inputStream.open(DIR + receiverName +
+    PUBLIC);
   verifyInputStreamOpening(inputStream);
+
   getline(inputStream, cryptosystemName);
   verifyCryptosystemName(cryptosystemName);
-  publicKey.clear();
+
   string s;
+  getline(inputStream, s);
+  strength = stoll(s);
+
+  publicKey.clear();
   while (getline(inputStream, s)) {
     publicKey.push_back(KeyElement(s));
   }
@@ -186,7 +229,8 @@ void Party::readReceiverPublicFile(
 void Party::readSenderPrivateFile(Text &plainText,
     const string &senderName) {
   ifstream inputStream;
-  inputStream.open(senderName + PRIVATE_EXTENSION);
+  inputStream.open(DIR + senderName +
+    PRIVATE);
   verifyInputStreamOpening(inputStream);
   getline(inputStream, plainText);
 }
@@ -194,18 +238,21 @@ void Party::readSenderPrivateFile(Text &plainText,
 void Party::writeSenderPublicFile(const string &senderName,
     const PaddedText &paddedCipherText) {
   ofstream outputStream;
-  outputStream.open(senderName + PUBLIC_EXTENSION);
+  outputStream.open(DIR + senderName +
+    PUBLIC);
   outputStream << paddedCipherText << endl;
 
-  cout << "writeSenderPublicFile wrote file: ./" <<
-    senderName << PUBLIC_EXTENSION << "\n";
+  cout << "writeSenderPublicFile wrote file: " <<
+    DIR << senderName << PUBLIC <<
+    "\n";
 }
 
 void Party::readSenderPublicFile(
     PaddedText &paddedCipherText,
     const string &senderName) {
   ifstream inputStream;
-  inputStream.open(senderName + PUBLIC_EXTENSION);
+  inputStream.open(DIR + senderName +
+    PUBLIC);
   verifyInputStreamOpening(inputStream);
   string s;
   getline(inputStream, s);
@@ -214,6 +261,70 @@ void Party::readSenderPublicFile(
 
 ////////////////////////////////////////////////////////////
 // global function:
+
+void helpActions() {
+  cout << "key-generation:\n\t" <<
+    KEY_GENERATING << "\n"
+    "encryption:\n\t" <<
+    ENCRYPTING << "\n"
+    "decryption:\n\t" <<
+    DECRYPTING << "\n"
+    "cryptanalyze:\n\t" <<
+    CRYPTANALYZING << "\n";
+}
+
+void helpKeyGeneration() {
+  cout << "syntax:\n\t" <<
+    KEY_GENERATING << RECEIVER <<
+    " <cryptosystem> [<strength>]\n"
+    "examples:\n\t" <<
+    KEY_GENERATING << SPECIFIC_RECEIVER << " " << RSA <<
+    "\n\t" <<
+    KEY_GENERATING << SPECIFIC_RECEIVER << " " << RSA <<
+    " " << BREAKABLE_MIN_MODULUS_LENGTH << "\n"
+    "OVERWRITE FILES:\n\t" <<
+    RECEIVER_PUBLIC << ", " << RECEIVER_PRIVATE << "\n";
+}
+
+void helpEncryption() {
+  cout << "syntax:\n\t" <<
+    ENCRYPTING << SENDER << " " << RECEIVER << "\n"
+    "example:\n\t" <<
+    ENCRYPTING << SPECIFIC_SENDER << " " <<
+    SPECIFIC_RECEIVER << "\n"
+    "read files:\n\t" <<
+    RECEIVER_PUBLIC << ", " << SENDER_PRIVATE << "\n" <<
+    "OVERWRITE FILE:\n\t" <<
+    SENDER_PUBLIC << "\n";
+}
+
+void helpDecryption() {
+  cout << "syntax:\n\t" <<
+    DECRYPTING << RECEIVER << " " << SENDER << "\n"
+    "example:\n\t" <<
+    DECRYPTING << SPECIFIC_RECEIVER << " " <<
+    SPECIFIC_SENDER << "\n"
+    "read files:\n\t" <<
+    RECEIVER_PUBLIC << ", " << RECEIVER_PRIVATE << ", " <<
+    SENDER_PUBLIC << "\n";
+}
+
+void helpCryptanalysis() {
+  cout << "syntax:\n\t" <<
+    CRYPTANALYZING  << RECEIVER << " " << SENDER << "\n"
+    "example:\n\t" <<
+    CRYPTANALYZING << SPECIFIC_RECEIVER << " " <<
+    SPECIFIC_SENDER << "\n"
+    "read files:\n\t" <<
+    RECEIVER_PUBLIC << ", " << SENDER_PUBLIC << "\n";
+}
+
+void setArgV(ArgV &argV, int argc, const char *argv[]) {
+  argV.clear();
+  for (int i = 0; i < argc; i++) {
+    argV.push_back(argv[i]);
+  }
+}
 
 void verifyCryptosystemName(const CryptosystemName&
     cryptosystemName) {
@@ -232,65 +343,61 @@ void verifyInputStreamOpening(const ifstream &inputStream) {
 // testing:
 
 void testCryptosystems() {
-  std::cout << "function testCryptosystems\n";
-  std::vector<CryptosystemName>cryptosystemNames;
+  cout << "function testCryptosystems\n";
+  vector<CryptosystemName>cryptosystemNames;
   cryptosystemNames.push_back(DUMMY);
-  // cryptosystemNames.push_back(RSA);
+  cryptosystemNames.push_back(RSA);
   for (CryptosystemName cryptosystemName :
       cryptosystemNames) {
-    std::cout << "\n";
+    cout << "\n";
     Party party(cryptosystemName);
     if (party.test()) {
-      std::cout << "Test passed.\n";
+      cout << "Test passed.\n";
     } else {
-      std::cout << "Test failed.\n";
+      cout << "Test failed.\n";
     }
   }
-  std::cout << "\n";
+  cout << "\n";
 }
 
 void testActions() {
   cout << "testActions\n\n";
 
   Party party;
-  const int argc = 4;
-  const char *executable = "filler",
-    *sender = DEFAULT_SENDER.c_str(),
-    *receiver = DEFAULT_RECEIVER.c_str(),
-    *cryptosystem = "rsa";
+  string cryptosystem = RSA;
 
-  const char *argvG[argc] = {executable,
-    KEY_GENERATION.c_str(), receiver, cryptosystem};
-  party.doAction(argc, argvG);
+  ArgV argVG{EXECUTABLE, KEY_GENERATION, SPECIFIC_RECEIVER,
+    cryptosystem};
+  party.doAction(argVG);
   cout << "\n";
 
-  const char *argvE[argc] = {executable, ENCRYPTION.c_str(),
-    sender, receiver};
-  party.doAction(argc, argvE);
+  ArgV argVE{EXECUTABLE, ENCRYPTION, SPECIFIC_SENDER,
+    SPECIFIC_RECEIVER};
+  party.doAction(argVE);
   cout << "\n";
 
-  const char *argvD[argc] = {executable, DECRYPTION.c_str(),
-    receiver, sender};
-  party.doAction(argc, argvD);
+  ArgV argVD{EXECUTABLE, DECRYPTION, SPECIFIC_RECEIVER,
+    SPECIFIC_SENDER};
+  party.doAction(argVD);
   cout << "\n";
 
-  const char *argvC[argc] = {executable,
-    CRYPTANALYSIS.c_str(), receiver, sender};
-  party.doAction(argc, argvC);
+  ArgV argVC{EXECUTABLE, CRYPTANALYSIS, SPECIFIC_RECEIVER,
+    SPECIFIC_SENDER};
+  party.doAction(argVC);
 }
 
 void testInputOutput() {
   cout << "testInputOutput\n\n";
 
   Party party;
-  string receiverName(DEFAULT_RECEIVER);
+  string receiverName(SPECIFIC_RECEIVER);
   CryptosystemName cryptosystemName(RSA);
-  KeyElement n("172014975789562774694897382365563045699"),
-    e("65537"), d("7542263449887751984019792124906530513");
+  SizeT strength(TRIVIAL_STRENGTH);
+  KeyElement n("2481038023"), e("65537"), d("251442773");
   Key publicKey{n, e}, privateKey{n, d};
 
   party.writeReceiverFiles(receiverName, cryptosystemName,
-    publicKey, privateKey);
+    strength, publicKey, privateKey);
 
   party.readReceiverFiles(cryptosystemName, privateKey,
     receiverName);
@@ -301,17 +408,18 @@ void testInputOutput() {
     cout << "\t\t" << keyElement << "\n";
   }
 
-  party.readReceiverPublicFile(cryptosystemName, publicKey,
-    receiverName);
+  party.readReceiverPublicFile(cryptosystemName, strength,
+    publicKey, receiverName);
   cout << "readReceiverPublicFile read:\n\t"
     "cryptosystemName: " << cryptosystemName << "\n\t"
+    "strength: " << strength << "\n\t"
     "publicKey:\n";
   for (const KeyElement &keyElement : publicKey) {
     cout << "\t\t" << keyElement << "\n";
   }
 
   Text plainText;
-  string senderName(DEFAULT_SENDER);
+  string senderName(SPECIFIC_SENDER);
 
   party.readSenderPrivateFile(plainText, senderName);
   cout << "readSenderPrivateFile read:\n\t"

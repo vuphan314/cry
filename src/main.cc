@@ -5,19 +5,19 @@
 void breakRsa(
     SizeT strength = BREAKABLE_MIN_MODULUS_LENGTH,
     Text plainText = BREAKABLE_PLAIN_TEXT) {
-  std::cout << "function breakRsa\n";
+  cout << "function breakRsa\n";
   RsaTester rsaTester;
   rsaTester.testCryptosystem(strength, plainText);
-  std::cout << "\n";
+  cout << "\n";
 }
 
 ////////////////////////////////////////////////////////////
 
 int main(int argc, const char *argv[]) {
-  std::cout << "\n";
+  cout << "\n";
 
-  // Party party;
-  // party.doAction(argc, argv);
+  Party party;
+  party.doAction(argc, argv);
 
   // switch (argc) {
   //   case 1:
@@ -28,10 +28,12 @@ int main(int argc, const char *argv[]) {
   //     throw DefaultException("wrong argc");
   // }
 
-  testCryptosystems();
+  // testCryptosystems();
   // testActions();
   // testInputOutput();
 
   // testPaddingUnpadding();
   // testCharConversion();
+
+  cout << "\n";
 }

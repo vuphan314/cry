@@ -32,7 +32,7 @@ protected:
 // protected overloaded methods:
   void generateKeys();
     // set: modulus, publicExponent, privateExponent,
-    // publicFactor, secretFactor
+    //  publicFactor, secretFactor
 
   void encrypt();
     // set: paddedCipherText
@@ -45,14 +45,14 @@ protected:
   void cryptanalyze();
     // set: paddedPlainText
     // read: paddedCipherText, modulus, publicExponent,
-    // publicFactor
+    //  publicFactor
 
 public:
 // public overloaded methods:
   void generateKeys(
     Key &publicKey, Key &privateKey, // set these
     const SizeT &strength = TRIVIAL_STRENGTH);
-  // set minModulusLength
+    // set minModulusLength
 
   void encrypt(PaddedText &paddedCipherText, // set this
     const Text &plainText, const Key &publicKey,

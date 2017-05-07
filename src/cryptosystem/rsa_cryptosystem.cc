@@ -31,7 +31,7 @@ void RsaCryptosystem::recoverPrivateKeyElements() {
   mpf_sqrt(rootN, nFloat);
 
   Time startTime = getTime();
-  std::cout << "\tmethod RsaCryptosystem::"
+  cout << "\tmethod RsaCryptosystem::"
     "recoverPrivateKeyElements started\n";
   mpz_set_ui(p, 1);
   SizeT cc = 0; // current count
@@ -51,7 +51,7 @@ void RsaCryptosystem::recoverPrivateKeyElements() {
     }
   } while (!(mpz_divisible_p(n, p)));
   Duration totalDuration = getDuration(startTime);
-  std::cout << "\tmethod RsaCryptosystem::"
+  cout << "\tmethod RsaCryptosystem::"
     "recoverPrivateKeyElements ended in " <<
     totalDuration << "s\n";
 
@@ -115,21 +115,21 @@ void RsaCryptosystem::generateKeys() {
   //   This code block is just for testing purposes       //
   //******************************************************//
   if (verbosity) {
-    std::cout << "p: 0x" << std::hex << p << endl;
-    std::cout << "bit-count: " << std::dec <<
+    cout << "p: 0x" << std::hex << p << endl;
+    cout << "bit-count: " << std::dec <<
       mpz_sizeinbase(p, 2) << endl;
 
-    std::cout << "q: 0x" << std::hex << q << endl;
-    std::cout << "bit-count: " << std::dec <<
+    cout << "q: 0x" << std::hex << q << endl;
+    cout << "bit-count: " << std::dec <<
       mpz_sizeinbase(q, 2) << endl;
 
-    std::cout << "n: 0x" << std::hex << n << endl;
-    std::cout << "bit-count: " << std::dec <<
+    cout << "n: 0x" << std::hex << n << endl;
+    cout << "bit-count: " << std::dec <<
       mpz_sizeinbase(n, 2) << endl;
 
-    std::cout << "e: 0x" << std::hex << e << endl;
+    cout << "e: 0x" << std::hex << e << endl;
 
-    std::cout << "d: 0x" << d << endl <<
+    cout << "d: 0x" << d << endl <<
       std::dec; // decimal for the next cout
   }
 
@@ -168,7 +168,7 @@ void RsaCryptosystem::generateKeys(Key &publicKey,
   publicKey = {modulus, publicExponent};
   privateKey = {modulus, privateExponent};
 
-  std::cout << "\tmin modulus length: " <<
+  cout << "\tmin modulus length: " <<
     minModulusLength << "-bit\n\tmax plaintext length: " <<
     getMaxTextLength(strength) << "-char\n";
 }
@@ -177,7 +177,7 @@ void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
     const Text &plainText, const Key &publicKey,
     const SizeT &strength) {
   SizeT plainTextLength = plainText.size();
-  std::cout << "\tplaintext length: " << plainTextLength <<
+  cout << "\tplaintext length: " << plainTextLength <<
     "-char\n";
 
   long long excessiveLength = plainTextLength -

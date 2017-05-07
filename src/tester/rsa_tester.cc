@@ -9,39 +9,39 @@ RsaTester::RsaTester() {
 
 Bool RsaTester::testCryptosystem(const SizeT &strength,
     const Text &plainText) {
-  std::cout << "method RsaTester::testCryptosystem\n";
+  cout << "method RsaTester::testCryptosystem\n";
 
 // key-generation:
-  std::cout << "key-generation:\n";
+  cout << "key-generation:\n";
   Key publicKey, privateKey;
   cryptosystem->generateKeys(publicKey, privateKey,
     strength);
-  std::cout << "\tmodulus: " << publicKey.at(0) <<
+  cout << "\tmodulus: " << publicKey.at(0) <<
     "\n\tpublic exponent: " << publicKey.at(1) <<
     "\n\tprivate exponent: " << privateKey.at(1) << "\n";
 
 // plaintext:
-  std::cout << "plaintext: " << plainText << "\n";
+  cout << "plaintext: " << plainText << "\n";
 
 // encryption:
-  std::cout << "encryption:\n";
+  cout << "encryption:\n";
   PaddedText paddedCipherText;
   cryptosystem->encrypt(paddedCipherText, plainText,
     publicKey, strength);
-  std::cout << "\tpadded ciphertext: " <<
+  cout << "\tpadded ciphertext: " <<
     paddedCipherText << "\n";
 
 // decryption:
-  std::cout << "decryption:\n";
+  cout << "decryption:\n";
   Text t;
   cryptosystem->decrypt(t, paddedCipherText, privateKey);
-  std::cout << "\tplaintext: " << t << "\n";
+  cout << "\tplaintext: " << t << "\n";
 
 // cryptanalysis:
-  std::cout << "cryptanalysis:\n";
+  cout << "cryptanalysis:\n";
   cryptosystem->cryptanalyze(t, paddedCipherText,
     publicKey);
-  std::cout << "\tplaintext: " << t << "\n";
+  cout << "\tplaintext: " << t << "\n";
 
   return TRUE;
 }
