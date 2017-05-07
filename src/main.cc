@@ -34,4 +34,6 @@ int main(int argc, const char *argv[]) {
 
   // testPaddingUnpadding();
   // testCharConversion();
+
+  cout << "\n";
 }

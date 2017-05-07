@@ -35,14 +35,18 @@ void Party::doAction(int argc, const char *argv[]) {
   } else {
   string action = argV.at(1);
   if (action == KEY_GENERATION) {
-    string receiverName = argV.at(2);
-    CryptosystemName cryptosystemName = argV.at(3);
-    SizeT strength = TRIVIAL_STRENGTH;
-    if (argc == 5) {
-      strength = stoll(argV.at(4));
+    if (argc < 3) {
+      helpKeyGeneration();
+    } else {
+      string receiverName = argV.at(2);
+      CryptosystemName cryptosystemName = argV.at(3);
+      SizeT strength = TRIVIAL_STRENGTH;
+      if (argc == 5) {
+        strength = stoll(argV.at(4));
+      }
+      doKeyGeneration(receiverName, cryptosystemName,
+        strength);
     }
-    doKeyGeneration(receiverName, cryptosystemName,
-      strength);
   } else if (action == ENCRYPTION) {
     string senderName = argV.at(2), receiverName = argV.at(3);
     doEncryption(senderName, receiverName);
@@ -252,7 +256,15 @@ void helpActions() {
 }
 
 void helpKeyGeneration() {
-  cout << "enter:\n\t" << EXECUTABLE << " " << KEY_GENERATION << "<receiver> <cryptosystem>\n";
+  cout << "syntax:\n\t" <<
+    EXECUTABLE << " " << KEY_GENERATION <<
+    " <receiver> <cryptosystem> [<strength>]\n" <<
+    "examples:\n\t" <<
+    EXECUTABLE << " " << KEY_GENERATION << " " <<
+    DEFAULT_RECEIVER << " " << RSA << "\n\t" <<
+    EXECUTABLE << " " << KEY_GENERATION << " " <<
+    DEFAULT_RECEIVER << " " << DUMMY << " " <<
+    BREAKABLE_MIN_MODULUS_LENGTH << "\n";
 }
 
 void setArgV(ArgV &argV, int argc, const char *argv[]) {
