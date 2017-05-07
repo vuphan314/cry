@@ -14,14 +14,14 @@ function run_doAction {
 
   keyGeneration="$KEY_GENERATION $receiver $cryptosystem"
   encryption="$ENCRYPTION $sender $receiver"
-  # decryption="$DECRYPTION $receiver $sender"
-  decryption="$DECRYPTION $receiver"
-  cryptanalysis="$CRYPTANALYSIS $receiver $sender"
+  decryption="$DECRYPTION $receiver $sender"
+  # cryptanalysis="$CRYPTANALYSIS $receiver $sender"
+  cryptanalysis="$CRYPTANALYSIS $receiver"
 
   # $EXECUTABLE $keyGeneration
   # $EXECUTABLE $encryption
-  $EXECUTABLE $decryption
-  # $EXECUTABLE $cryptanalysis
+  # $EXECUTABLE $decryption
+  $EXECUTABLE $cryptanalysis
 }
 
 ############################################################

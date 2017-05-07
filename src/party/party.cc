@@ -64,8 +64,13 @@ void Party::doAction(int argc, const char *argv[]) {
       helpDecryption();
     }
   } else if (action == CRYPTANALYSIS) {
-    string receiverName = argV.at(2), senderName = argV.at(3);
-    doCryptanalysis(receiverName, senderName);
+    if (argc == 4) {
+      string receiverName = argV.at(2),
+        senderName = argV.at(3);
+      doCryptanalysis(receiverName, senderName);
+    } else {
+      helpCryptanalysis();
+    }
   } else {
     throw DefaultException("argV.at(1): wrong Cry action");
   }
@@ -292,6 +297,15 @@ void helpDecryption() {
     " <receiver> <sender>\n" <<
     "example:\n\t" <<
     EXECUTABLE << " " << DECRYPTION << " " <<
+    DEFAULT_RECEIVER << " " << DEFAULT_SENDER << "\n";
+}
+
+void helpCryptanalysis() {
+  cout << "syntax:\n\t" <<
+    EXECUTABLE << " " << CRYPTANALYSIS <<
+    " <receiver> <sender>\n" <<
+    "example:\n\t" <<
+    EXECUTABLE << " " << CRYPTANALYSIS << " " <<
     DEFAULT_RECEIVER << " " << DEFAULT_SENDER << "\n";
 }
 
