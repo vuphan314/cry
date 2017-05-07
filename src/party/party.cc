@@ -240,6 +240,13 @@ void Party::readSenderPublicFile(
 ////////////////////////////////////////////////////////////
 // global function:
 
+void setArgV(ArgV &argV, int argc, char *argv[]) {
+  argV.clear();
+  for (int i = 0; i < argc; i++) {
+    argV.push_back(argv[i]);
+  }
+}
+
 void verifyCryptosystemName(const CryptosystemName&
     cryptosystemName) {
   if (CRYPTOSYSTEM_NAMES.find(cryptosystemName) ==
