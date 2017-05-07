@@ -53,7 +53,8 @@ public:
   void doAction(int argc, const char *argv[]);
 
   void doKeyGeneration(const string &receiverName,
-    const CryptosystemName &cryptosystemName);
+    const CryptosystemName &cryptosystemName,
+    const SizeT &strength);
 
   void doEncryption(const string &senderName,
     const string &receiverName);
@@ -64,11 +65,12 @@ public:
   void doCryptanalysis(const string &receiverName,
     const string &senderName);
 
-// file input/output:
+// file IO:
   // key-generation 1/1:
   void writeReceiverFiles(const string &receiverName,
     const CryptosystemName &cryptosystemName,
-    const Key &publicKey, const Key &privateKey);
+    const SizeT &strength, const Key &publicKey,
+    const Key &privateKey);
 
   // decryption 1/2:
   void readReceiverFiles(
@@ -79,7 +81,7 @@ public:
   // encryption 1/3, cryptanalysis 1/2:
   void readReceiverPublicFile(
     CryptosystemName &cryptosystemName, // set this
-    Key &publicKey, // set this
+    SizeT &strength, Key &publicKey, // set these
     const string &receiverName);
 
   // encryption 2/3:
