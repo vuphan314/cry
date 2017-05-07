@@ -279,7 +279,7 @@ void helpKeyGeneration() {
     SPECIFIC_RECEIVER << " " << DUMMY << " " <<
     BREAKABLE_MIN_MODULUS_LENGTH << "\n"
     "OVERWRITE FILES:\n\t" <<
-    RECEICVER_PUBLIC << ", " << RECEICVER_PRIVATE << "\n";
+    RECEIVER_PUBLIC << ", " << RECEIVER_PRIVATE << "\n";
 }
 
 void helpEncryption() {
@@ -290,7 +290,7 @@ void helpEncryption() {
     EXECUTABLE << " " << ENCRYPTION << " " <<
     SPECIFIC_SENDER << " " << SPECIFIC_RECEIVER << "\n"
     "read files:\n\t" <<
-    RECEICVER_PUBLIC << ", " << SENDER_PRIVATE << "\n" <<
+    RECEIVER_PUBLIC << ", " << SENDER_PRIVATE << "\n" <<
     "OVERWRITE FILE:\n\t" <<
     SENDER_PUBLIC << "\n";
 }
@@ -303,7 +303,7 @@ void helpDecryption() {
     EXECUTABLE << " " << DECRYPTION << " " <<
     SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n"
     "read files:\n\t" <<
-    RECEICVER_PUBLIC << ", " << RECEICVER_PRIVATE << ", " <<
+    RECEIVER_PUBLIC << ", " << RECEIVER_PRIVATE << ", " <<
     SENDER_PUBLIC << "\n";
 }
 
@@ -315,7 +315,7 @@ void helpCryptanalysis() {
     EXECUTABLE << " " << CRYPTANALYSIS << " " <<
     SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n"
     "read files:\n\t" <<
-    RECEICVER_PUBLIC << ", " << SENDER_PUBLIC << "\n";
+    RECEIVER_PUBLIC << ", " << SENDER_PUBLIC << "\n";
 }
 
 void setArgV(ArgV &argV, int argc, const char *argv[]) {

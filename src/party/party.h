@@ -37,8 +37,8 @@ const string PRIVATE = ".private";
 
 const string SENDER_PUBLIC = DIR + SENDER + PUBLIC;
 const string SENDER_PRIVATE = DIR + SENDER + PRIVATE;
-const string RECEICVER_PUBLIC = DIR + RECEIVER + PUBLIC;
-const string RECEICVER_PRIVATE = DIR + RECEIVER + PRIVATE;
+const string RECEIVER_PUBLIC = DIR + RECEIVER + PUBLIC;
+const string RECEIVER_PRIVATE = DIR + RECEIVER + PRIVATE;
 
 const CryptosystemName DUMMY = "dummy";
 const CryptosystemName RSA = "rsa";
@@ -67,6 +67,7 @@ public:
   void doKeyGeneration(const string &receiverName,
     const CryptosystemName &cryptosystemName,
     const SizeT &strength);
+    // write
 
   void doEncryption(const string &senderName,
     const string &receiverName);
