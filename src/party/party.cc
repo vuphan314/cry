@@ -141,7 +141,8 @@ void Party::writeReceiverFiles(const string &receiverName,
     const SizeT &strength, const Key &publicKey,
     const Key &privateKey) {
   ofstream outputStream;
-  outputStream.open(receiverName + PUBLIC_EXTENSION);
+  outputStream.open(COMMUNICATION_DIR + receiverName +
+    PUBLIC_EXTENSION);
   outputStream << cryptosystemName << endl << strength <<
     endl;
   for (const KeyElement &keyElement : publicKey) {
@@ -149,27 +150,31 @@ void Party::writeReceiverFiles(const string &receiverName,
   }
   outputStream.close(); // needed for re-opening
 
-  outputStream.open(receiverName + PRIVATE_EXTENSION);
+  outputStream.open(COMMUNICATION_DIR + receiverName +
+    PRIVATE_EXTENSION);
   for (const KeyElement &keyElement : privateKey) {
     outputStream << keyElement << endl;
   }
 
-  cout << "writeReceiverFiles wrote files: ./" <<
-    receiverName << PUBLIC_EXTENSION << ", ./" <<
-    receiverName << PRIVATE_EXTENSION << "\n";
+  cout << "writeReceiverFiles wrote files: " <<
+    COMMUNICATION_DIR << receiverName << PUBLIC_EXTENSION <<
+    ", " << COMMUNICATION_DIR << receiverName <<
+    PRIVATE_EXTENSION << "\n";
 }
 
 void Party::readReceiverFiles(
     CryptosystemName &cryptosystemName, Key &privateKey,
     const string &receiverName) {
   ifstream inputStream;
-  inputStream.open(receiverName + PUBLIC_EXTENSION);
+  inputStream.open(COMMUNICATION_DIR + receiverName +
+    PUBLIC_EXTENSION);
   verifyInputStreamOpening(inputStream);
   getline(inputStream, cryptosystemName);
   verifyCryptosystemName(cryptosystemName);
   inputStream.close(); // needed for re-opening
 
-  inputStream.open(receiverName + PRIVATE_EXTENSION);
+  inputStream.open(COMMUNICATION_DIR + receiverName +
+    PRIVATE_EXTENSION);
   verifyInputStreamOpening(inputStream);
   privateKey.clear();
   string s;
@@ -182,7 +187,8 @@ void Party::readReceiverPublicFile(
     CryptosystemName &cryptosystemName, SizeT &strength,
     Key &publicKey, const string &receiverName) {
   ifstream inputStream;
-  inputStream.open(receiverName + PUBLIC_EXTENSION);
+  inputStream.open(COMMUNICATION_DIR + receiverName +
+    PUBLIC_EXTENSION);
   verifyInputStreamOpening(inputStream);
 
   getline(inputStream, cryptosystemName);
@@ -201,7 +207,8 @@ void Party::readReceiverPublicFile(
 void Party::readSenderPrivateFile(Text &plainText,
     const string &senderName) {
   ifstream inputStream;
-  inputStream.open(senderName + PRIVATE_EXTENSION);
+  inputStream.open(COMMUNICATION_DIR + senderName +
+    PRIVATE_EXTENSION);
   verifyInputStreamOpening(inputStream);
   getline(inputStream, plainText);
 }
@@ -209,18 +216,21 @@ void Party::readSenderPrivateFile(Text &plainText,
 void Party::writeSenderPublicFile(const string &senderName,
     const PaddedText &paddedCipherText) {
   ofstream outputStream;
-  outputStream.open(senderName + PUBLIC_EXTENSION);
+  outputStream.open(COMMUNICATION_DIR + senderName +
+    PUBLIC_EXTENSION);
   outputStream << paddedCipherText << endl;
 
-  cout << "writeSenderPublicFile wrote file: ./" <<
-    senderName << PUBLIC_EXTENSION << "\n";
+  cout << "writeSenderPublicFile wrote file: " <<
+    COMMUNICATION_DIR << senderName << PUBLIC_EXTENSION <<
+    "\n";
 }
 
 void Party::readSenderPublicFile(
     PaddedText &paddedCipherText,
     const string &senderName) {
   ifstream inputStream;
-  inputStream.open(senderName + PUBLIC_EXTENSION);
+  inputStream.open(COMMUNICATION_DIR + senderName +
+    PUBLIC_EXTENSION);
   verifyInputStreamOpening(inputStream);
   string s;
   getline(inputStream, s);
