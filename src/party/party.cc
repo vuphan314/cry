@@ -28,30 +28,33 @@ Bool Party::test() {
 // command-line argument parsing:
 
 void Party::doAction(int argc, const char *argv[]) {
-  if (argc > 5) {
-    throw DefaultException("too many args");
-  }
-  string action = argv[1];
+  ArgV argV;
+  setArgV(argV, argc, argv);
+  if (argc < 2) {
+    helpActions();
+  } else {
+  string action = argV.at(1);
   if (action == KEY_GENERATION) {
-    string receiverName = argv[2];
-    CryptosystemName cryptosystemName = argv[3];
+    string receiverName = argV.at(2);
+    CryptosystemName cryptosystemName = argV.at(3);
     SizeT strength = TRIVIAL_STRENGTH;
     if (argc == 5) {
-      strength =atoi(argv[4]);
+      strength = stoll(argV.at(4));
     }
     doKeyGeneration(receiverName, cryptosystemName,
       strength);
   } else if (action == ENCRYPTION) {
-    string senderName = argv[2], receiverName = argv[3];
+    string senderName = argV.at(2), receiverName = argV.at(3);
     doEncryption(senderName, receiverName);
   } else if (action == DECRYPTION) {
-    string receiverName = argv[2], senderName = argv[3];
+    string receiverName = argV.at(2), senderName = argV.at(3);
     doDecryption(receiverName, senderName);
   } else if (action == CRYPTANALYSIS) {
-    string receiverName = argv[2], senderName = argv[3];
+    string receiverName = argV.at(2), senderName = argV.at(3);
     doCryptanalysis(receiverName, senderName);
   } else {
-    throw DefaultException("argv[1]: wrong Cry action");
+    throw DefaultException("argV.at(1): wrong Cry action");
+  }
   }
 }
 
@@ -239,6 +242,18 @@ void Party::readSenderPublicFile(
 
 ////////////////////////////////////////////////////////////
 // global function:
+
+void helpActions() {
+  cout << "try one command:\n\t" <<
+    EXECUTABLE << " " << KEY_GENERATION << "\n\t" <<
+    EXECUTABLE << " " << ENCRYPTION << "\n\t" <<
+    EXECUTABLE << " " << DECRYPTION << "\n\t" <<
+    EXECUTABLE << " " << CRYPTANALYSIS << "\n";
+}
+
+void helpKeyGeneration() {
+  cout << "enter:\n\t" << EXECUTABLE << " " << KEY_GENERATION << "<receiver> <cryptosystem>\n";
+}
 
 void setArgV(ArgV &argV, int argc, const char *argv[]) {
   argV.clear();

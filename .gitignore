@@ -1,8 +1,8 @@
 # Cry ignores:
 
-*.pu
+*.public
 
-#*.pr
+#*.private
 receiver.pr
 
 src/cry

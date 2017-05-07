@@ -17,24 +17,26 @@ using ArgV = vector<string>;
 
 ////////////////////////////////////////////////////////////
 
-const CryptosystemName DUMMY = "dummy";
-const CryptosystemName RSA = "rsa";
-const unordered_set<CryptosystemName> CRYPTOSYSTEM_NAMES{
-  DUMMY, RSA};
+const string EXECUTABLE = "./cry";
 
-const string KEY_GENERATION = "g";
-const string ENCRYPTION = "e";
-const string DECRYPTION = "d";
-const string CRYPTANALYSIS = "c";
+const string KEY_GENERATION = "generatekeys";
+const string ENCRYPTION = "encrypt";
+const string DECRYPTION = "decrypt";
+const string CRYPTANALYSIS = "cryptanalyze";
 const unordered_set<string> ACTIONS{KEY_GENERATION,
   ENCRYPTION, DECRYPTION, CRYPTANALYSIS};
 
 const string COMMUNICATION_DIR = "./";
-const string PUBLIC_EXTENSION = ".pu";
-const string PRIVATE_EXTENSION = ".pr";
+const string PUBLIC_EXTENSION = ".public";
+const string PRIVATE_EXTENSION = ".private";
 
 const string DEFAULT_SENDER = "sender";
 const string DEFAULT_RECEIVER = "receiver";
+
+const CryptosystemName DUMMY = "dummy";
+const CryptosystemName RSA = "rsa";
+const unordered_set<CryptosystemName> CRYPTOSYSTEM_NAMES{
+  DUMMY, RSA};
 
 ////////////////////////////////////////////////////////////
 
@@ -103,6 +105,10 @@ public:
 
 ////////////////////////////////////////////////////////////
 // global function:
+
+void helpActions();
+
+void helpKeyGeneration();
 
 void setArgV(ArgV &argV, int argc, const char *argv[]);
 
