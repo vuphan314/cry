@@ -158,8 +158,8 @@ void Party::writeReceiverFiles(const string &receiverName,
     const SizeT &strength, const Key &publicKey,
     const Key &privateKey) {
   ofstream outputStream;
-  outputStream.open(COMMUNICATION_DIR + receiverName +
-    PUBLIC_EXTENSION);
+  outputStream.open(DIR + receiverName +
+    PUBLIC);
   outputStream << cryptosystemName << endl << strength <<
     endl;
   for (const KeyElement &keyElement : publicKey) {
@@ -167,31 +167,31 @@ void Party::writeReceiverFiles(const string &receiverName,
   }
   outputStream.close(); // needed for re-opening
 
-  outputStream.open(COMMUNICATION_DIR + receiverName +
-    PRIVATE_EXTENSION);
+  outputStream.open(DIR + receiverName +
+    PRIVATE);
   for (const KeyElement &keyElement : privateKey) {
     outputStream << keyElement << endl;
   }
 
   cout << "writeReceiverFiles wrote files: " <<
-    COMMUNICATION_DIR << receiverName << PUBLIC_EXTENSION <<
-    ", " << COMMUNICATION_DIR << receiverName <<
-    PRIVATE_EXTENSION << "\n";
+    DIR << receiverName << PUBLIC <<
+    ", " << DIR << receiverName <<
+    PRIVATE << "\n";
 }
 
 void Party::readReceiverFiles(
     CryptosystemName &cryptosystemName, Key &privateKey,
     const string &receiverName) {
   ifstream inputStream;
-  inputStream.open(COMMUNICATION_DIR + receiverName +
-    PUBLIC_EXTENSION);
+  inputStream.open(DIR + receiverName +
+    PUBLIC);
   verifyInputStreamOpening(inputStream);
   getline(inputStream, cryptosystemName);
   verifyCryptosystemName(cryptosystemName);
   inputStream.close(); // needed for re-opening
 
-  inputStream.open(COMMUNICATION_DIR + receiverName +
-    PRIVATE_EXTENSION);
+  inputStream.open(DIR + receiverName +
+    PRIVATE);
   verifyInputStreamOpening(inputStream);
   privateKey.clear();
   string s;
@@ -204,8 +204,8 @@ void Party::readReceiverPublicFile(
     CryptosystemName &cryptosystemName, SizeT &strength,
     Key &publicKey, const string &receiverName) {
   ifstream inputStream;
-  inputStream.open(COMMUNICATION_DIR + receiverName +
-    PUBLIC_EXTENSION);
+  inputStream.open(DIR + receiverName +
+    PUBLIC);
   verifyInputStreamOpening(inputStream);
 
   getline(inputStream, cryptosystemName);
@@ -224,8 +224,8 @@ void Party::readReceiverPublicFile(
 void Party::readSenderPrivateFile(Text &plainText,
     const string &senderName) {
   ifstream inputStream;
-  inputStream.open(COMMUNICATION_DIR + senderName +
-    PRIVATE_EXTENSION);
+  inputStream.open(DIR + senderName +
+    PRIVATE);
   verifyInputStreamOpening(inputStream);
   getline(inputStream, plainText);
 }
@@ -233,12 +233,12 @@ void Party::readSenderPrivateFile(Text &plainText,
 void Party::writeSenderPublicFile(const string &senderName,
     const PaddedText &paddedCipherText) {
   ofstream outputStream;
-  outputStream.open(COMMUNICATION_DIR + senderName +
-    PUBLIC_EXTENSION);
+  outputStream.open(DIR + senderName +
+    PUBLIC);
   outputStream << paddedCipherText << endl;
 
   cout << "writeSenderPublicFile wrote file: " <<
-    COMMUNICATION_DIR << senderName << PUBLIC_EXTENSION <<
+    DIR << senderName << PUBLIC <<
     "\n";
 }
 
@@ -246,8 +246,8 @@ void Party::readSenderPublicFile(
     PaddedText &paddedCipherText,
     const string &senderName) {
   ifstream inputStream;
-  inputStream.open(COMMUNICATION_DIR + senderName +
-    PUBLIC_EXTENSION);
+  inputStream.open(DIR + senderName +
+    PUBLIC);
   verifyInputStreamOpening(inputStream);
   string s;
   getline(inputStream, s);
@@ -274,13 +274,12 @@ void helpKeyGeneration() {
     " <receiver> <cryptosystem> [<strength>]\n"
     "examples:\n\t" <<
     EXECUTABLE << " " << KEY_GENERATION << " " <<
-    DEFAULT_RECEIVER << " " << RSA << "\n\t" <<
+    SPECIFIC_RECEIVER << " " << RSA << "\n\t" <<
     EXECUTABLE << " " << KEY_GENERATION << " " <<
-    DEFAULT_RECEIVER << " " << DUMMY << " " <<
+    SPECIFIC_RECEIVER << " " << DUMMY << " " <<
     BREAKABLE_MIN_MODULUS_LENGTH << "\n"
-    "WARNING:\n\t"
-    "WILL OVERWRITE FILES: "
-    "./<receiver>.public, ./<receiver.private>\n";
+    "OVERWRITE FILES:\n\t" <<
+    RECEICVER_PUBLIC << ", " << RECEICVER_PRIVATE << "\n";
 }
 
 void helpEncryption() {
@@ -289,9 +288,11 @@ void helpEncryption() {
     " <sender> <receiver>\n" <<
     "example:\n\t" <<
     EXECUTABLE << " " << ENCRYPTION << " " <<
-    DEFAULT_SENDER << " " << DEFAULT_RECEIVER << "\n"
-    "WARNING:\n\t"
-    "WILL OVERWRITE FILE: ./<sender>.public\n";
+    SPECIFIC_SENDER << " " << SPECIFIC_RECEIVER << "\n"
+    "read files:\n\t"
+    "./<receiver>.public, ./<sender.private>\n"
+    "OVERWRITE FILE:\n\t"
+    "./<sender>.public\n";
 }
 
 void helpDecryption() {
@@ -300,7 +301,7 @@ void helpDecryption() {
     " <receiver> <sender>\n" <<
     "example:\n\t" <<
     EXECUTABLE << " " << DECRYPTION << " " <<
-    DEFAULT_RECEIVER << " " << DEFAULT_SENDER << "\n";
+    SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n";
 }
 
 void helpCryptanalysis() {
@@ -309,7 +310,7 @@ void helpCryptanalysis() {
     " <receiver> <sender>\n" <<
     "example:\n\t" <<
     EXECUTABLE << " " << CRYPTANALYSIS << " " <<
-    DEFAULT_RECEIVER << " " << DEFAULT_SENDER << "\n";
+    SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n";
 }
 
 void setArgV(ArgV &argV, int argc, const char *argv[]) {
@@ -359,8 +360,8 @@ void testActions() {
   Party party;
   const int argc = 4;
   const char *executable = "filler",
-    *sender = DEFAULT_SENDER.c_str(),
-    *receiver = DEFAULT_RECEIVER.c_str(),
+    *sender = SPECIFIC_SENDER.c_str(),
+    *receiver = SPECIFIC_RECEIVER.c_str(),
     *cryptosystem = "rsa";
 
   const char *argvG[argc] = {executable,
@@ -387,7 +388,7 @@ void testInputOutput() {
   cout << "testInputOutput\n\n";
 
   Party party;
-  string receiverName(DEFAULT_RECEIVER);
+  string receiverName(SPECIFIC_RECEIVER);
   CryptosystemName cryptosystemName(RSA);
   SizeT strength(TRIVIAL_STRENGTH);
   KeyElement n("2481038023"), e("65537"), d("251442773");
@@ -416,7 +417,7 @@ void testInputOutput() {
   }
 
   Text plainText;
-  string senderName(DEFAULT_SENDER);
+  string senderName(SPECIFIC_SENDER);
 
   party.readSenderPrivateFile(plainText, senderName);
   cout << "readSenderPrivateFile read:\n\t"

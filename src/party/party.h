@@ -26,12 +26,19 @@ const string CRYPTANALYSIS = "c";
 const unordered_set<string> ACTIONS{KEY_GENERATION,
   ENCRYPTION, DECRYPTION, CRYPTANALYSIS};
 
-const string COMMUNICATION_DIR = "./";
-const string PUBLIC_EXTENSION = ".public";
-const string PRIVATE_EXTENSION = ".private";
+const string SPECIFIC_SENDER = "sender";
+const string SPECIFIC_RECEIVER = "receiver";
+const string SENDER = "<" + SPECIFIC_SENDER + ">";
+const string RECEIVER = "<" + SPECIFIC_RECEIVER + ">";
 
-const string DEFAULT_SENDER = "sender";
-const string DEFAULT_RECEIVER = "receiver";
+const string DIR = "./";
+const string PUBLIC = ".public";
+const string PRIVATE = ".private";
+
+const string SENDER_PUBLIC = DIR + SENDER + PUBLIC;
+const string SENDER_PRIVATE = DIR + SENDER + PRIVATE;
+const string RECEICVER_PUBLIC = DIR + RECEIVER + PUBLIC;
+const string RECEICVER_PRIVATE = DIR + RECEIVER + PRIVATE;
 
 const CryptosystemName DUMMY = "dummy";
 const CryptosystemName RSA = "rsa";
