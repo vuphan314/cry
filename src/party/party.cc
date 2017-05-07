@@ -308,8 +308,8 @@ void helpCryptanalysis() {
   cout << "syntax:\n\t" <<
     CRYPTANALYZING  << RECEIVER << " " << SENDER << "\n"
     "example:\n\t" <<
-    CRYPTANALYZING <<
-    SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n"
+    CRYPTANALYZING << SPECIFIC_RECEIVER << " " <<
+    SPECIFIC_SENDER << "\n"
     "read files:\n\t" <<
     RECEIVER_PUBLIC << ", " << SENDER_PUBLIC << "\n";
 }
