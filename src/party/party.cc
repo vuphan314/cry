@@ -289,10 +289,10 @@ void helpEncryption() {
     "example:\n\t" <<
     EXECUTABLE << " " << ENCRYPTION << " " <<
     SPECIFIC_SENDER << " " << SPECIFIC_RECEIVER << "\n"
-    "read files:\n\t"
-    "./<receiver>.public, ./<sender.private>\n"
-    "OVERWRITE FILE:\n\t"
-    "./<sender>.public\n";
+    "read files:\n\t" <<
+    RECEICVER_PUBLIC << ", " << SENDER_PRIVATE << "\n" <<
+    "OVERWRITE FILE:\n\t" <<
+    SENDER_PUBLIC << "\n";
 }
 
 void helpDecryption() {
