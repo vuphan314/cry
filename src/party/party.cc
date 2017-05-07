@@ -272,21 +272,21 @@ void helpKeyGeneration() {
   cout << "syntax:\n\t" <<
     KEY_GENERATING << RECEIVER <<
     " <cryptosystem> [<strength>]\n"
-    "examples:\n\t" << KEY_GENERATING <<
-    SPECIFIC_RECEIVER << " " << RSA << "\n\t" <<
-    KEY_GENERATING <<
-    SPECIFIC_RECEIVER << " " << DUMMY << " " <<
-    BREAKABLE_MIN_MODULUS_LENGTH << "\n"
+    "examples:\n\t" <<
+    KEY_GENERATING << SPECIFIC_RECEIVER << " " << RSA <<
+    "\n\t" <<
+    KEY_GENERATING << SPECIFIC_RECEIVER << " " << DUMMY <<
+    " " << BREAKABLE_MIN_MODULUS_LENGTH << "\n"
     "OVERWRITE FILES:\n\t" <<
     RECEIVER_PUBLIC << ", " << RECEIVER_PRIVATE << "\n";
 }
 
 void helpEncryption() {
   cout << "syntax:\n\t" <<
-    ENCRYPTING << SENDER << " " << RECEIVER << "\n" <<
+    ENCRYPTING << SENDER << " " << RECEIVER << "\n"
     "example:\n\t" <<
-    ENCRYPTING <<
-    SPECIFIC_SENDER << " " << SPECIFIC_RECEIVER << "\n"
+    ENCRYPTING << SPECIFIC_SENDER << " " <<
+    SPECIFIC_RECEIVER << "\n"
     "read files:\n\t" <<
     RECEIVER_PUBLIC << ", " << SENDER_PRIVATE << "\n" <<
     "OVERWRITE FILE:\n\t" <<
