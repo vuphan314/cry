@@ -28,52 +28,47 @@ Bool Party::test() {
 // command-line argument parsing:
 
 void Party::doAction(int argc, const char *argv[]) {
+  if (argc < 2 || argc > 5) {
+    helpActions(); return;
+  }
   ArgV argV;
   setArgV(argV, argc, argv);
-  if (argc < 2 || argc > 5) {
-    helpActions();
-  } else {
   string action = argV.at(1);
   if (action == KEY_GENERATION) {
-    if (argc < 3) {
-      helpKeyGeneration();
-    } else {
-      string receiverName = argV.at(2);
-      CryptosystemName cryptosystemName = argV.at(3);
-      SizeT strength = TRIVIAL_STRENGTH;
-      if (argc == 5) {
-        strength = stoll(argV.at(4));
-      }
-      doKeyGeneration(receiverName, cryptosystemName,
-        strength);
+    if (argc < 4) {
+      helpKeyGeneration(); return;
     }
+    string receiverName = argV.at(2);
+    CryptosystemName cryptosystemName = argV.at(3);
+    SizeT strength = TRIVIAL_STRENGTH;
+    if (argc == 5) {
+      strength = stoll(argV.at(4));
+    }
+    doKeyGeneration(receiverName, cryptosystemName,
+      strength);
   } else if (action == ENCRYPTION) {
-    if (argc == 4) {
-      string senderName = argV.at(2),
-        receiverName = argV.at(3);
-      doEncryption(senderName, receiverName);
-    } else {
-      helpEncryption();
+    if (argc != 4) {
+      helpEncryption(); return;
     }
+    string senderName = argV.at(2),
+      receiverName = argV.at(3);
+    doEncryption(senderName, receiverName);
   } else if (action == DECRYPTION) {
-    if (argc == 4) {
-      string receiverName = argV.at(2),
-        senderName = argV.at(3);
-      doDecryption(receiverName, senderName);
-    } else {
-      helpDecryption();
+    if (argc != 4) {
+      helpDecryption(); return;
     }
+    string receiverName = argV.at(2),
+      senderName = argV.at(3);
+    doDecryption(receiverName, senderName);
   } else if (action == CRYPTANALYSIS) {
-    if (argc == 4) {
-      string receiverName = argV.at(2),
-        senderName = argV.at(3);
-      doCryptanalysis(receiverName, senderName);
-    } else {
-      helpCryptanalysis();
+    if (argc != 4) {
+      helpCryptanalysis(); return;
     }
+    string receiverName = argV.at(2),
+      senderName = argV.at(3);
+    doCryptanalysis(receiverName, senderName);
   } else {
     throw DefaultException("argV.at(1): wrong Cry action");
-  }
   }
 }
 
