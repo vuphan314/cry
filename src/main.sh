@@ -13,8 +13,8 @@ SPECIFIC_RECEIVER="receive"
 function run_doAction {
   $KEY_GENERATING $SPECIFIC_RECEIVER $1 $2 $3
   $ENCRYPTING $SPECIFIC_SENDER $SPECIFIC_RECEIVER
-  $DECRYPTING $SPECIFIC_RECEIVER $SPECIFIC_SENDER
-  $CRYPTANALYZING $SPECIFIC_RECEIVER $SPECIFIC_SENDER
+  # $DECRYPTING $SPECIFIC_RECEIVER $SPECIFIC_SENDER
+  # $CRYPTANALYZING $SPECIFIC_RECEIVER $SPECIFIC_SENDER
 }
 
 ############################################################
@@ -43,6 +43,6 @@ function run_breakRsa {
 make subsystem
 make
 
-$EXECUTABLE $1 $2 $3 $4 $5
-# run_doAction $1 $2 $3
+# $EXECUTABLE $1 $2 $3 $4 $5
+run_doAction $1 $2 $3
 # run_breakRsa $1 $2 $3
