@@ -295,11 +295,10 @@ void helpEncryption() {
 
 void helpDecryption() {
   cout << "syntax:\n\t" <<
-    DECRYPTING <<
-    RECEIVER << " " << SENDER << "\n" <<
+    DECRYPTING << RECEIVER << " " << SENDER << "\n"
     "example:\n\t" <<
-    DECRYPTING <<
-    SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n"
+    DECRYPTING << SPECIFIC_RECEIVER << " " <<
+    SPECIFIC_SENDER << "\n"
     "read files:\n\t" <<
     RECEIVER_PUBLIC << ", " << RECEIVER_PRIVATE << ", " <<
     SENDER_PUBLIC << "\n";
