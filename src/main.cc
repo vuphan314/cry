@@ -16,7 +16,7 @@ void breakRsa(
 int main(int argc, const char *argv[]) {
   cout << "\n";
 
-  Party party; party.doAction(argc, argv);
+  // Party party; party.doAction(argc, argv);
 
   // switch (argc) {
   //   case 1:
@@ -28,7 +28,7 @@ int main(int argc, const char *argv[]) {
   // }
 
   // testCryptosystems();
-  // testActions();
+  testActions();
   // testInputOutput();
 
   // testPaddingUnpadding();

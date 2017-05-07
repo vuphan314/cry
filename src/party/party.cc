@@ -28,40 +28,45 @@ Bool Party::test() {
 // command-line argument parsing:
 
 void Party::doAction(int argc, const char *argv[]) {
-  if (argc < 2 || argc > 5) {
-    helpActions(); return;
-  }
   ArgV argV;
   setArgV(argV, argc, argv);
+  doAction(argV);
+}
+
+void Party::doAction(const ArgV &argV) {
+  SizeT argC = argV.size();
+  if (argC < 2 || argC > 5) {
+    helpActions(); return;
+  }
   string action = argV.at(1);
   if (action == KEY_GENERATION) {
-    if (argc < 4) {
+    if (argC < 4) {
       helpKeyGeneration(); return;
     }
     string receiverName = argV.at(2);
     CryptosystemName cryptosystemName = argV.at(3);
     SizeT strength = TRIVIAL_STRENGTH;
-    if (argc == 5) {
+    if (argC == 5) {
       strength = stoll(argV.at(4));
     }
     doKeyGeneration(receiverName, cryptosystemName,
       strength);
   } else if (action == ENCRYPTION) {
-    if (argc != 4) {
+    if (argC != 4) {
       helpEncryption(); return;
     }
     string senderName = argV.at(2),
       receiverName = argV.at(3);
     doEncryption(senderName, receiverName);
   } else if (action == DECRYPTION) {
-    if (argc != 4) {
+    if (argC != 4) {
       helpDecryption(); return;
     }
     string receiverName = argV.at(2),
       senderName = argV.at(3);
     doDecryption(receiverName, senderName);
   } else if (action == CRYPTANALYSIS) {
-    if (argc != 4) {
+    if (argC != 4) {
       helpCryptanalysis(); return;
     }
     string receiverName = argV.at(2),
@@ -359,30 +364,26 @@ void testActions() {
   cout << "testActions\n\n";
 
   Party party;
-  const int argc = 4;
-  const char *executable = "filler",
-    *sender = SPECIFIC_SENDER.c_str(),
-    *receiver = SPECIFIC_RECEIVER.c_str(),
-    *cryptosystem = "rsa";
+  string cryptosystem = "rsa";
 
-  const char *argvG[argc] = {executable,
-    KEY_GENERATION.c_str(), receiver, cryptosystem};
-  party.doAction(argc, argvG);
+  ArgV argVG{EXECUTABLE, KEY_GENERATION, SPECIFIC_RECEIVER,
+    cryptosystem};
+  party.doAction(argVG);
   cout << "\n";
 
-  const char *argvE[argc] = {executable, ENCRYPTION.c_str(),
-    sender, receiver};
-  party.doAction(argc, argvE);
+  ArgV argVE{EXECUTABLE, ENCRYPTION, SPECIFIC_SENDER,
+    SPECIFIC_RECEIVER};
+  party.doAction(argVE);
   cout << "\n";
 
-  const char *argvD[argc] = {executable, DECRYPTION.c_str(),
-    receiver, sender};
-  party.doAction(argc, argvD);
+  ArgV argVD{EXECUTABLE, DECRYPTION, SPECIFIC_RECEIVER,
+    SPECIFIC_SENDER};
+  party.doAction(argVD);
   cout << "\n";
 
-  const char *argvC[argc] = {executable,
-    CRYPTANALYSIS.c_str(), receiver, sender};
-  party.doAction(argc, argvC);
+  ArgV argVC{EXECUTABLE, CRYPTANALYSIS, SPECIFIC_RECEIVER,
+    SPECIFIC_SENDER};
+  party.doAction(argVC);
 }
 
 void testInputOutput() {

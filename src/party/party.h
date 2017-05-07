@@ -71,6 +71,8 @@ public:
 // command-line argument parsing:
   void doAction(int argc, const char *argv[]);
 
+  void doAction(const ArgV &argv);
+
   void doKeyGeneration(const string &receiverName,
     const CryptosystemName &cryptosystemName,
     const SizeT &strength);
