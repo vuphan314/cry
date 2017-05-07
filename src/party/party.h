@@ -34,8 +34,8 @@ const string CRYPTANALYZING = EXECUTABLE + CRYPTANALYSIS +
 
 const string SPECIFIC_SENDER = "sender";
 const string SPECIFIC_RECEIVER = "receiver";
-const string SENDER = "<" + SPECIFIC_SENDER + "> ";
-const string RECEIVER = "<" + SPECIFIC_RECEIVER + "> ";
+const string SENDER = "<" + SPECIFIC_SENDER + ">";
+const string RECEIVER = "<" + SPECIFIC_RECEIVER + ">";
 
 const string DIR = "./";
 const string PUBLIC = ".public";
