@@ -30,7 +30,7 @@ Bool Party::test() {
 void Party::doAction(int argc, const char *argv[]) {
   ArgV argV;
   setArgV(argV, argc, argv);
-  if (argc < 2) {
+  if (argc < 2 || argc > 5) {
     helpActions();
   } else {
   string action = argV.at(1);
@@ -48,8 +48,13 @@ void Party::doAction(int argc, const char *argv[]) {
         strength);
     }
   } else if (action == ENCRYPTION) {
-    string senderName = argV.at(2), receiverName = argV.at(3);
-    doEncryption(senderName, receiverName);
+    if (argc == 4) {
+      string senderName = argV.at(2),
+        receiverName = argV.at(3);
+      doEncryption(senderName, receiverName);
+    } else {
+      helpEncryption();
+    }
   } else if (action == DECRYPTION) {
     string receiverName = argV.at(2), senderName = argV.at(3);
     doDecryption(receiverName, senderName);
@@ -265,6 +270,15 @@ void helpKeyGeneration() {
     EXECUTABLE << " " << KEY_GENERATION << " " <<
     DEFAULT_RECEIVER << " " << DUMMY << " " <<
     BREAKABLE_MIN_MODULUS_LENGTH << "\n";
+}
+
+void helpEncryption() {
+  cout << "syntax:\n\t" <<
+    EXECUTABLE << " " << ENCRYPTION <<
+    " <sender> <receiver>\n" <<
+    "example:\n\t" <<
+    EXECUTABLE << " " << ENCRYPTION << " " <<
+    DEFAULT_SENDER << " " << DEFAULT_RECEIVER << "\n";
 }
 
 void setArgV(ArgV &argV, int argc, const char *argv[]) {
