@@ -301,7 +301,10 @@ void helpDecryption() {
     " <receiver> <sender>\n" <<
     "example:\n\t" <<
     EXECUTABLE << " " << DECRYPTION << " " <<
-    SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n";
+    SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n"
+    "read files:\n\t" <<
+    RECEICVER_PUBLIC << ", " << RECEICVER_PRIVATE << ", " <<
+    SENDER_PUBLIC << "\n";
 }
 
 void helpCryptanalysis() {
@@ -310,7 +313,9 @@ void helpCryptanalysis() {
     " <receiver> <sender>\n" <<
     "example:\n\t" <<
     EXECUTABLE << " " << CRYPTANALYSIS << " " <<
-    SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n";
+    SPECIFIC_RECEIVER << " " << SPECIFIC_SENDER << "\n"
+    "read files:\n\t" <<
+    RECEICVER_PUBLIC << ", " << SENDER_PUBLIC << "\n";
 }
 
 void setArgV(ArgV &argV, int argc, const char *argv[]) {
