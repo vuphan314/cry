@@ -1,26 +1,20 @@
 EXECUTABLE="./cry"
 
-KEY_GENERATION="g"
-ENCRYPTION="e"
-DECRYPTION="d"
-CRYPTANALYSIS="c"
+KEY_GENERATING="$EXECUTABLE g"
+ENCRYPTING="$EXECUTABLE e"
+DECRYPTING="$EXECUTABLE d"
+CRYPTANALYZING="$EXECUTABLE c"
+
+SPECIFIC_SENDER="send"
+SPECIFIC_RECEIVER="receive"
 
 ############################################################
 
 function run_doAction {
-  sender=sender
-  receiver=receiver
-  cryptosystem=rsa
-
-  keyGeneration="$KEY_GENERATION $receiver $cryptosystem"
-  encryption="$ENCRYPTION $sender $receiver"
-  decryption="$DECRYPTION $receiver $sender"
-  cryptanalysis="$CRYPTANALYSIS $receiver $sender"
-
-  $EXECUTABLE $keyGeneration
-  $EXECUTABLE $encryption
-  $EXECUTABLE $decryption
-  $EXECUTABLE $cryptanalysis
+  $KEY_GENERATING $SPECIFIC_RECEIVER $1 $2 $3
+  $ENCRYPTING $SPECIFIC_SENDER $SPECIFIC_RECEIVER
+  $DECRYPTING $SPECIFIC_RECEIVER $SPECIFIC_SENDER
+  $CRYPTANALYZING $SPECIFIC_RECEIVER $SPECIFIC_SENDER
 }
 
 ############################################################
@@ -49,6 +43,6 @@ function run_breakRsa {
 make subsystem
 make
 
-$EXECUTABLE $1 $2 $3 $4 $5
-# run_doAction
+# $EXECUTABLE $1 $2 $3 $4 $5
+run_doAction $1 $2 $3
 # run_breakRsa $1 $2 $3
