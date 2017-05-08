@@ -286,19 +286,22 @@ void Party::readSenderPublicFile(
 // global function:
 
 void helpActions() {
-  cout << "key-generation:\n\t" <<
+  cout << "test:\n\t" <<
+    TESTING << "\n"
+    "key-generation:\n\t" <<
     KEY_GENERATING << "\n"
     "encryption:\n\t" <<
     ENCRYPTING << "\n"
     "decryption:\n\t" <<
     DECRYPTING << "\n"
-    "cryptanalyze:\n\t" <<
+    "cryptanalysis:\n\t" <<
     CRYPTANALYZING << "\n";
 }
 
 void helpTesting() {
   cout << "syntax:\n\t" <<
-    TESTING << "<plaintext> <cryptosystem> [<strength>]\n"
+    TESTING << "<spaceless-plaintext>"
+    " <cryptosystem> [<strength>]\n"
     "examples:\n\t" <<
     TESTING << TRIVIAL_PLAIN_TEXT << " " << RSA << "\n\t" <<
     TESTING << BREAKABLE_PLAIN_TEXT << " " << DUMMY <<

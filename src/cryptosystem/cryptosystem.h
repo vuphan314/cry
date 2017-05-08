@@ -38,7 +38,7 @@ const SizeT DEFAULT_RANDOM_SEED = 672087;
 const SizeT TRIVIAL_STRENGTH = 32; // 0s-break
 const Text TRIVIAL_PLAIN_TEXT = "four";
 
-const SizeT BREAKABLE_STRENGTH = 46; // 8s-break
+const SizeT BREAKABLE_STRENGTH = 44; // 2s-break
 const Text BREAKABLE_PLAIN_TEXT = "five!";
 
 const SizeT SAFE_LENGTH = 2048;

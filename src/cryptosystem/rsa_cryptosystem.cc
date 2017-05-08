@@ -182,8 +182,8 @@ void RsaCryptosystem::encrypt(PaddedText &paddedCipherText,
   long long excessiveLength = plainTextLength -
     getMaxTextLength(strength);
   if (excessiveLength > 0) {
-    throw DefaultException(to_string(excessiveLength) +
-      " char(s) too long");
+    throw DefaultException("plaintext: " +
+      to_string(excessiveLength) + " char(s) too long");
   }
 
   setPublicKeyElements(publicKey);
