@@ -3,10 +3,10 @@
 \begin{tikzpicture}
 
 \begin{umlsystem}[x=10, fill=red!10]{Cry}
-\umlusecase{Generate Keys}
-\umlusecase[y=-2]{Encrypt}
-\umlusecase[y=-4]{Decrypt}
-\umlusecase[y=-6]{Cryptanalysis}
+\umlusecase{key-generation}
+\umlusecase[y=-2]{encryption}
+\umlusecase[y=-4]{decryption}
+\umlusecase[y=-6]{cryptanalysis}
 \end{umlsystem}
 
 \umlactor[x=1, y=-2]{Party}

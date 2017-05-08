@@ -3,7 +3,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{tikzpicture}
-\umltypedef{Key}{mpz\_t}{}
+\umltypedef{Key}{\angles{mpz\_t}}{}
 \umltypedef[right=0.7in of Key]{Text}{string}{}
 \umlabstract[below=0.35in of Text]{Cryptosystem}{}
   {\umlvirt{+ generateKeys(publicKey: Key, privateKey: Key):
