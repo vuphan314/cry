@@ -2,8 +2,6 @@ vu@Vu-PC:~/repos/cry/project5/demo$ ./cry c bob alice
 
 doCryptanalysis started
 	RsaCryptosystem::recoverPrivateKeyElements started
-                  27.5667%                   0.0007h left
-                  58.4635%                   0.0004h left
-	RsaCryptosystem::recoverPrivateKeyElements ended in 3.0000s
-	plaintext: 1line
+	RsaCryptosystem::recoverPrivateKeyElements ended in 0s
+	plaintext: babe
 doCryptanalysis ended
