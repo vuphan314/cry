@@ -9,29 +9,33 @@ Dependencies
 
 Compilation
 \begin{itemize}
-  \item make -C cry/src
+\item \code{make -C cry/src}
 \end{itemize}
 
 Use
 \begin{itemize}
-  \item Key Generation
+\item Help
   \begin{itemize}
-    \item ./cry.out g receiverName cryptosystemName
+  \item \code{./cry}
+\end{itemize}
+\item Testing
+  \begin{itemize}
+  \item \code{./cry t <spaceless-plaintext> <\cs>}
   \end{itemize}
-  \item Encryption
+\item Key-Generation
   \begin{itemize}
-    \item ./cry.out e senderName receiverName
+  \item \code{./cry g <receiver> <\cs>}
   \end{itemize}
-  \item Decryption
+\item Encryption
   \begin{itemize}
-    \item ./cry.out d receiverName senderName
+  \item \code{./cry e <sender> <receiver>}
   \end{itemize}
-  \item Cryptanalysis
+\item Decryption
   \begin{itemize}
-    \item ./cry.out c receiverName senderName
+  \item \code{./cry d <receiver> <sender>}
   \end{itemize}
-  \item General Use
+\item Cryptanalysis
   \begin{itemize}
-    \item ./main.sh
+  \item \code{./cry c <receiver> <sender>}
   \end{itemize}
 \end{itemize}
