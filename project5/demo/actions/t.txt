@@ -1,0 +1,23 @@
+vu@Vu-PC:~/repos/cry/project5/demo$ ./cry t four rsa
+
+doTesting started
+testCryptosystem
+Party::testParty
+method RsaTester::testCryptosystem
+key-generation:
+	min modulus length: 32-bit
+	max plaintext length: 4-char
+	modulus: 2481038023
+	public exponent: 65537
+	private exponent: 251442773
+plaintext: four
+encryption:
+	plaintext length: 4-char
+	padded ciphertext: 808284760
+decryption:
+	plaintext: four
+cryptanalysis:
+	RsaCryptosystem::recoverPrivateKeyElements started
+	RsaCryptosystem::recoverPrivateKeyElements ended in 0s
+	plaintext: four
+doTesting ended

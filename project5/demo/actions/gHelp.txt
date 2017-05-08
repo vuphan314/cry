@@ -1,0 +1,9 @@
+vu@Vu-PC:~/repos/cry/project5/demo$ ./cry g
+
+syntax:
+	./cry g <receiver> <cryptosystem> [<strength>]
+examples:
+	./cry g bob rsa
+	./cry g bob rsa 44
+OVERWRITE FILES:
+	./<receiver>.public, ./<receiver>.private
