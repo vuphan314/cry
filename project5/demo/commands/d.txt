@@ -1,0 +1,5 @@
+vu@Vu-PC:~/repos/cry/project5/demo$ ./cry d bob alice
+
+doDecryption started
+	plaintext: 1line
+doDecryption ended
