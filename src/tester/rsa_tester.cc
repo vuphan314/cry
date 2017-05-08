@@ -7,7 +7,7 @@ RsaTester::RsaTester() {
   cryptosystem = new RsaCryptosystem;
 }
 
-Bool RsaTester::testCryptosystem(const SizeT &strength,
+void RsaTester::testCryptosystem(const SizeT &strength,
     const Text &plainText) {
   cout << "method RsaTester::testCryptosystem\n";
 
@@ -41,7 +41,5 @@ Bool RsaTester::testCryptosystem(const SizeT &strength,
   cout << "cryptanalysis:\n";
   cryptosystem->cryptanalyze(t, paddedCipherText,
     publicKey);
-  cout << "\tplaintext: " << t << "\n";
-
-  return TRUE;
+  cout << "\tplaintext: " << t;
 }
