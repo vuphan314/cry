@@ -2,14 +2,14 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\rsa{} \cs}
+\subsubsection{\rsa-\cs}
 
 Already described in project 4 report (part 2):
 \url{https://github.com/vuphan314/cry/releases/tag/v0.4.0-beta.2}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{\dummy{} \cs}
+\subsubsection{\dummy-\cs}
 
 parties:
 \begin{itemize}
@@ -45,16 +45,30 @@ algorithms:
 \begin{itemize}
 \item key-generation:
   \begin{enumerate}
-  \item the receiver uses the \rsa{} \cs{}
-    (embeded in the \dummy{} \cs) to generate $n, e, d$
+  \item the receiver generates $\set{n, e, d}$,
+    using \rsa-key-generation \\
+    (the \rsa-\cs{} is embedded in the \dummy-\cs)
   \item the sender randomly generates $D$
-  \item the sender encrypts $D$ into $E$
+  \item the sender encrypts $D$ into $E$,
     using \rsa-encryption with \rsa-public-key $(n, e)$
-  \item the receiver decrypts $E$ into $D$
+  \item the receiver decrypts $E$ into $D$,
     using \rsa-decryption with \rsa-private-key $(n, d)$
   \item now both the sender and receiver know $D$
   \end{enumerate}
 \item encryption:
+  \begin{enumerate}
+  \item the sender pads the plaintext into $m$
+  \item the sender encrypts $m$ into $c = m * D$
+  \end{enumerate}
+\item decryption:
+  \begin{enumerate}
+  \item the receiver decrypts $c$ into $m = c / D$
+  \item the receiver unpads $c$ into $m$
+  \end{enumerate}
+\item cryptanalysis:
+  \begin{enumerate}
+  \item the eavesdropper uses \rsa-cryptanalyis to
+  \end{enumerate}
 \end{itemize}
 
 Testing:
