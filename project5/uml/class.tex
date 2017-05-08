@@ -3,48 +3,61 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{tikzpicture}
-\umltypedef{Key}{\angles{mpz\_t}}{}
-\umltypedef[right=0.7in of Key]{Text}{string}{}
-\umlabstract[below=0.35in of Text]{Cryptosystem}{}
+\umltypedef{Key}{$vector \angles{mpz\_class}$}{}
+\umltypedef[right=0.7in of Key]{Text}{$string$}{}
+\umlabstract[below=0.23in of Text]{Cryptosystem}{}
   {\umlvirt{+ generateKeys(publicKey: Key, privateKey: Key):
     void} \\
-  \umlvirt{+ encrypt(ciphertext: Text,
-    plaintext: Text, publicKey: Key): void} \\
-  \umlvirt{+ decrypt(plaintext: Text,
-    ciphertext: Text, privateKey: Key): void} \\
-  \umlvirt{+ cryptanalyze(plaintext: Text,
-    ciphertext: Text, publicKey: Key): void}}
+  \umlvirt{+ encrypt(cipherText: Text,
+    plainText: Text, publicKey: Key): void} \\
+  \umlvirt{+ decrypt(plainText: Text,
+    cipherText: Text, privateKey: Key): void} \\
+  \umlvirt{+ cryptanalyze(plainText: Text,
+    cipherText: Text, publicKey: Key): void}}
 \umldep[anchors=90 and -90]{Cryptosystem}{Key}
 \umldep[anchors=90 and -90]{Cryptosystem}{Text}
-\umlclass[below=0.35in of Cryptosystem]{RsaCryptosystem}{}
+\umlclass[below=0.23in of Cryptosystem]{RsaCryptosystem}{}
   {+ generateKeys(publicKey: Key, privateKey: Key): void \\
-  + encrypt(ciphertext: Text,
-    plaintext: Text, publicKey: Key): void \\
-  + decrypt(plaintext: Text,
-    ciphertext: Text, privateKey: Key): void \\
-  + cryptanalyze(plaintext: Text,
-    ciphertext: Text, publicKey: Key): void}
-\umlinherit[anchors=90 and -90]{RsaCryptosystem}{Cryptosystem}
-\umlenum[right=1.9in of Text]{CryptosystemName}{RSA}{}
-\umlclass[below =3.7in of CryptosystemName]{Party}
+  + encrypt(cipherText: Text,
+    plainText: Text, publicKey: Key): void \\
+  + decrypt(plainText: Text,
+    cipherText: Text, privateKey: Key): void \\
+  + cryptanalyze(plainText: Text,
+    cipherText: Text, publicKey: Key): void}
+\umlclass[below=0.23in of RsaCryptosystem]
+  {DummyCryptosystem}{}
+  {+ generateKeys(publicKey: Key, privateKey: Key): void \\
+  + encrypt(cipherText: Text,
+    plainText: Text, publicKey: Key): void \\
+  + decrypt(plainText: Text,
+    cipherText: Text, privateKey: Key): void \\
+  + cryptanalyze(plainText: Text,
+    cipherText: Text, publicKey: Key): void}
+\umlinherit[anchors=90 and -90]{RsaCryptosystem}
+  {Cryptosystem}
+\umlinherit[anchors=90 and -90]{DummyCryptosystem}
+  {RsaCryptosystem}
+\umltypedef[right=1.9in of Text]{CryptosystemName}
+  {$string$}{}
+\umlclass[below =4.38in of CryptosystemName]{Party}
   {\# cryptosystem: Cryptosystem*}
   {+ Party(cryptosystemName: CryptosystemName)}
 \umldep[anchors=80 and -90]{Party}{CryptosystemName}
 \umlaggreg[anchors=100 and 0]{Party}{Cryptosystem}
-\umlclass[below=0.35in of RsaCryptosystem]{Receiver}
+\umlclass[below=0.23in of DummyCryptosystem]{Receiver}
   {+ publicKey: Key \\
   -- privateKey: Key \\
-  -- plaintext: Text}
+  -- plainText: Text}
   {-- generateKeys(): void \\
-  -- decrypt(ciphertext: Text): void}
+  -- decrypt(cipherText: Text): void}
 \umlinherit[anchors=0 and 180]{Receiver}{Party}
-\umlclass[below=0.35in of Receiver]{Sender}
-  {+ ciphertext: Text \\
-  -- plaintext: Text}
+\umlclass[below=0.23in of Receiver]{Sender}
+  {+ cipherText: Text \\
+  -- plainText: Text}
   {-- encrypt(publicKey: Key): void}
 \umlinherit[anchors=0 and -160]{Sender}{Party}
-\umlclass[below=0.35in of Sender]{Eavesdropper}
-  {-- plaintext: Text}
-  {-- cryptanalyze(ciphertext: Text, publicKey: Key): void}
+\umlclass[below=0.23in of Sender]{Eavesdropper}
+  {-- plainText: Text}
+  {-- cryptanalyze(cipherText: Text, publicKey: Key): void}
 \umlinherit[anchors=0 and -90]{Eavesdropper}{Party}
 \end{tikzpicture}
