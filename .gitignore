@@ -1,9 +1,9 @@
 # Cry ignores:
 
-#*.public
-*.private
-
+src/*.private
 src/cry
+
+project5/demo/cry
 
 ############################################################
 # GitHub default ignores: C++
