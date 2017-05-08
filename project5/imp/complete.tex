@@ -36,8 +36,9 @@ terminology:
   \end{itemize}
 \item each \textdef{padded-text} is a string:
   \begin{itemize}
+  \item $c$: padded-ciphertext (known to: all parties)
   \item $m$: padded-plaintext
-  \item $c$: padded-ciphertext
+    (known to: only sender \& receiver)
   \end{itemize}
 \end{itemize}
 
@@ -63,11 +64,16 @@ algorithms:
 \item decryption:
   \begin{enumerate}
   \item the receiver decrypts $c$ into $m = c / D$
-  \item the receiver unpads $c$ into $m$
+  \item the receiver unpads $m$ into the plaintext
   \end{enumerate}
 \item cryptanalysis:
   \begin{enumerate}
-  \item the eavesdropper uses \rsa-cryptanalyis to
+  \item the eavesdropper cryptanalyzes $\set{n, e}$
+    into $d$, using \rsa-cryptanalyis
+  \item the eavesdropper decrypts $E$ into $D$,
+    using \rsa-decryption with \rsa-private-key $(n, d)$
+  \item the eavesdropper decrypts $c$ into $m = c / D$
+  \item the eavesdropper unpads $m$ into the plaintext
   \end{enumerate}
 \end{itemize}
 
