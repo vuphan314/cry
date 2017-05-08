@@ -17,14 +17,16 @@ using ArgV = vector<string>;
 
 ////////////////////////////////////////////////////////////
 
+const string TEST = "t";
 const string KEY_GENERATION = "g";
 const string ENCRYPTION = "e";
 const string DECRYPTION = "d";
 const string CRYPTANALYSIS = "c";
-const unordered_set<string> ACTIONS{KEY_GENERATION,
+const unordered_set<string> ACTIONS{TEST, KEY_GENERATION,
   ENCRYPTION, DECRYPTION, CRYPTANALYSIS};
 
 const string EXECUTABLE = "./cry ";
+const string TESTING = EXECUTABLE + TEST + " ";
 const string KEY_GENERATING = EXECUTABLE + KEY_GENERATION +
   " ";
 const string ENCRYPTING = EXECUTABLE + ENCRYPTION + " ";
@@ -32,8 +34,8 @@ const string DECRYPTING = EXECUTABLE + DECRYPTION + " ";
 const string CRYPTANALYZING = EXECUTABLE + CRYPTANALYSIS +
   " ";
 
-const string SPECIFIC_SENDER = "send";
-const string SPECIFIC_RECEIVER = "receive";
+const string SPECIFIC_SENDER = "alice";
+const string SPECIFIC_RECEIVER = "bob";
 
 const string SENDER = "<sender>";
 const string RECEIVER = "<receiver>";
@@ -66,12 +68,17 @@ public:
   Party(const CryptosystemName &cryptosystemName = DUMMY);
     // constructor
 
-  Bool test();
+  void testParty(const SizeT &strength,
+    const Text &plainText);
 
 // command-line argument parsing:
   void doAction(int argc, const char *argv[]);
 
   void doAction(const ArgV &argv);
+
+  void doTesting(const Text &plainText,
+    const CryptosystemName &cryptosystemName,
+    const SizeT &strength);
 
   void doKeyGeneration(const string &receiverName,
     const CryptosystemName &cryptosystemName,
@@ -129,13 +136,10 @@ public:
 // global function:
 
 void helpActions();
-
+void helpTesting();
 void helpKeyGeneration();
-
 void helpEncryption();
-
 void helpDecryption();
-
 void helpCryptanalysis();
 
 void setArgV(ArgV &argV, int argc, const char *argv[]);
@@ -145,9 +149,11 @@ void verifyCryptosystemName(
 
 void verifyInputStreamOpening(const ifstream &inputStream);
 
-// testing:
+void testCryptosystem(const Text &plainText,
+  const CryptosystemName &cryptosystemName,
+  const SizeT &strength);
 
-void testCryptosystems();
+// testing:
 
 void testActions();
 

@@ -1,0 +1,10 @@
+vu@Vu-PC:~/repos/cry/project5/demo$ ./cry e
+
+syntax:
+	./cry e <sender> <receiver>
+example:
+	./cry e alice bob
+read files:
+	./<receiver>.public, ./<sender>.private
+OVERWRITE FILE:
+	./<sender>.public

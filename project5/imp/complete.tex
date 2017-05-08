@@ -1,3 +1,133 @@
 \subsection{Complete Functionality}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{\rsa-\cs}
+
+Already described in project 4 report (part 2):
+\url{https://github.com/vuphan314/cry/releases/tag/v0.4.0-beta.2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{\dummy-\cs}
+
+parties:
+\begin{itemize}
+\item sender
+\item receiver
+\item eavesdropper
+\end{itemize}
+
+terminology:
+\begin{itemize}
+\item each \textdef{key-element} is a big positive integer:
+  \begin{itemize}
+  \item $n$: modulus (known to: all parties)
+  \item $e$: public-exponent (known to: all parties)
+  \item $d$: private-exponent (known to: only receiver)
+  \item $E$: public-factor (known to: all parties)
+  \item $D$: secret-factor
+    (known to: only sender \& receiver)
+  \end{itemize}
+% \item each \textdef{key} is a triple of key-elements:
+%   \begin{itemize}
+%   \item $(n, e, E)$: public-key (known to: all parties)
+%   \item $(n, d, D)$: private-key (known to: only receiver)
+%   \end{itemize}
+\item each \textdef{padded-text} is a string:
+  \begin{itemize}
+  \item $c$: padded-ciphertext (known to: all parties)
+  \item $m$: padded-plaintext
+    (known to: only sender \& receiver)
+  \end{itemize}
+\end{itemize}
+
+algorithms:
+\begin{itemize}
+\item key-generation:
+  \begin{enumerate}
+  \item the receiver generates $\set{n, e, d}$,
+    using \rsa-key-generation \\
+    (the \rsa-\cs{} is embedded in the \dummy-\cs)
+  \item the sender randomly generates $D$
+  \item the sender encrypts $D$ into $E$,
+    using \rsa-encryption with \rsa-public-key $(n, e)$
+  \item the receiver decrypts $E$ into $D$,
+    using \rsa-decryption with \rsa-private-key $(n, d)$
+  \item now both the sender and receiver know $D$
+  \end{enumerate}
+\item encryption:
+  \begin{enumerate}
+  \item the sender pads the plaintext into $m$
+  \item the sender encrypts $m$ into $c = m * D$
+  \end{enumerate}
+\item decryption:
+  \begin{enumerate}
+  \item the receiver decrypts $c$ into $m = c / D$
+  \item the receiver unpads $m$ into the plaintext
+  \end{enumerate}
+\item cryptanalysis:
+  \begin{enumerate}
+  \item the eavesdropper cryptanalyzes $\set{n, e}$
+    into $d$, using \rsa-cryptanalyis
+  \item the eavesdropper decrypts $E$ into $D$,
+    using \rsa-decryption with \rsa-private-key $(n, d)$
+  \item the eavesdropper decrypts $c$ into $m = c / D$
+  \item the eavesdropper unpads $m$ into the plaintext
+  \end{enumerate}
+\end{itemize}
+
+demo:
+\codes{\lstinputlisting{demo/actions/dummy.txt}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{\cry{} \cf}
+
+\codes{
+top-level help:
+  \codes{\lstinputlisting{demo/actions/actionsHelp.txt}}
+}
+
+\codes{
+testing help:
+  \codes{\lstinputlisting{demo/actions/tHelp.txt}}
+testing:
+  \codes{\lstinputlisting{demo/actions/t.txt}}
+}
+
+\codes{
+key-generation help:
+  \codes{\lstinputlisting{demo/actions/gHelp.txt}}
+key-generation:
+  \codes{\lstinputlisting{demo/actions/g.txt}}
+file \code{bob.public}:
+  \codes{\lstinputlisting{demo/bob.public}}
+file \code{bob.private}:
+  \codes{\lstinputlisting{demo/bob.private}}
+}
+
+\codes{
+encryption help:
+  \codes{\lstinputlisting{demo/actions/eHelp.txt}}
+file \code{alice.private}:
+  \codes{\lstinputlisting{demo/alice.private}}
+encryption:
+  \codes{\lstinputlisting{demo/actions/e.txt}}
+file \code{alice.public}:
+  \codes{\lstinputlisting{demo/alice.public}}
+}
+
+\codes{
+decryption help:
+  \codes{\lstinputlisting{demo/actions/dHelp.txt}}
+decryption:
+  \codes{\lstinputlisting{demo/actions/d.txt}}
+}
+
+\codes{
+cryptanalysis help:
+  \codes{\lstinputlisting{demo/actions/cHelp.txt}}
+cryptanalysis:
+  \codes{\lstinputlisting{demo/actions/c.txt}}
+}

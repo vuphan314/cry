@@ -7,7 +7,7 @@ DummyTester::DummyTester() {
   cryptosystem = new DummyCryptosystem;
 }
 
-Bool DummyTester::testCryptosystem(const SizeT &strength,
+void DummyTester::testCryptosystem(const SizeT &strength,
     const Text &plainText) {
   cout << "method DummyTester::testCryptosystem\n";
 
@@ -54,8 +54,5 @@ Bool DummyTester::testCryptosystem(const SizeT &strength,
   cout << "cryptanalysis:\n";
   cryptosystem->cryptanalyze(t, paddedCipherText,
     publicKey);
-  cout << "\tplaintext: " << t << "\n";
-
-// return:
-  return TRUE;
+  cout << "\tplaintext: " << t;
 }

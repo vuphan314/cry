@@ -1,0 +1,6 @@
+vu@Vu-PC:~/repos/cry/project5/demo$ ./cry e alice bob
+
+doEncryption started
+	plaintext length: 4-char
+writeSenderPublicFile wrote file: ./alice.public
+doEncryption ended

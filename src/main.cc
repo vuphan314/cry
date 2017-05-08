@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////
 
 void breakRsa(
-    SizeT strength = BREAKABLE_MIN_MODULUS_LENGTH,
+    SizeT strength = BREAKABLE_STRENGTH,
     Text plainText = BREAKABLE_PLAIN_TEXT) {
   cout << "function breakRsa\n";
   RsaTester rsaTester;
@@ -28,7 +28,6 @@ int main(int argc, const char *argv[]) {
   //     throw DefaultException("wrong argc");
   // }
 
-  // testCryptosystems();
   // testActions();
   // testInputOutput();
 
