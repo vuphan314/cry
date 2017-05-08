@@ -1,0 +1,12 @@
+vu@Vu-PC:~/repos/cry/project5/demo$ ./cry
+
+testing:
+	./cry t
+key-generation:
+	./cry g
+encryption:
+	./cry e
+decryption:
+	./cry d
+cryptanalysis:
+	./cry c

@@ -1,0 +1,7 @@
+vu@Vu-PC:~/repos/cry/project5/demo$ ./cry g bob rsa
+
+doKeyGeneration started
+	min modulus length: 32-bit
+	max plaintext length: 4-char
+writeReceiverFiles wrote files: ./bob.public, ./bob.private
+doKeyGeneration ended

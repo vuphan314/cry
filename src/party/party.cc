@@ -286,7 +286,7 @@ void Party::readSenderPublicFile(
 // global function:
 
 void helpActions() {
-  cout << "test:\n\t" <<
+  cout << "testing:\n\t" <<
     TESTING << "\n"
     "key-generation:\n\t" <<
     KEY_GENERATING << "\n"

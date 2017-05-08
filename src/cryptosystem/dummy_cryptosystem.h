@@ -15,8 +15,8 @@ class DummyCryptosystem : public RsaCryptosystem {
 protected:
   KeyElement publicFactor, // E
     secretFactor; // D
-    // publicKey = (n, d, D)
-    // privateKey = (n, e, E)
+    // publicKey = (n, e, E)
+    // privateKey = (n, d, D)
 
 // protected helper methods:
   void setPublicKeyElements(const Key &publicKey);

@@ -1,0 +1,8 @@
+vu@Vu-PC:~/repos/cry/project5/demo$ ./cry d
+
+syntax:
+	./cry d <receiver> <sender>
+example:
+	./cry d bob alice
+read files:
+	./<receiver>.public, ./<receiver>.private, ./<sender>.public

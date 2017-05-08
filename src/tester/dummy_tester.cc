@@ -54,5 +54,5 @@ void DummyTester::testCryptosystem(const SizeT &strength,
   cout << "cryptanalysis:\n";
   cryptosystem->cryptanalyze(t, paddedCipherText,
     publicKey);
-  cout << "\tplaintext: " << t << "\n";
+  cout << "\tplaintext: " << t;
 }

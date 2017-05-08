@@ -34,8 +34,8 @@ const string DECRYPTING = EXECUTABLE + DECRYPTION + " ";
 const string CRYPTANALYZING = EXECUTABLE + CRYPTANALYSIS +
   " ";
 
-const string SPECIFIC_SENDER = "send";
-const string SPECIFIC_RECEIVER = "receive";
+const string SPECIFIC_SENDER = "alice";
+const string SPECIFIC_RECEIVER = "bob";
 
 const string SENDER = "<sender>";
 const string RECEIVER = "<receiver>";
