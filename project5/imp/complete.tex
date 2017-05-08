@@ -24,16 +24,16 @@ terminology:
   \begin{itemize}
   \item $n$: modulus (known to: all parties)
   \item $e$: public-exponent (known to: all parties)
-  \item $E$: public-factor (known to: all parties)
   \item $d$: private-exponent (known to: only receiver)
+  \item $E$: public-factor (known to: all parties)
   \item $D$: secret-factor
     (known to: only sender \& receiver)
   \end{itemize}
-\item each \textdef{key} is a triple of key-elements:
-  \begin{itemize}
-  \item $(n, e, E)$: public-key
-  \item $(n, d, D)$: private-key
-  \end{itemize}
+% \item each \textdef{key} is a triple of key-elements:
+%   \begin{itemize}
+%   \item $(n, e, E)$: public-key (known to: all parties)
+%   \item $(n, d, D)$: private-key (known to: only receiver)
+%   \end{itemize}
 \item each \textdef{padded-text} is a string:
   \begin{itemize}
   \item $c$: padded-ciphertext (known to: all parties)
@@ -77,8 +77,8 @@ algorithms:
   \end{enumerate}
 \end{itemize}
 
-Testing:
-\codes{\lstinputlisting{demo/actions/t.txt}}
+demo:
+\codes{\lstinputlisting{demo/actions/dummy.txt}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
