@@ -1,0 +1,27 @@
+vu@Vu-PC:~/repos/cry/project5/demo$ ./cry t five! dummy 44
+
+doTesting started
+testCryptosystem
+Party::testParty
+method DummyTester::testCryptosystem
+key-generation:
+	modulus: 8883702191687
+	public exponent: 65537
+	private exponent: 3609014163809
+	public factor: 1013808546108
+	secret factor: 6324487
+plaintext: five!
+encryption:
+	padded plaintext: 143436179814
+	padded ciphertext: 907160254563305418
+	ciphertext: �G��q��
+
+decryption:
+	plaintext: five!
+cryptanalysis:
+	RsaCryptosystem::recoverPrivateKeyElements started
+                  27.5667%                   0.0007h left
+                  58.4635%                   0.0004h left
+	RsaCryptosystem::recoverPrivateKeyElements ended in 3.0000s
+	plaintext: five!
+doTesting ended

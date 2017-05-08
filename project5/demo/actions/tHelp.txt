@@ -1,0 +1,7 @@
+vu@Vu-PC:~/repos/cry/project5/demo$ ./cry t
+
+syntax:
+	./cry t <spaceless-plaintext> <cryptosystem> [<strength>]
+examples:
+	./cry t four rsa
+	./cry t five! dummy 44
