@@ -10,18 +10,18 @@
 \end{umlsystem}
 
 \umlactor[x=1, y=-2]{Party}
-\umlactor[x=4, y=0]{Bob}
-\umlactor[x=4, y=-2]{Alice}
-\umlactor[x=4, y=-4]{Eve}
+\umlactor[x=4, y=0]{Receiver}
+\umlactor[x=4, y=-2]{Sender}
+\umlactor[x=4, y=-4]{Eavesdropper}
 
-\umlassoc{Bob}{Party}
-\umlassoc{Alice}{Party}
-\umlassoc{Eve}{Party}
+\umlinherit{Receiver}{Party}
+\umlinherit{Sender}{Party}
+\umlinherit{Eavesdropper}{Party}
 
-\umlinherit{Bob}{usecase-1}
-\umlinherit{Bob}{usecase-3}
-\umlinherit{Alice}{usecase-2}
-\umlinherit{Eve}{usecase-4}
+\umlassoc{Receiver}{usecase-1}
+\umlassoc{Receiver}{usecase-3}
+\umlassoc{Sender}{usecase-2}
+\umlassoc{Eavesdropper}{usecase-4}
 
 \end{tikzpicture}
 
