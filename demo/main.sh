@@ -1,0 +1,6 @@
+SRC=../src
+EXECUTABLE=cry
+
+make -C $SRC
+cp $SRC/$EXECUTABLE .
+./$EXECUTABLE
