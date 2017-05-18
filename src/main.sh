@@ -45,7 +45,6 @@ function run_breakRsa {
 
 ############################################################
 
-make subsystem
 make
 
 $EXECUTABLE $1 $2 $3 $4 $5
