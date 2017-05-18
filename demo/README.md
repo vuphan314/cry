@@ -31,4 +31,4 @@ cp ../src/cry .
 
 ### cryptanalysis
 - git-pull
-- `./cry d michael daniel`
+- `./cry c michael daniel`
