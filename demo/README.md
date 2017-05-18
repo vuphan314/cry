@@ -6,7 +6,10 @@
 `./main.sh`
 
 ## example
-`make -C ../src/ && cp ../src/cry .`
+```
+make -C ../src/
+cp ../src/cry .
+```
 
 ### key-generation by receiver `michael`
 - `./cry g michael rsa 46`
