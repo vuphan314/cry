@@ -1,5 +1,8 @@
 # Cry ignores:
 
+demo/*.private
+demo/cry
+
 src/*.private
 src/cry
 
